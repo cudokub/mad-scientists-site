@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #061304;
+  --color-green: #39f909;
+  --color-green-muted: #5cd83d;
+  --color-green-dark: #197006;
+  --color-green-light: #88e54a;
+  --font-display: "Pixelify Sans", monospace;
+  --font-mono: "Reddit Mono", monospace;
+}
+
+body {
+  background: #061304;
+  color: #39f909;
+  font-family: "Reddit Mono", monospace;
+}
+
+/* Ticker animation */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-animate {
+  animation: ticker-scroll 60s linear infinite;
+}
+
+/* Glow effect for buttons on hover */
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(57, 249, 9, 0.3);
+}
