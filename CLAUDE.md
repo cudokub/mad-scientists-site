@@ -1,7 +1,7 @@
 # Mad Scientists Site
 
 ## Overview
-Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuilt from Framer to self-hosted Next.js. Target domain: **madscientists.io** (Vercel hosting).
+Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuilt from Framer to self-hosted Next.js. **Live at [madscientists.io](https://madscientists.io)** — Vercel hosting, GitHub auto-deploy from `main`.
 
 ## Stack
 - Next.js 16 (App Router), React 19, TypeScript
@@ -48,6 +48,7 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **`Button`** — 3 variants (`primary`/`secondary`/`ghost`), 3 sizes (`sm`/`md`/`lg`). Auto-detects external links. `className="flex-1"` for side-by-side pairs.
 - **`NavBar`** — Grid-cell layout with `border-l` dividers. Do NOT use Button here.
 - **`Footer`** — 5-col link grid + social icons. Uses inline `<a>` tags, not Button.
+- **`Hero`** — Two-column hero (text left, GIF right). Homepage only.
 - **`Ticker`** — `"gateway"` / `"stargaze"` variants. Homepage only. 60s seamless loop.
 - **`BlockchainSection`** — 3-column info grid with circular icon avatars.
 
