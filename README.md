@@ -15,6 +15,7 @@ Official website for the [Mad Scientists](https://madscientists.io) NFT collecti
 - `/maduniversity` — Scoring system, roles, Discord commands
 - `/scienceclubs` — Community clubs overview
 - `/snapshot` — Chain snapshot downloads (Stargaze + Osmosis)
+- `/cosmic` — COSMIC special edition showcase (unlisted, 5 hand-crafted 1/1s)
 
 ## Development
 

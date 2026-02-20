@@ -21,6 +21,8 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 | `green-muted` | `#5cd83d` | Subtle green accents |
 | `green-dark` | `#197006` | Dark green |
 | `green-light` | `#88e54a` | Hover states |
+| `cosmic` | `#9B59F0` | Cosmic purple — COSMIC page borders, accents |
+| `cosmic-dark` | `#6B2FB8` | Dark cosmic purple |
 | — | `#D2DFD4` | Headline / nav text (light gray-green) |
 | — | `#8E8E8E` | Labels / captions (gray) |
 | — | `#141414` | Dark text on primary buttons |
@@ -53,7 +55,10 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **`BlockchainSection`** — 3-column info grid with circular icon avatars.
 
 ## Pages
-`/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`
+`/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted)
+
+### COSMIC Page (`/cosmic`)
+Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links, accessible only via direct URL. Hero with cosmic logo, gallery grid (3+2 layout) with hover glow + name reveal, about section with cosmic potion bottle.
 
 ### Key Layout Patterns
 ```tsx
