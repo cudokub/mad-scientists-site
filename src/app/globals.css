@@ -6,6 +6,8 @@
   --color-green-muted: #5cd83d;
   --color-green-dark: #197006;
   --color-green-light: #88e54a;
+  --color-cosmic: #9B59F0;
+  --color-cosmic-dark: #6B2FB8;
   --font-display: "Pixelify Sans", monospace;
   --font-mono: "Reddit Mono", monospace;
 }
@@ -33,4 +35,13 @@ body {
 /* Glow effect for buttons on hover */
 .btn-glow:hover {
   box-shadow: 0 0 20px rgba(57, 249, 9, 0.3);
+}
+
+/* Cosmic page styles */
+.cosmic-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.cosmic-glow:hover {
+  box-shadow: 0 0 24px rgba(155, 89, 240, 0.4);
 }
