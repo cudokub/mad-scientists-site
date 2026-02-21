@@ -131,14 +131,20 @@ const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
 function ScientistModal({
   scientist,
   onClose,
+  onPrev,
+  onNext,
 }: {
   scientist: Scientist;
   onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
 }) {
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
     };
 
     document.addEventListener("keydown", handleKey);
@@ -148,7 +154,7 @@ function ScientistModal({
       document.removeEventListener("keydown", handleKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [onClose]);
+  }, [onClose, onPrev, onNext]);
 
   return (
     <div
@@ -157,8 +163,24 @@ function ScientistModal({
       role="presentation"
     >
       <div className="absolute inset-0 bg-[#02040b]/90 backdrop-blur-sm" />
+
+      <button
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        className="absolute left-2 top-1/2 z-[110] hidden h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic md:flex"
+        aria-label="Previous scientist"
+      >
+        &larr;
+      </button>
+      <button
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        className="absolute right-2 top-1/2 z-[110] hidden h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic md:flex"
+        aria-label="Next scientist"
+      >
+        &rarr;
+      </button>
+
       <div
-        className="relative my-3 w-full max-w-5xl overflow-y-auto border border-cosmic/40 bg-[#080612]/95 shadow-[0_0_80px_rgba(126,211,255,0.15),0_0_30px_rgba(155,89,240,0.4)] animate-[modalEnter_0.4s_cubic-bezier(0.16,1,0.3,1)] md:my-0 md:max-h-[90vh] md:overflow-hidden"
+        className="relative my-3 w-full max-w-5xl overflow-y-auto border border-cosmic/40 bg-[#080612]/95 animate-[modalEnter_0.4s_cubic-bezier(0.16,1,0.3,1)] md:my-0 md:max-h-[90vh] md:overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -173,8 +195,7 @@ function ScientistModal({
         </button>
 
         <div className="grid md:grid-cols-[minmax(0,1fr)_360px]">
-          <div className="relative border-b border-cosmic/30 md:border-b-0 md:border-r">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(126,211,255,0.2),transparent_45%),radial-gradient(circle_at_80%_75%,rgba(255,122,217,0.18),transparent_45%)]" />
+          <div className="border-b border-cosmic/30 md:border-b-0 md:border-r">
             <Image
               src={scientist.src}
               alt={scientist.name}
@@ -183,50 +204,38 @@ function ScientistModal({
               sizes="(max-width: 767px) 100vw, 60vw"
               className="h-full w-full object-cover"
             />
-            <div className="absolute bottom-4 left-4 border border-cosmic/40 bg-[#08051a]/80 px-3 py-2">
-              <p className="font-display text-xs uppercase tracking-[0.14em] text-cosmic/70 md:text-[10px] md:tracking-[0.2em]">
-                Cosmic 1/1 Artifact
-              </p>
-            </div>
           </div>
 
-          <div className="flex flex-col gap-6 p-6 md:max-h-[90vh] md:overflow-y-auto md:p-8">
-            <div>
-              <p className="mb-2 font-display text-xs uppercase tracking-[0.14em] text-[#7ed3ff] md:text-[10px] md:tracking-[0.2em]">
-                Edition 1 of 1
-              </p>
-              <h3 className="font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
-                {scientist.name}
-              </h3>
-            </div>
+          <div className="flex flex-col gap-5 p-6 md:max-h-[90vh] md:overflow-y-auto md:p-8">
+            <h3 className="font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
+              {scientist.name}
+            </h3>
 
-            <div className="border-y border-cosmic/25 py-4">
-              <p className="font-mono text-base italic leading-relaxed text-[#d8d4e2]">
-                &ldquo;{scientist.tagline}&rdquo;
-              </p>
-            </div>
-
-            <p className="font-mono text-sm leading-relaxed text-[#b4afc0]">
-              {scientist.lore}
+            <p className="font-mono text-base leading-relaxed text-[#d8d4e2]">
+              {scientist.tagline}
             </p>
 
-            <div className="mt-auto grid grid-cols-2 gap-3 border-t border-cosmic/25 pt-4">
-              <div className="border border-cosmic/25 bg-[#0b0a1f] p-3">
-                <p className="font-display text-xs uppercase tracking-[0.12em] text-cosmic/60 md:text-[10px] md:tracking-[0.15em]">
-                  Collection
-                </p>
-                <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#f4ecff]">
-                  COSMIC
-                </p>
-              </div>
-              <div className="border border-cosmic/25 bg-[#0b0a1f] p-3">
-                <p className="font-display text-xs uppercase tracking-[0.12em] text-cosmic/60 md:text-[10px] md:tracking-[0.15em]">
-                  Access
-                </p>
-                <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#7ed3ff]">
-                  Auction Only
-                </p>
-              </div>
+            <div className="border-t border-cosmic/25 pt-5">
+              <p className="font-mono text-sm leading-relaxed text-[#b4afc0]">
+                {scientist.lore}
+              </p>
+            </div>
+
+            <div className="mt-auto flex items-center justify-between border-t border-cosmic/25 pt-4 md:hidden">
+              <button
+                onClick={onPrev}
+                className="flex h-10 w-10 items-center justify-center border border-cosmic/40 bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                aria-label="Previous scientist"
+              >
+                &larr;
+              </button>
+              <button
+                onClick={onNext}
+                className="flex h-10 w-10 items-center justify-center border border-cosmic/40 bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                aria-label="Next scientist"
+              >
+                &rarr;
+              </button>
             </div>
           </div>
         </div>
@@ -245,27 +254,27 @@ function GalleryCard({
   return (
     <button
       onClick={onClick}
-      className="group relative cursor-pointer overflow-hidden border border-cosmic/45 bg-[#090b17] text-left transition duration-300 hover:-translate-y-1 hover:border-[#7ed3ff]/70 hover:shadow-[0_14px_30px_rgba(35,158,255,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7ed3ff]"
+      className="group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7ed3ff]"
     >
-      <Image
-        src={scientist.src}
-        alt={scientist.name}
-        width={500}
-        height={500}
-        sizes="(max-width: 639px) 84vw, (max-width: 767px) 62vw, (max-width: 1023px) 46vw, (max-width: 1279px) 36vw, 20vw"
-        className="relative z-0 h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
-      />
-      <div className="absolute inset-x-0 bottom-0 z-20 hidden border-t border-cosmic/30 bg-[rgba(6,9,20,0.88)] px-3 py-3 transition-transform duration-300 xl:block xl:translate-y-full xl:group-hover:translate-y-0">
-        <p className="font-display text-sm uppercase tracking-wider text-[#f3edff]">
-          {scientist.name}
-        </p>
-        <p className="mt-1 font-mono text-xs leading-relaxed text-[#beb9ce]">
-          {scientist.tagline}
-        </p>
+      <div className="relative overflow-hidden border border-cosmic/45 bg-[#090b17] transition duration-300 group-hover:border-[#7ed3ff]/70 group-hover:shadow-[0_10px_30px_rgba(35,158,255,0.2)]">
+        <Image
+          src={scientist.src}
+          alt={scientist.name}
+          width={500}
+          height={500}
+          sizes="(max-width: 639px) 84vw, (max-width: 767px) 62vw, (max-width: 1023px) 46vw, (max-width: 1279px) 36vw, 20vw"
+          className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
+        />
+        <span className="absolute left-3 top-3 z-10 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
+          1/1
+        </span>
       </div>
-      <span className="absolute left-3 top-3 z-20 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
-        1/1
-      </span>
+      <p className="mt-2 font-display text-sm uppercase tracking-wider text-[#f3edff]">
+        {scientist.name}
+      </p>
+      <p className="mt-0.5 font-mono text-xs leading-relaxed text-[#9e99b0]">
+        {scientist.tagline}
+      </p>
     </button>
   );
 }
@@ -282,9 +291,16 @@ function ClearFive({ className = "" }: { className?: string }) {
 
 export default function CosmicPage() {
   const [selected, setSelected] = useState<Scientist | null>(null);
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowTop(window.scrollY > 600);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <main className="min-h-screen overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
+    <main className="min-h-screen scroll-smooth overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
       <style>{`
         @keyframes modalEnter {
           from { opacity: 0; transform: translateY(30px) scale(0.95); }
@@ -664,12 +680,30 @@ export default function CosmicPage() {
         </section>
       </section>
 
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center border border-cosmic/40 bg-[#09081a]/90 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic backdrop-blur-sm"
+          aria-label="Back to top"
+        >
+          &uarr;
+        </button>
+      )}
+
       <Footer theme="cosmic" />
 
       {selected && (
         <ScientistModal
           scientist={selected}
           onClose={() => setSelected(null)}
+          onPrev={() => {
+            const idx = scientists.findIndex((s) => s.id === selected.id);
+            setSelected(scientists[(idx - 1 + scientists.length) % scientists.length]);
+          }}
+          onNext={() => {
+            const idx = scientists.findIndex((s) => s.id === selected.id);
+            setSelected(scientists[(idx + 1) % scientists.length]);
+          }}
         />
       )}
     </main>
