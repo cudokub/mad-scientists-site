@@ -83,9 +83,14 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 | `cosmic-3-halfbody.png` | The Oracle — halfbody crop v1 |
 | `cosmic-4-halfbody.png` | The Antiquarian — halfbody crop v1 |
 | `cosmic-5-halfbody.png` | The Dreamer — halfbody crop v1 |
-| `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop v2 **(in use)** |
-| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop v2 **(in use)** |
-| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop v2 **(in use)** |
-| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop v2 **(in use)** |
-| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop v2 **(in use)** |
+| `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop v2 **(in use — gallery cards)** |
+| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop v2 **(in use — gallery cards)** |
+| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop v2 **(in use — gallery cards)** |
+| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop v2 **(in use — gallery cards)** |
+| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop v2 **(in use — gallery cards)** |
+| `cosmic-1-fullbody.png` | The Architect — full body **(in use — detail modal)** |
+| `cosmic-2-fullbody.png` | The Warlord — full body **(in use — detail modal)** |
+| `cosmic-3-fullbody.png` | The Oracle — full body **(in use — detail modal)** |
+| `cosmic-4-fullbody.png` | The Antiquarian — full body **(in use — detail modal)** |
+| `cosmic-5-fullbody.png` | The Dreamer — full body **(in use — detail modal)** |
 | `cosmic-auction.gif` | **Pending** — auction mechanic GIF (placeholder in auction section) |
