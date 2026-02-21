@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Silkscreen } from "next/font/google";
 import NavBar from "@/components/NavBar";
@@ -19,35 +19,35 @@ const scientists: Scientist[] = [
   {
     id: 1,
     name: "The Architect",
-    src: "/images/cosmic-1.png",
+    src: "/images/cosmic-1-halfbody-v2.png",
     tagline: "Built the machine. Became the machine.",
     lore: "The Architect doesn\u2019t explore the cosmos. He engineers it. Every wire, every circuit, every system traces back to his blueprint. While others look up at the stars, he\u2019s already building what comes next.",
   },
   {
     id: 2,
     name: "The Warlord",
-    src: "/images/cosmic-2.png",
+    src: "/images/cosmic-2-halfbody-v2.png",
     tagline: "Didn\u2019t come to explore. Came to conquer.",
     lore: "The Warlord was never interested in discovery. Where others saw the unknown, he saw unclaimed territory. The crimson crystal isn\u2019t decoration. It\u2019s the last thing you see before the cosmos becomes his.",
   },
   {
     id: 3,
     name: "The Oracle",
-    src: "/images/cosmic-3.png",
+    src: "/images/cosmic-3-halfbody-v2.png",
     tagline: "Sees everything. Says nothing.",
     lore: "The Oracle\u2019s mind broke through the dome a long time ago. Now it floats, exposed, receiving signals from places that don\u2019t have names yet. He doesn\u2019t speak because language is too slow for what he knows.",
   },
   {
     id: 4,
     name: "The Antiquarian",
-    src: "/images/cosmic-4.png",
+    src: "/images/cosmic-4-halfbody-v2.png",
     tagline: "Carried the old world into the new one.",
     lore: "While everyone else raced toward the future, The Antiquarian packed the past. Ancient tools, forgotten maps, knowledge that predates the lab itself. Turns out the cosmos has been explored before. You just need to know where to look.",
   },
   {
     id: 5,
     name: "The Dreamer",
-    src: "/images/cosmic-5.png",
+    src: "/images/cosmic-5-halfbody-v2.png",
     tagline: "Closed eyes. Open universe.",
     lore: "The Dreamer never built a ship or drew a weapon. She just closed her eyes and was already there. The rainbow trail isn\u2019t exhaust. It\u2019s the residue of imagination meeting reality. She\u2019s the only one who went willingly, and the only one who might not come back.",
   },
@@ -119,7 +119,6 @@ const parallelAuctionStatus = [
   },
 ];
 
-const mobileCarouselScientists = [...scientists, ...scientists, ...scientists];
 
 const silkscreen = Silkscreen({
   subsets: ["latin"],
@@ -283,59 +282,6 @@ function ClearFive({ className = "" }: { className?: string }) {
 
 export default function CosmicPage() {
   const [selected, setSelected] = useState<Scientist | null>(null);
-  const collectionCarouselRef = useRef<HTMLDivElement | null>(null);
-  const collectionIndexRef = useRef<number>(scientists.length);
-
-  const getCollectionCarouselMetrics = useCallback(() => {
-    const container = collectionCarouselRef.current;
-    if (!container || container.clientWidth === 0) return null;
-
-    const card = container.querySelector<HTMLElement>("[data-carousel-card]");
-    if (!card) return null;
-
-    const styles = window.getComputedStyle(container);
-    const gap = parseFloat(styles.columnGap || styles.gap || "0");
-    const step = card.getBoundingClientRect().width + gap;
-
-    return { container, step };
-  }, []);
-
-  const scrollToCollectionIndex = useCallback((
-    index: number,
-    behavior: ScrollBehavior = "auto",
-  ) => {
-    const metrics = getCollectionCarouselMetrics();
-    if (!metrics) return;
-
-    metrics.container.scrollTo({
-      left: metrics.step * index,
-      behavior,
-    });
-  }, [getCollectionCarouselMetrics]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      scrollToCollectionIndex(collectionIndexRef.current, "auto");
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [scrollToCollectionIndex]);
-
-  const scrollCollectionCarousel = (direction: 1 | -1) => {
-    const normalizedIndex =
-      (((collectionIndexRef.current - scientists.length + direction) %
-        scientists.length) +
-        scientists.length) %
-      scientists.length;
-
-    collectionIndexRef.current = normalizedIndex + scientists.length;
-    scrollToCollectionIndex(collectionIndexRef.current, "smooth");
-  };
 
   return (
     <main className="min-h-screen overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
@@ -566,57 +512,21 @@ export default function CosmicPage() {
               the known universe.
             </p>
 
-            <div className="relative mt-8 xl:hidden">
-              <div
-                ref={collectionCarouselRef}
-                className="flex snap-x snap-mandatory gap-3 overflow-hidden touch-pan-y px-4 pb-2 select-none sm:px-10 md:px-14 lg:px-16 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-              >
-                {mobileCarouselScientists.map((scientist, index) => (
-                  <div
-                    key={`${scientist.id}-${index}`}
-                    data-carousel-card
-                    className="shrink-0 basis-[84%] snap-center sm:basis-[62%] md:basis-[46%] lg:basis-[36%]"
-                  >
-                    <GalleryCard
-                      scientist={scientist}
-                      onClick={() => setSelected(scientist)}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#04070f] to-transparent sm:w-12 md:w-14" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#04070f] to-transparent sm:w-12 md:w-14" />
-
-              <button
-                type="button"
-                onClick={() => scrollCollectionCarousel(-1)}
-                className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#0a1228]/85 font-display text-xl text-[#d9cfff] transition-colors hover:text-[#9fe5ff]"
-                aria-label="Previous scientist"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollCollectionCarousel(1)}
-                className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#0a1228]/85 font-display text-xl text-[#d9cfff] transition-colors hover:text-[#9fe5ff]"
-                aria-label="Next scientist"
-              >
-                ›
-              </button>
-
-              <p className="mt-2 text-center font-mono text-[11px] text-[#8f89a8]">
-                Use arrows to browse
-              </p>
-            </div>
-
-            <div className="mt-8 hidden xl:grid xl:grid-cols-5 xl:gap-5">
-              {scientists.map((scientist) => (
-                <GalleryCard
+            <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
+              {scientists.map((scientist, i) => (
+                <div
                   key={scientist.id}
-                  scientist={scientist}
-                  onClick={() => setSelected(scientist)}
-                />
+                  className={
+                    i === 4
+                      ? "col-span-2 mx-auto w-[calc(50%-6px)] md:col-span-1 md:w-full"
+                      : ""
+                  }
+                >
+                  <GalleryCard
+                    scientist={scientist}
+                    onClick={() => setSelected(scientist)}
+                  />
+                </div>
               ))}
             </div>
           </div>
