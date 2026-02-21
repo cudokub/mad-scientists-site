@@ -58,7 +58,18 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 `/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted)
 
 ### COSMIC Page (`/cosmic`)
-Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links, accessible only via direct URL. Hero with cosmic logo, gallery grid (3+2 layout) with hover glow + name reveal, about section with cosmic potion bottle.
+Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links (commented out, ready to uncomment), accessible only via direct URL. `"use client"` page with interactive state.
+
+**Sections (top to bottom):**
+- **Hero** — cosmic logo + tagline (will be replaced with lineup poster asset)
+- **Collection** — intro text + 3+2 gallery grid. Cards are clickable, open detail modal
+- **Auction** — bid mechanic intro, 4-step how-it-works grid, 5 per-scientist auction slots, GIF placeholder + CTA button
+
+**Scientist detail modal** — side-by-side layout (art 60% left, info 40% right). Shows edition label, name, tagline in quotes, lore paragraph, collection label. Stacks on mobile. Closes on backdrop click or Escape.
+
+**Data model:** Each scientist has `id`, `name`, `src`, `tagline`, `lore`. Defined inline in page file.
+
+**Launch planning:** See `docs/COSMIC-LAUNCH.md` for the 10-day content plan, asset checklist, and site change tracker.
 
 ### Key Layout Patterns
 ```tsx
@@ -85,6 +96,7 @@ Always use `target="_blank" rel="noopener noreferrer"` for external links. Butto
 
 ## Reference Docs
 - `docs/ASSETS.md` — Full image/favicon inventory
+- `docs/COSMIC-LAUNCH.md` — COSMIC 10-day launch plan, asset checklist, tweet copy drafts
 
 ## Commands
 - `npm run dev` — dev server

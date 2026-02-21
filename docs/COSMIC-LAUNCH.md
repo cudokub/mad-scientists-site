@@ -104,24 +104,31 @@
 
 ## Decisions Log
 
-- **Lore depth:** Minimal. One-liner per character, not full backstories.
-- **Auction mechanic:** Bid with Mad Scientists 10k collection NFTs. Highest bidder wins.
+- **Lore depth:** Tagline + short lore paragraph per character. Displayed in detail modal.
+- **Auction mechanic:** 5 separate auctions, one per scientist. Bid by transferring Mad Scientists 10k NFTs. Highest bidder wins. Losers returned. No minimum bid. On-chain smart contract.
 - **Page strategy:** `/cosmic` is currently unlisted. Goes live on Day 5 reveal.
 - **Silhouettes:** Only 3 of 5 scientists teased — avoids repetition.
 - **Auction visual:** GIF instead of static explainer graphic — matches team's content style.
 - **Hero:** Will be replaced with lineup poster asset when ready. Logo may be part of the poster.
+- **Collection section:** Moved "Beyond the Lab" text into collection section. Removed standalone about section.
+- **Gallery modal:** Side-by-side layout (art 60% left, info right). Shows tagline, lore, edition label. Stacks on mobile.
 
 ---
 
 ## Site Changes Needed
 
-- [x] Add auction section to `/cosmic` page (GIF placeholder + bid mechanic text)
-- [x] Trim "Beyond the Lab" closing section
+- [x] Add auction section with 4-step how-it-works, per-scientist slots, GIF placeholder + CTA
+- [x] Move "Beyond the Lab" text into collection section intro
+- [x] Remove standalone about section (potion bottle + text)
+- [x] Add clickable gallery cards with detail modal (side-by-side art + info)
+- [x] Add taglines and lore paragraphs for all 5 scientists
 - [x] Prep COSMIC link in NavBar + Footer (commented out, ready to uncomment)
 - [ ] Swap hero with lineup poster asset (when ready)
-- [ ] Drop in auction GIF (replace placeholder in auction section)
+- [ ] Drop in auction GIF at `/public/images/cosmic-auction.gif` (replace placeholder)
 - [ ] Update auction button href + text when auction goes live
+- [ ] Update per-scientist auction status text (replace "Auction opens soon")
 - [ ] Uncomment NavBar + Footer COSMIC links (Day 5)
+- [ ] Add OG/Twitter meta tags for `/cosmic` page
 
 ---
 

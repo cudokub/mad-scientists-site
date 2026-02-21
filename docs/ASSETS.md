@@ -67,10 +67,11 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 ### COSMIC (`/cosmic`)
 | File | Usage |
 |------|-------|
-| `cosmic-logo.png` | COSMIC logo text (transparent bg) |
-| `cosmic-symbol.png` | Cosmic potion bottle icon (transparent bg) |
+| `cosmic-logo.png` | COSMIC logo text in hero (transparent bg) |
+| `cosmic-symbol.png` | Cosmic potion bottle icon (unused — about section removed) |
 | `cosmic-1.png` | The Architect — green tech, mechanical headgear |
 | `cosmic-2.png` | The Warlord — crimson crystal helmet, armored |
 | `cosmic-3.png` | The Oracle — glowing brain dome, cyan/teal |
 | `cosmic-4.png` | The Antiquarian — gold helmet, brass goggles |
 | `cosmic-5.png` | The Dreamer — pastel pink/purple, rainbow trail |
+| `cosmic-auction.gif` | **Pending** — auction mechanic GIF (placeholder in auction section) |
