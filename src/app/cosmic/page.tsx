@@ -386,7 +386,7 @@ export default function CosmicPage() {
                 One Universe.
               </h1>
               <p className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
-                5 hand-built 1/1s. Bid your Mad Scientists 10k NFTs to claim one.
+                5 hand-built 1/1s. Bid your Mad Scientists to claim one.
               </p>
               <div className="mt-4 flex flex-col gap-3">
                 <Button
@@ -421,7 +421,7 @@ export default function CosmicPage() {
                   One Universe.
                 </h1>
                 <p className="mt-4 max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
-                  5 hand-built 1/1s. Bid your Mad Scientists 10k NFTs to claim one.
+                  5 hand-built 1/1s. Bid your Mad Scientists to claim one.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <Button
@@ -554,7 +554,7 @@ export default function CosmicPage() {
               The Experiment
             </p>
             <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
-              Bid Scientists. Win Scientists.
+              Bid Scientists. Win Cosmic.
             </h2>
             <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
               Bid Mad Scientists from the 10k collection. Highest stack
@@ -660,7 +660,7 @@ export default function CosmicPage() {
               </div>
               <div className="flex flex-col justify-center gap-4 border border-cosmic/30 bg-[#090c1a] p-6 md:p-8">
                 <p className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
-                  Stack your 10k Scientists. Claim a COSMIC 1/1.
+                  Bid your 10k Scientists. Claim a COSMIC 1/1.
                 </p>
                 <Button
                   href="#"
