@@ -68,10 +68,24 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 | File | Usage |
 |------|-------|
 | `cosmic-logo.png` | COSMIC logo text in hero (transparent bg) |
-| `cosmic-symbol.png` | Cosmic potion bottle icon (unused — about section removed) |
-| `cosmic-1.png` | The Architect — green tech, mechanical headgear |
-| `cosmic-2.png` | The Warlord — crimson crystal helmet, armored |
-| `cosmic-3.png` | The Oracle — glowing brain dome, cyan/teal |
-| `cosmic-4.png` | The Antiquarian — gold helmet, brass goggles |
-| `cosmic-5.png` | The Dreamer — pastel pink/purple, rainbow trail |
+| `cosmic-symbol.png` | Cosmic potion bottle icon (NavBar logo for cosmic theme) |
+| `cosmic-hero-2026.png` | Hero banner image (desktop) |
+| `cosmic-hero-mobile-2026.png` | Hero banner image (mobile, unused — same image used) |
+| `cosmic-hero-lineup.png` | Lineup poster (alternate hero asset) |
+| `cosmic-hero-placeholder.svg` | Original placeholder SVG (unused) |
+| `cosmic-1.png` | The Architect — full body |
+| `cosmic-2.png` | The Warlord — full body |
+| `cosmic-3.png` | The Oracle — full body |
+| `cosmic-4.png` | The Antiquarian — full body |
+| `cosmic-5.png` | The Dreamer — full body |
+| `cosmic-1-halfbody.png` | The Architect — halfbody crop v1 |
+| `cosmic-2-halfbody.png` | The Warlord — halfbody crop v1 |
+| `cosmic-3-halfbody.png` | The Oracle — halfbody crop v1 |
+| `cosmic-4-halfbody.png` | The Antiquarian — halfbody crop v1 |
+| `cosmic-5-halfbody.png` | The Dreamer — halfbody crop v1 |
+| `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop v2 **(in use)** |
+| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop v2 **(in use)** |
+| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop v2 **(in use)** |
+| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop v2 **(in use)** |
+| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop v2 **(in use)** |
 | `cosmic-auction.gif` | **Pending** — auction mechanic GIF (placeholder in auction section) |

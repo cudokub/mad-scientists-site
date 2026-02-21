@@ -47,7 +47,7 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **General rule:** On mobile, center everything for a cleaner, app-like feel.
 
 ## Components
-- **`Button`** — 3 variants (`primary`/`secondary`/`ghost`), 3 sizes (`sm`/`md`/`lg`). Auto-detects external links. `className="flex-1"` for side-by-side pairs.
+- **`Button`** — 4 variants (`primary`/`secondary`/`ghost`/`cosmic-primary`), 3 sizes (`sm`/`md`/`lg`). Supports `theme="cosmic"` for cosmic-themed styles. Auto-detects external links. `className="flex-1"` for side-by-side pairs.
 - **`NavBar`** — Grid-cell layout with `border-l` dividers. Do NOT use Button here.
 - **`Footer`** — 5-col link grid + social icons. Uses inline `<a>` tags, not Button.
 - **`Hero`** — Two-column hero (text left, GIF right). Homepage only.
@@ -58,16 +58,17 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 `/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted)
 
 ### COSMIC Page (`/cosmic`)
-Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links (commented out, ready to uncomment), accessible only via direct URL. `"use client"` page with interactive state.
+Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links (commented out, ready to uncomment), accessible only via direct URL. `"use client"` page with interactive state (modal only).
 
 **Sections (top to bottom):**
-- **Hero** — cosmic logo + tagline (will be replaced with lineup poster asset)
-- **Collection** — intro text + 3+2 gallery grid. Cards are clickable, open detail modal
-- **Auction** — bid mechanic intro, 4-step how-it-works grid, 5 per-scientist auction slots, GIF placeholder + CTA button
+- **Hero** — cosmic hero image with logo overlay, stats grid, CTA buttons
+- **Ticker strip** — horizontal facts bar (5 one-of-one artifacts, pixel-crafted, etc.)
+- **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards are clickable, open detail modal. Uses halfbody-v2 images.
+- **Auction** — bid mechanic intro, 4-step how-it-works grid, 5 parallel auction lanes with per-scientist status, GIF placeholder + CTA button
 
-**Scientist detail modal** — side-by-side layout (art 60% left, info 40% right). Shows edition label, name, tagline in quotes, lore paragraph, collection label. Stacks on mobile. Closes on backdrop click or Escape.
+**Scientist detail modal** — side-by-side layout (art left, info 360px right). Shows edition label, name, tagline in quotes, lore paragraph, collection/access labels. Stacks on mobile. Closes on backdrop click or Escape.
 
-**Data model:** Each scientist has `id`, `name`, `src`, `tagline`, `lore`. Defined inline in page file.
+**Data model:** Each scientist has `id`, `name`, `src`, `tagline`, `lore`. Defined inline in page file. Images use `cosmic-N-halfbody-v2.png`.
 
 **Launch planning:** See `docs/COSMIC-LAUNCH.md` for the 10-day content plan, asset checklist, and site change tracker.
 

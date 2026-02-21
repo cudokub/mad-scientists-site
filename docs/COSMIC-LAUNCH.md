@@ -111,7 +111,9 @@
 - **Auction visual:** GIF instead of static explainer graphic — matches team's content style.
 - **Hero:** Will be replaced with lineup poster asset when ready. Logo may be part of the poster.
 - **Collection section:** Moved "Beyond the Lab" text into collection section. Removed standalone about section.
-- **Gallery modal:** Side-by-side layout (art 60% left, info right). Shows tagline, lore, edition label. Stacks on mobile.
+- **Gallery modal:** Side-by-side layout (art left, info 360px right). Shows tagline, lore, edition label, access label. Stacks on mobile.
+- **Gallery layout:** Replaced carousel with responsive CSS grid (2-col mobile, 3-col tablet, 5-col desktop). No JS scroll logic. 5th card centered on mobile via `col-span-2`.
+- **Image variants:** Gallery cards use `halfbody-v2` crops. Full-body and halfbody-v1 images also in repo.
 
 ---
 
