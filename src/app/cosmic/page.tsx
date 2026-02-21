@@ -11,6 +11,7 @@ interface Scientist {
   id: number;
   name: string;
   src: string;
+  fullSrc: string;
   tagline: string;
   lore: string;
 }
@@ -20,6 +21,7 @@ const scientists: Scientist[] = [
     id: 1,
     name: "The Architect",
     src: "/images/cosmic-1-halfbody-v2.png",
+    fullSrc: "/images/cosmic-1-fullbody.png",
     tagline: "Built the machine. Became the machine.",
     lore: "The Architect doesn\u2019t explore the cosmos. He engineers it. Every wire, every circuit, every system traces back to his blueprint. While others look up at the stars, he\u2019s already building what comes next.",
   },
@@ -27,6 +29,7 @@ const scientists: Scientist[] = [
     id: 2,
     name: "The Warlord",
     src: "/images/cosmic-2-halfbody-v2.png",
+    fullSrc: "/images/cosmic-2-fullbody.png",
     tagline: "Didn\u2019t come to explore. Came to conquer.",
     lore: "The Warlord was never interested in discovery. Where others saw the unknown, he saw unclaimed territory. The crimson crystal isn\u2019t decoration. It\u2019s the last thing you see before the cosmos becomes his.",
   },
@@ -34,6 +37,7 @@ const scientists: Scientist[] = [
     id: 3,
     name: "The Oracle",
     src: "/images/cosmic-3-halfbody-v2.png",
+    fullSrc: "/images/cosmic-3-fullbody.png",
     tagline: "Sees everything. Says nothing.",
     lore: "The Oracle\u2019s mind broke through the dome a long time ago. Now it floats, exposed, receiving signals from places that don\u2019t have names yet. He doesn\u2019t speak because language is too slow for what he knows.",
   },
@@ -41,6 +45,7 @@ const scientists: Scientist[] = [
     id: 4,
     name: "The Antiquarian",
     src: "/images/cosmic-4-halfbody-v2.png",
+    fullSrc: "/images/cosmic-4-fullbody.png",
     tagline: "Carried the old world into the new one.",
     lore: "While everyone else raced toward the future, The Antiquarian packed the past. Ancient tools, forgotten maps, knowledge that predates the lab itself. Turns out the cosmos has been explored before. You just need to know where to look.",
   },
@@ -48,6 +53,7 @@ const scientists: Scientist[] = [
     id: 5,
     name: "The Dreamer",
     src: "/images/cosmic-5-halfbody-v2.png",
+    fullSrc: "/images/cosmic-5-fullbody.png",
     tagline: "Closed eyes. Open universe.",
     lore: "The Dreamer never built a ship or drew a weapon. She just closed her eyes and was already there. The rainbow trail isn\u2019t exhaust. It\u2019s the residue of imagination meeting reality. She\u2019s the only one who went willingly, and the only one who might not come back.",
   },
@@ -197,7 +203,7 @@ function ScientistModal({
         <div className="grid md:grid-cols-[minmax(0,1fr)_360px]">
           <div className="border-b border-cosmic/30 md:border-b-0 md:border-r">
             <Image
-              src={scientist.src}
+              src={scientist.fullSrc}
               alt={scientist.name}
               width={900}
               height={900}
