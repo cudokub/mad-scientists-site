@@ -43,6 +43,8 @@ const footerLinks: FooterLink[] = [
   { label: "Mad University", href: "/maduniversity" },
   { label: "Science Clubs", href: "/scienceclubs" },
   { label: "Snapshot", href: "/snapshot" },
+  // TODO: Uncomment on COSMIC launch day (Day 5)
+  // { label: "COSMIC", href: "/cosmic" },
 ];
 
 export default function Footer() {

@@ -14,6 +14,8 @@ const navLinks = [
     external: true,
     highlight: true,
   },
+  // TODO: Uncomment on COSMIC launch day (Day 5)
+  // { label: "COSMIC", href: "/cosmic" },
 ];
 
 export default function NavBar() {
