@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Silkscreen } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
@@ -52,6 +53,37 @@ const scientists: Scientist[] = [
   },
 ];
 
+const auctionSteps = [
+  {
+    step: "01",
+    title: "Choose Your Scientist",
+    desc: "Pick the COSMIC 1/1 you want to claim before the bidding window closes.",
+  },
+  {
+    step: "02",
+    title: "Bid With 10k NFTs",
+    desc: "Submit Mad Scientists from the 10k set as your bid amount. No minimum bid size.",
+  },
+  {
+    step: "03",
+    title: "Highest Bid Takes It",
+    desc: "Each scientist has an isolated auction. The top bid wins that exact 1/1 piece.",
+  },
+  {
+    step: "04",
+    title: "Non-Winners Refunded",
+    desc: "If you do not win, your submitted Mad Scientists are returned automatically.",
+  },
+];
+
+const silkscreen = Silkscreen({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const HERO_IMAGE_SRC = "/images/cosmic-hero-lineup.png";
+const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
+
 function ScientistModal({
   scientist,
   onClose,
@@ -59,17 +91,18 @@ function ScientistModal({
   scientist: Scientist;
   onClose: () => void;
 }) {
-  // Close on Escape key
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
+
     document.addEventListener("keydown", handleKey);
-    // Prevent background scroll
     document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", handleKey);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [onClose]);
 
@@ -77,62 +110,79 @@ function ScientistModal({
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
       onClick={onClose}
+      role="presentation"
     >
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-[#061304]/90 backdrop-blur-sm" />
-
-      {/* Modal — side-by-side on desktop, stacked on mobile */}
+      <div className="absolute inset-0 bg-[#02040b]/90 backdrop-blur-sm" />
       <div
-        className="relative border border-cosmic bg-[#0a0618] max-w-4xl w-full max-h-[90vh] overflow-y-auto flex flex-col md:flex-row"
+        className="relative w-full max-w-5xl overflow-hidden border border-cosmic/40 bg-[#080612]/95 shadow-[0_0_60px_rgba(155,89,240,0.25)]"
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${scientist.name} details`}
       >
-        {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center font-display text-cosmic/60 hover:text-cosmic transition-colors text-xl"
+          className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center border border-cosmic/40 bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
           aria-label="Close"
         >
           ✕
         </button>
 
-        {/* Art — 60% on desktop */}
-        <div className="md:w-[60%] shrink-0 border-b md:border-b-0 md:border-r border-cosmic/30">
-          <Image
-            src={scientist.src}
-            alt={scientist.name}
-            width={800}
-            height={800}
-            className="w-full h-auto"
-          />
-        </div>
-
-        {/* Info — right panel */}
-        <div className="flex-1 p-6 md:p-8 flex flex-col justify-center gap-5">
-          <div>
-            <p className="font-display text-xs text-cosmic/40 tracking-wider uppercase mb-2">
-              1/1 · COSMIC EDITION
-            </p>
-            <h3 className="font-display text-2xl md:text-3xl font-bold text-cosmic tracking-wider uppercase">
-              {scientist.name}
-            </h3>
+        <div className="grid max-h-[90vh] md:grid-cols-[minmax(0,1fr)_360px]">
+          <div className="relative border-b border-cosmic/30 md:border-b-0 md:border-r">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(126,211,255,0.2),transparent_45%),radial-gradient(circle_at_80%_75%,rgba(255,122,217,0.18),transparent_45%)]" />
+            <Image
+              src={scientist.src}
+              alt={scientist.name}
+              width={900}
+              height={900}
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute bottom-4 left-4 border border-cosmic/40 bg-[#08051a]/80 px-3 py-2">
+              <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/70">
+                Cosmic 1/1 Artifact
+              </p>
+            </div>
           </div>
 
-          <div className="border-t border-cosmic/20 pt-5">
-            <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed italic">
-              &ldquo;{scientist.tagline}&rdquo;
-            </p>
-          </div>
+          <div className="flex max-h-[90vh] flex-col gap-6 overflow-y-auto p-6 md:p-8">
+            <div>
+              <p className="mb-2 font-display text-[10px] uppercase tracking-[0.2em] text-[#7ed3ff]">
+                Edition 1 of 1
+              </p>
+              <h3 className="font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
+                {scientist.name}
+              </h3>
+            </div>
 
-          <div className="pt-3">
-            <p className="font-mono text-[#8E8E8E] text-sm md:text-base leading-relaxed">
+            <div className="border-y border-cosmic/25 py-4">
+              <p className="font-mono text-base italic leading-relaxed text-[#d8d4e2]">
+                &ldquo;{scientist.tagline}&rdquo;
+              </p>
+            </div>
+
+            <p className="font-mono text-sm leading-relaxed text-[#b4afc0]">
               {scientist.lore}
             </p>
-          </div>
 
-          <div className="border-t border-cosmic/20 pt-5 mt-auto">
-            <p className="font-display text-xs text-cosmic/30 tracking-wider uppercase">
-              COSMIC / Mad Scientists Collection
-            </p>
+            <div className="mt-auto grid grid-cols-2 gap-3 border-t border-cosmic/25 pt-4">
+              <div className="border border-cosmic/25 bg-[#0b0a1f] p-3">
+                <p className="font-display text-[10px] uppercase tracking-[0.15em] text-cosmic/60">
+                  Collection
+                </p>
+                <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#f4ecff]">
+                  COSMIC
+                </p>
+              </div>
+              <div className="border border-cosmic/25 bg-[#0b0a1f] p-3">
+                <p className="font-display text-[10px] uppercase tracking-[0.15em] text-cosmic/60">
+                  Access
+                </p>
+                <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#7ed3ff]">
+                  Auction Only
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -150,21 +200,37 @@ function GalleryCard({
   return (
     <button
       onClick={onClick}
-      className="border border-cosmic cosmic-glow overflow-hidden group relative text-left cursor-pointer"
+      className="group relative cursor-pointer overflow-hidden border border-cosmic/45 bg-[#090b17] text-left transition duration-300 hover:-translate-y-1 hover:border-[#7ed3ff]/70 hover:shadow-[0_14px_30px_rgba(35,158,255,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7ed3ff]"
     >
       <Image
         src={scientist.src}
         alt={scientist.name}
         width={500}
         height={500}
-        className="w-full h-auto"
+        className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
       />
-      <div className="absolute inset-x-0 bottom-0 bg-[rgba(10,6,24,0.85)] py-2 px-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-        <p className="font-display text-sm md:text-base text-cosmic tracking-wider text-center uppercase">
+      <div className="absolute inset-x-0 bottom-0 border-t border-cosmic/30 bg-[rgba(6,9,20,0.88)] px-3 py-3 transition-transform duration-300 md:translate-y-full md:group-hover:translate-y-0">
+        <p className="font-display text-sm uppercase tracking-wider text-[#f3edff]">
           {scientist.name}
         </p>
+        <p className="mt-1 font-mono text-xs leading-relaxed text-[#beb9ce]">
+          {scientist.tagline}
+        </p>
       </div>
+      <span className="absolute left-3 top-3 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/75">
+        1/1
+      </span>
     </button>
+  );
+}
+
+function ClearFive({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`${silkscreen.className} inline-block font-normal tracking-normal ${className}`}
+    >
+      5
+    </span>
   );
 }
 
@@ -172,167 +238,248 @@ export default function CosmicPage() {
   const [selected, setSelected] = useState<Scientist | null>(null);
 
   return (
-    <main className="min-h-screen overflow-hidden">
-      <NavBar />
+    <main className="min-h-screen overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
+      <NavBar theme="cosmic" />
 
-      <section className="max-w-[1440px] mx-auto">
-        {/* Hero */}
-        <div
-          className="border border-cosmic p-8 md:p-12 flex flex-col items-center gap-6"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 0%, #1a0a2e 0%, #0a0618 50%, #061304 100%)",
-          }}
-        >
-          <Image
-            src="/images/cosmic-logo.png"
-            alt="COSMIC Mad Scientists"
-            width={600}
-            height={200}
-            className="w-[280px] md:w-[420px] lg:w-[520px] h-auto"
-            priority
+      <section className="relative mx-auto max-w-[1440px] border-x border-cosmic/25">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[-160px] top-[-140px] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(126,211,255,0.22)_0%,rgba(126,211,255,0)_72%)]" />
+          <div className="absolute bottom-[-180px] right-[-140px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(255,122,217,0.2)_0%,rgba(255,122,217,0)_72%)]" />
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 20% 15%, rgba(255,255,255,0.22) 0 1px, transparent 1px), radial-gradient(circle at 80% 75%, rgba(255,255,255,0.15) 0 1px, transparent 1px)",
+              backgroundSize: "190px 190px, 160px 160px",
+            }}
           />
-          <p className="font-display text-lg md:text-2xl text-cosmic tracking-wider uppercase">
-            5 Scientists. Infinite Universe.
-          </p>
         </div>
 
-        {/* Gallery */}
-        <div className="border border-cosmic p-6 md:p-8">
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-cosmic tracking-wider mb-4 text-center">
-            THE COLLECTION
-          </h3>
-          <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed text-center max-w-3xl mx-auto mb-6">
-            5 hand-crafted 1/1s. Not generative. Not random. Each one is a
-            standalone work of pixel art, pushing the Mad Scientists universe
-            further than it&apos;s ever gone.
-          </p>
-          <p className="font-display text-sm text-cosmic/60 tracking-wider uppercase text-center mb-6">
-            Everything is an Experiment — Even the Cosmos
-          </p>
-
-          {/* Top row: 3 */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {scientists.slice(0, 3).map((s) => (
-              <GalleryCard
-                key={s.id}
-                scientist={s}
-                onClick={() => setSelected(s)}
+        <section className="relative border-b border-cosmic/25 px-4 py-8 md:px-12 md:py-12">
+          <div className="overflow-hidden border border-cosmic/40 bg-[#050a16] shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
+            <div className="relative aspect-[16/9]">
+              <Image
+                src={HERO_IMAGE_SRC}
+                alt={HERO_IMAGE_ALT}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1400px"
+                className="object-cover"
               />
-            ))}
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,8,24,0.12)_10%,rgba(4,8,24,0.45)_45%,rgba(4,8,24,0.95)_100%)]" />
+
+              <div className="absolute left-3 top-3 border border-[#7ed3ff]/50 bg-[rgba(3,8,20,0.8)] px-3 py-2 md:left-5 md:top-5">
+                <p className="font-display text-[10px] uppercase tracking-[0.2em] text-[#7ed3ff]">
+                  COSMIC Hero
+                </p>
+              </div>
+
+              <div className="absolute right-3 top-3 hidden w-[130px] border border-cosmic/40 bg-[rgba(8,8,28,0.65)] p-2 md:right-5 md:top-5 md:block md:w-[170px]">
+                <Image
+                  src="/images/cosmic-logo.png"
+                  alt="COSMIC logo"
+                  width={360}
+                  height={120}
+                  className="h-auto w-full"
+                />
+              </div>
+
+              <div className="absolute inset-x-0 bottom-0 p-4 md:p-8 lg:p-10">
+                <div className="max-w-3xl">
+                  <p className="font-display text-[11px] uppercase tracking-[0.22em] text-[#7ed3ff] md:text-xs">
+                    Mad Scientists Signal // COSMIC Division
+                  </p>
+                  <h1 className="mt-2 font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] md:text-5xl lg:text-6xl">
+                    <ClearFive className="text-[#7ed3ff]" /> Scientists.
+                    <br />
+                    Infinite Universe.
+                  </h1>
+                  <p className="mt-3 max-w-2xl font-mono text-xs leading-relaxed text-[#c9c5d8] md:text-sm lg:text-base">
+                    COSMIC is a five-piece 1/1 set that pushes Mad Scientists
+                    beyond standard profile-picture drops. Each artifact is
+                    hand built and auctioned separately using your Mad
+                    Scientists 10k NFTs as bids.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <Button
+                      href="#collection"
+                      size="lg"
+                      className="border border-cosmic bg-[rgba(155,89,240,0.2)] text-[#f1e9ff] hover:bg-[rgba(155,89,240,0.32)]"
+                    >
+                      Inspect Collection
+                    </Button>
+                    <Button
+                      href="#auction"
+                      variant="ghost"
+                      size="lg"
+                      className="border border-[#7ed3ff]/50 bg-[rgba(8,18,37,0.65)] text-[#7ed3ff] hover:text-white"
+                    >
+                      Auction Mechanics
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Bottom row: 2 centered */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-4 md:mt-6">
-            <div className="hidden md:block" />
-            {scientists.slice(3, 5).map((s) => (
-              <GalleryCard
-                key={s.id}
-                scientist={s}
-                onClick={() => setSelected(s)}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Auction */}
-        <div className="border border-cosmic p-6 md:p-8">
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-cosmic tracking-wider mb-4 text-center">
-            THE AUCTION
-          </h3>
-          <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed text-center max-w-3xl mx-auto mb-8">
-            COSMIC isn&apos;t bought with cash or coins. To claim a 1/1, you
-            bid with your Mad Scientists from the 10k collection. The highest
-            bidder wins.
-          </p>
-
-          {/* How it works */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 mb-8">
+          <div className="mt-4 grid grid-cols-2 gap-3 md:mt-5 md:grid-cols-4">
             {[
-              { step: "01", title: "PICK YOUR TARGET", desc: "Choose which COSMIC scientist you want to claim." },
-              { step: "02", title: "BID YOUR SCIENTISTS", desc: "Transfer your Mad Scientists 10k NFTs as your bid. No minimum." },
-              { step: "03", title: "HIGHEST BID WINS", desc: "When the auction closes, the highest bidder claims the 1/1." },
-              { step: "04", title: "LOSERS RETURNED", desc: "Didn\u2019t win? Your Mad Scientists are sent back to you." },
+              { label: "Artifacts", value: "5 x 1/1" },
+              { label: "Mint Type", value: "Hand-Crafted" },
+              { label: "Acquisition", value: "Auction" },
+              { label: "Bid Asset", value: "Mad 10k NFTs" },
             ].map((item) => (
               <div
-                key={item.step}
-                className="border border-cosmic/30 p-4 md:p-5 flex flex-col gap-2"
+                key={item.label}
+                className="border border-cosmic/25 bg-[#0a0c1d] p-3 md:p-4"
               >
-                <span className="font-display text-3xl md:text-4xl font-bold text-cosmic/20">
-                  {item.step}
-                </span>
-                <h4 className="font-display text-sm md:text-base font-bold text-cosmic tracking-wider">
-                  {item.title}
-                </h4>
-                <p className="font-mono text-[#8E8E8E] text-sm leading-relaxed">
-                  {item.desc}
+                <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
+                  {item.label}
+                </p>
+                <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#f6f1ff] md:text-base">
+                  {item.label === "Artifacts" ? (
+                    <>
+                      <ClearFive className="text-[#f6f1ff]" /> x 1/1
+                    </>
+                  ) : (
+                    item.value
+                  )}
                 </p>
               </div>
             ))}
           </div>
+        </section>
 
-          {/* Auction slots — one per scientist */}
-          <h4 className="font-display text-lg md:text-xl font-bold text-cosmic tracking-wider mb-4 text-center">
-            5 AUCTIONS. 5 SCIENTISTS.
-          </h4>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-6">
-            {scientists.map((s) => (
-              <div key={s.id} className="border border-cosmic/30 overflow-hidden">
-                <Image
-                  src={s.src}
-                  alt={s.name}
-                  width={300}
-                  height={300}
-                  className="w-full h-auto"
+        <section className="relative border-b border-cosmic/25 bg-[linear-gradient(90deg,rgba(126,211,255,0.08),rgba(155,89,240,0.07),rgba(255,115,199,0.08))] px-6 py-4 md:px-12">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-display text-[11px] uppercase tracking-[0.18em] text-[#d8d2ec] md:text-xs">
+            <span>
+              <ClearFive className="text-[#d8d2ec]" /> one-of-one artifacts
+            </span>
+            <span>pixel-crafted by hand</span>
+            <span>auctioned with Mad Scientists 10k</span>
+            <span>no random minting</span>
+            <span>no duplicate editions</span>
+          </div>
+        </section>
+
+        <section
+          id="collection"
+          className="relative border-b border-cosmic/25 px-6 py-12 md:px-12 md:py-16"
+        >
+          <div className="mx-auto max-w-6xl">
+            <p className="font-display text-xs uppercase tracking-[0.22em] text-cosmic/70">
+              Collection Grid
+            </p>
+            <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
+              The Cosmic Five
+            </h2>
+            <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
+              Click any scientist to open their identity panel. Every artwork
+              is a standalone 1/1 with its own lore, tone, and threat level to
+              the known universe.
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-5">
+              {scientists.map((scientist) => (
+                <GalleryCard
+                  key={scientist.id}
+                  scientist={scientist}
+                  onClick={() => setSelected(scientist)}
                 />
-                <div className="p-2 md:p-3 bg-[#0a0618]">
-                  <p className="font-display text-xs md:text-sm text-cosmic tracking-wider text-center uppercase">
-                    {s.name}
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
+          <div className="mx-auto max-w-6xl">
+            <p className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
+              Auction System
+            </p>
+            <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
+              Bid Scientists to Win Scientists
+            </h2>
+            <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
+              COSMIC is not sold with cash. You compete by bidding Mad
+              Scientists from the 10k collection. Each 1/1 has a separate
+              leaderboard and a separate winner.
+            </p>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {auctionSteps.map((item) => (
+                <article
+                  key={item.step}
+                  className="border border-cosmic/30 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-5"
+                >
+                  <p className="font-display text-4xl leading-none text-cosmic/25">
+                    {item.step}
                   </p>
-                  {/* TODO: Replace with live auction status/link */}
-                  <p className="font-mono text-[10px] md:text-xs text-[#8E8E8E] text-center mt-1">
-                    Auction opens soon
+                  <h3 className="mt-3 font-display text-sm uppercase tracking-[0.08em] text-[#f0e8ff] md:text-base">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 font-mono text-xs leading-relaxed text-[#aaa4bf] md:text-sm">
+                    {item.desc}
                   </p>
-                </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <h3 className="font-display text-xl uppercase tracking-wide text-[#f1eaff] md:text-2xl">
+                <ClearFive className="text-[#f1eaff]" /> Parallel Auctions
+              </h3>
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {scientists.map((scientist) => (
+                  <div
+                    key={scientist.id}
+                    className="overflow-hidden border border-cosmic/30 bg-[#0a0d20]"
+                  >
+                    <Image
+                      src={scientist.src}
+                      alt={scientist.name}
+                      width={300}
+                      height={300}
+                      className="h-auto w-full"
+                    />
+                    <div className="space-y-1 border-t border-cosmic/20 p-3">
+                      <p className="font-display text-xs uppercase tracking-wide text-[#f0e9ff] md:text-sm">
+                        {scientist.name}
+                      </p>
+                      <p className="font-mono text-[11px] text-[#7ed3ff]">
+                        Auction opens soon
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          {/* GIF + CTA */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-            {/* GIF placeholder */}
-            <div className="md:w-[45%] border border-cosmic/30 overflow-hidden flex items-center justify-center bg-[#0a0618] min-h-[200px] md:min-h-[280px]">
-              {/* TODO: Replace with auction GIF when ready */}
-              {/* <Image src="/images/cosmic-auction.gif" alt="COSMIC Auction" width={600} height={600} unoptimized className="w-full h-full object-cover" /> */}
-              <p className="font-display text-lg text-cosmic/40 tracking-wider uppercase">
-                GIF COMING SOON
-              </p>
             </div>
 
-            {/* CTA panel */}
-            <div className="flex-1 border border-cosmic/30 p-6 md:p-8 flex flex-col gap-4 items-center md:items-start justify-center bg-[#0a0618]">
-              <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed text-center md:text-left">
-                Your Scientists built the lab. Now they&apos;re your ticket to
-                the cosmos.
-              </p>
-              {/* TODO: Update href when auction goes live */}
-              <Button
-                href="#"
-                variant="secondary"
-                size="lg"
-                className="border-cosmic text-cosmic bg-[rgba(155,89,240,0.12)] hover:bg-[rgba(155,89,240,0.2)]"
-              >
-                ENTER THE AUCTION
-              </Button>
+            <div className="mt-8 grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+              <div className="flex min-h-[220px] items-center justify-center border border-cosmic/30 bg-[radial-gradient(circle_at_20%_20%,rgba(126,211,255,0.18),transparent_42%),radial-gradient(circle_at_80%_80%,rgba(255,122,217,0.2),transparent_42%),#080c1b] p-6 text-center">
+                <p className="font-display text-lg uppercase tracking-[0.15em] text-cosmic/60">
+                  Auction GIF Coming Soon
+                </p>
+              </div>
+              <div className="flex flex-col justify-center gap-4 border border-cosmic/30 bg-[#090c1a] p-6 md:p-8">
+                <p className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
+                  Your current Mad Scientists become your leverage. The stronger
+                  your bid, the stronger your claim on the 1/1 you target.
+                </p>
+                <Button
+                  href="#"
+                  size="lg"
+                  className="w-full border border-cosmic bg-[rgba(155,89,240,0.16)] text-[#f1e9ff] hover:bg-[rgba(155,89,240,0.26)] md:w-fit"
+                >
+                  Enter The Auction
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-
+        </section>
       </section>
 
-      <Footer />
+      <Footer theme="cosmic" />
 
-      {/* Scientist detail modal */}
       {selected && (
         <ScientistModal
           scientist={selected}

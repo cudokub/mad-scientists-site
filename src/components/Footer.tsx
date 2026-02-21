@@ -47,11 +47,21 @@ const footerLinks: FooterLink[] = [
   // { label: "COSMIC", href: "/cosmic" },
 ];
 
-export default function Footer() {
+interface FooterProps {
+  theme?: "default" | "cosmic";
+}
+
+export default function Footer({ theme = "default" }: FooterProps) {
+  const isCosmic = theme === "cosmic";
+  const borderClass = isCosmic ? "border-cosmic/40" : "border-green";
+  const linkClass = isCosmic
+    ? "text-[#cfc6ea] hover:text-[#9fe5ff]"
+    : "text-green hover:text-green-light";
+
   return (
     <footer className="max-w-[1440px] mx-auto">
       {/* Links grid + Social icons in one bordered box */}
-      <div className="flex flex-col md:flex-row gap-8 md:gap-12 border border-green p-6 md:p-10">
+      <div className={`flex flex-col md:flex-row gap-8 md:gap-12 border p-6 md:p-10 ${borderClass}`}>
         {/* Link Grid — 5 columns, no cell borders */}
         <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-2">
           {footerLinks.map((link) => (
@@ -60,7 +70,7 @@ export default function Footer() {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="font-display text-green text-sm tracking-wider hover:text-green-light transition-colors py-1 text-center md:text-left"
+              className={`font-display text-sm tracking-wider transition-colors py-1 text-center md:text-left ${linkClass}`}
             >
               {link.label}
             </a>
