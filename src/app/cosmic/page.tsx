@@ -63,22 +63,22 @@ const auctionSteps = [
   {
     step: "01",
     title: "Pick Your Target",
-    desc: "Choose which COSMIC 1/1 you want. Each one has its own auction.",
+    desc: "Each COSMIC 1/1 has its own auction.",
   },
   {
     step: "02",
     title: "Stack Your Bid",
-    desc: "Throw in Mad Scientists from the 10k collection. No minimum. Go big or go home.",
+    desc: "Stack Mad Scientists from the 10k. No minimum.",
   },
   {
     step: "03",
     title: "Top Bid Wins",
-    desc: "Highest stack claims the 1/1. One winner per scientist. No ties.",
+    desc: "Highest stack wins. One winner per scientist.",
   },
   {
     step: "04",
     title: "Losers Get Refunded",
-    desc: "Didn\u2019t win? Your Mad Scientists come back. No harm done. Try again.",
+    desc: "Didn\u2019t win? Your Scientists come back.",
   },
 ];
 
@@ -386,9 +386,7 @@ export default function CosmicPage() {
                 One Universe.
               </h1>
               <p className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
-                5 hand-built 1/1 pieces. Not generated. Not randomized.
-                Each one auctioned separately — you bid with your Mad Scientists
-                10k NFTs. That&apos;s it. No cash. Just conviction.
+                5 hand-built 1/1s. Bid your Mad Scientists 10k NFTs to claim one.
               </p>
               <div className="mt-4 flex flex-col gap-3">
                 <Button
@@ -423,10 +421,7 @@ export default function CosmicPage() {
                   One Universe.
                 </h1>
                 <p className="mt-4 max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
-                  5 hand-built 1/1 pieces. Not generated. Not randomized.
-                  Each one auctioned separately — you bid with your Mad
-                  Scientists 10k NFTs. That&apos;s it. No cash. Just
-                  conviction.
+                  5 hand-built 1/1s. Bid your Mad Scientists 10k NFTs to claim one.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <Button
@@ -530,9 +525,7 @@ export default function CosmicPage() {
               Meet the Cosmic Five
             </h2>
             <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
-              Tap any of them. Read their story. Each one is a standalone 1/1
-              with its own personality, lore, and level of threat to the known
-              universe.
+              Each one is a standalone 1/1. Tap to learn more.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
@@ -561,12 +554,11 @@ export default function CosmicPage() {
               The Experiment
             </p>
             <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
-              Sacrifice Scientists to Win Scientists
+              Bid Scientists. Win Scientists.
             </h2>
             <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
-              No cash. No whitelist. You bid Mad Scientists from the 10k
-              collection. Highest stack wins. Losers get their NFTs back.
-              Simple as that.
+              Bid Mad Scientists from the 10k collection. Highest stack
+              wins. Losers get refunded.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
@@ -668,8 +660,7 @@ export default function CosmicPage() {
               </div>
               <div className="flex flex-col justify-center gap-4 border border-cosmic/30 bg-[#090c1a] p-6 md:p-8">
                 <p className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
-                  Your 10k Scientists are your ammo. Stack enough of them
-                  and a COSMIC 1/1 is yours. It&apos;s that simple.
+                  Stack your 10k Scientists. Claim a COSMIC 1/1.
                 </p>
                 <Button
                   href="#"
