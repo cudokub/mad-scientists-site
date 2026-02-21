@@ -69,10 +69,7 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 |------|-------|
 | `cosmic-logo.png` | COSMIC logo text in hero (transparent bg) |
 | `cosmic-symbol.png` | Cosmic potion bottle icon (NavBar logo for cosmic theme) |
-| `cosmic-hero-2026.png` | Hero banner image (desktop) |
-| `cosmic-hero-mobile-2026.png` | Hero banner image (mobile, unused — same image used) |
-| `cosmic-hero-lineup.png` | Lineup poster (alternate hero asset) |
-| `cosmic-hero-placeholder.svg` | Original placeholder SVG (unused) |
+| `cosmic-hero-2026.png` | Portal lineup art — all 5 scientists, 1376x768 **(in use — hero banner)** |
 | `cosmic-1.png` | The Architect — full body |
 | `cosmic-2.png` | The Warlord — full body |
 | `cosmic-3.png` | The Oracle — full body |

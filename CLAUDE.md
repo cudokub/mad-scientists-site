@@ -61,10 +61,10 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links (commented out, ready to uncomment), accessible only via direct URL. `"use client"` page with interactive state (modal, back-to-top button). `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled).
 
 **Sections (top to bottom):**
-- **Hero** — cosmic hero image with logo overlay, stats grid, CTA buttons
+- **Hero** — portal lineup art (1376x768, all 5 scientists) with logo overlay, stats grid, CTA buttons
 - **Ticker strip** — horizontal facts bar (5 one-of-one artifacts, pixel-crafted, etc.)
 - **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards show scientist name and tagline permanently below the image. Hover: border glow + subtle image zoom (no translate-y lift, no slide-up overlay). Cards are clickable, open detail modal. Uses halfbody-v2 images for cards.
-- **Auction** — bid mechanic intro, 4-step how-it-works grid, 5 parallel auction lanes with per-scientist status, GIF placeholder + CTA button
+- **Auction** — "Bid Scientists. Win Scientists." headline, 4-step how-it-works grid, 5 parallel auction lanes with per-scientist status, GIF placeholder + CTA button
 
 **Scientist detail modal** — side-by-side layout (full-body art left, info 360px right). Shows name, tagline, lore paragraph. Prev/next navigation: arrow buttons on desktop sides, bottom buttons on mobile, keyboard arrow keys supported. Stacks on mobile. Closes on backdrop click or Escape.
 

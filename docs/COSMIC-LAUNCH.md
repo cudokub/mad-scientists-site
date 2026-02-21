@@ -109,13 +109,15 @@
 - **Page strategy:** `/cosmic` is currently unlisted. Goes live on Day 5 reveal.
 - **Silhouettes:** Only 3 of 5 scientists teased — avoids repetition.
 - **Auction visual:** GIF instead of static explainer graphic — matches team's content style.
-- **Hero:** Will be replaced with lineup poster asset when ready. Logo may be part of the poster.
+- **Hero:** Portal lineup art (`cosmic-hero-2026.png`, 1376x768) with all 5 scientists. `cosmic-hero-v3.png` was a temporary test file, renamed to `cosmic-hero-2026.png`. Mobile and lineup alternates removed.
 - **Collection section:** Moved "Beyond the Lab" text into collection section. Removed standalone about section.
 - **Gallery modal:** Side-by-side layout (full-body art left, info 360px right). Shows name, tagline, lore paragraph. Prev/next navigation via arrow buttons (desktop sides, mobile bottom) and keyboard arrow keys. No radial gradient overlay, no edition badge, no collection/access grid. Stacks on mobile.
 - **Gallery cards:** Name and tagline displayed permanently below the image. Hover effect is border glow + subtle image zoom only (no translate-y lift, no slide-up overlay).
 - **Gallery layout:** Replaced carousel with responsive CSS grid (2-col mobile, 3-col tablet, 5-col desktop). No JS scroll logic. 5th card centered on mobile via `col-span-2`.
 - **Image variants:** Gallery cards use `halfbody-v2` crops. Modal uses `fullbody` images via `fullSrc` field. Full-body, halfbody-v1, and halfbody-v2 images all in repo.
 - **Page UX:** `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled arrow).
+- **Auction headline:** Changed from "Sacrifice Scientists to Win Scientists" to "Bid Scientists. Win Scientists." — cleaner and more direct.
+- **Body copy:** Trimmed significantly across hero, collection, auction steps, and bottom CTA. Shorter, punchier copy throughout.
 
 ---
 
@@ -127,7 +129,7 @@
 - [x] Add clickable gallery cards with detail modal (side-by-side art + info)
 - [x] Add taglines and lore paragraphs for all 5 scientists
 - [x] Prep COSMIC link in NavBar + Footer (commented out, ready to uncomment)
-- [ ] Swap hero with lineup poster asset (when ready)
+- [x] Swap hero with portal lineup art (`cosmic-hero-2026.png`, 1376x768)
 - [ ] Drop in auction GIF at `/public/images/cosmic-auction.gif` (replace placeholder)
 - [ ] Update auction button href + text when auction goes live
 - [ ] Update per-scientist auction status text (replace "Auction opens soon")
