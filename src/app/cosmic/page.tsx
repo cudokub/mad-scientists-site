@@ -76,6 +76,49 @@ const auctionSteps = [
   },
 ];
 
+const parallelAuctionStatus = [
+  {
+    id: 1,
+    lane: "Lane Alpha",
+    phase: "Signal Calibration",
+    opensIn: "Opens in 02h 14m",
+    leadingBid: "14 Mad Scientists",
+    activity: 72,
+  },
+  {
+    id: 2,
+    lane: "Lane Beta",
+    phase: "Bid Intake",
+    opensIn: "Opens in 03h 05m",
+    leadingBid: "9 Mad Scientists",
+    activity: 58,
+  },
+  {
+    id: 3,
+    lane: "Lane Gamma",
+    phase: "Watcher Queue",
+    opensIn: "Opens in 01h 42m",
+    leadingBid: "18 Mad Scientists",
+    activity: 83,
+  },
+  {
+    id: 4,
+    lane: "Lane Delta",
+    phase: "Wallet Sync",
+    opensIn: "Opens in 04h 28m",
+    leadingBid: "7 Mad Scientists",
+    activity: 41,
+  },
+  {
+    id: 5,
+    lane: "Lane Omega",
+    phase: "Final Diagnostics",
+    opensIn: "Opens in 00h 56m",
+    leadingBid: "22 Mad Scientists",
+    activity: 91,
+  },
+];
+
 const silkscreen = Silkscreen({
   subsets: ["latin"],
   weight: ["400"],
@@ -114,7 +157,7 @@ function ScientistModal({
     >
       <div className="absolute inset-0 bg-[#02040b]/90 backdrop-blur-sm" />
       <div
-        className="relative w-full max-w-5xl overflow-hidden border border-cosmic/40 bg-[#080612]/95 shadow-[0_0_60px_rgba(155,89,240,0.25)]"
+        className="relative w-full max-w-5xl overflow-hidden border border-cosmic/40 bg-[#080612]/95 shadow-[0_0_80px_rgba(126,211,255,0.15),0_0_30px_rgba(155,89,240,0.4)] animate-[modalEnter_0.4s_cubic-bezier(0.16,1,0.3,1)]"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -207,9 +250,9 @@ function GalleryCard({
         alt={scientist.name}
         width={500}
         height={500}
-        className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
+        className="relative z-0 h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
       />
-      <div className="absolute inset-x-0 bottom-0 border-t border-cosmic/30 bg-[rgba(6,9,20,0.88)] px-3 py-3 transition-transform duration-300 md:translate-y-full md:group-hover:translate-y-0">
+      <div className="absolute inset-x-0 bottom-0 z-20 border-t border-cosmic/30 bg-[rgba(6,9,20,0.88)] px-3 py-3 transition-transform duration-300 md:translate-y-full md:group-hover:translate-y-0">
         <p className="font-display text-sm uppercase tracking-wider text-[#f3edff]">
           {scientist.name}
         </p>
@@ -217,7 +260,7 @@ function GalleryCard({
           {scientist.tagline}
         </p>
       </div>
-      <span className="absolute left-3 top-3 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/75">
+      <span className="absolute left-3 top-3 z-20 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/75">
         1/1
       </span>
     </button>
@@ -239,6 +282,12 @@ export default function CosmicPage() {
 
   return (
     <main className="min-h-screen overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
+      <style>{`
+        @keyframes modalEnter {
+          from { opacity: 0; transform: translateY(30px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+      `}</style>
       <NavBar theme="cosmic" />
 
       <section className="relative mx-auto max-w-[1440px] border-x border-cosmic/25">
@@ -303,8 +352,9 @@ export default function CosmicPage() {
                   <div className="mt-4 flex flex-wrap gap-3">
                     <Button
                       href="#collection"
+                      variant="cosmic-primary"
                       size="lg"
-                      className="border border-cosmic bg-[rgba(155,89,240,0.2)] text-[#f1e9ff] hover:bg-[rgba(155,89,240,0.32)]"
+                      theme="cosmic"
                     >
                       Inspect Collection
                     </Button>
@@ -312,7 +362,7 @@ export default function CosmicPage() {
                       href="#auction"
                       variant="ghost"
                       size="lg"
-                      className="border border-[#7ed3ff]/50 bg-[rgba(8,18,37,0.65)] text-[#7ed3ff] hover:text-white"
+                      theme="cosmic"
                     >
                       Auction Mechanics
                     </Button>
@@ -428,29 +478,78 @@ export default function CosmicPage() {
               <h3 className="font-display text-xl uppercase tracking-wide text-[#f1eaff] md:text-2xl">
                 <ClearFive className="text-[#f1eaff]" /> Parallel Auctions
               </h3>
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                {scientists.map((scientist) => (
-                  <div
-                    key={scientist.id}
-                    className="overflow-hidden border border-cosmic/30 bg-[#0a0d20]"
-                  >
-                    <Image
-                      src={scientist.src}
-                      alt={scientist.name}
-                      width={300}
-                      height={300}
-                      className="h-auto w-full"
-                    />
-                    <div className="space-y-1 border-t border-cosmic/20 p-3">
-                      <p className="font-display text-xs uppercase tracking-wide text-[#f0e9ff] md:text-sm">
-                        {scientist.name}
-                      </p>
-                      <p className="font-mono text-[11px] text-[#7ed3ff]">
-                        Auction opens soon
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              <p className="mt-2 font-mono text-xs text-[#a8a3bd] md:text-sm">
+                Live lane view: each 1/1 runs on its own timer and bid stack.
+              </p>
+              <div className="mt-4 space-y-3">
+                {parallelAuctionStatus.map((auction) => {
+                  const scientist = scientists.find((item) => item.id === auction.id);
+                  if (!scientist) return null;
+
+                  return (
+                    <article
+                      key={auction.id}
+                      className="relative overflow-hidden border border-cosmic/30 bg-[linear-gradient(135deg,rgba(10,12,30,0.95),rgba(7,9,24,0.95))]"
+                    >
+                      <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-[linear-gradient(180deg,#7ed3ff,#9b59f0,#ff73c7)]" />
+                      <div className="grid items-center gap-4 p-3 sm:grid-cols-[72px_minmax(0,1fr)] md:grid-cols-[72px_minmax(0,1fr)_220px] md:p-4">
+                        <div className="relative h-[72px] w-[72px] overflow-hidden border border-cosmic/35">
+                          <Image
+                            src={scientist.src}
+                            alt={scientist.name}
+                            width={200}
+                            height={200}
+                            className="h-full w-full object-cover"
+                          />
+                          <span className="absolute left-1 top-1 border border-cosmic/45 bg-[#070819]/80 px-1.5 py-0.5 font-display text-[9px] uppercase tracking-[0.18em] text-cosmic/80">
+                            1/1
+                          </span>
+                        </div>
+
+                        <div>
+                          <p className="flex items-center gap-2 font-display text-[10px] uppercase tracking-[0.22em] text-[#7ed3ff]">
+                            <span className="relative flex h-2 w-2">
+                              <span className="absolute inline-flex h-full w-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] bg-[#7ed3ff] opacity-75"></span>
+                              <span className="relative inline-flex h-2 w-2 bg-[#7ed3ff]"></span>
+                            </span>
+                            {auction.lane}
+                          </p>
+                          <h4 className="mt-1 font-display text-sm uppercase tracking-[0.08em] text-[#f2ebff] md:text-base">
+                            {scientist.name}
+                          </h4>
+                          <p className="mt-1 font-mono text-[11px] text-[#b0aac2] md:text-xs">
+                            {auction.phase}
+                          </p>
+                          <div className="mt-2 h-1.5 w-full overflow-hidden bg-[#131931]">
+                            <div
+                              className="h-full bg-[linear-gradient(90deg,#7ed3ff,#9b59f0)]"
+                              style={{ width: `${auction.activity}%` }}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3 border-t border-cosmic/20 pt-3 text-left sm:col-span-2 md:col-span-1 md:border-t-0 md:pt-0 md:text-right">
+                          <div className="md:text-left">
+                            <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
+                              Leading Bid
+                            </p>
+                            <p className="mt-1 font-display text-xs uppercase tracking-[0.08em] text-[#f0eaff] md:text-sm">
+                              {auction.leadingBid}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
+                              Countdown
+                            </p>
+                            <p className="mt-1 font-mono text-[11px] text-[#7ed3ff] md:text-xs">
+                              {auction.opensIn}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
             </div>
 
@@ -467,8 +566,10 @@ export default function CosmicPage() {
                 </p>
                 <Button
                   href="#"
+                  variant="cosmic-primary"
                   size="lg"
-                  className="w-full border border-cosmic bg-[rgba(155,89,240,0.16)] text-[#f1e9ff] hover:bg-[rgba(155,89,240,0.26)] md:w-fit"
+                  theme="cosmic"
+                  className="w-full md:w-fit"
                 >
                   Enter The Auction
                 </Button>
