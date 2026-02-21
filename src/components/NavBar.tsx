@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,6 +34,26 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
   const highlightClass = isCosmic ? "text-[#f3ecff] font-bold" : "text-green font-bold";
   const mobileBurger = isCosmic ? "bg-[#9fe5ff]" : "bg-green";
   const mobileMenuBg = isCosmic ? "bg-[#060a16]" : "bg-bg";
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = mobileOpen ? "hidden" : previousOverflow;
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <nav className={`sticky top-0 z-50 ${navBg}`}>

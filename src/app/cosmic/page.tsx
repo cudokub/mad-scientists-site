@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Silkscreen } from "next/font/google";
 import NavBar from "@/components/NavBar";
@@ -119,12 +119,14 @@ const parallelAuctionStatus = [
   },
 ];
 
+const mobileCarouselScientists = [...scientists, ...scientists, ...scientists];
+
 const silkscreen = Silkscreen({
   subsets: ["latin"],
   weight: ["400"],
 });
 
-const HERO_IMAGE_SRC = "/images/cosmic-hero-lineup.png";
+const HERO_IMAGE_SRC = "/images/cosmic-hero-2026.png";
 const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
 
 function ScientistModal({
@@ -151,13 +153,13 @@ function ScientistModal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto p-2 md:items-center md:p-8"
       onClick={onClose}
       role="presentation"
     >
       <div className="absolute inset-0 bg-[#02040b]/90 backdrop-blur-sm" />
       <div
-        className="relative w-full max-w-5xl overflow-hidden border border-cosmic/40 bg-[#080612]/95 shadow-[0_0_80px_rgba(126,211,255,0.15),0_0_30px_rgba(155,89,240,0.4)] animate-[modalEnter_0.4s_cubic-bezier(0.16,1,0.3,1)]"
+        className="relative my-3 w-full max-w-5xl overflow-y-auto border border-cosmic/40 bg-[#080612]/95 shadow-[0_0_80px_rgba(126,211,255,0.15),0_0_30px_rgba(155,89,240,0.4)] animate-[modalEnter_0.4s_cubic-bezier(0.16,1,0.3,1)] md:my-0 md:max-h-[90vh] md:overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -165,13 +167,13 @@ function ScientistModal({
       >
         <button
           onClick={onClose}
-          className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center border border-cosmic/40 bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+          className="absolute right-3 top-3 z-20 flex h-11 w-11 items-center justify-center border border-cosmic/40 bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic md:h-8 md:w-8"
           aria-label="Close"
         >
           ✕
         </button>
 
-        <div className="grid max-h-[90vh] md:grid-cols-[minmax(0,1fr)_360px]">
+        <div className="grid md:grid-cols-[minmax(0,1fr)_360px]">
           <div className="relative border-b border-cosmic/30 md:border-b-0 md:border-r">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(126,211,255,0.2),transparent_45%),radial-gradient(circle_at_80%_75%,rgba(255,122,217,0.18),transparent_45%)]" />
             <Image
@@ -179,18 +181,19 @@ function ScientistModal({
               alt={scientist.name}
               width={900}
               height={900}
+              sizes="(max-width: 767px) 100vw, 60vw"
               className="h-full w-full object-cover"
             />
             <div className="absolute bottom-4 left-4 border border-cosmic/40 bg-[#08051a]/80 px-3 py-2">
-              <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/70">
+              <p className="font-display text-xs uppercase tracking-[0.14em] text-cosmic/70 md:text-[10px] md:tracking-[0.2em]">
                 Cosmic 1/1 Artifact
               </p>
             </div>
           </div>
 
-          <div className="flex max-h-[90vh] flex-col gap-6 overflow-y-auto p-6 md:p-8">
+          <div className="flex flex-col gap-6 p-6 md:max-h-[90vh] md:overflow-y-auto md:p-8">
             <div>
-              <p className="mb-2 font-display text-[10px] uppercase tracking-[0.2em] text-[#7ed3ff]">
+              <p className="mb-2 font-display text-xs uppercase tracking-[0.14em] text-[#7ed3ff] md:text-[10px] md:tracking-[0.2em]">
                 Edition 1 of 1
               </p>
               <h3 className="font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
@@ -210,7 +213,7 @@ function ScientistModal({
 
             <div className="mt-auto grid grid-cols-2 gap-3 border-t border-cosmic/25 pt-4">
               <div className="border border-cosmic/25 bg-[#0b0a1f] p-3">
-                <p className="font-display text-[10px] uppercase tracking-[0.15em] text-cosmic/60">
+                <p className="font-display text-xs uppercase tracking-[0.12em] text-cosmic/60 md:text-[10px] md:tracking-[0.15em]">
                   Collection
                 </p>
                 <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#f4ecff]">
@@ -218,7 +221,7 @@ function ScientistModal({
                 </p>
               </div>
               <div className="border border-cosmic/25 bg-[#0b0a1f] p-3">
-                <p className="font-display text-[10px] uppercase tracking-[0.15em] text-cosmic/60">
+                <p className="font-display text-xs uppercase tracking-[0.12em] text-cosmic/60 md:text-[10px] md:tracking-[0.15em]">
                   Access
                 </p>
                 <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#7ed3ff]">
@@ -250,9 +253,10 @@ function GalleryCard({
         alt={scientist.name}
         width={500}
         height={500}
+        sizes="(max-width: 639px) 84vw, (max-width: 767px) 62vw, (max-width: 1023px) 46vw, (max-width: 1279px) 36vw, 20vw"
         className="relative z-0 h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
       />
-      <div className="absolute inset-x-0 bottom-0 z-20 border-t border-cosmic/30 bg-[rgba(6,9,20,0.88)] px-3 py-3 transition-transform duration-300 md:translate-y-full md:group-hover:translate-y-0">
+      <div className="absolute inset-x-0 bottom-0 z-20 hidden border-t border-cosmic/30 bg-[rgba(6,9,20,0.88)] px-3 py-3 transition-transform duration-300 xl:block xl:translate-y-full xl:group-hover:translate-y-0">
         <p className="font-display text-sm uppercase tracking-wider text-[#f3edff]">
           {scientist.name}
         </p>
@@ -260,7 +264,7 @@ function GalleryCard({
           {scientist.tagline}
         </p>
       </div>
-      <span className="absolute left-3 top-3 z-20 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/75">
+      <span className="absolute left-3 top-3 z-20 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
         1/1
       </span>
     </button>
@@ -279,6 +283,59 @@ function ClearFive({ className = "" }: { className?: string }) {
 
 export default function CosmicPage() {
   const [selected, setSelected] = useState<Scientist | null>(null);
+  const collectionCarouselRef = useRef<HTMLDivElement | null>(null);
+  const collectionIndexRef = useRef<number>(scientists.length);
+
+  const getCollectionCarouselMetrics = useCallback(() => {
+    const container = collectionCarouselRef.current;
+    if (!container || container.clientWidth === 0) return null;
+
+    const card = container.querySelector<HTMLElement>("[data-carousel-card]");
+    if (!card) return null;
+
+    const styles = window.getComputedStyle(container);
+    const gap = parseFloat(styles.columnGap || styles.gap || "0");
+    const step = card.getBoundingClientRect().width + gap;
+
+    return { container, step };
+  }, []);
+
+  const scrollToCollectionIndex = useCallback((
+    index: number,
+    behavior: ScrollBehavior = "auto",
+  ) => {
+    const metrics = getCollectionCarouselMetrics();
+    if (!metrics) return;
+
+    metrics.container.scrollTo({
+      left: metrics.step * index,
+      behavior,
+    });
+  }, [getCollectionCarouselMetrics]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      scrollToCollectionIndex(collectionIndexRef.current, "auto");
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [scrollToCollectionIndex]);
+
+  const scrollCollectionCarousel = (direction: 1 | -1) => {
+    const normalizedIndex =
+      (((collectionIndexRef.current - scientists.length + direction) %
+        scientists.length) +
+        scientists.length) %
+      scientists.length;
+
+    collectionIndexRef.current = normalizedIndex + scientists.length;
+    scrollToCollectionIndex(collectionIndexRef.current, "smooth");
+  };
 
   return (
     <main className="min-h-screen overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
@@ -286,6 +343,10 @@ export default function CosmicPage() {
         @keyframes modalEnter {
           from { opacity: 0; transform: translateY(30px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes scrollPulse {
+          0%, 100% { transform: translateY(0); opacity: 0.7; }
+          50% { transform: translateY(4px); opacity: 1; }
         }
       `}</style>
       <NavBar theme="cosmic" />
@@ -305,6 +366,18 @@ export default function CosmicPage() {
         </div>
 
         <section className="relative border-b border-cosmic/25 px-4 py-8 md:px-12 md:py-12">
+          <div className="mb-3 flex justify-center md:hidden">
+            <div className="inline-flex border border-cosmic/35 bg-[#0a1021]/80 px-3 py-2">
+              <Image
+                src="/images/cosmic-logo.png"
+                alt="COSMIC logo"
+                width={260}
+                height={86}
+                className="h-auto w-[122px]"
+              />
+            </div>
+          </div>
+
           <div className="overflow-hidden border border-cosmic/40 bg-[#050a16] shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
             <div className="relative aspect-[16/9]">
               <Image
@@ -313,66 +386,130 @@ export default function CosmicPage() {
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 1400px"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,8,24,0.12)_10%,rgba(4,8,24,0.45)_45%,rgba(4,8,24,0.95)_100%)]" />
-
-              <div className="absolute left-3 top-3 border border-[#7ed3ff]/50 bg-[rgba(3,8,20,0.8)] px-3 py-2 md:left-5 md:top-5">
-                <p className="font-display text-[10px] uppercase tracking-[0.2em] text-[#7ed3ff]">
-                  COSMIC Hero
-                </p>
-              </div>
-
-              <div className="absolute right-3 top-3 hidden w-[130px] border border-cosmic/40 bg-[rgba(8,8,28,0.65)] p-2 md:right-5 md:top-5 md:block md:w-[170px]">
+              <div className="absolute left-4 top-4 hidden border border-cosmic/40 bg-[rgba(8,8,28,0.72)] p-2.5 md:block lg:left-6 lg:top-6">
                 <Image
                   src="/images/cosmic-logo.png"
                   alt="COSMIC logo"
                   width={360}
                   height={120}
-                  className="h-auto w-full"
+                  className="h-auto w-[160px] lg:w-[190px]"
                 />
               </div>
 
-              <div className="absolute inset-x-0 bottom-0 p-4 md:p-8 lg:p-10">
-                <div className="max-w-3xl">
-                  <p className="font-display text-[11px] uppercase tracking-[0.22em] text-[#7ed3ff] md:text-xs">
-                    Mad Scientists Signal // COSMIC Division
-                  </p>
-                  <h1 className="mt-2 font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] md:text-5xl lg:text-6xl">
-                    <ClearFive className="text-[#7ed3ff]" /> Scientists.
-                    <br />
-                    Infinite Universe.
-                  </h1>
-                  <p className="mt-3 max-w-2xl font-mono text-xs leading-relaxed text-[#c9c5d8] md:text-sm lg:text-base">
-                    COSMIC is a five-piece 1/1 set that pushes Mad Scientists
-                    beyond standard profile-picture drops. Each artifact is
-                    hand built and auctioned separately using your Mad
-                    Scientists 10k NFTs as bids.
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    <Button
-                      href="#collection"
-                      variant="cosmic-primary"
-                      size="lg"
-                      theme="cosmic"
-                    >
-                      Inspect Collection
-                    </Button>
-                    <Button
-                      href="#auction"
-                      variant="ghost"
-                      size="lg"
-                      theme="cosmic"
-                    >
-                      Auction Mechanics
-                    </Button>
-                  </div>
+              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 border border-cosmic/40 bg-[rgba(6,10,26,0.78)] px-3 py-1.5 md:bottom-4">
+                <p className="font-display text-[10px] uppercase tracking-[0.18em] text-[#9fe5ff]">
+                  Scroll Down
+                </p>
+                <p className="text-center font-display text-xs text-[#f3ecff] animate-[scrollPulse_1.2s_ease-in-out_infinite]">
+                  v
+                </p>
+              </div>
+            </div>
+
+            <div className="border-t border-cosmic/25 p-4 md:hidden">
+              <p className="font-display text-xs uppercase tracking-[0.14em] text-[#7ed3ff]">
+                Mad Scientists Signal // COSMIC Division
+              </p>
+              <h1 className="mt-2 font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff]">
+                <ClearFive className="text-[#7ed3ff]" /> Scientists.
+                <br />
+                Infinite Universe.
+              </h1>
+              <p className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
+                COSMIC is a five-piece 1/1 set that pushes Mad Scientists beyond
+                standard profile-picture drops. Each artifact is hand built and
+                auctioned separately using your Mad Scientists 10k NFTs as bids.
+              </p>
+              <div className="mt-4 flex flex-col gap-3">
+                <Button
+                  href="#collection"
+                  variant="cosmic-primary"
+                  size="lg"
+                  theme="cosmic"
+                  className="w-full"
+                >
+                  Inspect Collection
+                </Button>
+                <Button
+                  href="#auction"
+                  variant="ghost"
+                  size="lg"
+                  theme="cosmic"
+                  className="w-full"
+                >
+                  Auction Mechanics
+                </Button>
+              </div>
+            </div>
+
+            <div className="hidden border-t border-cosmic/25 p-6 md:grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-6 lg:p-8">
+              <div>
+                <p className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
+                  Mad Scientists Signal // COSMIC Division
+                </p>
+                <h1 className="mt-2 font-display text-5xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] lg:text-6xl">
+                  <ClearFive className="text-[#7ed3ff]" /> Scientists.
+                  <br />
+                  Infinite Universe.
+                </h1>
+                <p className="mt-4 max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
+                  COSMIC is a five-piece 1/1 set that pushes Mad Scientists
+                  beyond standard profile-picture drops. Each artifact is hand
+                  built and auctioned separately using your Mad Scientists 10k
+                  NFTs as bids.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Button
+                    href="#collection"
+                    variant="cosmic-primary"
+                    size="lg"
+                    theme="cosmic"
+                  >
+                    Inspect Collection
+                  </Button>
+                  <Button
+                    href="#auction"
+                    variant="ghost"
+                    size="lg"
+                    theme="cosmic"
+                  >
+                    Auction Mechanics
+                  </Button>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 self-start">
+                {[
+                  { label: "Artifacts", value: "5 x 1/1" },
+                  { label: "Mint Type", value: "Hand-Crafted" },
+                  { label: "Acquisition", value: "Auction" },
+                  { label: "Bid Asset", value: "Mad 10k NFTs" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="border border-cosmic/25 bg-[#0a0c1d] p-4"
+                  >
+                    <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
+                      {item.label}
+                    </p>
+                    <p className="mt-1 font-display text-base uppercase tracking-wide text-[#f6f1ff]">
+                      {item.label === "Artifacts" ? (
+                        <>
+                          <ClearFive className="text-[#f6f1ff]" /> x 1/1
+                        </>
+                      ) : (
+                        item.value
+                      )}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-3 md:mt-5 md:grid-cols-4">
+          <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
             {[
               { label: "Artifacts", value: "5 x 1/1" },
               { label: "Mint Type", value: "Hand-Crafted" },
@@ -383,7 +520,7 @@ export default function CosmicPage() {
                 key={item.label}
                 className="border border-cosmic/25 bg-[#0a0c1d] p-3 md:p-4"
               >
-                <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
+                <p className="font-display text-xs uppercase tracking-[0.14em] text-cosmic/65 md:text-[10px] md:tracking-[0.2em]">
                   {item.label}
                 </p>
                 <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#f6f1ff] md:text-base">
@@ -400,8 +537,8 @@ export default function CosmicPage() {
           </div>
         </section>
 
-        <section className="relative border-b border-cosmic/25 bg-[linear-gradient(90deg,rgba(126,211,255,0.08),rgba(155,89,240,0.07),rgba(255,115,199,0.08))] px-6 py-4 md:px-12">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-display text-[11px] uppercase tracking-[0.18em] text-[#d8d2ec] md:text-xs">
+        <section className="relative border-b border-cosmic/25 bg-[linear-gradient(90deg,rgba(126,211,255,0.08),rgba(155,89,240,0.07),rgba(255,115,199,0.08))] px-4 py-4 md:px-12">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-display text-xs uppercase tracking-[0.12em] text-[#d8d2ec] md:gap-x-6 md:text-xs md:tracking-[0.18em]">
             <span>
               <ClearFive className="text-[#d8d2ec]" /> one-of-one artifacts
             </span>
@@ -429,7 +566,51 @@ export default function CosmicPage() {
               the known universe.
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-5">
+            <div className="relative mt-8 xl:hidden">
+              <div
+                ref={collectionCarouselRef}
+                className="flex snap-x snap-mandatory gap-3 overflow-hidden touch-pan-y px-4 pb-2 select-none sm:px-10 md:px-14 lg:px-16 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {mobileCarouselScientists.map((scientist, index) => (
+                  <div
+                    key={`${scientist.id}-${index}`}
+                    data-carousel-card
+                    className="shrink-0 basis-[84%] snap-center sm:basis-[62%] md:basis-[46%] lg:basis-[36%]"
+                  >
+                    <GalleryCard
+                      scientist={scientist}
+                      onClick={() => setSelected(scientist)}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#04070f] to-transparent sm:w-12 md:w-14" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#04070f] to-transparent sm:w-12 md:w-14" />
+
+              <button
+                type="button"
+                onClick={() => scrollCollectionCarousel(-1)}
+                className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#0a1228]/85 font-display text-xl text-[#d9cfff] transition-colors hover:text-[#9fe5ff]"
+                aria-label="Previous scientist"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollCollectionCarousel(1)}
+                className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#0a1228]/85 font-display text-xl text-[#d9cfff] transition-colors hover:text-[#9fe5ff]"
+                aria-label="Next scientist"
+              >
+                ›
+              </button>
+
+              <p className="mt-2 text-center font-mono text-[11px] text-[#8f89a8]">
+                Use arrows to browse
+              </p>
+            </div>
+
+            <div className="mt-8 hidden xl:grid xl:grid-cols-5 xl:gap-5">
               {scientists.map((scientist) => (
                 <GalleryCard
                   key={scientist.id}
@@ -455,13 +636,13 @@ export default function CosmicPage() {
               leaderboard and a separate winner.
             </p>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
               {auctionSteps.map((item) => (
                 <article
                   key={item.step}
-                  className="border border-cosmic/30 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-5"
+                  className="border border-cosmic/30 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-4 md:p-5"
                 >
-                  <p className="font-display text-4xl leading-none text-cosmic/25">
+                  <p className="font-display text-3xl leading-none text-cosmic/25 md:text-4xl">
                     {item.step}
                   </p>
                   <h3 className="mt-3 font-display text-sm uppercase tracking-[0.08em] text-[#f0e8ff] md:text-base">
@@ -481,7 +662,7 @@ export default function CosmicPage() {
               <p className="mt-2 font-mono text-xs text-[#a8a3bd] md:text-sm">
                 Live lane view: each 1/1 runs on its own timer and bid stack.
               </p>
-              <div className="mt-4 space-y-3">
+              <div className="mt-4 grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-1">
                 {parallelAuctionStatus.map((auction) => {
                   const scientist = scientists.find((item) => item.id === auction.id);
                   if (!scientist) return null;
@@ -492,13 +673,44 @@ export default function CosmicPage() {
                       className="relative overflow-hidden border border-cosmic/30 bg-[linear-gradient(135deg,rgba(10,12,30,0.95),rgba(7,9,24,0.95))]"
                     >
                       <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-[linear-gradient(180deg,#7ed3ff,#9b59f0,#ff73c7)]" />
-                      <div className="grid items-center gap-4 p-3 sm:grid-cols-[72px_minmax(0,1fr)] md:grid-cols-[72px_minmax(0,1fr)_220px] md:p-4">
+                      <div className="p-2.5 md:hidden">
+                        <div className="relative aspect-square overflow-hidden border border-cosmic/35">
+                          <Image
+                            src={scientist.src}
+                            alt={scientist.name}
+                            width={240}
+                            height={240}
+                            sizes="(max-width: 767px) 42vw, 72px"
+                            className="h-full w-full object-cover"
+                          />
+                          <span className="absolute left-1 top-1 border border-cosmic/45 bg-[#070819]/80 px-1.5 py-0.5 font-display text-[10px] uppercase tracking-[0.1em] text-cosmic/80">
+                            1/1
+                          </span>
+                        </div>
+                        <p className="mt-2 font-display text-[10px] uppercase tracking-[0.14em] text-[#7ed3ff]">
+                          {auction.lane}
+                        </p>
+                        <h4 className="mt-1 font-display text-xs uppercase tracking-[0.08em] text-[#f2ebff]">
+                          {scientist.name}
+                        </h4>
+                        <div className="mt-2 grid gap-1">
+                          <span className="border border-cosmic/30 bg-[#121733] px-2 py-1 font-display text-[10px] uppercase tracking-[0.1em] text-[#f0eaff]">
+                            {auction.leadingBid}
+                          </span>
+                          <span className="border border-[#7ed3ff]/40 bg-[#0a1630] px-2 py-1 font-mono text-[10px] text-[#7ed3ff]">
+                            {auction.opensIn}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="hidden grid-cols-[72px_minmax(0,1fr)_220px] items-center gap-4 p-4 md:grid">
                         <div className="relative h-[72px] w-[72px] overflow-hidden border border-cosmic/35">
                           <Image
                             src={scientist.src}
                             alt={scientist.name}
                             width={200}
                             height={200}
+                            sizes="72px"
                             className="h-full w-full object-cover"
                           />
                           <span className="absolute left-1 top-1 border border-cosmic/45 bg-[#070819]/80 px-1.5 py-0.5 font-display text-[9px] uppercase tracking-[0.18em] text-cosmic/80">
@@ -517,7 +729,7 @@ export default function CosmicPage() {
                           <h4 className="mt-1 font-display text-sm uppercase tracking-[0.08em] text-[#f2ebff] md:text-base">
                             {scientist.name}
                           </h4>
-                          <p className="mt-1 font-mono text-[11px] text-[#b0aac2] md:text-xs">
+                          <p className="mt-1 font-mono text-xs text-[#b0aac2]">
                             {auction.phase}
                           </p>
                           <div className="mt-2 h-1.5 w-full overflow-hidden bg-[#131931]">
@@ -528,7 +740,7 @@ export default function CosmicPage() {
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3 border-t border-cosmic/20 pt-3 text-left sm:col-span-2 md:col-span-1 md:border-t-0 md:pt-0 md:text-right">
+                        <div className="grid grid-cols-2 gap-3 text-left md:text-right">
                           <div className="md:text-left">
                             <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
                               Leading Bid
