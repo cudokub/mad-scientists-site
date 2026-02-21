@@ -56,23 +56,23 @@ const scientists: Scientist[] = [
 const auctionSteps = [
   {
     step: "01",
-    title: "Choose Your Scientist",
-    desc: "Pick the COSMIC 1/1 you want to claim before the bidding window closes.",
+    title: "Pick Your Target",
+    desc: "Choose which COSMIC 1/1 you want. Each one has its own auction.",
   },
   {
     step: "02",
-    title: "Bid With 10k NFTs",
-    desc: "Submit Mad Scientists from the 10k set as your bid amount. No minimum bid size.",
+    title: "Stack Your Bid",
+    desc: "Throw in Mad Scientists from the 10k collection. No minimum. Go big or go home.",
   },
   {
     step: "03",
-    title: "Highest Bid Takes It",
-    desc: "Each scientist has an isolated auction. The top bid wins that exact 1/1 piece.",
+    title: "Top Bid Wins",
+    desc: "Highest stack claims the 1/1. One winner per scientist. No ties.",
   },
   {
     step: "04",
-    title: "Non-Winners Refunded",
-    desc: "If you do not win, your submitted Mad Scientists are returned automatically.",
+    title: "Losers Get Refunded",
+    desc: "Didn\u2019t win? Your Mad Scientists come back. No harm done. Try again.",
   },
 ];
 
@@ -356,17 +356,17 @@ export default function CosmicPage() {
 
             <div className="border-t border-cosmic/25 p-4 md:hidden">
               <p className="font-display text-xs uppercase tracking-[0.14em] text-[#7ed3ff]">
-                Mad Scientists Signal // COSMIC Division
+                Transmission Incoming // COSMIC Division
               </p>
               <h1 className="mt-2 font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff]">
-                <ClearFive className="text-[#7ed3ff]" /> Scientists.
+                <ClearFive className="text-[#7ed3ff]" /> Freaks.
                 <br />
-                Infinite Universe.
+                One Universe.
               </h1>
               <p className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
-                COSMIC is a five-piece 1/1 set that pushes Mad Scientists beyond
-                standard profile-picture drops. Each artifact is hand built and
-                auctioned separately using your Mad Scientists 10k NFTs as bids.
+                5 hand-built 1/1 pieces. Not generated. Not randomized.
+                Each one auctioned separately — you bid with your Mad Scientists
+                10k NFTs. That&apos;s it. No cash. Just conviction.
               </p>
               <div className="mt-4 flex flex-col gap-3">
                 <Button
@@ -376,7 +376,7 @@ export default function CosmicPage() {
                   theme="cosmic"
                   className="w-full"
                 >
-                  Inspect Collection
+                  See the Five
                 </Button>
                 <Button
                   href="#auction"
@@ -385,7 +385,7 @@ export default function CosmicPage() {
                   theme="cosmic"
                   className="w-full"
                 >
-                  Auction Mechanics
+                  How Bidding Works
                 </Button>
               </div>
             </div>
@@ -393,18 +393,18 @@ export default function CosmicPage() {
             <div className="hidden border-t border-cosmic/25 p-6 md:grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-6 lg:p-8">
               <div>
                 <p className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
-                  Mad Scientists Signal // COSMIC Division
+                  Transmission Incoming // COSMIC Division
                 </p>
                 <h1 className="mt-2 font-display text-5xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] lg:text-6xl">
-                  <ClearFive className="text-[#7ed3ff]" /> Scientists.
+                  <ClearFive className="text-[#7ed3ff]" /> Freaks.
                   <br />
-                  Infinite Universe.
+                  One Universe.
                 </h1>
                 <p className="mt-4 max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
-                  COSMIC is a five-piece 1/1 set that pushes Mad Scientists
-                  beyond standard profile-picture drops. Each artifact is hand
-                  built and auctioned separately using your Mad Scientists 10k
-                  NFTs as bids.
+                  5 hand-built 1/1 pieces. Not generated. Not randomized.
+                  Each one auctioned separately — you bid with your Mad
+                  Scientists 10k NFTs. That&apos;s it. No cash. Just
+                  conviction.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <Button
@@ -413,7 +413,7 @@ export default function CosmicPage() {
                     size="lg"
                     theme="cosmic"
                   >
-                    Inspect Collection
+                    See the Five
                   </Button>
                   <Button
                     href="#auction"
@@ -421,7 +421,7 @@ export default function CosmicPage() {
                     size="lg"
                     theme="cosmic"
                   >
-                    Auction Mechanics
+                    How Bidding Works
                   </Button>
                 </div>
               </div>
@@ -486,12 +486,13 @@ export default function CosmicPage() {
         <section className="relative border-b border-cosmic/25 bg-[linear-gradient(90deg,rgba(126,211,255,0.08),rgba(155,89,240,0.07),rgba(255,115,199,0.08))] px-4 py-4 md:px-12">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-display text-xs uppercase tracking-[0.12em] text-[#d8d2ec] md:gap-x-6 md:text-xs md:tracking-[0.18em]">
             <span>
-              <ClearFive className="text-[#d8d2ec]" /> one-of-one artifacts
+              <ClearFive className="text-[#d8d2ec]" /> subjects escaped the
+              lab
             </span>
-            <span>pixel-crafted by hand</span>
-            <span>auctioned with Mad Scientists 10k</span>
-            <span>no random minting</span>
-            <span>no duplicate editions</span>
+            <span>each one is irreplaceable</span>
+            <span>bid your 10k to claim them</span>
+            <span>no duplicates exist</span>
+            <span>retrieval is not optional</span>
           </div>
         </section>
 
@@ -501,15 +502,15 @@ export default function CosmicPage() {
         >
           <div className="mx-auto max-w-6xl">
             <p className="font-display text-xs uppercase tracking-[0.22em] text-cosmic/70">
-              Collection Grid
+              The Subjects
             </p>
             <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
-              The Cosmic Five
+              Meet the Cosmic Five
             </h2>
             <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
-              Click any scientist to open their identity panel. Every artwork
-              is a standalone 1/1 with its own lore, tone, and threat level to
-              the known universe.
+              Tap any of them. Read their story. Each one is a standalone 1/1
+              with its own personality, lore, and level of threat to the known
+              universe.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
@@ -535,15 +536,15 @@ export default function CosmicPage() {
         <section id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-6xl">
             <p className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
-              Auction System
+              The Experiment
             </p>
             <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
-              Bid Scientists to Win Scientists
+              Sacrifice Scientists to Win Scientists
             </h2>
             <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
-              COSMIC is not sold with cash. You compete by bidding Mad
-              Scientists from the 10k collection. Each 1/1 has a separate
-              leaderboard and a separate winner.
+              No cash. No whitelist. You bid Mad Scientists from the 10k
+              collection. Highest stack wins. Losers get their NFTs back.
+              Simple as that.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
@@ -570,105 +571,67 @@ export default function CosmicPage() {
                 <ClearFive className="text-[#f1eaff]" /> Parallel Auctions
               </h3>
               <p className="mt-2 font-mono text-xs text-[#a8a3bd] md:text-sm">
-                Live lane view: each 1/1 runs on its own timer and bid stack.
+                All 5 run at once. Pick your lane. Watch the bids stack up.
               </p>
-              <div className="mt-4 grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-1">
-                {parallelAuctionStatus.map((auction) => {
-                  const scientist = scientists.find((item) => item.id === auction.id);
+              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
+                {parallelAuctionStatus.map((auction, i) => {
+                  const scientist = scientists.find(
+                    (item) => item.id === auction.id,
+                  );
                   if (!scientist) return null;
 
                   return (
                     <article
                       key={auction.id}
-                      className="relative overflow-hidden border border-cosmic/30 bg-[linear-gradient(135deg,rgba(10,12,30,0.95),rgba(7,9,24,0.95))]"
+                      className={`relative overflow-hidden border border-cosmic/30 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-3 md:p-4${
+                        i === 4
+                          ? " col-span-2 mx-auto w-[calc(50%-6px)] md:col-span-1 md:w-full"
+                          : ""
+                      }`}
                     >
-                      <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-[linear-gradient(180deg,#7ed3ff,#9b59f0,#ff73c7)]" />
-                      <div className="p-2.5 md:hidden">
-                        <div className="relative aspect-square overflow-hidden border border-cosmic/35">
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-[linear-gradient(90deg,#7ed3ff,#9b59f0,#ff73c7)]" />
+
+                      <div className="flex items-center gap-2.5">
+                        <div className="relative h-9 w-9 shrink-0 overflow-hidden border border-cosmic/35">
                           <Image
                             src={scientist.src}
                             alt={scientist.name}
-                            width={240}
-                            height={240}
-                            sizes="(max-width: 767px) 42vw, 72px"
+                            width={72}
+                            height={72}
+                            sizes="36px"
                             className="h-full w-full object-cover"
                           />
-                          <span className="absolute left-1 top-1 border border-cosmic/45 bg-[#070819]/80 px-1.5 py-0.5 font-display text-[10px] uppercase tracking-[0.1em] text-cosmic/80">
-                            1/1
-                          </span>
                         </div>
-                        <p className="mt-2 font-display text-[10px] uppercase tracking-[0.14em] text-[#7ed3ff]">
-                          {auction.lane}
-                        </p>
-                        <h4 className="mt-1 font-display text-xs uppercase tracking-[0.08em] text-[#f2ebff]">
-                          {scientist.name}
-                        </h4>
-                        <div className="mt-2 grid gap-1">
-                          <span className="border border-cosmic/30 bg-[#121733] px-2 py-1 font-display text-[10px] uppercase tracking-[0.1em] text-[#f0eaff]">
-                            {auction.leadingBid}
-                          </span>
-                          <span className="border border-[#7ed3ff]/40 bg-[#0a1630] px-2 py-1 font-mono text-[10px] text-[#7ed3ff]">
-                            {auction.opensIn}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="hidden grid-cols-[72px_minmax(0,1fr)_220px] items-center gap-4 p-4 md:grid">
-                        <div className="relative h-[72px] w-[72px] overflow-hidden border border-cosmic/35">
-                          <Image
-                            src={scientist.src}
-                            alt={scientist.name}
-                            width={200}
-                            height={200}
-                            sizes="72px"
-                            className="h-full w-full object-cover"
-                          />
-                          <span className="absolute left-1 top-1 border border-cosmic/45 bg-[#070819]/80 px-1.5 py-0.5 font-display text-[9px] uppercase tracking-[0.18em] text-cosmic/80">
-                            1/1
-                          </span>
-                        </div>
-
-                        <div>
-                          <p className="flex items-center gap-2 font-display text-[10px] uppercase tracking-[0.22em] text-[#7ed3ff]">
-                            <span className="relative flex h-2 w-2">
-                              <span className="absolute inline-flex h-full w-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] bg-[#7ed3ff] opacity-75"></span>
-                              <span className="relative inline-flex h-2 w-2 bg-[#7ed3ff]"></span>
+                        <div className="min-w-0">
+                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-[#7ed3ff]">
+                            <span className="relative flex h-1.5 w-1.5 shrink-0">
+                              <span className="absolute inline-flex h-full w-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] bg-[#7ed3ff] opacity-75" />
+                              <span className="relative inline-flex h-1.5 w-1.5 bg-[#7ed3ff]" />
                             </span>
                             {auction.lane}
                           </p>
-                          <h4 className="mt-1 font-display text-sm uppercase tracking-[0.08em] text-[#f2ebff] md:text-base">
+                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-[#f2ebff] md:text-sm">
                             {scientist.name}
                           </h4>
-                          <p className="mt-1 font-mono text-xs text-[#b0aac2]">
-                            {auction.phase}
-                          </p>
-                          <div className="mt-2 h-1.5 w-full overflow-hidden bg-[#131931]">
-                            <div
-                              className="h-full bg-[linear-gradient(90deg,#7ed3ff,#9b59f0)]"
-                              style={{ width: `${auction.activity}%` }}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-3 text-left md:text-right">
-                          <div className="md:text-left">
-                            <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
-                              Leading Bid
-                            </p>
-                            <p className="mt-1 font-display text-xs uppercase tracking-[0.08em] text-[#f0eaff] md:text-sm">
-                              {auction.leadingBid}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
-                              Countdown
-                            </p>
-                            <p className="mt-1 font-mono text-[11px] text-[#7ed3ff] md:text-xs">
-                              {auction.opensIn}
-                            </p>
-                          </div>
                         </div>
                       </div>
+
+                      <div className="mt-3 h-1 w-full overflow-hidden bg-[#131931]">
+                        <div
+                          className="h-full bg-[linear-gradient(90deg,#7ed3ff,#9b59f0)]"
+                          style={{ width: `${auction.activity}%` }}
+                        />
+                      </div>
+
+                      <div className="mt-3 flex items-baseline justify-between gap-2">
+                        <span className="font-display text-[10px] uppercase tracking-[0.08em] text-[#f0eaff] md:text-xs">
+                          {auction.leadingBid}
+                        </span>
+                      </div>
+
+                      <p className="mt-1 font-mono text-[10px] text-[#7ed3ff] md:text-[11px]">
+                        {auction.opensIn}
+                      </p>
                     </article>
                   );
                 })}
@@ -683,8 +646,8 @@ export default function CosmicPage() {
               </div>
               <div className="flex flex-col justify-center gap-4 border border-cosmic/30 bg-[#090c1a] p-6 md:p-8">
                 <p className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
-                  Your current Mad Scientists become your leverage. The stronger
-                  your bid, the stronger your claim on the 1/1 you target.
+                  Your 10k Scientists are your ammo. Stack enough of them
+                  and a COSMIC 1/1 is yours. It&apos;s that simple.
                 </p>
                 <Button
                   href="#"
@@ -693,7 +656,7 @@ export default function CosmicPage() {
                   theme="cosmic"
                   className="w-full md:w-fit"
                 >
-                  Enter The Auction
+                  Place Your Bid
                 </Button>
               </div>
             </div>
