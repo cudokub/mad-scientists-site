@@ -109,7 +109,7 @@
 - **Page strategy:** `/cosmic` is currently unlisted. Goes live on Day 5 reveal.
 - **Silhouettes:** Only 3 of 5 scientists teased — avoids repetition.
 - **Auction visual:** Inline SVG infographic (`AuctionProcessSvg` component) replaced GIF placeholder. 4-panel layout with circular character PFPs (halfbody-v2 images via SVG `<image>` + `clipPath`). Oracle as the "selected" scientist across all panels. Source SVG at `public/images/cosmic-auction-process.svg`.
-- **Hero:** Portal lineup art (`cosmic-hero-2026.png`, 1376x768) with all 5 scientists. All stale hero alternates (`cosmic-hero-lineup.png`, `cosmic-hero-mobile-2026.png`, `cosmic-hero-placeholder.svg`) deleted.
+- **Hero:** Portal lineup art (`cosmic-hero-2026-v4.png`, 1376x768) with all 5 scientists. All stale hero alternates (`cosmic-hero-lineup.png`, `cosmic-hero-mobile-2026.png`, `cosmic-hero-placeholder.svg`) deleted.
 - **Collection section:** Moved "Beyond the Lab" text into collection section. Removed standalone about section.
 - **Gallery modal:** Responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next at bottom. Keyboard arrow keys supported. Uses `useMediaQuery` hook to switch.
 - **Gallery cards:** Name and tagline displayed permanently below the image. Hover effect is border glow + subtle image zoom only (no translate-y lift, no slide-up overlay).
@@ -121,7 +121,7 @@
 - **Modal extraction:** `ScientistModal` extracted to `src/components/cosmic/ScientistModal.tsx` and dynamically imported (`next/dynamic`, `ssr: false`) — not bundled on initial page load.
 - **Image optimization:** `cosmic-symbol.png` resized from 1524x1626 (2.4MB) to 200px (62KB). `cosmic-logo.png` resized from 2406x740 (1.5MB) to 480px (90KB). Total ~3.7MB saved from source images.
 - **Inline CSS removed:** Keyframe animations (`fadeIn`, `fadeOut`, `dialogIn`, `scrollPulse`) moved from inline `<style>` tag to `globals.css`.
-- **Page metadata:** Added `src/app/cosmic/layout.tsx` with title, description, OG image (`cosmic-hero-2026.png`), Twitter card.
+- **Page metadata:** Added `src/app/cosmic/layout.tsx` with title, description, OG image (`cosmic-hero-2026-v4.png`), Twitter card.
 - **Stargaze partner block:** Co-branded block in auction CTA panel — Stargaze logo (`stargaze-chain.svg`), "Official auction partner" label, links to stargaze.zone. Dashed cosmic border, hover state.
 
 ---
@@ -134,7 +134,7 @@
 - [x] Add clickable gallery cards with detail modal (side-by-side art + info)
 - [x] Add taglines and lore paragraphs for all 5 scientists
 - [x] Prep COSMIC link in NavBar + Footer (commented out, ready to uncomment)
-- [x] Swap hero with portal lineup art (`cosmic-hero-2026.png`, 1376x768)
+- [x] Swap hero with portal lineup art (`cosmic-hero-2026-v4.png`, 1376x768)
 - [x] Replace auction placeholder with `cosmic-auction-process.svg` inline component (`AuctionProcessSvg`)
 - [ ] Update auction button href + text when auction goes live
 - [ ] Update per-scientist auction status text (replace "Auction opens soon")

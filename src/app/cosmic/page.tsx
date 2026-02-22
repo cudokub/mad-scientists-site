@@ -19,8 +19,8 @@ const scientists: Scientist[] = [
   {
     id: 1,
     name: "The Architect",
-    src: "/images/cosmic-1-halfbody-v2.png",
-    fullSrc: "/images/cosmic-1-fullbody.png",
+    src: "/images/cosmic-1-halfbody-v3.png",
+    fullSrc: "/images/cosmic-1-fullbody-v2.png",
     tagline: "Built the machine. Became the machine.",
     lore: "The Architect doesn\u2019t explore the cosmos. He engineers it. Every wire, every circuit, every system traces back to his blueprint. While others look up at the stars, he\u2019s already building what comes next.",
   },
@@ -52,7 +52,7 @@ const scientists: Scientist[] = [
     id: 5,
     name: "The Dreamer",
     src: "/images/cosmic-5-halfbody-v2.png",
-    fullSrc: "/images/cosmic-5-fullbody.png",
+    fullSrc: "/images/cosmic-5-fullbody-v2.png",
     tagline: "Closed eyes. Open universe.",
     lore: "The Dreamer never built a ship or drew a weapon. She just closed her eyes and was already there. The rainbow trail isn\u2019t exhaust. It\u2019s the residue of imagination meeting reality. She\u2019s the only one who went willingly, and the only one who might not come back.",
   },
@@ -95,7 +95,7 @@ const silkscreen = Silkscreen({
   weight: ["400"],
 });
 
-const HERO_IMAGE_SRC = "/images/cosmic-hero-2026.png";
+const HERO_IMAGE_SRC = "/images/cosmic-hero-2026-v4.png";
 const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
 
 function GalleryCard({

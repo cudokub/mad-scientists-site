@@ -1,5 +1,5 @@
 const scientistImages = [
-  "/images/cosmic-1-halfbody-v2.png",
+  "/images/cosmic-1-halfbody-v3.png",
   "/images/cosmic-2-halfbody-v2.png",
   "/images/cosmic-3-halfbody-v2.png",
   "/images/cosmic-4-halfbody-v2.png",
