@@ -6,6 +6,7 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 ## Stack
 - Next.js 16 (App Router), React 19, TypeScript
 - Tailwind CSS 4 (theme tokens in `globals.css`)
+- Radix UI Dialog (desktop modals), Vaul (mobile drawer/bottom sheet)
 - Google Fonts: Pixelify Sans (display/headings), Reddit Mono (body/mono)
 
 ## Design System
@@ -53,6 +54,9 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **`Hero`** — Two-column hero (text left, GIF right). Homepage only.
 - **`Ticker`** — `"gateway"` / `"stargaze"` variants. Homepage only. 60s seamless loop.
 - **`BlockchainSection`** — 3-column info grid with circular icon avatars.
+- **`Dialog`** (`src/components/ui/dialog.tsx`) — Radix UI Dialog wrapper. Used for desktop modals (≥640px). Flex-centered overlay with cosmic styling.
+- **`Drawer`** (`src/components/ui/drawer.tsx`) — Vaul Drawer wrapper. Used for mobile modals (<640px). Bottom sheet with drag handle, swipe-to-close.
+- **`useMediaQuery`** (`src/lib/hooks/useMediaQuery.ts`) — SSR-safe media query hook. Used to switch between Dialog and Drawer.
 
 ## Pages
 `/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted)
@@ -66,7 +70,7 @@ Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection.
 - **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards show scientist name and tagline permanently below the image. Hover: border glow + subtle image zoom (no translate-y lift, no slide-up overlay). Cards are clickable, open detail modal. Uses halfbody-v2 images for cards.
 - **Auction** — "Bid Scientists. Win Scientists." headline, 4-step how-it-works grid, 5 parallel auction lanes with per-scientist status, GIF placeholder + CTA button
 
-**Scientist detail modal** — side-by-side layout (full-body art left, info 360px right). Shows name, tagline, lore paragraph. Prev/next navigation: arrow buttons on desktop sides, bottom buttons on mobile, keyboard arrow keys supported. Stacks on mobile. Closes on backdrop click or Escape.
+**Scientist detail modal** — responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog centered overlay, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next buttons at bottom. Both: keyboard arrow keys for prev/next, Escape to close, shows name, tagline, lore paragraph.
 
 **Data model:** Each scientist has `id`, `name`, `src`, `fullSrc`, `tagline`, `lore`. Defined inline in page file. `src` uses `cosmic-N-halfbody-v2.png` (gallery cards), `fullSrc` uses `cosmic-N-fullbody.png` (modal).
 

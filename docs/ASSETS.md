@@ -69,25 +69,15 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 |------|-------|
 | `cosmic-logo.png` | COSMIC logo text in hero (transparent bg) |
 | `cosmic-symbol.png` | Cosmic potion bottle icon (NavBar logo for cosmic theme) |
-| `cosmic-hero-2026.png` | Portal lineup art — all 5 scientists, 1376x768 **(in use — hero banner)** |
-| `cosmic-1.png` | The Architect — full body |
-| `cosmic-2.png` | The Warlord — full body |
-| `cosmic-3.png` | The Oracle — full body |
-| `cosmic-4.png` | The Antiquarian — full body |
-| `cosmic-5.png` | The Dreamer — full body |
-| `cosmic-1-halfbody.png` | The Architect — halfbody crop v1 |
-| `cosmic-2-halfbody.png` | The Warlord — halfbody crop v1 |
-| `cosmic-3-halfbody.png` | The Oracle — halfbody crop v1 |
-| `cosmic-4-halfbody.png` | The Antiquarian — halfbody crop v1 |
-| `cosmic-5-halfbody.png` | The Dreamer — halfbody crop v1 |
-| `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop v2 **(in use — gallery cards)** |
-| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop v2 **(in use — gallery cards)** |
-| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop v2 **(in use — gallery cards)** |
-| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop v2 **(in use — gallery cards)** |
-| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop v2 **(in use — gallery cards)** |
-| `cosmic-1-fullbody.png` | The Architect — full body **(in use — detail modal)** |
-| `cosmic-2-fullbody.png` | The Warlord — full body **(in use — detail modal)** |
-| `cosmic-3-fullbody.png` | The Oracle — full body **(in use — detail modal)** |
-| `cosmic-4-fullbody.png` | The Antiquarian — full body **(in use — detail modal)** |
-| `cosmic-5-fullbody.png` | The Dreamer — full body **(in use — detail modal)** |
+| `cosmic-hero-2026.png` | Portal lineup art — all 5 scientists, 1376x768 (hero banner) |
+| `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop (gallery cards) |
+| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop (gallery cards) |
+| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop (gallery cards) |
+| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop (gallery cards) |
+| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop (gallery cards) |
+| `cosmic-1-fullbody.png` | The Architect — full body (detail modal) |
+| `cosmic-2-fullbody.png` | The Warlord — full body (detail modal) |
+| `cosmic-3-fullbody.png` | The Oracle — full body (detail modal) |
+| `cosmic-4-fullbody.png` | The Antiquarian — full body (detail modal) |
+| `cosmic-5-fullbody.png` | The Dreamer — full body (detail modal) |
 | `cosmic-auction.gif` | **Pending** — auction mechanic GIF (placeholder in auction section) |
