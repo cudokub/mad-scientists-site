@@ -67,8 +67,8 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 ### COSMIC (`/cosmic`)
 | File | Usage |
 |------|-------|
-| `cosmic-logo.png` | COSMIC logo text in hero (transparent bg) |
-| `cosmic-symbol.png` | Cosmic potion bottle icon (NavBar logo for cosmic theme) |
+| `cosmic-logo.png` | COSMIC logo text in hero (480px wide, ~90KB — resized from 2406x740 source) |
+| `cosmic-symbol.png` | Cosmic potion bottle icon, NavBar logo for cosmic theme (200x200, ~62KB — resized from 1524x1626 source) |
 | `cosmic-hero-2026.png` | Portal lineup art — all 5 scientists, 1376x768 (hero banner) |
 | `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop (gallery cards) |
 | `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop (gallery cards) |

@@ -7,7 +7,7 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - Next.js 16 (App Router), React 19, TypeScript
 - Tailwind CSS 4 (theme tokens in `globals.css`)
 - Radix UI Dialog (desktop modals), Vaul (mobile drawer/bottom sheet)
-- Google Fonts: Pixelify Sans (display/headings), Reddit Mono (body/mono)
+- Google Fonts: Pixelify Sans 400/700 (display/headings), Reddit Mono 400/700 (body/mono)
 
 ## Design System
 
@@ -57,6 +57,14 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **`Dialog`** (`src/components/ui/dialog.tsx`) — Radix UI Dialog wrapper. Used for desktop modals (≥640px). Flex-centered overlay with cosmic styling.
 - **`Drawer`** (`src/components/ui/drawer.tsx`) — Vaul Drawer wrapper. Used for mobile modals (<640px). Bottom sheet with drag handle, swipe-to-close.
 - **`useMediaQuery`** (`src/lib/hooks/useMediaQuery.ts`) — SSR-safe media query hook. Used to switch between Dialog and Drawer.
+- **`ScientistModal`** (`src/components/cosmic/ScientistModal.tsx`) — Extracted cosmic gallery modal. Dynamically imported (`ssr: false`) to avoid bundling on initial page load.
+
+## Performance Practices
+- **Page metadata:** Every page has its own `layout.tsx` with title, description, OG, and Twitter card metadata (required because pages use `"use client"`).
+- **Hero images:** Add `priority` to above-the-fold images for faster LCP. Add `sizes` prop to all `<Image>` components for responsive serving.
+- **Animated GIFs:** Keep `unoptimized` (Next.js strips animation otherwise). Still add `priority` and `sizes`.
+- **Ticker:** `will-change: transform` in `globals.css` for GPU-accelerated animation.
+- **Modal code splitting:** Interaction-only components (ScientistModal) use `next/dynamic` with `ssr: false`.
 
 ## Pages
 `/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted)

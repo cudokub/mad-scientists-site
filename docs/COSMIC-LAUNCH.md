@@ -118,6 +118,10 @@
 - **Page UX:** `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled arrow).
 - **Auction headline:** Changed from "Sacrifice Scientists to Win Scientists" to "Bid Scientists. Win Scientists." — cleaner and more direct.
 - **Body copy:** Trimmed significantly across hero, collection, auction steps, and bottom CTA. Shorter, punchier copy throughout.
+- **Modal extraction:** `ScientistModal` extracted to `src/components/cosmic/ScientistModal.tsx` and dynamically imported (`next/dynamic`, `ssr: false`) — not bundled on initial page load.
+- **Image optimization:** `cosmic-symbol.png` resized from 1524x1626 (2.4MB) to 200px (62KB). `cosmic-logo.png` resized from 2406x740 (1.5MB) to 480px (90KB). Total ~3.7MB saved from source images.
+- **Inline CSS removed:** Keyframe animations (`fadeIn`, `fadeOut`, `dialogIn`, `scrollPulse`) moved from inline `<style>` tag to `globals.css`.
+- **Page metadata:** Added `src/app/cosmic/layout.tsx` with title, description, OG image (`cosmic-hero-2026.png`), Twitter card.
 
 ---
 
@@ -134,7 +138,7 @@
 - [ ] Update auction button href + text when auction goes live
 - [ ] Update per-scientist auction status text (replace "Auction opens soon")
 - [ ] Uncomment NavBar + Footer COSMIC links (Day 5)
-- [ ] Add OG/Twitter meta tags for `/cosmic` page
+- [x] Add OG/Twitter meta tags for `/cosmic` page (`src/app/cosmic/layout.tsx`)
 
 ---
 
