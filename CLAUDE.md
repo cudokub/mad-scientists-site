@@ -60,11 +60,32 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **`ScientistModal`** (`src/components/cosmic/ScientistModal.tsx`) — Extracted cosmic gallery modal. Dynamically imported (`ssr: false`) to avoid bundling on initial page load.
 
 ## Performance Practices
-- **Page metadata:** Every page has its own `layout.tsx` with title, description, OG, and Twitter card metadata (required because pages use `"use client"`).
+- **Page metadata:** Every page has its own `layout.tsx` with title, description, OG, Twitter card metadata, and `alternates.canonical` (required because pages use `"use client"`). Root layout has `metadataBase: new URL("https://madscientists.io")`.
 - **Hero images:** Add `priority` to above-the-fold images for faster LCP. Add `sizes` prop to all `<Image>` components for responsive serving.
 - **Animated GIFs:** Keep `unoptimized` (Next.js strips animation otherwise). Still add `priority` and `sizes`.
 - **Ticker:** `will-change: transform` in `globals.css` for GPU-accelerated animation.
 - **Modal code splitting:** Interaction-only components (ScientistModal) use `next/dynamic` with `ssr: false`.
+
+## SEO
+- **Sitemap:** `src/app/sitemap.ts` — auto-generates `/sitemap.xml` for all public pages (excludes `/cosmic`).
+- **Robots:** `src/app/robots.ts` — auto-generates `/robots.txt`. Blocks `/cosmic` (unlisted).
+- **JSON-LD:** Organization schema in root layout (`<script type="application/ld+json">`).
+- **Heading hierarchy:** Every page must have exactly one `<h1>`. Sub-sections use `<h2>` → `<h3>` → `<h4>`.
+
+## Accessibility
+- **Skip link:** Root layout has a skip-to-content link. Every page's `<main>` must have `id="main-content"`.
+- **Reduced motion:** `globals.css` has `@media (prefers-reduced-motion: reduce)` that disables all animations.
+- **Focus styles:** All interactive elements use `focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green`.
+- **Contrast:** Gray caption text is `#A0A0A0` (6.3:1 on `#061304`). Never use `#8E8E8E` or darker grays for text.
+- **Touch targets:** Interactive elements must be at least 44x44px on mobile. Use `min-w-[44px] min-h-[44px]` on icon links.
+- **aria-labels:** Required on icon-only links (e.g., social icons in Footer).
+
+## Security
+- **Headers:** Configured in `next.config.ts` via `headers()` — X-Content-Type-Options, X-Frame-Options, HSTS, Referrer-Policy, Permissions-Policy.
+
+## Error Pages
+- `src/app/not-found.tsx` — custom 404 page (branded).
+- `src/app/error.tsx` — global error boundary with retry button.
 
 ## Pages
 `/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted)
@@ -87,7 +108,7 @@ Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection.
 ### Key Layout Patterns
 ```tsx
 // Page wrapper
-<main className="min-h-screen overflow-hidden">
+<main id="main-content" className="min-h-screen overflow-hidden">
   <NavBar />
   {/* Sections */}
   <Footer />
