@@ -98,7 +98,7 @@ Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection.
 - **Hero** — portal lineup art (1376x768, all 5 scientists) with logo overlay, stats grid, CTA buttons
 - **Ticker strip** — horizontal facts bar (5 one-of-one artifacts, pixel-crafted, etc.)
 - **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards show scientist name and tagline permanently below the image. Hover: border glow + subtle image zoom (no translate-y lift, no slide-up overlay). Cards are clickable, open detail modal. Uses halfbody-v2 images for cards.
-- **Auction** — "Bid Scientists. Win Scientists." headline, 4-step how-it-works grid, 5 parallel auction lanes with per-scientist status, GIF placeholder + CTA button
+- **Auction** — "Bid Scientists. Win Scientists." headline, 4-step how-it-works grid, 5 parallel auction lanes with per-scientist status, AuctionProcessSvg infographic + CTA button + Stargaze partner block (dashed border, logo, "Official auction partner")
 
 **Scientist detail modal** — responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog centered overlay, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next buttons at bottom. Both: keyboard arrow keys for prev/next, Escape to close, shows name, tagline, lore paragraph.
 

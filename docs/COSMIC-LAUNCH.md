@@ -122,6 +122,7 @@
 - **Image optimization:** `cosmic-symbol.png` resized from 1524x1626 (2.4MB) to 200px (62KB). `cosmic-logo.png` resized from 2406x740 (1.5MB) to 480px (90KB). Total ~3.7MB saved from source images.
 - **Inline CSS removed:** Keyframe animations (`fadeIn`, `fadeOut`, `dialogIn`, `scrollPulse`) moved from inline `<style>` tag to `globals.css`.
 - **Page metadata:** Added `src/app/cosmic/layout.tsx` with title, description, OG image (`cosmic-hero-2026.png`), Twitter card.
+- **Stargaze partner block:** Co-branded block in auction CTA panel — Stargaze logo (`stargaze-chain.svg`), "Official auction partner" label, links to stargaze.zone. Dashed cosmic border, hover state.
 
 ---
 
@@ -139,6 +140,7 @@
 - [ ] Update per-scientist auction status text (replace "Auction opens soon")
 - [ ] Uncomment NavBar + Footer COSMIC links (Day 5)
 - [x] Add OG/Twitter meta tags for `/cosmic` page (`src/app/cosmic/layout.tsx`)
+- [x] Add Stargaze partner block in auction CTA panel
 
 ---
 

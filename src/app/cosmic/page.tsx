@@ -542,6 +542,28 @@ export default function CosmicPage() {
                 >
                   Place Your Bid
                 </Button>
+                <a
+                  href="https://www.stargaze.zone"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 flex items-center gap-3 border border-dashed border-cosmic/25 bg-[#0a0e1e]/60 px-4 py-3 transition-colors hover:border-cosmic/40 hover:bg-[#0d1125]/80"
+                >
+                  <Image
+                    src="/images/stargaze-chain.svg"
+                    alt="Stargaze"
+                    width={28}
+                    height={28}
+                    className="shrink-0"
+                  />
+                  <div>
+                    <p className="font-display text-xs font-bold uppercase tracking-[0.08em] text-[#e8e0ff]">
+                      Stargaze
+                    </p>
+                    <p className="font-mono text-[10px] text-[#9e99b0]">
+                      Official auction partner
+                    </p>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
