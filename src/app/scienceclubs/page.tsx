@@ -25,6 +25,8 @@ export default function ScienceClubsPage() {
               width={2000}
               height={1100}
               className="w-full h-full object-contain"
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
 

@@ -52,6 +52,8 @@ export default function MadUniversityPage() {
               width={720}
               height={720}
               className="w-full h-full object-cover"
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
               unoptimized
             />
           </div>
@@ -184,6 +186,7 @@ export default function MadUniversityPage() {
               width={735}
               height={735}
               className="w-full h-full object-cover"
+              sizes="(max-width: 768px) 100vw, 45vw"
               unoptimized
             />
           </div>

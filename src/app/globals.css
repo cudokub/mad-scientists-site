@@ -30,6 +30,7 @@ body {
 
 .ticker-animate {
   animation: ticker-scroll 60s linear infinite;
+  will-change: transform;
 }
 
 /* Glow effect for buttons on hover */

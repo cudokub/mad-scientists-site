@@ -61,6 +61,8 @@ export default function RevealInfoPage() {
               width={1500}
               height={1500}
               className="w-full h-full object-cover"
+              priority
+              sizes="(max-width: 768px) 100vw, 45vw"
               unoptimized
             />
           </div>
@@ -247,6 +249,7 @@ export default function RevealInfoPage() {
               width={1500}
               height={1500}
               className="w-full h-full object-cover"
+              sizes="(max-width: 768px) 100vw, 45vw"
               unoptimized
             />
           </div>
