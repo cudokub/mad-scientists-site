@@ -82,46 +82,11 @@ const auctionSteps = [
 ];
 
 const parallelAuctionStatus = [
-  {
-    id: 1,
-    lane: "Lane Alpha",
-    phase: "Signal Calibration",
-    opensIn: "Opens in 02h 14m",
-    leadingBid: "14 Mad Scientists",
-    activity: 72,
-  },
-  {
-    id: 2,
-    lane: "Lane Beta",
-    phase: "Bid Intake",
-    opensIn: "Opens in 03h 05m",
-    leadingBid: "9 Mad Scientists",
-    activity: 58,
-  },
-  {
-    id: 3,
-    lane: "Lane Gamma",
-    phase: "Watcher Queue",
-    opensIn: "Opens in 01h 42m",
-    leadingBid: "18 Mad Scientists",
-    activity: 83,
-  },
-  {
-    id: 4,
-    lane: "Lane Delta",
-    phase: "Wallet Sync",
-    opensIn: "Opens in 04h 28m",
-    leadingBid: "7 Mad Scientists",
-    activity: 41,
-  },
-  {
-    id: 5,
-    lane: "Lane Omega",
-    phase: "Final Diagnostics",
-    opensIn: "Opens in 00h 56m",
-    leadingBid: "22 Mad Scientists",
-    activity: 91,
-  },
+  { id: 1, lane: "Lane Alpha" },
+  { id: 2, lane: "Lane Beta" },
+  { id: 3, lane: "Lane Gamma" },
+  { id: 4, lane: "Lane Delta" },
+  { id: 5, lane: "Lane Omega" },
 ];
 
 
@@ -476,10 +441,10 @@ export default function CosmicPage() {
                           : ""
                       }`}
                     >
-                      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-[linear-gradient(90deg,#7ed3ff,#9b59f0,#ff73c7)]" />
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-[#2a2740]" />
 
                       <div className="flex items-center gap-2.5">
-                        <div className="relative h-9 w-9 shrink-0 overflow-hidden border border-cosmic/35">
+                        <div className="relative h-9 w-9 shrink-0 overflow-hidden border border-cosmic/20 grayscale-[40%] opacity-70">
                           <Image
                             src={scientist.src}
                             alt={scientist.name}
@@ -490,34 +455,26 @@ export default function CosmicPage() {
                           />
                         </div>
                         <div className="min-w-0">
-                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-[#7ed3ff]">
-                            <span className="relative flex h-1.5 w-1.5 shrink-0">
-                              <span className="absolute inline-flex h-full w-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] bg-[#7ed3ff] opacity-75" />
-                              <span className="relative inline-flex h-1.5 w-1.5 bg-[#7ed3ff]" />
-                            </span>
+                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-[#6b6580]">
+                            <span className="inline-flex h-1.5 w-1.5 shrink-0 bg-[#6b6580]" />
                             {auction.lane}
                           </p>
-                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-[#f2ebff] md:text-sm">
+                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-[#9e99b0] md:text-sm">
                             {scientist.name}
                           </h4>
                         </div>
                       </div>
 
                       <div className="mt-3 h-1 w-full overflow-hidden bg-[#131931]">
-                        <div
-                          className="h-full bg-[linear-gradient(90deg,#7ed3ff,#9b59f0)]"
-                          style={{ width: `${auction.activity}%` }}
-                        />
+                        <div className="h-full w-0 bg-[#2a2740]" />
                       </div>
 
-                      <div className="mt-3 flex items-baseline justify-between gap-2">
-                        <span className="font-display text-[10px] uppercase tracking-[0.08em] text-[#f0eaff] md:text-xs">
-                          {auction.leadingBid}
-                        </span>
-                      </div>
+                      <p className="mt-3 font-display text-[10px] uppercase tracking-[0.12em] text-[#6b6580] md:text-xs">
+                        Sealed
+                      </p>
 
-                      <p className="mt-1 font-mono text-[10px] text-[#7ed3ff] md:text-[11px]">
-                        {auction.opensIn}
+                      <p className="mt-1 font-mono text-[10px] text-[#4a4660] md:text-[11px]">
+                        Auction opens soon
                       </p>
                     </article>
                   );
