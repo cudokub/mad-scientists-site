@@ -108,7 +108,7 @@
 - **Auction mechanic:** 5 separate auctions, one per scientist. Bid by transferring Mad Scientists 10k NFTs. Highest bidder wins. Losers returned. No minimum bid. On-chain smart contract.
 - **Page strategy:** `/cosmic` is currently unlisted. Goes live on Day 5 reveal.
 - **Silhouettes:** Only 3 of 5 scientists teased — avoids repetition.
-- **Auction visual:** GIF instead of static explainer graphic — matches team's content style.
+- **Auction visual:** Inline SVG infographic (`AuctionProcessSvg` component) replaced GIF placeholder. 4-panel layout with circular character PFPs (halfbody-v2 images via SVG `<image>` + `clipPath`). Oracle as the "selected" scientist across all panels. Source SVG at `public/images/cosmic-auction-process.svg`.
 - **Hero:** Portal lineup art (`cosmic-hero-2026.png`, 1376x768) with all 5 scientists. All stale hero alternates (`cosmic-hero-lineup.png`, `cosmic-hero-mobile-2026.png`, `cosmic-hero-placeholder.svg`) deleted.
 - **Collection section:** Moved "Beyond the Lab" text into collection section. Removed standalone about section.
 - **Gallery modal:** Responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next at bottom. Keyboard arrow keys supported. Uses `useMediaQuery` hook to switch.
@@ -134,7 +134,7 @@
 - [x] Add taglines and lore paragraphs for all 5 scientists
 - [x] Prep COSMIC link in NavBar + Footer (commented out, ready to uncomment)
 - [x] Swap hero with portal lineup art (`cosmic-hero-2026.png`, 1376x768)
-- [ ] Drop in auction GIF at `/public/images/cosmic-auction.gif` (replace placeholder)
+- [x] Replace auction placeholder with `cosmic-auction-process.svg` inline component (`AuctionProcessSvg`)
 - [ ] Update auction button href + text when auction goes live
 - [ ] Update per-scientist auction status text (replace "Auction opens soon")
 - [ ] Uncomment NavBar + Footer COSMIC links (Day 5)

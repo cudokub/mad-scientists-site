@@ -8,6 +8,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import type { Scientist } from "@/components/cosmic/ScientistModal";
+import AuctionProcessSvg from "@/components/cosmic/AuctionProcessSvg";
 
 const ScientistModal = dynamic(
   () => import("@/components/cosmic/ScientistModal"),
@@ -525,10 +526,8 @@ export default function CosmicPage() {
             </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
-              <div className="flex min-h-[220px] items-center justify-center border border-cosmic/30 bg-[radial-gradient(circle_at_20%_20%,rgba(126,211,255,0.18),transparent_42%),radial-gradient(circle_at_80%_80%,rgba(255,122,217,0.2),transparent_42%),#080c1b] p-6 text-center">
-                <p className="font-display text-lg uppercase tracking-[0.15em] text-cosmic/60">
-                  Auction GIF Coming Soon
-                </p>
+              <div className="border border-cosmic/30 bg-[#080c1b] p-4 md:p-6" role="img" aria-label="Auction process: Pick your lane, stack your bid, highest stack wins, losers get refunded">
+                <AuctionProcessSvg />
               </div>
               <div className="flex flex-col justify-center gap-4 border border-cosmic/30 bg-[#090c1a] p-6 md:p-8">
                 <p className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">

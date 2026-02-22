@@ -58,6 +58,7 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **`Drawer`** (`src/components/ui/drawer.tsx`) — Vaul Drawer wrapper. Used for mobile modals (<640px). Bottom sheet with drag handle, swipe-to-close.
 - **`useMediaQuery`** (`src/lib/hooks/useMediaQuery.ts`) — SSR-safe media query hook. Used to switch between Dialog and Drawer.
 - **`ScientistModal`** (`src/components/cosmic/ScientistModal.tsx`) — Extracted cosmic gallery modal. Dynamically imported (`ssr: false`) to avoid bundling on initial page load.
+- **`AuctionProcessSvg`** (`src/components/cosmic/AuctionProcessSvg.tsx`) — Inline SVG auction infographic (4 panels). Uses circular-clipped halfbody-v2 PNGs as character PFPs. Rendered inline (not `<img>`) so SVG `<image>` tags can load external assets.
 
 ## Performance Practices
 - **Page metadata:** Every page has its own `layout.tsx` with title, description, OG, Twitter card metadata, and `alternates.canonical` (required because pages use `"use client"`). Root layout has `metadataBase: new URL("https://madscientists.io")`.

@@ -70,14 +70,14 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 | `cosmic-logo.png` | COSMIC logo text in hero (480px wide, ~90KB — resized from 2406x740 source) |
 | `cosmic-symbol.png` | Cosmic potion bottle icon, NavBar logo for cosmic theme (200x200, ~62KB — resized from 1524x1626 source) |
 | `cosmic-hero-2026.png` | Portal lineup art — all 5 scientists, 1376x768 (hero banner) |
-| `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop (gallery cards) |
-| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop (gallery cards) |
-| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop (gallery cards) |
-| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop (gallery cards) |
-| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop (gallery cards) |
+| `cosmic-1-halfbody-v2.png` | The Architect — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop (gallery cards + auction SVG PFP) |
 | `cosmic-1-fullbody.png` | The Architect — full body (detail modal) |
 | `cosmic-2-fullbody.png` | The Warlord — full body (detail modal) |
 | `cosmic-3-fullbody.png` | The Oracle — full body (detail modal) |
 | `cosmic-4-fullbody.png` | The Antiquarian — full body (detail modal) |
 | `cosmic-5-fullbody.png` | The Dreamer — full body (detail modal) |
-| `cosmic-auction.gif` | **Pending** — auction mechanic GIF (placeholder in auction section) |
+| `cosmic-auction-process.svg` | Auction process infographic — 4-panel SVG (Pick Lane → Stack Bid → Highest Wins → Losers Refunded). Rendered inline via `AuctionProcessSvg` component, uses halfbody-v2 PNGs as circular PFPs. |
