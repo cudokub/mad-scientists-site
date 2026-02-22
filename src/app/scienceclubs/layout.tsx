@@ -18,6 +18,9 @@ export const metadata: Metadata = {
       "Create your own clubs based on Mad Scientists traits. Get a special Discord role, gated chat room, and grants.",
     images: ["/images/hero-og.gif"],
   },
+  alternates: {
+    canonical: "/scienceclubs",
+  },
 };
 
 export default function ScienceClubsLayout({

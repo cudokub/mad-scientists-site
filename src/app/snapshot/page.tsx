@@ -36,7 +36,7 @@ function ChainCard({
           {name}
         </h3>
       </div>
-      <p className="font-mono text-[#8E8E8E] text-base md:text-lg leading-relaxed">
+      <p className="font-mono text-[#A0A0A0] text-base md:text-lg leading-relaxed">
         {description}
       </p>
       <Button href={downloadUrl} size="lg">
@@ -48,16 +48,16 @@ function ChainCard({
 
 export default function SnapshotPage() {
   return (
-    <main className="min-h-screen overflow-hidden">
+    <main id="main-content" className="min-h-screen overflow-hidden">
       <NavBar />
 
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
             HOLDERS SNAPSHOT
-          </h2>
-          <p className="font-mono text-[#8E8E8E] text-base md:text-lg mt-3 leading-relaxed">
+          </h1>
+          <p className="font-mono text-[#A0A0A0] text-base md:text-lg mt-3 leading-relaxed">
             The snapshot is taken everyday at 2am CET
           </p>
         </div>

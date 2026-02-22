@@ -18,6 +18,9 @@ export const metadata: Metadata = {
       "Use 10 $LAB tokens to reveal 1 Mad Scientist NFT. Learn how to reveal, trade $LAB, and explore tokenomics.",
     images: ["/images/hero-og.gif"],
   },
+  alternates: {
+    canonical: "/revealinfo",
+  },
 };
 
 export default function RevealInfoLayout({

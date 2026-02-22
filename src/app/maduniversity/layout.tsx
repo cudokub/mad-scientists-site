@@ -18,6 +18,9 @@ export const metadata: Metadata = {
       "Research and Reward. Create content, earn points, and climb the ranks at Mad University.",
     images: ["/images/hero-og.gif"],
   },
+  alternates: {
+    canonical: "/maduniversity",
+  },
 };
 
 export default function MadUniversityLayout({

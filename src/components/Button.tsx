@@ -48,7 +48,7 @@ export default function Button({
 }: ButtonProps) {
   const external = href.startsWith("http");
   const base =
-    "flex items-center justify-center font-display font-bold tracking-[0.05em] text-center transition-all";
+    "flex items-center justify-center font-display font-bold tracking-[0.05em] text-center transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green";
 
   const classes = `${base} ${variantStyles[theme][variant]} ${sizeStyles[size]} ${className}`;
 

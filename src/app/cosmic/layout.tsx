@@ -18,6 +18,9 @@ export const metadata: Metadata = {
       "5 hand-crafted 1/1 Mad Scientists. Each one unique. Bid your 10k collection NFTs to claim a COSMIC scientist.",
     images: ["/images/cosmic-hero-2026.png"],
   },
+  alternates: {
+    canonical: "/cosmic",
+  },
 };
 
 export default function CosmicLayout({

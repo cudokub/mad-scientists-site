@@ -31,15 +31,15 @@ const roles = [
 
 export default function MadUniversityPage() {
   return (
-    <main className="min-h-screen overflow-hidden">
+    <main id="main-content" className="min-h-screen overflow-hidden">
       <NavBar />
 
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
             MAD UNIVERSITY
-          </h2>
+          </h1>
         </div>
 
         {/* Overview Card — GIF + Text */}
@@ -124,7 +124,7 @@ export default function MadUniversityPage() {
                   5 bonus points per post when you have signup* Mad Scientists
                   PFP on X
                   <br />
-                  <em className="text-xs md:text-sm text-[#8E8E8E]">
+                  <em className="text-xs md:text-sm text-[#A0A0A0]">
                     * You will lose the bonus if you change your PFP. If you
                     change back to a Mad Scientist PFP you must signup again to
                     get the bonus

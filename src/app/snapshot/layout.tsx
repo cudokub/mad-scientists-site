@@ -18,6 +18,9 @@ export const metadata: Metadata = {
       "Daily snapshot of Mad Scientists NFT holders. Download Stargaze and Osmosis address lists.",
     images: ["/images/hero-og.gif"],
   },
+  alternates: {
+    canonical: "/snapshot",
+  },
 };
 
 export default function SnapshotLayout({

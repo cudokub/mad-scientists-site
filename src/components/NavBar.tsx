@@ -80,7 +80,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
             href={link.href}
             target={link.external ? "_blank" : undefined}
             rel={link.external ? "noopener noreferrer" : undefined}
-            className={`flex-1 flex items-center justify-center px-4 py-4 border-l font-display text-base tracking-wider transition-colors ${borderClass} ${
+            className={`flex-1 flex items-center justify-center px-4 py-4 border-l font-display text-base tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-green ${borderClass} ${
               link.highlight
                 ? highlightClass
                 : linkBase
@@ -105,7 +105,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-[5px] p-2"
+          className="flex flex-col gap-[5px] p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
           aria-label="Toggle menu"
         >
           <span

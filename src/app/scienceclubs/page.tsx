@@ -4,15 +4,15 @@ import Footer from "@/components/Footer";
 
 export default function ScienceClubsPage() {
   return (
-    <main className="min-h-screen overflow-hidden">
+    <main id="main-content" className="min-h-screen overflow-hidden">
       <NavBar />
 
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
             SCIENCE CLUBS
-          </h2>
+          </h1>
         </div>
 
         {/* Content — image left, text right */}

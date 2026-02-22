@@ -70,7 +70,7 @@ export default function Footer({ theme = "default" }: FooterProps) {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className={`font-display text-sm tracking-wider transition-colors py-1 text-center md:text-left ${linkClass}`}
+              className={`font-display text-sm tracking-wider transition-colors py-2 text-center md:text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green ${linkClass}`}
             >
               {link.label}
             </a>
@@ -83,7 +83,8 @@ export default function Footer({ theme = "default" }: FooterProps) {
             href="https://twitter.com/madscientists_x"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
+            aria-label="Follow us on X (Twitter)"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
           >
             <Image
               src="/images/twitter-icon.png"
@@ -97,7 +98,8 @@ export default function Footer({ theme = "default" }: FooterProps) {
             href="https://discord.gg/q7zgmdKtKW"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
+            aria-label="Join our Discord"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
           >
             <Image
               src="/images/discord-icon.png"

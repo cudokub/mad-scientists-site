@@ -40,15 +40,15 @@ const tokenomics = [
 
 export default function RevealInfoPage() {
   return (
-    <main className="min-h-screen overflow-hidden">
+    <main id="main-content" className="min-h-screen overflow-hidden">
       <NavBar />
 
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
             REVEAL INFO
-          </h2>
+          </h1>
         </div>
 
         {/* Two-column: GIF left, content right */}
@@ -155,7 +155,7 @@ export default function RevealInfoPage() {
               <p className="font-mono text-2xl md:text-3xl font-bold text-green mb-2">
                 {stat.value}
               </p>
-              <p className="font-display text-sm md:text-base text-[#8E8E8E] tracking-wider">
+              <p className="font-display text-sm md:text-base text-[#A0A0A0] tracking-wider">
                 {stat.label}
               </p>
             </div>

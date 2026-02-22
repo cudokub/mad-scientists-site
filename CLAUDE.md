@@ -25,7 +25,7 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 | `cosmic` | `#9B59F0` | Cosmic purple — COSMIC page borders, accents |
 | `cosmic-dark` | `#6B2FB8` | Dark cosmic purple |
 | — | `#D2DFD4` | Headline / nav text (light gray-green) |
-| — | `#8E8E8E` | Labels / captions (gray) |
+| — | `#A0A0A0` | Labels / captions (gray — WCAG AA compliant on `bg`) |
 | — | `#141414` | Dark text on primary buttons |
 
 ### Typography

@@ -188,7 +188,7 @@ export default function CosmicPage() {
   }, []);
 
   return (
-    <main className="min-h-screen scroll-smooth overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
+    <main id="main-content" className="min-h-screen scroll-smooth overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
       <NavBar theme="cosmic" />
 
       <section className="relative mx-auto max-w-[1440px] border-x border-cosmic/25">
