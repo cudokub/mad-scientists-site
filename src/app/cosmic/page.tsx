@@ -108,10 +108,11 @@ function GalleryCard({
 }) {
   return (
     <button
+      data-layer="collection-card"
       onClick={onClick}
       className="group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7ed3ff]"
     >
-      <div className="relative overflow-hidden border border-cosmic bg-[#090b17] transition duration-300 group-hover:border-[#7ed3ff]/70 group-hover:shadow-[0_10px_30px_rgba(35,158,255,0.2)]">
+      <div data-layer="collection-card-image" className="relative overflow-hidden border border-cosmic bg-[#090b17] transition duration-300 group-hover:border-[#7ed3ff]/70 group-hover:shadow-[0_10px_30px_rgba(35,158,255,0.2)]">
         <Image
           src={scientist.src}
           alt={scientist.name}
@@ -120,14 +121,14 @@ function GalleryCard({
           sizes="(max-width: 639px) 84vw, (max-width: 767px) 62vw, (max-width: 1023px) 46vw, (max-width: 1279px) 36vw, 20vw"
           className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <span className="absolute left-3 top-3 z-10 border border-cosmic bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
+        <span data-layer="collection-card-badge" className="absolute left-3 top-3 z-10 border border-cosmic bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
           1/1
         </span>
       </div>
-      <p className="mt-2 font-display text-sm uppercase tracking-wider text-[#f3edff]">
+      <p data-layer="collection-card-name" className="mt-2 font-display text-sm uppercase tracking-wider text-[#f3edff]">
         {scientist.name}
       </p>
-      <p className="mt-0.5 font-mono text-xs leading-relaxed text-[#9e99b0]">
+      <p data-layer="collection-card-tagline" className="mt-0.5 font-mono text-xs leading-relaxed text-[#9e99b0]">
         {scientist.tagline}
       </p>
     </button>
@@ -290,21 +291,22 @@ export default function CosmicPage() {
         <Ticker variant="cosmic-bottom" />
 
         <section
+          data-layer="collection"
           id="collection"
           className="relative border-b border-cosmic px-6 py-12 md:px-12 md:py-16"
         >
           <div className="mx-auto max-w-6xl">
-            <p className="font-display text-xs uppercase tracking-[0.22em] text-cosmic/70">
+            <p data-layer="collection-label" className="font-display text-xs uppercase tracking-[0.22em] text-cosmic/70">
               The Subjects
             </p>
-            <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
+            <h2 data-layer="collection-heading" className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
               Meet the Cosmic Five
             </h2>
-            <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
+            <p data-layer="collection-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
               Each one is a standalone 1/1. Tap to learn more.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
+            <div data-layer="collection-grid" className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
               {scientists.map((scientist, i) => (
                 <div
                   key={scientist.id}
