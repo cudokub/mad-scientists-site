@@ -29,7 +29,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
   const logoSrc = isCosmic ? "/images/cosmic-symbol.png" : "/images/ms-symbol.png";
   const logoAlt = isCosmic ? "COSMIC" : "Mad Scientists";
   const navBg = isCosmic ? "bg-[#050a16]/95 backdrop-blur-sm" : "bg-bg";
-  const borderClass = isCosmic ? "border-cosmic/40" : "border-green";
+  const borderClass = isCosmic ? "border-cosmic" : "border-green";
   const linkBase = isCosmic ? "text-[#cfc6ea] hover:text-[#9fe5ff]" : "text-[#D2DFD4] hover:text-green";
   const highlightClass = isCosmic ? "text-[#f3ecff] font-bold" : "text-green font-bold";
   const mobileBurger = isCosmic ? "bg-[#9fe5ff]" : "bg-green";
@@ -136,7 +136,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
               className={`block py-4 px-6 font-display text-base tracking-wider border-b text-center ${
-                isCosmic ? "border-cosmic/25" : "border-green/30"
+                isCosmic ? "border-cosmic" : "border-green/30"
               } ${
                 link.highlight
                   ? highlightClass

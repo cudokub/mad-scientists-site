@@ -1,22 +1,53 @@
 import Image from "next/image";
+import { Silkscreen } from "next/font/google";
 
-interface TickerProps {
-  variant?: "gateway" | "stargaze";
+const silkscreen = Silkscreen({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+interface TickerItem {
+  text: string;
+  subtext: string;
+  icon: string;
 }
 
-const gatewayItem = {
+interface TickerProps {
+  variant?: "gateway" | "stargaze" | "cosmic-top" | "cosmic-bottom";
+}
+
+const gatewayItem: TickerItem = {
   text: "REVEAL LIVE ON",
   subtext: "GATEWAY",
   icon: "/images/nft-1.jpg",
 };
 
-const stargazeItem = {
+const stargazeItem: TickerItem = {
   text: "BUY SECONDARY ON",
   subtext: "STARGAZE",
   icon: "/images/nft-2.jpg",
 };
 
-function TickerSet({ item, count }: { item: typeof gatewayItem; count: number }) {
+const cosmicTopItem: TickerItem = {
+  text: "5 ONE-OF-ONE",
+  subtext: "ARTIFACTS",
+  icon: "/images/cosmic-symbol.png",
+};
+
+const cosmicBottomItem: TickerItem = {
+  text: "BID ON",
+  subtext: "STARGAZE",
+  icon: "/images/stargaze-chain.svg",
+};
+
+const isCosmic = (variant: string) => variant.startsWith("cosmic-");
+
+function TickerSet({ item, count, cosmic }: { item: TickerItem; count: number; cosmic?: boolean }) {
+  const textClass = cosmic
+    ? "font-display text-cosmic text-lg md:text-2xl font-bold tracking-wider"
+    : "font-display text-green text-lg md:text-2xl font-bold tracking-wider";
+  const iconBorder = cosmic ? "border-cosmic" : "border-green";
+
   return (
     <>
       {Array.from({ length: count }).map((_, i) => (
@@ -24,19 +55,26 @@ function TickerSet({ item, count }: { item: typeof gatewayItem; count: number })
           key={i}
           className="flex items-center gap-4 mx-8 shrink-0"
         >
-          <span className="font-display text-green text-lg md:text-2xl font-bold tracking-wider">
-            {item.text}
+          <span className={textClass}>
+            {cosmic && item.text.includes("5") ? (
+              <>
+                <span className={`${silkscreen.className} font-normal tracking-normal`}>5</span>
+                {item.text.replace("5", "")}
+              </>
+            ) : (
+              item.text
+            )}
           </span>
-          <div className="w-[30px] h-[30px] md:w-[36px] md:h-[36px] rounded-full border-2 border-green overflow-hidden shrink-0">
+          <div className={`${cosmic ? "h-[30px] md:h-[36px]" : `w-[30px] h-[30px] md:w-[36px] md:h-[36px] border-2 ${iconBorder}`} overflow-hidden shrink-0`}>
             <Image
               src={item.icon}
               alt=""
               width={36}
               height={36}
-              className="w-full h-full object-cover"
+              className={cosmic ? "h-full w-auto object-contain" : "w-full h-full object-cover"}
             />
           </div>
-          <span className="font-display text-green text-lg md:text-2xl font-bold tracking-wider">
+          <span className={textClass}>
             {item.subtext}
           </span>
         </div>
@@ -45,11 +83,20 @@ function TickerSet({ item, count }: { item: typeof gatewayItem; count: number })
   );
 }
 
+const items: Record<string, TickerItem> = {
+  gateway: gatewayItem,
+  stargaze: stargazeItem,
+  "cosmic-top": cosmicTopItem,
+  "cosmic-bottom": cosmicBottomItem,
+};
+
 export default function Ticker({ variant = "gateway" }: TickerProps) {
-  const item = variant === "gateway" ? gatewayItem : stargazeItem;
+  const item = items[variant];
+  const cosmic = isCosmic(variant);
+  const borderClass = cosmic ? "border-cosmic" : "border-green";
 
   return (
-    <div className="border border-green max-w-[1440px] mx-auto">
+    <div className={`border ${borderClass} max-w-[1440px] mx-auto`}>
       <div
         className="overflow-hidden py-3"
         style={{
@@ -60,8 +107,8 @@ export default function Ticker({ variant = "gateway" }: TickerProps) {
         }}
       >
         <div className="flex ticker-animate items-center whitespace-nowrap w-max">
-          <TickerSet item={item} count={8} />
-          <TickerSet item={item} count={8} />
+          <TickerSet item={item} count={8} cosmic={cosmic} />
+          <TickerSet item={item} count={8} cosmic={cosmic} />
         </div>
       </div>
     </div>

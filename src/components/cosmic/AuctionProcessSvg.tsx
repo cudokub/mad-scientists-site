@@ -8,22 +8,21 @@ const scientistImages = [
 
 const oracleImg = scientistImages[2];
 const panelOneX = [35, 85, 135, 185, 235];
-const pfpY = 60;
+const pfpY = 45;
 
 function SelectedPfp({ x, y, r, src }: { x: number; y: number; r: number; src: string }) {
   return (
     <g>
-      <circle cx={x} cy={y} r={r + 8} fill="#7ed3ff" opacity="0.15" style={{ filter: "blur(4px)" }} />
+      <rect x={x - r - 4} y={y - r - 4} width={(r + 4) * 2} height={(r + 4) * 2} fill="#7ed3ff" opacity="0.15" />
       <image
         href={src}
         x={x - r}
         y={y - r}
         width={r * 2}
         height={r * 2}
-        clipPath="url(#circle-clip)"
         preserveAspectRatio="xMidYMid slice"
       />
-      <circle cx={x} cy={y} r={r} fill="none" stroke="#7ed3ff" strokeWidth="2" opacity="0.7" />
+      <rect x={x - r} y={y - r} width={r * 2} height={r * 2} fill="none" stroke="#7ed3ff" strokeWidth="2" />
     </g>
   );
 }
@@ -37,17 +36,22 @@ function UnselectedPfp({ x, y, r, src }: { x: number; y: number; r: number; src:
         y={y - r}
         width={r * 2}
         height={r * 2}
-        clipPath="url(#circle-clip)"
         preserveAspectRatio="xMidYMid slice"
       />
-      <circle cx={x} cy={y} r={r} fill="none" stroke="#4a4a5a" strokeWidth="1.5" />
+      <rect x={x - r} y={y - r} width={r * 2} height={r * 2} fill="none" stroke="#4a4a5a" strokeWidth="1.5" />
     </g>
   );
 }
 
-export default function AuctionProcessSvg() {
+const PANEL_X = [24, 318, 612, 906];
+
+export default function AuctionProcessSvg({ panel }: { panel?: number } = {}) {
+  const viewBox = panel
+    ? `${PANEL_X[panel - 1]} 165 270 270`
+    : "0 0 1200 630";
+
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" className="h-auto w-full">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} className="h-auto w-full">
       <defs>
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap');
@@ -61,51 +65,50 @@ export default function AuctionProcessSvg() {
         </radialGradient>
 
         <pattern id="dot-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.5" fill="#2A2A3A" opacity="0.5" />
+          <rect x="2" y="2" width="2" height="2" fill="#2A2A3A" opacity="0.7" />
         </pattern>
 
-        <clipPath id="circle-clip" clipPathUnits="objectBoundingBox">
-          <circle cx="0.5" cy="0.5" r="0.5" />
-        </clipPath>
-
+        {/* NFT Blocks (Pixel style — no rounding) */}
         <g id="nft-purple">
-          <rect x="-15" y="-10" width="30" height="20" rx="3" fill="#2D1152" stroke="#9B59F0" strokeWidth="2" />
-          <circle cx="0" cy="0" r="4" fill="#7ed3ff" />
+          <rect x="-15" y="-10" width="30" height="20" fill="#2D1152" stroke="#9B59F0" strokeWidth="2" />
+          <rect x="-2" y="-2" width="4" height="4" fill="#7ed3ff" />
         </g>
         <g id="nft-pink">
-          <rect x="-15" y="-10" width="30" height="20" rx="3" fill="#521132" stroke="#ff73c7" strokeWidth="2" />
-          <circle cx="0" cy="0" r="4" fill="#7ed3ff" />
+          <rect x="-15" y="-10" width="30" height="20" fill="#521132" stroke="#ff73c7" strokeWidth="2" />
+          <rect x="-2" y="-2" width="4" height="4" fill="#7ed3ff" />
         </g>
         <g id="nft-cyan">
-          <rect x="-15" y="-10" width="30" height="20" rx="3" fill="#113252" stroke="#7ed3ff" strokeWidth="2" />
-          <circle cx="0" cy="0" r="4" fill="#ff73c7" />
+          <rect x="-15" y="-10" width="30" height="20" fill="#113252" stroke="#7ed3ff" strokeWidth="2" />
+          <rect x="-2" y="-2" width="4" height="4" fill="#ff73c7" />
         </g>
 
-        <marker id="arrowhead-purple" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M 0 0 L 5 3 L 0 6 Z" fill="#9B59F0" />
+        {/* Pixel Arrowheads (Blocky) */}
+        <marker id="arrowhead-purple" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+          <path d="M 0,2 L 4,2 L 4,0 L 8,4 L 4,8 L 4,6 L 0,6 Z" fill="#9B59F0" />
         </marker>
-        <marker id="arrowhead-pink" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M 0 0 L 5 3 L 0 6 Z" fill="#ff73c7" />
+        <marker id="arrowhead-pink" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+          <path d="M 0,2 L 4,2 L 4,0 L 8,4 L 4,8 L 4,6 L 0,6 Z" fill="#ff73c7" />
         </marker>
-        <marker id="arrowhead-cyan" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M 0 0 L 5 3 L 0 6 Z" fill="#7ed3ff" />
+        <marker id="arrowhead-cyan" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+          <path d="M 0,2 L 4,2 L 4,0 L 8,4 L 4,8 L 4,6 L 0,6 Z" fill="#7ed3ff" />
         </marker>
 
+        {/* Panel BG (Square corners) */}
         <g id="panel-bg">
-          <rect x="0" y="0" width="270" height="490" className="panel-frame" rx="12" />
-          <rect x="0" y="0" width="270" height="490" fill="url(#dot-grid)" rx="12" />
+          <rect x="0" y="0" width="270" height="270" className="panel-frame" />
+          <rect x="0" y="0" width="270" height="270" fill="url(#dot-grid)" />
         </g>
       </defs>
 
       <rect width="1200" height="630" fill="url(#bg-glow)" />
 
       {/* PANEL 1 — PICK YOUR LANE */}
-      <g transform="translate(24, 40)">
+      <g transform="translate(24, 165)">
         <use href="#panel-bg" />
-        <text x="135" y="545" className="title">PICK YOUR LANE</text>
+        <text x="135" y="315" className="title">PICK YOUR LANE</text>
 
-        <rect x="110" y="20" width="50" height="450" fill="#7ed3ff" opacity="0.05" rx="8" />
-        <path d="M 110,20 L 110,470 M 160,20 L 160,470" stroke="#7ed3ff" strokeWidth="1" strokeDasharray="4,4" opacity="0.3" />
+        <rect x="110" y="15" width="50" height="240" fill="#7ed3ff" opacity="0.05" />
+        <path d="M 110,15 L 110,255 M 160,15 L 160,255" stroke="#7ed3ff" strokeWidth="2" strokeDasharray="8,8" opacity="0.3" />
 
         {panelOneX.map((x, i) =>
           i === 2 ? (
@@ -115,87 +118,91 @@ export default function AuctionProcessSvg() {
           ),
         )}
 
-        <path d="M 60,30 L 60,460 M 210,30 L 210,460" stroke="#2A2A3A" strokeWidth="1" strokeDasharray="4,4" />
+        <path d="M 60,20 L 60,250 M 210,20 L 210,250" stroke="#2A2A3A" strokeWidth="2" strokeDasharray="4,4" />
       </g>
 
       {/* PANEL 2 — STACK YOUR BID */}
-      <g transform="translate(318, 40)">
+      <g transform="translate(318, 165)">
         <use href="#panel-bg" />
-        <text x="135" y="545" className="title">STACK YOUR BID</text>
+        <text x="135" y="315" className="title">STACK YOUR BID</text>
 
-        <rect x="85" y="20" width="100" height="450" fill="#7ed3ff" opacity="0.05" rx="8" />
+        <rect x="85" y="15" width="100" height="240" fill="#7ed3ff" opacity="0.05" />
         <SelectedPfp x={135} y={pfpY} r={20} src={oracleImg} />
 
-        <path d="M 135,120 L 135,260" stroke="#9B59F0" strokeWidth="2" strokeDasharray="6,4" opacity="0.6" />
-        <path d="M 135,260 L 135,290" stroke="#9B59F0" strokeWidth="2" markerEnd="url(#arrowhead-purple)" opacity="0.8" />
+        <path d="M 135,70 L 135,125" stroke="#9B59F0" strokeWidth="2" strokeDasharray="8,8" opacity="0.6" />
+        <path d="M 135,125 L 135,140" stroke="#9B59F0" strokeWidth="2" markerEnd="url(#arrowhead-purple)" opacity="0.8" />
 
-        <use href="#nft-purple" x="135" y="200" opacity="0.6" transform="rotate(-5, 135, 200)" />
-        <use href="#nft-purple" x="135" y="240" opacity="0.8" transform="rotate(2, 135, 240)" />
+        <use href="#nft-purple" x="135" y="70" opacity="0.6" />
+        <use href="#nft-purple" x="135" y="105" opacity="0.8" />
 
-        <use href="#nft-purple" x="135" y="440" />
-        <use href="#nft-purple" x="135" y="418" />
-        <use href="#nft-purple" x="135" y="396" />
-        <use href="#nft-purple" x="135" y="374" />
-        <use href="#nft-purple" x="135" y="352" />
+        <use href="#nft-purple" x="135" y="240" />
+        <use href="#nft-purple" x="135" y="218" />
+        <use href="#nft-purple" x="135" y="196" />
+        <use href="#nft-purple" x="135" y="174" />
+        <use href="#nft-purple" x="135" y="152" />
       </g>
 
       {/* PANEL 3 — HIGHEST STACK WINS */}
-      <g transform="translate(612, 40)">
+      <g transform="translate(612, 165)">
         <use href="#panel-bg" />
-        <text x="135" y="545" className="title">HIGHEST STACK WINS</text>
+        <text x="135" y="315" className="title">HIGHEST STACK WINS</text>
 
-        <rect x="20" y="20" width="230" height="450" fill="#7ed3ff" opacity="0.05" rx="8" />
+        <rect x="20" y="15" width="230" height="240" fill="#7ed3ff" opacity="0.05" />
         <SelectedPfp x={135} y={pfpY} r={20} src={oracleImg} />
 
-        <use href="#nft-pink" x="65" y="440" />
-        <use href="#nft-pink" x="65" y="418" />
-        <use href="#nft-pink" x="65" y="396" />
+        <use href="#nft-pink" x="65" y="240" />
+        <use href="#nft-pink" x="65" y="218" />
+        <use href="#nft-pink" x="65" y="196" />
 
-        <use href="#nft-cyan" x="205" y="440" />
-        <use href="#nft-cyan" x="205" y="418" />
+        <use href="#nft-cyan" x="205" y="240" />
+        <use href="#nft-cyan" x="205" y="218" />
 
-        <use href="#nft-purple" x="135" y="440" />
-        <use href="#nft-purple" x="135" y="418" />
-        <use href="#nft-purple" x="135" y="396" />
-        <use href="#nft-purple" x="135" y="374" />
-        <use href="#nft-purple" x="135" y="352" />
-        <use href="#nft-purple" x="135" y="330" />
-        <use href="#nft-purple" x="135" y="308" />
+        <use href="#nft-purple" x="135" y="240" />
+        <use href="#nft-purple" x="135" y="218" />
+        <use href="#nft-purple" x="135" y="196" />
+        <use href="#nft-purple" x="135" y="174" />
+        <use href="#nft-purple" x="135" y="152" />
+        <use href="#nft-purple" x="135" y="130" />
+        <use href="#nft-purple" x="135" y="108" />
 
-        <g transform="translate(135, 265)">
-          <circle cx="0" cy="0" r="16" fill="#7ed3ff" opacity="0.2" style={{ filter: "blur(3px)" }} />
-          <path d="M -8,0 L -3,6 L 10,-6" stroke="#7ed3ff" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Blocky Pixel Checkmark */}
+        <g transform="translate(135, 75)">
+          <rect x="-14" y="-14" width="28" height="28" fill="#7ed3ff" opacity="0.2" />
+          <path d="M -8,-2 L -4,2 L 8,-10 L 10,-8 L -4,6 L -10,0 Z" fill="#7ed3ff" />
         </g>
       </g>
 
       {/* PANEL 4 — LOSERS GET REFUNDED */}
-      <g transform="translate(906, 40)">
+      <g transform="translate(906, 165)">
         <use href="#panel-bg" />
-        <text x="135" y="545" className="title">LOSERS GET REFUNDED</text>
+        <text x="135" y="315" className="title">LOSERS GET REFUNDED</text>
 
-        <rect x="20" y="20" width="230" height="450" fill="#7ed3ff" opacity="0.05" rx="8" />
+        <rect x="20" y="15" width="230" height="240" fill="#7ed3ff" opacity="0.05" />
         <SelectedPfp x={135} y={pfpY} r={20} src={oracleImg} />
 
-        <use href="#nft-purple" x="135" y="440" />
-        <use href="#nft-purple" x="135" y="418" />
-        <use href="#nft-purple" x="135" y="396" />
-        <use href="#nft-purple" x="135" y="374" />
-        <use href="#nft-purple" x="135" y="352" />
-        <use href="#nft-purple" x="135" y="330" />
-        <use href="#nft-purple" x="135" y="308" />
+        <use href="#nft-purple" x="135" y="240" />
+        <use href="#nft-purple" x="135" y="218" />
+        <use href="#nft-purple" x="135" y="196" />
+        <use href="#nft-purple" x="135" y="174" />
+        <use href="#nft-purple" x="135" y="152" />
+        <use href="#nft-purple" x="135" y="130" />
+        <use href="#nft-purple" x="135" y="108" />
 
+        {/* Left Refund (Pink) */}
         <g opacity="0.6">
-          <use href="#nft-pink" x="65" y="290" />
-          <use href="#nft-pink" x="50" y="270" transform="rotate(-15, 50, 270)" />
-          <use href="#nft-pink" x="35" y="250" transform="rotate(-30, 35, 250)" />
+          <use href="#nft-pink" x="65" y="160" />
+          <use href="#nft-pink" x="65" y="130" />
+          <use href="#nft-pink" x="40" y="100" />
         </g>
-        <path d="M 65,330 Q 65,260 20,230" fill="none" stroke="#ff73c7" strokeWidth="3" strokeDasharray="6,4" markerEnd="url(#arrowhead-pink)" />
+        <path d="M 65,190 L 65,100 L 25,100" fill="none" stroke="#ff73c7" strokeWidth="2" strokeDasharray="8,8" markerEnd="url(#arrowhead-pink)" />
 
+        {/* Right Refund (Cyan) */}
         <g opacity="0.6">
-          <use href="#nft-cyan" x="205" y="330" />
-          <use href="#nft-cyan" x="220" y="300" transform="rotate(15, 220, 300)" />
+          <use href="#nft-cyan" x="205" y="170" />
+          <use href="#nft-cyan" x="205" y="140" />
+          <use href="#nft-cyan" x="230" y="110" />
         </g>
-        <path d="M 205,370 Q 205,310 250,280" fill="none" stroke="#7ed3ff" strokeWidth="3" strokeDasharray="6,4" markerEnd="url(#arrowhead-cyan)" />
+        <path d="M 205,200 L 205,110 L 245,110" fill="none" stroke="#7ed3ff" strokeWidth="2" strokeDasharray="8,8" markerEnd="url(#arrowhead-cyan)" />
       </g>
     </svg>
   );

@@ -40,7 +40,7 @@ function ScientistModalContent({
     <>
       {isDesktop ? (
         <div className="grid grid-cols-[minmax(0,1fr)_360px]">
-          <div className="border-r border-cosmic/30">
+          <div className="border-r border-cosmic">
             <Image
               src={scientist.fullSrc}
               alt={scientist.name}
@@ -60,7 +60,7 @@ function ScientistModalContent({
               {scientist.tagline}
             </DialogDescription>
 
-            <div className="border-t border-cosmic/25 pt-5">
+            <div className="border-t border-cosmic pt-5">
               <p className="font-mono text-sm leading-relaxed text-[#b4afc0]">
                 {scientist.lore}
               </p>
@@ -69,7 +69,7 @@ function ScientistModalContent({
         </div>
       ) : (
         <div className="flex-1 overflow-y-auto">
-          <div className="border-b border-cosmic/30">
+          <div className="border-b border-cosmic">
             <Image
               src={scientist.fullSrc}
               alt={scientist.name}
@@ -89,23 +89,23 @@ function ScientistModalContent({
               {scientist.tagline}
             </DrawerDescription>
 
-            <div className="border-t border-cosmic/25 pt-5">
+            <div className="border-t border-cosmic pt-5">
               <p className="font-mono text-sm leading-relaxed text-[#b4afc0]">
                 {scientist.lore}
               </p>
             </div>
 
-            <div className="flex items-center justify-between border-t border-cosmic/25 pt-4">
+            <div className="flex items-center justify-between border-t border-cosmic pt-4">
               <button
                 onClick={onPrev}
-                className="flex h-10 w-10 items-center justify-center border border-cosmic/40 bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                className="flex h-10 w-10 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
                 aria-label="Previous scientist"
               >
                 &larr;
               </button>
               <button
                 onClick={onNext}
-                className="flex h-10 w-10 items-center justify-center border border-cosmic/40 bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                className="flex h-10 w-10 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
                 aria-label="Next scientist"
               >
                 &rarr;
@@ -146,19 +146,19 @@ export default function ScientistModal({
         <DialogContent>
           <button
             onClick={onPrev}
-            className="absolute left-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+            className="absolute left-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
             aria-label="Previous scientist"
           >
             &larr;
           </button>
           <button
             onClick={onNext}
-            className="absolute right-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic/40 bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+            className="absolute right-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
             aria-label="Next scientist"
           >
             &rarr;
           </button>
-          <div className="w-full max-w-5xl max-h-[90vh] overflow-hidden border border-cosmic/40 bg-[#080612]/95 shadow-lg animate-[dialogIn_300ms_cubic-bezier(0.16,1,0.3,1)]">
+          <div className="w-full max-w-5xl max-h-[90vh] overflow-hidden border border-cosmic bg-[#080612]/95 shadow-lg animate-[dialogIn_300ms_cubic-bezier(0.16,1,0.3,1)]">
             <ScientistModalContent
               scientist={scientist}
               onPrev={onPrev}

@@ -38,7 +38,11 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **Borders:** `border border-green` on all panels/sections — this is the core visual identity
 - **Padding:** `p-6 md:p-8` inside bordered panels
 - **No border-radius** — everything is sharp/square corners
+- **Cosmic borders:** Default to `border-cosmic` (100% opacity) across the COSMIC page, NavBar, Footer, and ScientistModal. Use `border-cosmic/40` only for secondary elements (auction lanes, stats cards).
 - **Responsive:** Mobile-first. Breakpoint at `md:` (768px). Stacked on mobile, side-by-side on desktop.
+
+### Layer Naming (`data-layer`)
+Elements use `data-layer="section-element"` attributes for designer-developer coordination. When adding new sections, name layers for easy reference (e.g., `data-layer="hero-mobile-logo"`). Named sections: `hero`, `auction`.
 
 ### Mobile Patterns
 - **Text alignment:** `text-center md:text-left` — center on mobile, left-align on desktop
@@ -52,17 +56,18 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 - **`NavBar`** — Grid-cell layout with `border-l` dividers. Do NOT use Button here.
 - **`Footer`** — 5-col link grid + social icons. Uses inline `<a>` tags, not Button.
 - **`Hero`** — Two-column hero (text left, GIF right). Homepage only.
-- **`Ticker`** — `"gateway"` / `"stargaze"` variants. Homepage only. 60s seamless loop.
+- **`Ticker`** — `"gateway"` / `"stargaze"` / `"cosmic-top"` / `"cosmic-bottom"` variants. 60s seamless loop. Cosmic variants use `border-cosmic`, `text-cosmic`, Silkscreen font for "5", borderless height-fit icons.
 - **`BlockchainSection`** — 3-column info grid with circular icon avatars.
 - **`Dialog`** (`src/components/ui/dialog.tsx`) — Radix UI Dialog wrapper. Used for desktop modals (≥640px). Flex-centered overlay with cosmic styling.
 - **`Drawer`** (`src/components/ui/drawer.tsx`) — Vaul Drawer wrapper. Used for mobile modals (<640px). Bottom sheet with drag handle, swipe-to-close.
 - **`useMediaQuery`** (`src/lib/hooks/useMediaQuery.ts`) — SSR-safe media query hook. Used to switch between Dialog and Drawer.
 - **`ScientistModal`** (`src/components/cosmic/ScientistModal.tsx`) — Extracted cosmic gallery modal. Dynamically imported (`ssr: false`) to avoid bundling on initial page load.
-- **`AuctionProcessSvg`** (`src/components/cosmic/AuctionProcessSvg.tsx`) — Inline SVG auction infographic (4 panels). Uses circular-clipped halfbody-v2 PNGs as character PFPs. Rendered inline (not `<img>`) so SVG `<image>` tags can load external assets.
+- **`AuctionProcessSvg`** (`src/components/cosmic/AuctionProcessSvg.tsx`) — Inline SVG auction infographic (4 square 1:1 panels). Pixel art style: square dot grid, sharp corners, blocky arrowheads. Square-cropped halfbody PFPs. Supports `panel` prop (1–4) for viewBox cropping to render a single panel. Rendered inline so SVG `<image>` tags can load external assets.
 
 ## Performance Practices
 - **Page metadata:** Every page has its own `layout.tsx` with title, description, OG, Twitter card metadata, and `alternates.canonical` (required because pages use `"use client"`). Root layout has `metadataBase: new URL("https://madscientists.io")`.
 - **Hero images:** Add `priority` to above-the-fold images for faster LCP. Add `sizes` prop to all `<Image>` components for responsive serving.
+- **Images in flex containers:** Use `width`/`height` props (not `fill`) to keep images in document flow. `fill` makes the image absolutely positioned, causing flex containers to collapse height. Pattern: `<Image width={W} height={H} className="w-full h-full object-cover" />`.
 - **Animated GIFs:** Keep `unoptimized` (Next.js strips animation otherwise). Still add `priority` and `sizes`.
 - **Ticker:** `will-change: transform` in `globals.css` for GPU-accelerated animation.
 - **Modal code splitting:** Interaction-only components (ScientistModal) use `next/dynamic` with `ssr: false`.
@@ -95,10 +100,11 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links (commented out, ready to uncomment), accessible only via direct URL. `"use client"` page with interactive state (modal, back-to-top button). `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled).
 
 **Sections (top to bottom):**
-- **Hero** — portal lineup art (1376x768, all 5 scientists) with logo overlay, stats grid, CTA buttons
-- **Ticker strip** — horizontal facts bar (5 one-of-one artifacts, pixel-crafted, etc.)
+- **Ticker (top)** — cosmic-top variant ("5 ONE-OF-ONE ARTIFACTS")
+- **Hero** — Mobile: logo panel + stacked image/content card. Desktop: two-panel layout (image flex-[2] right, text flex-1 left via `flex-row-reverse`). Hero image uses `width`/`height` (not `fill`) to stay in document flow — avoids flex container height collapse.
+- **Ticker (bottom)** — cosmic-bottom variant ("BID ON STARGAZE")
 - **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards show scientist name and tagline permanently below the image. Hover: border glow + subtle image zoom (no translate-y lift, no slide-up overlay). Cards are clickable, open detail modal. Uses halfbody-v2 images for cards.
-- **Auction** — "Bid Scientists. Win Scientists." headline, 4-step how-it-works grid, 5 parallel auction lanes with per-scientist status, AuctionProcessSvg infographic + CTA button + Stargaze partner block (dashed border, logo, "Official auction partner")
+- **Auction** — "Bid Scientists. Win Scientists." headline. Order: 4-step how-it-works (horizontal cards: SVG panel left, text right, 2-col grid), CTA box with branded Stargaze badge (side-by-side on desktop, `border-l` divider), 5 parallel auction lanes.
 
 **Scientist detail modal** — responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog centered overlay, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next buttons at bottom. Both: keyboard arrow keys for prev/next, Escape to close, shows name, tagline, lore paragraph.
 

@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Silkscreen } from "next/font/google";
 import NavBar from "@/components/NavBar";
+import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import type { Scientist } from "@/components/cosmic/ScientistModal";
@@ -110,7 +111,7 @@ function GalleryCard({
       onClick={onClick}
       className="group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7ed3ff]"
     >
-      <div className="relative overflow-hidden border border-cosmic/45 bg-[#090b17] transition duration-300 group-hover:border-[#7ed3ff]/70 group-hover:shadow-[0_10px_30px_rgba(35,158,255,0.2)]">
+      <div className="relative overflow-hidden border border-cosmic bg-[#090b17] transition duration-300 group-hover:border-[#7ed3ff]/70 group-hover:shadow-[0_10px_30px_rgba(35,158,255,0.2)]">
         <Image
           src={scientist.src}
           alt={scientist.name}
@@ -119,7 +120,7 @@ function GalleryCard({
           sizes="(max-width: 639px) 84vw, (max-width: 767px) 62vw, (max-width: 1023px) 46vw, (max-width: 1279px) 36vw, 20vw"
           className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <span className="absolute left-3 top-3 z-10 border border-cosmic/40 bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
+        <span className="absolute left-3 top-3 z-10 border border-cosmic bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
           1/1
         </span>
       </div>
@@ -157,8 +158,8 @@ export default function CosmicPage() {
     <main id="main-content" className="min-h-screen scroll-smooth overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
       <NavBar theme="cosmic" />
 
-      <section className="relative mx-auto max-w-[1440px] border-x border-cosmic/25">
-        <div className="pointer-events-none absolute inset-0">
+      <section data-layer="page-wrapper" className="relative mx-auto max-w-[1440px] border-x border-cosmic">
+        <div data-layer="bg-blobs" className="pointer-events-none absolute inset-0 hidden md:block">
           <div className="absolute left-[-160px] top-[-140px] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(126,211,255,0.22)_0%,rgba(126,211,255,0)_72%)]" />
           <div className="absolute bottom-[-180px] right-[-140px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(255,122,217,0.2)_0%,rgba(255,122,217,0)_72%)]" />
           <div
@@ -171,62 +172,42 @@ export default function CosmicPage() {
           />
         </div>
 
-        <section className="relative border-b border-cosmic/25 px-4 py-8 md:px-12 md:py-12">
-          <div className="mb-3 flex justify-center md:hidden">
-            <div className="inline-flex border border-cosmic/35 bg-[#0a1021]/80 px-3 py-2">
-              <Image
-                src="/images/cosmic-logo.png"
-                alt="COSMIC logo"
-                width={260}
-                height={86}
-                className="h-auto w-[122px]"
-              />
-            </div>
+        <Ticker variant="cosmic-top" />
+
+        <section data-layer="hero" className="relative border-b border-cosmic">
+          <div data-layer="hero-mobile-logo" className="flex justify-center border-b border-l border-r border-cosmic px-6 py-3 md:hidden">
+            <Image
+              src="/images/cosmic-logo.png"
+              alt="COSMIC logo"
+              width={480}
+              height={160}
+              className="h-[80px] w-auto"
+            />
           </div>
 
-          <div className="overflow-hidden border border-cosmic/40 bg-[#050a16] shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
-            <div className="relative aspect-[16/9]">
+          {/* Mobile: Stacked hero */}
+          <div data-layer="hero-container" className="overflow-hidden border border-cosmic bg-[#050a16] shadow-[0_24px_60px_rgba(0,0,0,0.45)] md:hidden">
+            <div data-layer="hero-image" className="relative aspect-[16/9]">
               <Image
                 src={HERO_IMAGE_SRC}
                 alt={HERO_IMAGE_ALT}
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, 1400px"
+                sizes="100vw"
                 className="h-full w-full object-cover"
               />
-              <div className="absolute left-4 top-4 hidden border border-cosmic/40 bg-[rgba(8,8,28,0.72)] p-2.5 md:block lg:left-6 lg:top-6">
-                <Image
-                  src="/images/cosmic-logo.png"
-                  alt="COSMIC logo"
-                  width={360}
-                  height={120}
-                  className="h-auto w-[160px] lg:w-[190px]"
-                />
-              </div>
-
-              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 border border-cosmic/40 bg-[rgba(6,10,26,0.78)] px-3 py-1.5 md:bottom-4">
-                <p className="font-display text-[10px] uppercase tracking-[0.18em] text-[#9fe5ff]">
-                  Scroll Down
-                </p>
-                <p className="text-center font-display text-xs text-[#f3ecff] animate-[scrollPulse_1.2s_ease-in-out_infinite]">
-                  v
-                </p>
-              </div>
             </div>
 
-            <div className="border-t border-cosmic/25 p-4 md:hidden">
-              <p className="font-display text-xs uppercase tracking-[0.14em] text-[#7ed3ff]">
-                Transmission Incoming // COSMIC Division
-              </p>
-              <h1 className="mt-2 font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff]">
+            <div data-layer="hero-mobile-content" className="border-t border-cosmic p-8">
+              <h1 data-layer="hero-mobile-heading" className="font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff]">
                 <ClearFive className="text-[#7ed3ff]" /> Freaks.
                 <br />
                 One Universe.
               </h1>
-              <p className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
+              <p data-layer="hero-mobile-body" className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
                 5 hand-built 1/1s. Bid your Mad Scientists to claim one.
               </p>
-              <div className="mt-4 flex flex-col gap-3">
+              <div data-layer="hero-mobile-buttons" className="mt-4 flex flex-col gap-3">
                 <Button
                   href="#collection"
                   variant="cosmic-primary"
@@ -247,21 +228,30 @@ export default function CosmicPage() {
                 </Button>
               </div>
             </div>
+          </div>
 
-            <div className="hidden border-t border-cosmic/25 p-6 md:grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-6 lg:p-8">
-              <div>
-                <p className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
-                  Transmission Incoming // COSMIC Division
-                </p>
-                <h1 className="mt-2 font-display text-5xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] lg:text-6xl">
+          {/* Desktop: Two-panel hero */}
+          <div data-layer="hero-desktop" className="hidden md:flex md:flex-row-reverse">
+            <div data-layer="hero-desktop-left" className="flex-1 border border-cosmic flex flex-col">
+              <div className="flex flex-col gap-4 p-8 lg:p-10 flex-1 justify-center">
+                <div className="border border-cosmic bg-[rgba(8,8,28,0.72)] p-2.5 w-fit">
+                  <Image
+                    src="/images/cosmic-logo.png"
+                    alt="COSMIC logo"
+                    width={360}
+                    height={120}
+                    className="h-auto w-[160px] lg:w-[190px]"
+                  />
+                </div>
+                <h1 className="font-display text-5xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] lg:text-6xl">
                   <ClearFive className="text-[#7ed3ff]" /> Freaks.
                   <br />
                   One Universe.
                 </h1>
-                <p className="mt-4 max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
+                <p className="max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
                   5 hand-built 1/1s. Bid your Mad Scientists to claim one.
                 </p>
-                <div className="mt-5 flex flex-wrap gap-3">
+                <div className="flex flex-col gap-3 mt-2 w-full">
                   <Button
                     href="#collection"
                     variant="cosmic-primary"
@@ -280,80 +270,28 @@ export default function CosmicPage() {
                   </Button>
                 </div>
               </div>
+            </div>
 
-              <div className="grid grid-cols-2 gap-3 self-start">
-                {[
-                  { label: "Artifacts", value: "5 x 1/1" },
-                  { label: "Mint Type", value: "Hand-Crafted" },
-                  { label: "Acquisition", value: "Auction" },
-                  { label: "Bid Asset", value: "Mad 10k NFTs" },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="border border-cosmic/25 bg-[#0a0c1d] p-4"
-                  >
-                    <p className="font-display text-[10px] uppercase tracking-[0.2em] text-cosmic/65">
-                      {item.label}
-                    </p>
-                    <p className="mt-1 font-display text-base uppercase tracking-wide text-[#f6f1ff]">
-                      {item.label === "Artifacts" ? (
-                        <>
-                          <ClearFive className="text-[#f6f1ff]" /> x 1/1
-                        </>
-                      ) : (
-                        item.value
-                      )}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            <div data-layer="hero-desktop-right" className="flex-[2] border border-cosmic overflow-hidden">
+              <Image
+                src={HERO_IMAGE_SRC}
+                alt={HERO_IMAGE_ALT}
+                width={1376}
+                height={768}
+                priority
+                sizes="66vw"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
-            {[
-              { label: "Artifacts", value: "5 x 1/1" },
-              { label: "Mint Type", value: "Hand-Crafted" },
-              { label: "Acquisition", value: "Auction" },
-              { label: "Bid Asset", value: "Mad 10k NFTs" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="border border-cosmic/25 bg-[#0a0c1d] p-3 md:p-4"
-              >
-                <p className="font-display text-xs uppercase tracking-[0.14em] text-cosmic/65 md:text-[10px] md:tracking-[0.2em]">
-                  {item.label}
-                </p>
-                <p className="mt-1 font-display text-sm uppercase tracking-wide text-[#f6f1ff] md:text-base">
-                  {item.label === "Artifacts" ? (
-                    <>
-                      <ClearFive className="text-[#f6f1ff]" /> x 1/1
-                    </>
-                  ) : (
-                    item.value
-                  )}
-                </p>
-              </div>
-            ))}
-          </div>
         </section>
 
-        <section className="relative border-b border-cosmic/25 bg-[linear-gradient(90deg,rgba(126,211,255,0.08),rgba(155,89,240,0.07),rgba(255,115,199,0.08))] px-4 py-4 md:px-12">
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-display text-xs uppercase tracking-[0.12em] text-[#d8d2ec] md:gap-x-6 md:text-xs md:tracking-[0.18em]">
-            <span>
-              <ClearFive className="text-[#d8d2ec]" /> subjects escaped the
-              lab
-            </span>
-            <span>each one is irreplaceable</span>
-            <span>bid your 10k to claim them</span>
-            <span>no duplicates exist</span>
-            <span>retrieval is not optional</span>
-          </div>
-        </section>
+        <Ticker variant="cosmic-bottom" />
 
         <section
           id="collection"
-          className="relative border-b border-cosmic/25 px-6 py-12 md:px-12 md:py-16"
+          className="relative border-b border-cosmic px-6 py-12 md:px-12 md:py-16"
         >
           <div className="mx-auto max-w-6xl">
             <p className="font-display text-xs uppercase tracking-[0.22em] text-cosmic/70">
@@ -386,46 +324,96 @@ export default function CosmicPage() {
           </div>
         </section>
 
-        <section id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
+        <section data-layer="auction" id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-6xl">
-            <p className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
+            <p data-layer="auction-label" className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
               The Experiment
             </p>
-            <h2 className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
+            <h2 data-layer="auction-heading" className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
               Bid Scientists. Win Cosmic.
             </h2>
-            <p className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
+            <p data-layer="auction-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
               Bid Mad Scientists from the 10k collection. Highest stack
               wins. Losers get refunded.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
-              {auctionSteps.map((item) => (
+            <div data-layer="auction-steps" className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+              {auctionSteps.map((item, i) => (
                 <article
                   key={item.step}
-                  className="border border-cosmic/30 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-4 md:p-5"
+                  className="flex border border-cosmic bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] overflow-hidden"
                 >
-                  <p className="font-display text-3xl leading-none text-cosmic/25 md:text-4xl">
-                    {item.step}
-                  </p>
-                  <h3 className="mt-3 font-display text-sm uppercase tracking-[0.08em] text-[#f0e8ff] md:text-base">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 font-mono text-xs leading-relaxed text-[#aaa4bf] md:text-sm">
-                    {item.desc}
-                  </p>
+                  <div className="w-[120px] shrink-0 border-r border-cosmic/20 bg-[#0a0c1d] md:w-[150px]">
+                    <AuctionProcessSvg panel={i + 1} />
+                  </div>
+                  <div className="flex-1 p-4 md:p-5">
+                    <p className="font-display text-3xl leading-none text-cosmic md:text-4xl">
+                      {item.step}
+                    </p>
+                    <h3 className="mt-3 font-display text-sm uppercase tracking-[0.08em] text-[#f0e8ff] md:text-base">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 font-mono text-xs leading-relaxed text-[#aaa4bf] md:text-sm">
+                      {item.desc}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>
 
-            <div className="mt-8">
-              <h3 className="font-display text-xl uppercase tracking-wide text-[#f1eaff] md:text-2xl">
+            <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-[#090c1a] md:flex-row">
+                <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
+                  <p data-layer="auction-cta-text" className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
+                    Bid your 10k Scientists. Claim a COSMIC 1/1.
+                  </p>
+                  <Button
+                    href="#"
+                    variant="cosmic-primary"
+                    size="lg"
+                    theme="cosmic"
+                    className="w-full md:w-fit"
+                  >
+                    Place Your Bid
+                  </Button>
+                </div>
+                <div
+                  data-layer="auction-stargaze"
+                  className="flex items-center gap-3 border-t border-cosmic/40 px-6 py-4 md:w-[200px] md:shrink-0 md:flex-col md:items-center md:justify-center md:gap-2 md:border-l md:border-t-0 md:px-8 md:py-6 md:text-center"
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#6b6580] md:order-first">
+                    Powered by
+                  </p>
+                  <Image
+                    src="/images/stargaze-chain.svg"
+                    alt="Stargaze"
+                    width={40}
+                    height={40}
+                    className="hidden shrink-0 md:block"
+                  />
+                  <Image
+                    src="/images/stargaze-chain.svg"
+                    alt="Stargaze"
+                    width={24}
+                    height={24}
+                    className="shrink-0 md:hidden"
+                  />
+                  <p className="font-display text-sm font-bold uppercase tracking-[0.08em] text-[#e8e0ff]">
+                    Stargaze
+                  </p>
+                  <p className="hidden font-mono text-[10px] text-[#9e99b0] md:block">
+                    Auction Partner
+                  </p>
+                </div>
+            </div>
+
+            <div data-layer="auction-lanes-wrapper" className="mt-8">
+              <h3 data-layer="auction-lanes-heading" className="font-display text-xl uppercase tracking-wide text-[#f1eaff] md:text-2xl">
                 <ClearFive className="text-[#f1eaff]" /> Parallel Auctions
               </h3>
-              <p className="mt-2 font-mono text-xs text-[#a8a3bd] md:text-sm">
+              <p data-layer="auction-lanes-body" className="mt-2 font-mono text-xs text-[#a8a3bd] md:text-sm">
                 All 5 run at once. Pick your lane. Watch the bids stack up.
               </p>
-              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
+              <div data-layer="auction-lanes" className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
                 {parallelAuctionStatus.map((auction, i) => {
                   const scientist = scientists.find(
                     (item) => item.id === auction.id,
@@ -435,7 +423,7 @@ export default function CosmicPage() {
                   return (
                     <article
                       key={auction.id}
-                      className={`relative overflow-hidden border border-cosmic/30 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-3 md:p-4${
+                      className={`relative overflow-hidden border border-cosmic/40 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-3 md:p-4${
                         i === 4
                           ? " col-span-2 mx-auto w-[calc(50%-6px)] md:col-span-1 md:w-full"
                           : ""
@@ -444,7 +432,7 @@ export default function CosmicPage() {
                       <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-[#2a2740]" />
 
                       <div className="flex items-center gap-2.5">
-                        <div className="relative h-9 w-9 shrink-0 overflow-hidden border border-cosmic/20 grayscale-[40%] opacity-70">
+                        <div className="relative h-9 w-9 shrink-0 overflow-hidden border border-cosmic grayscale-[40%] opacity-70">
                           <Image
                             src={scientist.src}
                             alt={scientist.name}
@@ -481,48 +469,6 @@ export default function CosmicPage() {
                 })}
               </div>
             </div>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
-              <div className="border border-cosmic/30 bg-[#080c1b] p-4 md:p-6" role="img" aria-label="Auction process: Pick your lane, stack your bid, highest stack wins, losers get refunded">
-                <AuctionProcessSvg />
-              </div>
-              <div className="flex flex-col justify-center gap-4 border border-cosmic/30 bg-[#090c1a] p-6 md:p-8">
-                <p className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
-                  Bid your 10k Scientists. Claim a COSMIC 1/1.
-                </p>
-                <Button
-                  href="#"
-                  variant="cosmic-primary"
-                  size="lg"
-                  theme="cosmic"
-                  className="w-full md:w-fit"
-                >
-                  Place Your Bid
-                </Button>
-                <a
-                  href="https://www.stargaze.zone"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 flex items-center gap-3 border border-dashed border-cosmic/25 bg-[#0a0e1e]/60 px-4 py-3 transition-colors hover:border-cosmic/40 hover:bg-[#0d1125]/80"
-                >
-                  <Image
-                    src="/images/stargaze-chain.svg"
-                    alt="Stargaze"
-                    width={28}
-                    height={28}
-                    className="shrink-0"
-                  />
-                  <div>
-                    <p className="font-display text-xs font-bold uppercase tracking-[0.08em] text-[#e8e0ff]">
-                      Stargaze
-                    </p>
-                    <p className="font-mono text-[10px] text-[#9e99b0]">
-                      Official auction partner
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
           </div>
         </section>
       </section>
@@ -530,7 +476,7 @@ export default function CosmicPage() {
       {showTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center border border-cosmic/40 bg-[#09081a]/90 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic backdrop-blur-sm"
+          className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center border border-cosmic bg-[#09081a]/90 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic backdrop-blur-sm"
           aria-label="Back to top"
         >
           &uarr;

@@ -53,7 +53,7 @@ interface FooterProps {
 
 export default function Footer({ theme = "default" }: FooterProps) {
   const isCosmic = theme === "cosmic";
-  const borderClass = isCosmic ? "border-cosmic/40" : "border-green";
+  const borderClass = isCosmic ? "border-cosmic" : "border-green";
   const linkClass = isCosmic
     ? "text-[#cfc6ea] hover:text-[#9fe5ff]"
     : "text-green hover:text-green-light";
