@@ -150,6 +150,14 @@ export default function CosmicPage() {
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
+    if (!selected) return;
+    scientists.forEach((s) => {
+      const img = new window.Image();
+      img.src = s.fullSrc;
+    });
+  }, [selected !== null]);
+
+  useEffect(() => {
     const handleScroll = () => setShowTop(window.scrollY > 600);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
