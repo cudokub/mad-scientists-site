@@ -46,7 +46,6 @@ function TickerSet({ item, count, cosmic }: { item: TickerItem; count: number; c
   const textClass = cosmic
     ? "font-display text-cosmic text-lg md:text-2xl font-bold tracking-wider"
     : "font-display text-green text-lg md:text-2xl font-bold tracking-wider";
-  const iconBorder = cosmic ? "border-cosmic" : "border-green";
 
   return (
     <>
@@ -65,7 +64,7 @@ function TickerSet({ item, count, cosmic }: { item: TickerItem; count: number; c
               item.text
             )}
           </span>
-          <div className={`${cosmic ? "h-[30px] md:h-[36px]" : `w-[30px] h-[30px] md:w-[36px] md:h-[36px] border-2 ${iconBorder}`} overflow-hidden shrink-0`}>
+          <div className={`${cosmic ? "h-[30px] md:h-[36px]" : `w-[30px] h-[30px] md:w-[36px] md:h-[36px] rounded-full`} overflow-hidden shrink-0`}>
             <Image
               src={item.icon}
               alt=""
