@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COSMIC - Mad Scientists Internal Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Reddit+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:'Reddit Mono',monospace;
+  background:#04070f;
+  color:#f3ecff;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ========== DOT GRID ========== */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:radial-gradient(circle,rgba(155,89,240,0.07) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.font-display{
+  font-family:'Pixelify Sans',cursive;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.font-mono{font-family:'Reddit Mono',monospace;font-weight:400}
+
+/* ========== PROGRESS BAR ========== */
+#progress-bar{
+  position:fixed;
+  top:0;left:0;
+  height:3px;
+  background:linear-gradient(90deg,#9B59F0,#7ed3ff,#ff73c7);
+  z-index:1000;
+  width:0%;
+  transition:width .3s ease;
+}
+
+/* ========== NAV DOTS ========== */
+#nav-dots{
+  position:fixed;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:1000;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.nav-dot{
+  width:10px;height:10px;
+  border:1px solid #9B59F0;
+  background:transparent;
+  cursor:pointer;
+  transition:all .3s ease;
+  padding:0;
+}
+.nav-dot:hover{background:rgba(155,89,240,0.4)}
+.nav-dot.active{
+  background:#9B59F0;
+  box-shadow:0 0 8px rgba(155,89,240,0.6);
+}
+
+/* ========== SLIDE BASE ========== */
+.slide{
+  min-height:100vh;
+  min-height:100dvh;
+  width:100%;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:60px 48px;
+}
+
+/* ========== SLIDE INNER ========== */
+.slide-inner{
+  max-width:1200px;
+  width:100%;
+  position:relative;
+}
+
+/* ========== REVEAL ANIMATIONS ========== */
+.reveal{
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+.reveal-delay-6{transition-delay:.6s}
+.reveal-delay-7{transition-delay:.7s}
+.reveal-delay-8{transition-delay:.8s}
+
+/* ========== GLOW PULSE ========== */
+@keyframes glow-pulse{
+  0%,100%{box-shadow:0 0 12px rgba(155,89,240,0.25),0 0 40px rgba(155,89,240,0.08)}
+  50%{box-shadow:0 0 20px rgba(155,89,240,0.45),0 0 60px rgba(155,89,240,0.15)}
+}
+@keyframes text-glow-pulse{
+  0%,100%{text-shadow:0 0 20px rgba(155,89,240,0.4),0 0 60px rgba(155,89,240,0.15)}
+  50%{text-shadow:0 0 40px rgba(155,89,240,0.7),0 0 80px rgba(155,89,240,0.3)}
+}
+@keyframes border-glow{
+  0%,100%{box-shadow:0 0 8px rgba(155,89,240,0.2)}
+  50%{box-shadow:0 0 16px rgba(155,89,240,0.4)}
+}
+
+/* ========== COSMIC TITLE (Slide 1) ========== */
+.cosmic-title{
+  font-size:clamp(4rem,12vw,10rem);
+  line-height:0.9;
+  background:linear-gradient(135deg,#9B59F0 0%,#7ed3ff 50%,#ff73c7 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:text-glow-pulse 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 40px rgba(155,89,240,0.35));
+}
+.cosmic-subtitle{
+  font-size:clamp(1.2rem,3vw,2.2rem);
+  color:#f3ecff;
+  opacity:0.7;
+  margin-top:16px;
+}
+.slide-1-date{
+  font-size:clamp(0.75rem,1.5vw,1rem);
+  color:#9e99b0;
+  margin-top:40px;
+}
+.slide-1-team{
+  font-size:clamp(0.65rem,1.2vw,0.85rem);
+  color:#9e99b0;
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  letter-spacing:0.15em;
+}
+
+/* ========== PANELS ========== */
+.panel{
+  border:1px solid #9B59F0;
+  background:#0a0e1a;
+  padding:32px;
+  position:relative;
+  box-shadow:0 0 12px rgba(155,89,240,0.15);
+}
+.panel-glow{animation:border-glow 3s ease-in-out infinite}
+
+/* ========== HEADINGS ========== */
+.slide-heading{
+  font-size:clamp(1.8rem,5vw,3.5rem);
+  color:#f3ecff;
+  margin-bottom:8px;
+}
+.slide-subheading{
+  font-size:clamp(0.9rem,2vw,1.3rem);
+  color:#7ed3ff;
+  margin-bottom:32px;
+}
+
+/* ========== BODY TEXT ========== */
+.body-text{
+  font-size:clamp(0.85rem,1.5vw,1.05rem);
+  line-height:1.7;
+  color:#f3ecff;
+  opacity:0.85;
+}
+.muted-text{
+  color:#9e99b0;
+  font-size:clamp(0.75rem,1.2vw,0.9rem);
+}
+.accent-text{color:#7ed3ff}
+.pink-text{color:#ff73c7}
+.purple-text{color:#9B59F0}
+
+/* ========== QUOTE ========== */
+.big-quote{
+  font-size:clamp(1.4rem,3.5vw,2.6rem);
+  line-height:1.3;
+  color:#f3ecff;
+  border-left:3px solid #9B59F0;
+  padding-left:24px;
+  margin:24px 0;
+}
+
+/* ========== 5-CARD GRID (Slide 4) ========== */
+.five-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:16px;
+  margin-top:32px;
+}
+.scientist-card{
+  border:1px solid #9B59F0;
+  background:#0a0e1a;
+  padding:0;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  transition:box-shadow .3s ease,border-color .3s ease;
+}
+.scientist-card:hover{
+  box-shadow:0 0 24px rgba(155,89,240,0.4);
+  border-color:#7ed3ff;
+}
+.scientist-card:hover .card-img{
+  transform:scale(1.05);
+}
+.card-img-wrap{
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-bottom:1px solid #9B59F0;
+  background:#080612;
+}
+.card-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+  transition:transform .4s ease;
+}
+.card-info{padding:12px 12px 16px}
+.card-badge{
+  display:inline-block;
+  border:1px solid #ff73c7;
+  color:#ff73c7;
+  font-size:0.6rem;
+  padding:2px 6px;
+  margin-bottom:8px;
+  letter-spacing:0.1em;
+}
+.card-name{
+  font-size:clamp(0.7rem,1.2vw,1rem);
+  color:#f3ecff;
+  margin-bottom:4px;
+}
+.card-tagline{
+  font-size:clamp(0.55rem,0.85vw,0.7rem);
+  color:#9e99b0;
+  line-height:1.4;
+}
+
+/* ========== CHARACTER DETAIL (Slides 5-7) ========== */
+.char-detail{position:relative}
+.char-layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:48px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+.char-img-wrap{
+  border:1px solid #9B59F0;
+  overflow:hidden;
+  background:#080612;
+  box-shadow:0 0 24px rgba(155,89,240,0.2);
+  aspect-ratio:3/4;
+}
+.char-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+.char-bg-number{
+  position:absolute;
+  top:-20px;
+  right:-10px;
+  font-size:clamp(6rem,18vw,14rem);
+  color:rgba(155,89,240,0.06);
+  line-height:1;
+  pointer-events:none;
+  z-index:0;
+}
+.char-content{position:relative;z-index:1}
+.char-heading{
+  font-size:clamp(1.4rem,4vw,2.8rem);
+  margin-bottom:8px;
+}
+.char-tagline{
+  font-size:clamp(1rem,2vw,1.5rem);
+  color:#7ed3ff;
+  margin-bottom:24px;
+  font-style:italic;
+}
+.char-lore{
+  font-size:clamp(0.85rem,1.5vw,1.05rem);
+  line-height:1.8;
+  color:#f3ecff;
+  opacity:0.8;
+  max-width:720px;
+}
+
+/* ========== SPLIT LAYOUT (Slides 6-7) ========== */
+.split-layout{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:0;
+  margin-top:24px;
+}
+.split-divider{
+  background:linear-gradient(180deg,transparent,#9B59F0,transparent);
+  width:1px;
+}
+.split-col{padding:24px 32px;display:flex;flex-direction:column;align-items:center}
+.split-img-wrap{
+  border:1px solid #9B59F0;
+  overflow:hidden;
+  background:#080612;
+  width:160px;
+  aspect-ratio:3/4;
+  margin-bottom:20px;
+  box-shadow:0 0 16px rgba(155,89,240,0.15);
+  flex-shrink:0;
+}
+.split-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+.split-heading{
+  font-size:clamp(1rem,2.5vw,1.8rem);
+  margin-bottom:6px;
+}
+.split-tagline{
+  font-size:clamp(0.8rem,1.4vw,1.1rem);
+  color:#7ed3ff;
+  margin-bottom:16px;
+  font-style:italic;
+  text-align:center;
+}
+.split-lore{
+  font-size:clamp(0.75rem,1.2vw,0.9rem);
+  line-height:1.7;
+  color:#f3ecff;
+  opacity:0.75;
+  text-align:center;
+}
+
+/* ========== AUCTION STEPS (Slide 8) ========== */
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:24px;
+}
+.step-card{
+  border:1px solid #9B59F0;
+  background:#0a0e1a;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.step-svg-wrap{
+  width:100%;
+  aspect-ratio:1/1;
+  border-bottom:1px solid rgba(155,89,240,0.4);
+  background:#0B0A10;
+  overflow:hidden;
+}
+.step-svg-wrap svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.step-info{padding:12px 12px 16px}
+.step-title{
+  font-size:clamp(0.7rem,1.2vw,0.95rem);
+  color:#7ed3ff;
+  margin-bottom:6px;
+}
+.step-desc{
+  font-size:clamp(0.6rem,0.9vw,0.75rem);
+  color:#9e99b0;
+  line-height:1.4;
+}
+.auction-note{
+  margin-top:20px;
+  text-align:center;
+  font-size:clamp(0.8rem,1.3vw,1rem);
+  color:#ff73c7;
+  letter-spacing:0.08em;
+}
+
+/* ========== BULLET LIST (Slide 9-10) ========== */
+.bullet-list{
+  list-style:none;
+  padding:0;
+  margin:24px 0;
+}
+.bullet-list li{
+  padding:10px 0 10px 24px;
+  position:relative;
+  font-size:clamp(0.85rem,1.4vw,1.05rem);
+  color:#f3ecff;
+  opacity:0.85;
+  border-bottom:1px solid rgba(155,89,240,0.1);
+}
+.bullet-list li::before{
+  content:'>';
+  position:absolute;
+  left:0;
+  color:#9B59F0;
+  font-weight:700;
+}
+.bottom-text{
+  margin-top:40px;
+  font-size:clamp(0.75rem,1.2vw,0.9rem);
+  color:#9e99b0;
+}
+.cta-text{
+  font-size:clamp(1.2rem,3vw,2rem);
+  color:#ff73c7;
+  margin-top:40px;
+  animation:text-glow-pulse 3s ease-in-out infinite;
+  filter:drop-shadow(0 0 20px rgba(255,115,199,0.25));
+}
+
+/* ========== CAMPAIGN GRID (Slide 10) ========== */
+.campaign-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:24px;
+}
+.campaign-phase{
+  border:1px solid rgba(155,89,240,0.4);
+  background:#0a0e1a;
+  padding:0;
+  overflow:hidden;
+}
+.phase-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 16px;
+  border-bottom:1px solid rgba(155,89,240,0.3);
+}
+.phase-tease{background:rgba(255,115,199,0.08)}
+.phase-reveal{background:rgba(126,211,255,0.08)}
+.phase-auction{background:rgba(155,89,240,0.08)}
+.phase-label{
+  font-size:clamp(0.6rem,1vw,0.75rem);
+  color:#f3ecff;
+  letter-spacing:0.12em;
+}
+.phase-days{
+  font-size:clamp(0.55rem,0.9vw,0.7rem);
+  color:#9e99b0;
+}
+.phase-title{
+  font-size:clamp(1rem,2vw,1.5rem);
+  padding:12px 16px 4px;
+}
+.phase-list{
+  list-style:none;
+  padding:4px 16px 16px;
+}
+.phase-list li{
+  font-size:clamp(0.6rem,0.95vw,0.78rem);
+  color:#f3ecff;
+  opacity:0.8;
+  padding:5px 0;
+  border-bottom:1px solid rgba(155,89,240,0.08);
+  line-height:1.4;
+}
+.phase-list li:last-child{border-bottom:none}
+
+/* ========== URL HIGHLIGHT ========== */
+.url-highlight{
+  display:inline-block;
+  border:1px solid #7ed3ff;
+  padding:8px 20px;
+  color:#7ed3ff;
+  font-size:clamp(0.9rem,1.8vw,1.3rem);
+  margin-bottom:24px;
+  box-shadow:0 0 12px rgba(126,211,255,0.15);
+}
+
+/* ========== RESPONSIVE: TABLETS ========== */
+@media(max-width:1024px){
+  .five-grid{grid-template-columns:repeat(3,1fr)}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+  .campaign-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .slide{padding:40px 24px}
+  .five-grid{grid-template-columns:repeat(2,1fr)}
+  .char-layout{grid-template-columns:180px 1fr;gap:24px}
+  .split-layout{grid-template-columns:1fr;gap:0}
+  .split-divider{
+    width:100%;height:1px;
+    background:linear-gradient(90deg,transparent,#9B59F0,transparent);
+  }
+  .split-col{padding:20px 0}
+  .split-img-wrap{width:120px}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  #nav-dots{right:10px;gap:8px}
+  .nav-dot{width:8px;height:8px}
+  .panel{padding:20px}
+}
+@media(max-width:480px){
+  .five-grid{grid-template-columns:1fr 1fr}
+  .char-layout{grid-template-columns:1fr;text-align:center}
+  .char-img-wrap{max-width:200px;margin:0 auto 24px}
+  .steps-grid{grid-template-columns:1fr}
+  .slide{padding:32px 16px}
+  .split-img-wrap{width:100px}
+}
+
+/* ========== HEIGHT BREAKPOINTS ========== */
+@media(max-height:700px){
+  .slide{padding-top:40px;padding-bottom:40px}
+  .cosmic-title{font-size:clamp(3rem,10vw,7rem)}
+  .char-bg-number{font-size:clamp(4rem,14vw,10rem)}
+  .big-quote{font-size:clamp(1.2rem,3vw,2rem)}
+}
+@media(max-height:600px){
+  .slide{padding-top:30px;padding-bottom:30px}
+  .panel{padding:16px}
+  .five-grid{gap:10px}
+  .steps-grid{gap:10px}
+  .split-col{padding:16px 24px}
+  .card-number{font-size:clamp(2rem,3vw,3rem)}
+}
+@media(max-height:500px){
+  .slide{padding-top:20px;padding-bottom:20px}
+  .slide-heading{font-size:clamp(1.4rem,4vw,2.5rem)}
+  .body-text{font-size:clamp(0.75rem,1.2vw,0.9rem)}
+}
+
+/* ========== REDUCED MOTION ========== */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .cosmic-title{animation:none}
+  .panel-glow{animation:none}
+  .cta-text{animation:none}
+  *{transition-duration:0s!important;animation-duration:0s!important}
+}
+
+/* ========== SLIDE NUMBER WATERMARK ========== */
+.slide-number{
+  position:absolute;
+  bottom:20px;
+  left:48px;
+  font-size:0.7rem;
+  color:rgba(155,89,240,0.25);
+  letter-spacing:0.15em;
+  z-index:2;
+}
+@media(max-width:768px){
+  .slide-number{left:24px;bottom:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Nav Dots -->
+<nav id="nav-dots" aria-label="Slide navigation"></nav>
+
+<!-- ==================== SLIDE 1: TITLE ==================== -->
+<section class="slide" id="slide-1">
+  <div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="reveal">
+      <img src="/images/cosmic-logo.png" alt="COSMIC" style="width:clamp(280px,45vw,520px);height:auto;filter:drop-shadow(0 0 40px rgba(155,89,240,0.35)) drop-shadow(0 0 80px rgba(126,211,255,0.15));animation:text-glow-pulse 4s ease-in-out infinite">
+    </div>
+    <div class="reveal reveal-delay-3" style="margin-top:48px">
+      <p class="font-mono slide-1-date">FEB 23, 2026</p>
+    </div>
+  </div>
+  <span class="slide-number font-mono">01 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 2: THE IDEA ==================== -->
+<section class="slide" id="slide-2">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal">THE IDEA</h2>
+    <div class="reveal reveal-delay-1" style="margin-top:32px">
+      <p class="body-text" style="margin-bottom:20px">
+        <span class="accent-text" style="font-size:clamp(1rem,1.8vw,1.3rem)">5 hand-crafted, one-of-one Mad Scientists.</span>
+      </p>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="body-text" style="margin-bottom:20px">
+        Not generated. Not randomized. Each one built from scratch.
+      </p>
+    </div>
+    <div class="reveal reveal-delay-3">
+      <p class="body-text" style="margin-bottom:20px">
+        Auctioned by bidding <span class="pink-text">Mad Scientists 10k collection NFTs</span>.
+      </p>
+    </div>
+    <div class="reveal reveal-delay-4">
+      <p class="muted-text" style="margin-top:40px">
+        Not a new PFP drop. This is the final evolution.
+      </p>
+    </div>
+  </div>
+  <span class="slide-number font-mono">02 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 3: THE NARRATIVE ==================== -->
+<section class="slide" id="slide-3">
+  <div class="slide-inner" style="display:flex;flex-direction:column;align-items:center">
+    <h2 class="font-display slide-heading reveal" style="margin-bottom:32px;text-align:center">THE COSMOS CALLED</h2>
+    <div class="reveal reveal-delay-1" style="width:100%;max-width:900px;border:1px solid #9B59F0;overflow:hidden;box-shadow:0 0 30px rgba(155,89,240,0.2)">
+      <img src="/images/cosmic-hero-2026-v4.png" alt="The Five Scientists" style="width:100%;height:auto;display:block">
+    </div>
+    <div class="reveal reveal-delay-3" style="margin-top:32px">
+      <blockquote class="font-display big-quote" style="text-align:center;border-left:none;padding-left:0">
+        "The Cosmos sent a signal. Five answered."
+      </blockquote>
+    </div>
+    <div class="reveal reveal-delay-4" style="margin-top:16px;max-width:640px;text-align:center">
+      <p class="body-text" style="opacity:0.7">
+        These aren't lab escapees. They're heroes who walked through portals to save the Cosmos. Each one for a different reason.
+      </p>
+    </div>
+  </div>
+  <span class="slide-number font-mono">03 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 4: THE FIVE ==================== -->
+<section class="slide" id="slide-4">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal">THE FIVE</h2>
+    <div class="five-grid">
+      <!-- Card 1 -->
+      <div class="scientist-card reveal reveal-delay-1">
+        <div class="card-img-wrap"><img class="card-img" src="/images/cosmic-1-halfbody-v3.png" alt="The Architect"></div>
+        <div class="card-info">
+          <span class="font-display card-badge">1/1</span>
+          <h3 class="font-display card-name">THE ARCHITECT</h3>
+          <p class="font-mono card-tagline">Built the machine. Became the machine.</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="scientist-card reveal reveal-delay-2">
+        <div class="card-img-wrap"><img class="card-img" src="/images/cosmic-2-halfbody-v2.png" alt="The Warlord"></div>
+        <div class="card-info">
+          <span class="font-display card-badge">1/1</span>
+          <h3 class="font-display card-name">THE WARLORD</h3>
+          <p class="font-mono card-tagline">Didn't come to explore. Came to conquer.</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="scientist-card reveal reveal-delay-3">
+        <div class="card-img-wrap"><img class="card-img" src="/images/cosmic-3-halfbody-v2.png" alt="The Oracle"></div>
+        <div class="card-info">
+          <span class="font-display card-badge">1/1</span>
+          <h3 class="font-display card-name">THE ORACLE</h3>
+          <p class="font-mono card-tagline">Sees everything. Says nothing.</p>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="scientist-card reveal reveal-delay-4">
+        <div class="card-img-wrap"><img class="card-img" src="/images/cosmic-4-halfbody-v2.png" alt="The Antiquarian"></div>
+        <div class="card-info">
+          <span class="font-display card-badge">1/1</span>
+          <h3 class="font-display card-name">THE ANTIQUARIAN</h3>
+          <p class="font-mono card-tagline">Carried the old world into the new one.</p>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="scientist-card reveal reveal-delay-5">
+        <div class="card-img-wrap"><img class="card-img" src="/images/cosmic-5-halfbody-v2.png" alt="The Dreamer"></div>
+        <div class="card-info">
+          <span class="font-display card-badge">1/1</span>
+          <h3 class="font-display card-name">THE DREAMER</h3>
+          <p class="font-mono card-tagline">Closed eyes. Open universe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number font-mono">04 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 5: THE ARCHITECT ==================== -->
+<section class="slide" id="slide-5">
+  <div class="slide-inner char-detail">
+    <div class="font-display char-bg-number">01</div>
+    <div class="char-layout">
+      <div class="char-img-wrap reveal">
+        <img class="char-img" src="/images/cosmic-1-halfbody-v3.png" alt="The Architect">
+      </div>
+      <div class="char-content">
+        <h2 class="font-display char-heading reveal reveal-delay-1">
+          <span class="purple-text">#1</span> &mdash; THE ARCHITECT
+        </h2>
+        <p class="font-mono char-tagline reveal reveal-delay-2">
+          "Built the machine. Became the machine."
+        </p>
+        <div class="reveal reveal-delay-3">
+          <p class="font-mono char-lore">
+            When the signal came, The Architect didn't hesitate. A broken system is just a blueprint waiting to be rewritten. Every wire, every circuit, every solution traces back to him. He walked through the portal because no one else could rebuild what was falling apart.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number font-mono">05 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 6: WARLORD & ORACLE ==================== -->
+<section class="slide" id="slide-6">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal" style="margin-bottom:8px">THE WARRIORS &amp; THE SEERS</h2>
+    <div class="split-layout reveal reveal-delay-1">
+      <!-- Warlord -->
+      <div class="split-col">
+        <div class="split-img-wrap"><img class="split-img" src="/images/cosmic-2-halfbody-v2.png" alt="The Warlord"></div>
+        <h3 class="font-display split-heading">
+          <span class="purple-text">#2</span> &mdash; THE WARLORD
+        </h3>
+        <p class="font-mono split-tagline">"Didn't come to explore. Came to conquer."</p>
+        <p class="font-mono split-lore">
+          The Warlord doesn't answer calls. He answers threats. When the signal hit, he saw what the others wouldn't admit. The Cosmos doesn't need a rescue team. It needs a weapon. The crimson crystal isn't decoration. It's the reason he was chosen.
+        </p>
+      </div>
+      <!-- Divider -->
+      <div class="split-divider"></div>
+      <!-- Oracle -->
+      <div class="split-col">
+        <div class="split-img-wrap"><img class="split-img" src="/images/cosmic-3-halfbody-v2.png" alt="The Oracle"></div>
+        <h3 class="font-display split-heading">
+          <span class="purple-text">#3</span> &mdash; THE ORACLE
+        </h3>
+        <p class="font-mono split-tagline">"Sees everything. Says nothing."</p>
+        <p class="font-mono split-lore">
+          The Oracle saw the signal before it arrived. His mind broke through the dome a long time ago. Floating, receiving transmissions from places that don't have names yet. He walked through the portal in silence. He already knows how this ends.
+        </p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number font-mono">06 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 7: ANTIQUARIAN & DREAMER ==================== -->
+<section class="slide" id="slide-7">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal" style="margin-bottom:8px">THE KEEPERS &amp; THE DREAMERS</h2>
+    <div class="split-layout reveal reveal-delay-1">
+      <!-- Antiquarian -->
+      <div class="split-col">
+        <div class="split-img-wrap"><img class="split-img" src="/images/cosmic-4-halfbody-v2.png" alt="The Antiquarian"></div>
+        <h3 class="font-display split-heading">
+          <span class="purple-text">#4</span> &mdash; THE ANTIQUARIAN
+        </h3>
+        <p class="font-mono split-tagline">"Carried the old world into the new one."</p>
+        <p class="font-mono split-lore">
+          While the others prepared for what's ahead, The Antiquarian packed what came before. Ancient tools, forgotten maps, knowledge that predates the lab itself. This isn't the first time the Cosmos has called. He knows how it went last time.
+        </p>
+      </div>
+      <!-- Divider -->
+      <div class="split-divider"></div>
+      <!-- Dreamer -->
+      <div class="split-col">
+        <div class="split-img-wrap"><img class="split-img" src="/images/cosmic-5-halfbody-v2.png" alt="The Dreamer"></div>
+        <h3 class="font-display split-heading">
+          <span class="purple-text">#5</span> &mdash; THE DREAMER
+        </h3>
+        <p class="font-mono split-tagline">"Closed eyes. Open universe."</p>
+        <p class="font-mono split-lore">
+          She never built a ship or drew a weapon. She just closed her eyes and was already there. The rainbow trail isn't exhaust. It's the residue of imagination meeting reality. She's the only one who didn't need the portal. She walked through it anyway. For them.
+        </p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number font-mono">07 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 8: THE AUCTION ==================== -->
+<section class="slide" id="slide-8">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal">THE AUCTION</h2>
+    <p class="font-display slide-subheading reveal reveal-delay-1">SEND YOUR SCIENTISTS. CLAIM THE FIVE.</p>
+    <div class="steps-grid">
+      <!-- Step 1: Pick Your Lane -->
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-svg-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="24 165 270 270">
+            <defs>
+              <style>@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&amp;display=swap');.title{font-family:'Pixelify Sans',sans-serif;fill:#fff;font-size:22px;font-weight:700;text-anchor:middle;letter-spacing:1.5px}.panel-frame{stroke:#2A2A3A;stroke-width:2;fill:#111018}</style>
+              <pattern id="dot-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="2" height="2" fill="#2A2A3A" opacity="0.7"/></pattern>
+            </defs>
+            <g transform="translate(24,165)">
+              <rect x="0" y="0" width="270" height="270" class="panel-frame"/><rect x="0" y="0" width="270" height="270" fill="url(#dot-grid)"/>
+              <text x="135" y="315" class="title">PICK YOUR LANE</text>
+              <rect x="110" y="15" width="50" height="240" fill="#7ed3ff" opacity="0.05"/>
+              <path d="M 110,15 L 110,255 M 160,15 L 160,255" stroke="#7ed3ff" stroke-width="2" stroke-dasharray="8,8" opacity="0.3"/>
+              <g opacity="0.45"><image href="/images/cosmic-1-halfbody-v3.png" x="20" y="30" width="30" height="30" preserveAspectRatio="xMidYMid slice"/><rect x="20" y="30" width="30" height="30" fill="none" stroke="#4a4a5a" stroke-width="1.5"/></g>
+              <g opacity="0.45"><image href="/images/cosmic-2-halfbody-v2.png" x="70" y="30" width="30" height="30" preserveAspectRatio="xMidYMid slice"/><rect x="70" y="30" width="30" height="30" fill="none" stroke="#4a4a5a" stroke-width="1.5"/></g>
+              <g><rect x="113" y="23" width="44" height="44" fill="#7ed3ff" opacity="0.15"/><image href="/images/cosmic-3-halfbody-v2.png" x="117" y="27" width="36" height="36" preserveAspectRatio="xMidYMid slice"/><rect x="117" y="27" width="36" height="36" fill="none" stroke="#7ed3ff" stroke-width="2"/></g>
+              <g opacity="0.45"><image href="/images/cosmic-4-halfbody-v2.png" x="170" y="30" width="30" height="30" preserveAspectRatio="xMidYMid slice"/><rect x="170" y="30" width="30" height="30" fill="none" stroke="#4a4a5a" stroke-width="1.5"/></g>
+              <g opacity="0.45"><image href="/images/cosmic-5-halfbody-v2.png" x="220" y="30" width="30" height="30" preserveAspectRatio="xMidYMid slice"/><rect x="220" y="30" width="30" height="30" fill="none" stroke="#4a4a5a" stroke-width="1.5"/></g>
+              <path d="M 60,20 L 60,250 M 210,20 L 210,250" stroke="#2A2A3A" stroke-width="2" stroke-dasharray="4,4"/>
+            </g>
+          </svg>
+        </div>
+        <div class="step-info">
+          <h3 class="font-display step-title">PICK YOUR TARGET</h3>
+          <p class="font-mono step-desc">Each COSMIC 1/1 has its own auction lane.</p>
+        </div>
+      </div>
+      <!-- Step 2: Stack Your Bid -->
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-svg-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="318 165 270 270">
+            <defs>
+              <style>@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&amp;display=swap');.title{font-family:'Pixelify Sans',sans-serif;fill:#fff;font-size:22px;font-weight:700;text-anchor:middle;letter-spacing:1.5px}.panel-frame{stroke:#2A2A3A;stroke-width:2;fill:#111018}</style>
+              <pattern id="dot-grid2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="2" height="2" fill="#2A2A3A" opacity="0.7"/></pattern>
+              <g id="nft-p2"><rect x="-15" y="-10" width="30" height="20" fill="#2D1152" stroke="#9B59F0" stroke-width="2"/><rect x="-2" y="-2" width="4" height="4" fill="#7ed3ff"/></g>
+              <marker id="arrow-p2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M 0,2 L 4,2 L 4,0 L 8,4 L 4,8 L 4,6 L 0,6 Z" fill="#9B59F0"/></marker>
+            </defs>
+            <g transform="translate(318,165)">
+              <rect x="0" y="0" width="270" height="270" class="panel-frame"/><rect x="0" y="0" width="270" height="270" fill="url(#dot-grid2)"/>
+              <text x="135" y="315" class="title">STACK YOUR BID</text>
+              <rect x="85" y="15" width="100" height="240" fill="#7ed3ff" opacity="0.05"/>
+              <g><rect x="111" y="21" width="48" height="48" fill="#7ed3ff" opacity="0.15"/><image href="/images/cosmic-3-halfbody-v2.png" x="115" y="25" width="40" height="40" preserveAspectRatio="xMidYMid slice"/><rect x="115" y="25" width="40" height="40" fill="none" stroke="#7ed3ff" stroke-width="2"/></g>
+              <path d="M 135,70 L 135,125" stroke="#9B59F0" stroke-width="2" stroke-dasharray="8,8" opacity="0.6"/>
+              <path d="M 135,125 L 135,140" stroke="#9B59F0" stroke-width="2" marker-end="url(#arrow-p2)" opacity="0.8"/>
+              <use href="#nft-p2" x="135" y="70" opacity="0.6"/><use href="#nft-p2" x="135" y="105" opacity="0.8"/>
+              <use href="#nft-p2" x="135" y="240"/><use href="#nft-p2" x="135" y="218"/><use href="#nft-p2" x="135" y="196"/><use href="#nft-p2" x="135" y="174"/><use href="#nft-p2" x="135" y="152"/>
+            </g>
+          </svg>
+        </div>
+        <div class="step-info">
+          <h3 class="font-display step-title">STACK YOUR BID</h3>
+          <p class="font-mono step-desc">Bid Mad Scientists from the 10k. No minimum.</p>
+        </div>
+      </div>
+      <!-- Step 3: Highest Stack Wins -->
+      <div class="step-card reveal reveal-delay-4">
+        <div class="step-svg-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="612 165 270 270">
+            <defs>
+              <style>@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&amp;display=swap');.title{font-family:'Pixelify Sans',sans-serif;fill:#fff;font-size:22px;font-weight:700;text-anchor:middle;letter-spacing:1.5px}.panel-frame{stroke:#2A2A3A;stroke-width:2;fill:#111018}</style>
+              <pattern id="dot-grid3" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="2" height="2" fill="#2A2A3A" opacity="0.7"/></pattern>
+              <g id="nft-p3"><rect x="-15" y="-10" width="30" height="20" fill="#2D1152" stroke="#9B59F0" stroke-width="2"/><rect x="-2" y="-2" width="4" height="4" fill="#7ed3ff"/></g>
+              <g id="nft-pk3"><rect x="-15" y="-10" width="30" height="20" fill="#521132" stroke="#ff73c7" stroke-width="2"/><rect x="-2" y="-2" width="4" height="4" fill="#7ed3ff"/></g>
+              <g id="nft-c3"><rect x="-15" y="-10" width="30" height="20" fill="#113252" stroke="#7ed3ff" stroke-width="2"/><rect x="-2" y="-2" width="4" height="4" fill="#ff73c7"/></g>
+            </defs>
+            <g transform="translate(612,165)">
+              <rect x="0" y="0" width="270" height="270" class="panel-frame"/><rect x="0" y="0" width="270" height="270" fill="url(#dot-grid3)"/>
+              <text x="135" y="315" class="title">HIGHEST STACK WINS</text>
+              <rect x="20" y="15" width="230" height="240" fill="#7ed3ff" opacity="0.05"/>
+              <g><rect x="111" y="21" width="48" height="48" fill="#7ed3ff" opacity="0.15"/><image href="/images/cosmic-3-halfbody-v2.png" x="115" y="25" width="40" height="40" preserveAspectRatio="xMidYMid slice"/><rect x="115" y="25" width="40" height="40" fill="none" stroke="#7ed3ff" stroke-width="2"/></g>
+              <use href="#nft-pk3" x="65" y="240"/><use href="#nft-pk3" x="65" y="218"/><use href="#nft-pk3" x="65" y="196"/>
+              <use href="#nft-c3" x="205" y="240"/><use href="#nft-c3" x="205" y="218"/>
+              <use href="#nft-p3" x="135" y="240"/><use href="#nft-p3" x="135" y="218"/><use href="#nft-p3" x="135" y="196"/><use href="#nft-p3" x="135" y="174"/><use href="#nft-p3" x="135" y="152"/><use href="#nft-p3" x="135" y="130"/><use href="#nft-p3" x="135" y="108"/>
+              <g transform="translate(135,75)"><rect x="-14" y="-14" width="28" height="28" fill="#7ed3ff" opacity="0.2"/><path d="M -8,-2 L -4,2 L 8,-10 L 10,-8 L -4,6 L -10,0 Z" fill="#7ed3ff"/></g>
+            </g>
+          </svg>
+        </div>
+        <div class="step-info">
+          <h3 class="font-display step-title">TOP BID WINS</h3>
+          <p class="font-mono step-desc">Highest stack wins. One winner per scientist.</p>
+        </div>
+      </div>
+      <!-- Step 4: Losers Get Refunded -->
+      <div class="step-card reveal reveal-delay-5">
+        <div class="step-svg-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="906 165 270 270">
+            <defs>
+              <style>@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&amp;display=swap');.title{font-family:'Pixelify Sans',sans-serif;fill:#fff;font-size:22px;font-weight:700;text-anchor:middle;letter-spacing:1.5px}.panel-frame{stroke:#2A2A3A;stroke-width:2;fill:#111018}</style>
+              <pattern id="dot-grid4" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="2" height="2" fill="#2A2A3A" opacity="0.7"/></pattern>
+              <g id="nft-p4"><rect x="-15" y="-10" width="30" height="20" fill="#2D1152" stroke="#9B59F0" stroke-width="2"/><rect x="-2" y="-2" width="4" height="4" fill="#7ed3ff"/></g>
+              <g id="nft-pk4"><rect x="-15" y="-10" width="30" height="20" fill="#521132" stroke="#ff73c7" stroke-width="2"/><rect x="-2" y="-2" width="4" height="4" fill="#7ed3ff"/></g>
+              <g id="nft-c4"><rect x="-15" y="-10" width="30" height="20" fill="#113252" stroke="#7ed3ff" stroke-width="2"/><rect x="-2" y="-2" width="4" height="4" fill="#ff73c7"/></g>
+              <marker id="arrow-pk4" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M 0,2 L 4,2 L 4,0 L 8,4 L 4,8 L 4,6 L 0,6 Z" fill="#ff73c7"/></marker>
+              <marker id="arrow-c4" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M 0,2 L 4,2 L 4,0 L 8,4 L 4,8 L 4,6 L 0,6 Z" fill="#7ed3ff"/></marker>
+            </defs>
+            <g transform="translate(906,165)">
+              <rect x="0" y="0" width="270" height="270" class="panel-frame"/><rect x="0" y="0" width="270" height="270" fill="url(#dot-grid4)"/>
+              <text x="135" y="315" class="title">LOSERS GET REFUNDED</text>
+              <rect x="20" y="15" width="230" height="240" fill="#7ed3ff" opacity="0.05"/>
+              <g><rect x="111" y="21" width="48" height="48" fill="#7ed3ff" opacity="0.15"/><image href="/images/cosmic-3-halfbody-v2.png" x="115" y="25" width="40" height="40" preserveAspectRatio="xMidYMid slice"/><rect x="115" y="25" width="40" height="40" fill="none" stroke="#7ed3ff" stroke-width="2"/></g>
+              <use href="#nft-p4" x="135" y="240"/><use href="#nft-p4" x="135" y="218"/><use href="#nft-p4" x="135" y="196"/><use href="#nft-p4" x="135" y="174"/><use href="#nft-p4" x="135" y="152"/><use href="#nft-p4" x="135" y="130"/><use href="#nft-p4" x="135" y="108"/>
+              <g opacity="0.6"><use href="#nft-pk4" x="65" y="160"/><use href="#nft-pk4" x="65" y="130"/><use href="#nft-pk4" x="40" y="100"/></g>
+              <path d="M 65,190 L 65,100 L 25,100" fill="none" stroke="#ff73c7" stroke-width="2" stroke-dasharray="8,8" marker-end="url(#arrow-pk4)"/>
+              <g opacity="0.6"><use href="#nft-c4" x="205" y="170"/><use href="#nft-c4" x="205" y="140"/><use href="#nft-c4" x="230" y="110"/></g>
+              <path d="M 205,200 L 205,110 L 245,110" fill="none" stroke="#7ed3ff" stroke-width="2" stroke-dasharray="8,8" marker-end="url(#arrow-c4)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="step-info">
+          <h3 class="font-display step-title">LOSERS REFUNDED</h3>
+          <p class="font-mono step-desc">Didn't win? Your Scientists come back.</p>
+        </div>
+      </div>
+    </div>
+    <p class="font-display auction-note reveal reveal-delay-6">5 PARALLEL AUCTIONS. ALL RUNNING AT ONCE.</p>
+  </div>
+  <span class="slide-number font-mono">08 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 9: THE WEBSITE ==================== -->
+<section class="slide" id="slide-9">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal">THE SITE IS LIVE</h2>
+    <div class="reveal reveal-delay-1">
+      <span class="font-mono url-highlight">madscientists.io/cosmic</span>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="body-text" style="margin-bottom:24px">
+        Full page is built. Characters, lore, gallery, auction flow &mdash; everything.
+      </p>
+    </div>
+    <ul class="bullet-list reveal reveal-delay-3">
+      <li>Cosmic purple theme &mdash; completely custom design</li>
+      <li>Interactive gallery with detail modals</li>
+      <li>Auction process walkthrough with infographic</li>
+      <li>Responsive &mdash; mobile + desktop</li>
+    </ul>
+    <div class="reveal reveal-delay-5">
+      <p class="bottom-text">Let's walk through it together after this.</p>
+    </div>
+  </div>
+  <span class="slide-number font-mono">09 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 10: CAMPAIGN PLAN ==================== -->
+<section class="slide" id="slide-10">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal">THE CAMPAIGN</h2>
+    <p class="font-display slide-subheading reveal reveal-delay-1">10 DAYS. 3 PHASES. TWITTER/X.</p>
+    <div class="campaign-grid">
+      <!-- Phase 1 -->
+      <div class="campaign-phase reveal reveal-delay-2">
+        <div class="phase-header phase-tease">
+          <span class="font-display phase-label">PHASE 1</span>
+          <span class="font-mono phase-days">DAYS 1–4</span>
+        </div>
+        <h3 class="font-display phase-title" style="color:#ff73c7">TEASE</h3>
+        <ul class="font-mono phase-list">
+          <li><span class="accent-text">Day 1</span> — Mystery tweet + header swap to cosmic purple</li>
+          <li><span class="accent-text">Day 2</span> — Silhouette drop #1</li>
+          <li><span class="accent-text">Day 3</span> — Silhouette drop #2</li>
+          <li><span class="accent-text">Day 4</span> — Silhouette drop #3 + "Tomorrow."</li>
+        </ul>
+      </div>
+      <!-- Phase 2 -->
+      <div class="campaign-phase reveal reveal-delay-4">
+        <div class="phase-header phase-reveal">
+          <span class="font-display phase-label">PHASE 2</span>
+          <span class="font-mono phase-days">DAYS 5–7</span>
+        </div>
+        <h3 class="font-display phase-title" style="color:#7ed3ff">REVEAL</h3>
+        <ul class="font-mono phase-list">
+          <li><span class="accent-text">Day 5</span> — Full reveal + /cosmic goes live</li>
+          <li><span class="accent-text">Day 6</span> — Identity cards batch 1</li>
+          <li><span class="accent-text">Day 7</span> — Identity cards batch 2 + poll</li>
+        </ul>
+      </div>
+      <!-- Phase 3 -->
+      <div class="campaign-phase reveal reveal-delay-6">
+        <div class="phase-header phase-auction">
+          <span class="font-display phase-label">PHASE 3</span>
+          <span class="font-mono phase-days">DAYS 8–10</span>
+        </div>
+        <h3 class="font-display phase-title" style="color:#9B59F0">AUCTION</h3>
+        <ul class="font-mono phase-list">
+          <li><span class="accent-text">Day 8</span> — Auction mechanic reveal</li>
+          <li><span class="accent-text">Day 9</span> — Auction opens live</li>
+          <li><span class="accent-text">Day 10</span> — Final call + winners</li>
+        </ul>
+      </div>
+    </div>
+    <p class="font-mono muted-text reveal reveal-delay-8" style="text-align:center;margin-top:20px">11 must-have graphics &nbsp;&middot;&nbsp; 10 days of tweet copy &nbsp;&middot;&nbsp; Discord sync on key days</p>
+  </div>
+  <span class="slide-number font-mono">10 / 11</span>
+</section>
+
+<!-- ==================== SLIDE 11: WHAT'S NEXT ==================== -->
+<section class="slide" id="slide-11">
+  <div class="slide-inner">
+    <h2 class="font-display slide-heading reveal">WHAT'S NEXT</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-delay-1">Finalize asset creation timeline <span class="muted-text">&mdash; who's making what, when</span></li>
+      <li class="reveal reveal-delay-2">Write tweet copy <span class="muted-text">&mdash; all 10 days</span></li>
+      <li class="reveal reveal-delay-3">Auction smart contract <span class="muted-text">&mdash; deploy + test on Stargaze</span></li>
+      <li class="reveal reveal-delay-4">Pick a launch date <span class="muted-text">&mdash; work backward from assets + contract</span></li>
+    </ul>
+    <div class="reveal reveal-delay-6">
+      <p class="font-display cta-text">LET'S DISCUSS</p>
+    </div>
+  </div>
+  <span class="slide-number font-mono">11 / 11</span>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ========== CONFIG ========== */
+  const TOTAL_SLIDES = 11;
+  const slides = [];
+  const dots = [];
+
+  /* ========== BUILD NAV DOTS ========== */
+  const navContainer = document.getElementById('nav-dots');
+  for(let i = 1; i <= TOTAL_SLIDES; i++){
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.setAttribute('aria-label', 'Go to slide ' + i);
+    dot.dataset.slide = i;
+    dot.addEventListener('click', function(){
+      document.getElementById('slide-' + i).scrollIntoView({behavior:'smooth'});
+    });
+    navContainer.appendChild(dot);
+    dots.push(dot);
+    slides.push(document.getElementById('slide-' + i));
+  }
+
+  /* ========== INTERSECTION OBSERVER: REVEAL ========== */
+  const revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  },{threshold:0.15});
+
+  document.querySelectorAll('.reveal').forEach(function(el){
+    revealObserver.observe(el);
+  });
+
+  /* ========== INTERSECTION OBSERVER: SLIDE TRACKING ========== */
+  let currentSlide = 0;
+  const progressBar = document.getElementById('progress-bar');
+
+  const slideObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        const idx = slides.indexOf(entry.target);
+        if(idx !== -1){
+          currentSlide = idx;
+          updateUI();
+        }
+      }
+    });
+  },{threshold:0.5});
+
+  slides.forEach(function(s){slideObserver.observe(s)});
+
+  function updateUI(){
+    /* Progress bar */
+    const pct = ((currentSlide + 1) / TOTAL_SLIDES) * 100;
+    progressBar.style.width = pct + '%';
+
+    /* Nav dots */
+    dots.forEach(function(d, i){
+      d.classList.toggle('active', i === currentSlide);
+    });
+  }
+  updateUI();
+
+  /* ========== KEYBOARD NAVIGATION ========== */
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown'){
+      e.preventDefault();
+      if(currentSlide < TOTAL_SLIDES - 1){
+        slides[currentSlide + 1].scrollIntoView({behavior:'smooth'});
+      }
+    } else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp'){
+      e.preventDefault();
+      if(currentSlide > 0){
+        slides[currentSlide - 1].scrollIntoView({behavior:'smooth'});
+      }
+    } else if(e.key === 'Home'){
+      e.preventDefault();
+      slides[0].scrollIntoView({behavior:'smooth'});
+    } else if(e.key === 'End'){
+      e.preventDefault();
+      slides[TOTAL_SLIDES - 1].scrollIntoView({behavior:'smooth'});
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
