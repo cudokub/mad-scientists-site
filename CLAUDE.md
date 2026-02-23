@@ -100,11 +100,11 @@ Elements use `data-layer="section-element"` attributes for designer-developer co
 Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links (commented out, ready to uncomment), accessible only via direct URL. `"use client"` page with interactive state (modal, back-to-top button). `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled).
 
 **Sections (top to bottom):**
-- **Ticker (top)** — cosmic-top variant ("5 ONE-OF-ONE ARTIFACTS")
+- **Ticker (top)** — cosmic-top variant ("THE COSMOS CALLED")
 - **Hero** — Mobile: logo panel + stacked image/content card. Desktop: two-panel layout (image flex-[2] right, text flex-1 left via `flex-row-reverse`). Hero image uses `width`/`height` (not `fill`) to stay in document flow — avoids flex container height collapse.
-- **Ticker (bottom)** — cosmic-bottom variant ("BID ON STARGAZE")
+- **Ticker (bottom)** — cosmic-bottom variant ("THE COSMOS CALLED")
 - **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards show scientist name and tagline permanently below the image. Hover: border glow + subtle image zoom (no translate-y lift, no slide-up overlay). Cards are clickable, open detail modal. Uses halfbody-v2 images for cards.
-- **Auction** — "Bid Scientists. Win Scientists." headline. Order: 4-step how-it-works (horizontal cards: SVG panel left, text right, 2-col grid), CTA box with branded Stargaze badge (side-by-side on desktop, `border-l` divider), 5 parallel auction lanes.
+- **Auction** — "Send Your Scientists. Claim the Five." headline. Order: 4-step how-it-works (horizontal cards: SVG panel left, text right, 2-col grid), CTA box with branded Stargaze badge (side-by-side on desktop, `border-l` divider), 5 parallel auction lanes.
 
 **Scientist detail modal** — responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog centered overlay, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next buttons at bottom. Both: keyboard arrow keys for prev/next, Escape to close, shows name, tagline, lore paragraph.
 
@@ -138,6 +138,7 @@ Always use `target="_blank" rel="noopener noreferrer"` for external links. Butto
 ## Reference Docs
 - `docs/ASSETS.md` — Full image/favicon inventory
 - `docs/COSMIC-LAUNCH.md` — COSMIC 10-day launch plan, asset checklist, tweet copy drafts
+- `docs/COSMIC-CAMPAIGN-PLAN.md` — Full-funnel campaign strategy, content calendar, success metrics
 
 ## Commands
 - `npm run dev` — dev server

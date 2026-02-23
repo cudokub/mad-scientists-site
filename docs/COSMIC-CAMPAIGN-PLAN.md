@@ -45,7 +45,7 @@
 | # | Message | Audience | Proof point |
 |---|---------|----------|-------------|
 | 1 | **"Each one is a standalone 1/1 — no duplicates exist."** | Everyone | Hand-crafted pixel art, unique lore per character |
-| 2 | **"Your 10k Scientists are your tickets in."** | Existing holders | Auction mechanic: bid by stacking 10k NFTs, losers refunded |
+| 2 | **"Your 10k Scientists are your tickets in."** | Existing holders | Auction mechanic: bid by stacking 10k NFTs, non-winners refunded |
 | 3 | **"No minimum bid. Stack what you've got."** | Smaller holders | On-chain smart contract, transparent, low barrier to entry |
 | 4 | **"5 parallel auctions. Pick your lane."** | Competitive bidders | Each scientist has its own auction — strategic choice matters |
 
@@ -95,7 +95,7 @@ Although Twitter/X is the primary channel, coordinate key moments in Discord:
 | 5 | Reveal | Full reveal — lineup poster, all 5 names, `/cosmic` goes live. Thread with hero image + collection overview. | Lineup poster (`cosmic-hero-2026-v4.png`) | Yes | **Big moment.** Uncomment NavBar + Footer COSMIC links. Thread format: image → names → lore teasers → link. |
 | 6 | Reveal | Identity cards batch 1 (The Architect, The Warlord, The Oracle) — individual spotlight posts or carousel | 3 identity cards | No | One tweet per scientist, or a single carousel. Include taglines. |
 | 7 | Reveal | Identity cards batch 2 (The Antiquarian, The Dreamer) + "Which scientist are you?" engagement poll | 2 identity cards | No | Poll drives engagement. Closes before auction opens. |
-| 8 | Auction | Auction mechanic reveal — "Bid Scientists. Win Scientists." Explain the 4 steps. | Auction GIF (`cosmic-auction.gif`) | Yes | Clear, simple explanation. Link to `/cosmic#auction`. Update auction button href. |
+| 8 | Auction | Auction mechanic reveal — "Send Your Scientists. Claim the Five." Explain the 4 steps. | Auction GIF (`cosmic-auction.gif`) | Yes | Clear, simple explanation. Link to `/cosmic#auction`. Update auction button href. |
 | 9 | Auction | Auction opens — pinned tweet with instructions and link. "5 lanes. 5 scientists. Go." | Lineup poster (repurposed) or custom "AUCTION LIVE" graphic | Yes | **Update per-scientist auction status text.** Real-time bid updates throughout the day if possible. |
 | 10 | Auction | Final call — "Hours left." Countdown energy. Announce winners after close. | Winner reveal graphics (if prepared) | Yes | Urgency. Short tweets. Frequent updates. Post-auction: celebrate winners, thank community. |
 
@@ -147,7 +147,7 @@ Although Twitter/X is the primary channel, coordinate key moments in Discord:
 
 | Risk | Likelihood | Impact | Mitigation |
 |------|-----------|--------|------------|
-| **Low bid participation** — holders don't bid enough NFTs or don't bid at all | Medium | High | Start explaining the mechanic early (Day 8). Make it dead simple. Emphasize "losers get refunded" to lower perceived risk. Consider last-minute reminder tweets on Day 10. |
+| **Low bid participation** — holders don't bid enough NFTs or don't bid at all | Medium | High | Start explaining the mechanic early (Day 8). Make it dead simple. Emphasize "non-winners get refunded" to lower perceived risk. Consider last-minute reminder tweets on Day 10. |
 | **Asset delays** — silhouettes, identity cards, or auction GIF not ready on schedule | Medium | Medium | Build 1-day buffer into asset creation. Days 2–4 silhouettes are simpler to produce. Auction GIF is the highest-risk asset — have a static fallback graphic ready. |
 | **Smart contract issues** — auction contract has bugs or isn't ready by Day 9 | Low | Critical | Test contract on testnet before Day 8 mechanic reveal. Don't announce auction dates until contract is confirmed ready. Have a "delay" tweet template prepared. |
 
@@ -197,6 +197,6 @@ Confirm these site changes (marked done in `COSMIC-LAUNCH.md`) are live and work
 
 - **Page URL:** `madscientists.io/cosmic` (currently unlisted)
 - **Scientists:** The Architect, The Warlord, The Oracle, The Antiquarian, The Dreamer
-- **Auction mechanic:** Bid Mad Scientists 10k NFTs → highest stack wins → losers refunded → on-chain
+- **Auction mechanic:** Bid Mad Scientists 10k NFTs → highest stack wins → non-winners refunded → on-chain
 - **Brand voice:** Punchy, dark humor, pixel-art lab aesthetic. Cosmic purple theme.
 - **Related docs:** `docs/COSMIC-LAUNCH.md` (asset checklist + tweet drafts), `docs/ASSETS.md` (image inventory)
