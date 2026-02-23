@@ -169,8 +169,6 @@ export default function CosmicPage() {
 
       <section data-layer="page-wrapper" className="relative mx-auto max-w-[1440px] border-x border-cosmic">
         <div data-layer="bg-blobs" className="pointer-events-none absolute inset-0 hidden md:block">
-          <div className="absolute left-[-160px] top-[-140px] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(126,211,255,0.22)_0%,rgba(126,211,255,0)_72%)]" />
-          <div className="absolute bottom-[-180px] right-[-140px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(255,122,217,0.2)_0%,rgba(255,122,217,0)_72%)]" />
           <div
             className="absolute inset-0 opacity-40"
             style={{
