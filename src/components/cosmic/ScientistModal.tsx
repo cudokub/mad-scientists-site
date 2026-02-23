@@ -145,14 +145,14 @@ export default function ScientistModal({
       <Dialog open onOpenChange={(open) => { if (!open) onClose(); }}>
         <DialogContent onClick={onClose}>
           <button
-            onClick={onPrev}
+            onClick={(e) => { e.stopPropagation(); onPrev(); }}
             className="absolute left-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
             aria-label="Previous scientist"
           >
             &larr;
           </button>
           <button
-            onClick={onNext}
+            onClick={(e) => { e.stopPropagation(); onNext(); }}
             className="absolute right-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
             aria-label="Next scientist"
           >
