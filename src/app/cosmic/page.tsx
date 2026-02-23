@@ -77,7 +77,7 @@ const auctionSteps = [
   },
   {
     step: "04",
-    title: "Losers Get Refunded",
+    title: "Non-Winners Refunded",
     desc: "Didn\u2019t win? Your Scientists come back.",
   },
 ];
@@ -209,12 +209,14 @@ export default function CosmicPage() {
 
             <div data-layer="hero-mobile-content" className="border-t border-cosmic p-8">
               <h1 data-layer="hero-mobile-heading" className="font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff]">
-                <ClearFive className="text-[#7ed3ff]" /> Freaks.
+                <ClearFive className="text-[#7ed3ff]" /> Legends.
                 <br />
                 One Universe.
               </h1>
               <p data-layer="hero-mobile-body" className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
                 The Cosmos sent a signal. Five answered.
+                <br />
+                Each 1/1 hand-crafted.
               </p>
               <div data-layer="hero-mobile-buttons" className="mt-4 flex flex-col gap-3">
                 <Button
@@ -253,12 +255,14 @@ export default function CosmicPage() {
                   />
                 </div>
                 <h1 className="font-display text-5xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] lg:text-6xl">
-                  <ClearFive className="text-[#7ed3ff]" /> Freaks.
+                  <ClearFive className="text-[#7ed3ff]" /> Legends.
                   <br />
                   One Universe.
                 </h1>
                 <p className="max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
                   The Cosmos sent a signal. Five answered.
+                  <br />
+                  Each 1/1 hand-crafted.
                 </p>
                 <div className="flex flex-col gap-3 mt-2 w-full">
                   <Button
@@ -311,7 +315,7 @@ export default function CosmicPage() {
               Who Answered the Call
             </h2>
             <p data-layer="collection-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
-              Each one walked through the portal for a different reason.
+              Each one walked through the portal for their unique truth.
             </p>
 
             <div data-layer="collection-grid" className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
@@ -344,7 +348,7 @@ export default function CosmicPage() {
             </h2>
             <p data-layer="auction-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
               The Cosmos called them. Now bid yours to bring one home.
-              Highest stack wins. Losers get refunded.
+              Highest stack wins. Those that didn&apos;t win the auction get refunded.
             </p>
 
             <div data-layer="auction-steps" className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">

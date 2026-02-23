@@ -172,10 +172,10 @@ export default function AuctionProcessSvg({ panel }: { panel?: number } = {}) {
         </g>
       </g>
 
-      {/* PANEL 4 — LOSERS GET REFUNDED */}
+      {/* PANEL 4 — NON-WINNERS REFUNDED */}
       <g transform="translate(906, 165)">
         <use href="#panel-bg" />
-        <text x="135" y="315" className="title">LOSERS GET REFUNDED</text>
+        <text x="135" y="315" className="title">NON-WINNERS REFUNDED</text>
 
         <rect x="20" y="15" width="230" height="240" fill="#7ed3ff" opacity="0.05" />
         <SelectedPfp x={135} y={pfpY} r={20} src={oracleImg} />
