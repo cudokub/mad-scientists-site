@@ -38,7 +38,7 @@
 ## 3. Key Messages
 
 ### Core message
-> "5 escaped the lab. Bid your Mad Scientists to bring them back."
+> "The Cosmos called. 5 answered. Bid your Mad Scientists to claim one."
 
 ### Supporting messages
 
@@ -50,7 +50,7 @@
 | 4 | **"5 parallel auctions. Pick your lane."** | Competitive bidders | Each scientist has its own auction — strategic choice matters |
 
 ### Tone
-Mysterious during tease phase (Days 1–4), confident and direct during reveal (Days 5–7), urgent and competitive during auction (Days 8–10). Always in-character with the "mad science lab" brand voice — punchy, dark humor, pixel-art aesthetic.
+Mysterious during tease phase (Days 1–4), confident and direct during reveal (Days 5–7), urgent and competitive during auction (Days 8–10). Always in-character with the "mad science lab" brand voice — punchy, dark humor, pixel-art aesthetic. The overarching narrative is heroic arrival, not escape: these scientists answered the Cosmos' call and walked through portals to save it.
 
 ---
 

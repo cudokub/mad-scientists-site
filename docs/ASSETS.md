@@ -81,3 +81,4 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 | `cosmic-4-fullbody.png` | The Antiquarian — full body (detail modal) |
 | `cosmic-5-fullbody.png` | The Dreamer — full body (detail modal) |
 | `cosmic-auction-process.svg` | Auction process infographic — 4-panel SVG (Pick Lane → Stack Bid → Highest Wins → Losers Refunded). Rendered inline via `AuctionProcessSvg` component, uses halfbody-v2 PNGs as circular PFPs. |
+| `cosmos-icon.png` | Pixel art Cosmos logo (200x200, ~28KB — resized from 2048x2048 source). Used in cosmic tickers. |

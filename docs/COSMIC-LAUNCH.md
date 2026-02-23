@@ -116,8 +116,15 @@
 - **Gallery layout:** Replaced carousel with responsive CSS grid (2-col mobile, 3-col tablet, 5-col desktop). No JS scroll logic. 5th card centered on mobile via `col-span-2`.
 - **Image variants:** Gallery cards use `halfbody-v2` crops. Modal uses `fullbody` images via `fullSrc` field. Old full-body (`cosmic-N.png`) and halfbody-v1 (`cosmic-N-halfbody.png`) deleted — only active variants remain.
 - **Page UX:** `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled arrow).
-- **Auction headline:** Changed from "Sacrifice Scientists to Win Scientists" to "Bid Scientists. Win Scientists." — cleaner and more direct.
+- **Auction headline:** Changed from "Sacrifice Scientists to Win Scientists" to "Send Your Scientists. Claim the Five." — narrative-driven, ties into mission story.
 - **Body copy:** Trimmed significantly across hero, collection, auction steps, and bottom CTA. Shorter, punchier copy throughout.
+- **Narrative direction:** Reworked from "escaped the lab" framing to "heroes answering the Cosmos' call." The 5 scientists walk through portals together, calm and cool, on a mission to save the Cosmos. Hero image reflects this (portal lineup). All page copy, section headers, and character lore updated to match.
+- **Tickers:** Both cosmic tickers changed to "THE COSMOS CALLED" with pixel art Cosmos icon (`cosmos-icon.png`). Bookend the hero to reinforce the mission stakes.
+- **Hero subtext:** Changed from product spec ("5 hand-built 1/1s. Bid your Mad Scientists to claim one.") to narrative hook ("The Cosmos sent a signal. Five answered.").
+- **Collection section:** Label "The Subjects" → "The Five". Heading "Meet the Cosmic Five" → "Who Answered the Call". Body → "Each one walked through the portal for a different reason." Frames characters as heroes with individual motivations.
+- **Character lore:** All 5 scientist lore paragraphs rewritten to answer "why did you walk through the portal?" — Architect (fix the broken system), Warlord (fight the threat), Oracle (foresaw it), Antiquarian (remembers last time), Dreamer (came for the team).
+- **Auction section:** Label "The Experiment" → "Your Move". Heading → "Send Your Scientists. Claim the Five." Body bridges narrative to mechanic: "The Cosmos called them. Now bid yours to bring one home." CTA text → "Bid your Scientists. Claim a Cosmic."
+- **Hero CTA:** "How Bidding Works" → "Enter the Auction" — stays in story rather than reading like a FAQ link.
 - **Modal extraction:** `ScientistModal` extracted to `src/components/cosmic/ScientistModal.tsx` and dynamically imported (`next/dynamic`, `ssr: false`) — not bundled on initial page load.
 - **Image optimization:** `cosmic-symbol.png` resized from 1524x1626 (2.4MB) to 200px (62KB). `cosmic-logo.png` resized from 2406x740 (1.5MB) to 480px (90KB). Total ~3.7MB saved from source images.
 - **Inline CSS removed:** Keyframe animations (`fadeIn`, `fadeOut`, `dialogIn`, `scrollPulse`) moved from inline `<style>` tag to `globals.css`.

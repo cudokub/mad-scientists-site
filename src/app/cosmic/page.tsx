@@ -23,7 +23,7 @@ const scientists: Scientist[] = [
     src: "/images/cosmic-1-halfbody-v3.png",
     fullSrc: "/images/cosmic-1-fullbody-v2.png",
     tagline: "Built the machine. Became the machine.",
-    lore: "The Architect doesn\u2019t explore the cosmos. He engineers it. Every wire, every circuit, every system traces back to his blueprint. While others look up at the stars, he\u2019s already building what comes next.",
+    lore: "When the signal came, The Architect didn\u2019t hesitate. A broken system is just a blueprint waiting to be rewritten. Every wire, every circuit, every solution traces back to him. He walked through the portal because no one else could rebuild what was falling apart.",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const scientists: Scientist[] = [
     src: "/images/cosmic-2-halfbody-v2.png",
     fullSrc: "/images/cosmic-2-fullbody.png",
     tagline: "Didn\u2019t come to explore. Came to conquer.",
-    lore: "The Warlord was never interested in discovery. Where others saw the unknown, he saw unclaimed territory. The crimson crystal isn\u2019t decoration. It\u2019s the last thing you see before the cosmos becomes his.",
+    lore: "The Warlord doesn\u2019t answer calls. He answers threats. When the signal hit, he saw what the others wouldn\u2019t admit. The Cosmos doesn\u2019t need a rescue team. It needs a weapon. The crimson crystal isn\u2019t decoration. It\u2019s the reason he was chosen.",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const scientists: Scientist[] = [
     src: "/images/cosmic-3-halfbody-v2.png",
     fullSrc: "/images/cosmic-3-fullbody.png",
     tagline: "Sees everything. Says nothing.",
-    lore: "The Oracle\u2019s mind broke through the dome a long time ago. Now it floats, exposed, receiving signals from places that don\u2019t have names yet. He doesn\u2019t speak because language is too slow for what he knows.",
+    lore: "The Oracle saw the signal before it arrived. His mind broke through the dome a long time ago. Floating, exposed, receiving transmissions from places that don\u2019t have names yet. He walked through the portal in silence. He already knows how this ends.",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const scientists: Scientist[] = [
     src: "/images/cosmic-4-halfbody-v2.png",
     fullSrc: "/images/cosmic-4-fullbody.png",
     tagline: "Carried the old world into the new one.",
-    lore: "While everyone else raced toward the future, The Antiquarian packed the past. Ancient tools, forgotten maps, knowledge that predates the lab itself. Turns out the cosmos has been explored before. You just need to know where to look.",
+    lore: "While the others prepared for what\u2019s ahead, The Antiquarian packed what came before. Ancient tools, forgotten maps, knowledge that predates the lab itself. He walked through the portal because this isn\u2019t the first time the Cosmos has called. He knows how it went last time.",
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ const scientists: Scientist[] = [
     src: "/images/cosmic-5-halfbody-v2.png",
     fullSrc: "/images/cosmic-5-fullbody-v2.png",
     tagline: "Closed eyes. Open universe.",
-    lore: "The Dreamer never built a ship or drew a weapon. She just closed her eyes and was already there. The rainbow trail isn\u2019t exhaust. It\u2019s the residue of imagination meeting reality. She\u2019s the only one who went willingly, and the only one who might not come back.",
+    lore: "The Dreamer never built a ship or drew a weapon. She just closed her eyes and was already there. The rainbow trail isn\u2019t exhaust. It\u2019s the residue of imagination meeting reality. She\u2019s the only one who didn\u2019t need the portal. She walked through it anyway. For them.",
   },
 ];
 
@@ -214,7 +214,7 @@ export default function CosmicPage() {
                 One Universe.
               </h1>
               <p data-layer="hero-mobile-body" className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
-                5 hand-built 1/1s. Bid your Mad Scientists to claim one.
+                The Cosmos sent a signal. Five answered.
               </p>
               <div data-layer="hero-mobile-buttons" className="mt-4 flex flex-col gap-3">
                 <Button
@@ -233,7 +233,7 @@ export default function CosmicPage() {
                   theme="cosmic"
                   className="w-full"
                 >
-                  How Bidding Works
+                  Enter the Auction
                 </Button>
               </div>
             </div>
@@ -258,7 +258,7 @@ export default function CosmicPage() {
                   One Universe.
                 </h1>
                 <p className="max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
-                  5 hand-built 1/1s. Bid your Mad Scientists to claim one.
+                  The Cosmos sent a signal. Five answered.
                 </p>
                 <div className="flex flex-col gap-3 mt-2 w-full">
                   <Button
@@ -275,7 +275,7 @@ export default function CosmicPage() {
                     size="lg"
                     theme="cosmic"
                   >
-                    How Bidding Works
+                    Enter the Auction
                   </Button>
                 </div>
               </div>
@@ -305,13 +305,13 @@ export default function CosmicPage() {
         >
           <div className="mx-auto max-w-6xl">
             <p data-layer="collection-label" className="font-display text-xs uppercase tracking-[0.22em] text-cosmic/70">
-              The Subjects
+              The Five
             </p>
             <h2 data-layer="collection-heading" className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
-              Meet the Cosmic Five
+              Who Answered the Call
             </h2>
             <p data-layer="collection-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
-              Each one is a standalone 1/1. Tap to learn more.
+              Each one walked through the portal for a different reason.
             </p>
 
             <div data-layer="collection-grid" className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
@@ -337,14 +337,14 @@ export default function CosmicPage() {
         <section data-layer="auction" id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-6xl">
             <p data-layer="auction-label" className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
-              The Experiment
+              Your Move
             </p>
             <h2 data-layer="auction-heading" className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
-              Bid Scientists. Win Cosmic.
+              Send Your Scientists. Claim the Five.
             </h2>
             <p data-layer="auction-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
-              Bid Mad Scientists from the 10k collection. Highest stack
-              wins. Losers get refunded.
+              The Cosmos called them. Now bid yours to bring one home.
+              Highest stack wins. Losers get refunded.
             </p>
 
             <div data-layer="auction-steps" className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
@@ -374,7 +374,7 @@ export default function CosmicPage() {
             <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-[#090c1a] md:flex-row">
                 <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
                   <p data-layer="auction-cta-text" className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
-                    Bid your 10k Scientists. Claim a COSMIC 1/1.
+                    Bid your Scientists. Claim a Cosmic.
                   </p>
                   <Button
                     href="#"

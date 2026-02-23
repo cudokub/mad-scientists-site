@@ -29,15 +29,15 @@ const stargazeItem: TickerItem = {
 };
 
 const cosmicTopItem: TickerItem = {
-  text: "5 ONE-OF-ONE",
-  subtext: "ARTIFACTS",
-  icon: "/images/cosmic-symbol.png",
+  text: "THE COSMOS",
+  subtext: "CALLED",
+  icon: "/images/cosmos-icon.png",
 };
 
 const cosmicBottomItem: TickerItem = {
-  text: "BID ON",
-  subtext: "STARGAZE",
-  icon: "/images/stargaze-chain.svg",
+  text: "THE COSMOS",
+  subtext: "CALLED",
+  icon: "/images/cosmos-icon.png",
 };
 
 const isCosmic = (variant: string) => variant.startsWith("cosmic-");
