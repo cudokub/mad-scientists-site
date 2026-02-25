@@ -52,16 +52,16 @@ function ScientistModalContent({
           </div>
 
           <div className="flex max-h-[90vh] flex-col gap-5 overflow-y-auto p-8">
-            <DialogTitle className="font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
+            <DialogTitle className="font-display text-3xl uppercase tracking-wide text-cosmic-text">
               {scientist.name}
             </DialogTitle>
 
-            <DialogDescription className="font-mono text-base leading-relaxed text-[#d8d4e2]">
+            <DialogDescription className="font-mono text-base leading-relaxed text-cosmic-text-muted">
               {scientist.tagline}
             </DialogDescription>
 
             <div className="border-t border-cosmic pt-5">
-              <p className="font-mono text-sm leading-relaxed text-[#b4afc0]">
+              <p className="font-mono text-sm leading-relaxed text-cosmic-text-dim">
                 {scientist.lore}
               </p>
             </div>
@@ -81,16 +81,16 @@ function ScientistModalContent({
           </div>
 
           <div className="flex flex-col gap-5 p-5">
-            <DrawerTitle className="text-center font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
+            <DrawerTitle className="text-center font-display text-3xl uppercase tracking-wide text-cosmic-text">
               {scientist.name}
             </DrawerTitle>
 
-            <DrawerDescription className="text-center font-mono text-base leading-relaxed text-[#d8d4e2]">
+            <DrawerDescription className="text-center font-mono text-base leading-relaxed text-cosmic-text-muted">
               {scientist.tagline}
             </DrawerDescription>
 
             <div className="border-t border-cosmic pt-5">
-              <p className="font-mono text-sm leading-relaxed text-[#b4afc0]">
+              <p className="font-mono text-sm leading-relaxed text-cosmic-text-dim">
                 {scientist.lore}
               </p>
             </div>
@@ -98,14 +98,14 @@ function ScientistModalContent({
             <div className="flex items-center justify-between border-t border-cosmic pt-4">
               <button
                 onClick={onPrev}
-                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-cosmic-bg/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
                 aria-label="Previous scientist"
               >
                 &larr;
               </button>
               <button
                 onClick={onNext}
-                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-cosmic-bg/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
                 aria-label="Next scientist"
               >
                 &rarr;
@@ -146,22 +146,22 @@ export default function ScientistModal({
         <DialogContent onClick={onClose}>
           <button
             onClick={(e) => { e.stopPropagation(); onPrev(); }}
-            className="absolute left-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+            className="absolute left-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-cosmic-bg/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
             aria-label="Previous scientist"
           >
             &larr;
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); onNext(); }}
-            className="absolute right-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+            className="absolute right-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-cosmic-bg/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
             aria-label="Next scientist"
           >
             &rarr;
           </button>
-          <div className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden border border-cosmic bg-[#080612]/95 shadow-lg animate-[dialogIn_300ms_cubic-bezier(0.16,1,0.3,1)]" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden border border-cosmic bg-cosmic-bg/95 shadow-lg animate-[dialogIn_300ms_cubic-bezier(0.16,1,0.3,1)]" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={onClose}
-              className="absolute right-3 top-3 z-[110] flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-sm text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+              className="absolute right-3 top-3 z-[110] flex h-11 w-11 items-center justify-center border border-cosmic bg-cosmic-bg/80 font-display text-sm text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
               aria-label="Close modal"
             >
               &times;

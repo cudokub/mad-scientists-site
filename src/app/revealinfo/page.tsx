@@ -45,7 +45,7 @@ export default function RevealInfoPage() {
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-wider">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-text uppercase tracking-wider">
             REVEAL INFO
           </h1>
         </div>
@@ -69,19 +69,19 @@ export default function RevealInfoPage() {
           {/* Right — How to Reveal + Trade + Reveal */}
           <div className="flex-1 border border-green p-6 md:p-8 flex flex-col gap-6 items-center md:items-start">
             {/* How to Reveal heading in bordered box */}
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-wider text-center md:text-left">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-text tracking-wider text-center md:text-left">
               How To Reveal{" "}
-              <span className="text-[#00FF26]">Mad Scientists?</span>
+              <span className="text-green">Mad Scientists?</span>
             </h2>
 
-            <p className="font-display text-xl md:text-2xl text-[#909991] text-center md:text-left">
+            <p className="font-display text-xl md:text-2xl text-text-muted text-center md:text-left">
               Use <span className="text-green font-bold">10</span>{" "}
-              <span className="text-[#00FF26]">$LAB</span> to reveal{" "}
+              <span className="text-green">$LAB</span> to reveal{" "}
               <span className="text-green font-bold">1</span>{" "}
-              <span className="text-[#00FF26]">MAD NFT</span>
+              <span className="text-green">MAD NFT</span>
             </p>
 
-            <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed text-center md:text-left">
+            <p className="font-mono text-body text-base md:text-lg leading-relaxed text-center md:text-left">
               Use 10 $LAB tokens to reveal 1 Mad Scientist NFT. You will then be
               able to trade your NFTs on the marketplace. You can also choose to
               hold onto your $LAB tokens as unrevealed NFTs and trade it.
@@ -89,8 +89,8 @@ export default function RevealInfoPage() {
 
             {/* Trade $LAB */}
             <div className="w-full">
-              <h3 className="font-display text-lg md:text-xl font-bold text-[#D2DFD4] tracking-wider mb-3 text-center md:text-left">
-                TRADE <span className="text-[#00FF26]">$LAB</span>
+              <h3 className="font-display text-lg md:text-xl font-bold text-text tracking-wider mb-3 text-center md:text-left">
+                TRADE <span className="text-green">$LAB</span>
               </h3>
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
                 {tradeLinks.map((link) => (
@@ -118,8 +118,8 @@ export default function RevealInfoPage() {
 
             {/* Reveal MAD */}
             <div className="w-full">
-              <h3 className="font-display text-lg md:text-xl font-bold text-[#D2DFD4] tracking-wider mb-3 text-center md:text-left">
-                REVEAL <span className="text-[#00FF26]">MAD</span>
+              <h3 className="font-display text-lg md:text-xl font-bold text-text tracking-wider mb-3 text-center md:text-left">
+                REVEAL <span className="text-green">MAD</span>
               </h3>
               <div className="flex justify-center md:justify-start">
                 <a
@@ -154,7 +154,7 @@ export default function RevealInfoPage() {
               <p className="font-mono text-2xl md:text-3xl font-bold text-green mb-2">
                 {stat.value}
               </p>
-              <p className="font-display text-sm md:text-base text-[#A0A0A0] tracking-wider">
+              <p className="font-display text-sm md:text-base text-text-muted tracking-wider">
                 {stat.label}
               </p>
             </div>
@@ -166,22 +166,22 @@ export default function RevealInfoPage() {
           {/* Left — Story + Tokenomics */}
           <div className="flex-1 border border-green p-6 md:p-8 flex flex-col gap-6">
             {/* Story heading */}
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-wider text-center md:text-left">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-text tracking-wider text-center md:text-left">
               The Story of{" "}
-              <span className="text-[#00FF26]">$LAB</span> Tokens
+              <span className="text-green">$LAB</span> Tokens
             </h2>
 
             {/* Story items in bordered box with bullet points */}
             <div className="border border-green p-4 md:p-6">
-              <ul className="font-mono text-[#C2C2C2] text-sm md:text-base leading-relaxed list-disc pl-5 space-y-4">
+              <ul className="font-mono text-body text-sm md:text-base leading-relaxed list-disc pl-5 space-y-4">
                 <li>
-                  <strong className="text-[#D2DFD4]">A Fair Launch:</strong> The
+                  <strong className="text-text">A Fair Launch:</strong> The
                   event was marked by the absence of whitelists (WLs), no bots
                   and no lock, ensuring an equitable opportunity for all
                   interested parties.
                 </li>
                 <li>
-                  <strong className="text-[#D2DFD4]">
+                  <strong className="text-text">
                     Preparation for the Launch:
                   </strong>{" "}
                   Participants were given a 52.91-hour window to deposit $OSMO
@@ -190,14 +190,14 @@ export default function RevealInfoPage() {
                     href="https://app.streamswap.io/stream/OSMO/8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#0cdefa] hover:text-green-light transition-colors"
+                    className="text-link hover:text-green-light transition-colors"
                   >
                     Streamswap
                   </a>
                   .
                 </li>
                 <li>
-                  <strong className="text-[#D2DFD4]">
+                  <strong className="text-text">
                     The Swap Process:
                   </strong>{" "}
                   After the initial deposit period, $OSMO was converted into
@@ -208,16 +208,16 @@ export default function RevealInfoPage() {
             </div>
 
             {/* Tokenomics */}
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-wider text-center md:text-left">
-              <span className="text-[#00FF26]">$LAB</span> Tokenomics
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-text tracking-wider text-center md:text-left">
+              <span className="text-green">$LAB</span> Tokenomics
             </h2>
 
             {/* Supply header row */}
             <div className="flex items-center justify-between border border-green px-4 py-3">
-              <span className="font-mono text-base md:text-lg font-bold text-[#D2DFD4]">
+              <span className="font-mono text-base md:text-lg font-bold text-text">
                 SUPPLY
               </span>
-              <span className="font-mono text-base md:text-lg font-bold text-[#D2DFD4]">
+              <span className="font-mono text-base md:text-lg font-bold text-text">
                 100,000 $LAB
               </span>
             </div>
@@ -229,7 +229,7 @@ export default function RevealInfoPage() {
                   key={item.allocation}
                   className="flex items-center justify-between border-b border-green/30 py-3"
                 >
-                  <span className="font-mono text-[#C2C2C2] text-sm md:text-base">
+                  <span className="font-mono text-body text-sm md:text-base">
                     {item.allocation}
                   </span>
                   <span className="font-mono text-green font-bold text-sm md:text-base shrink-0 ml-4">

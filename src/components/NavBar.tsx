@@ -31,9 +31,9 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
   const logoAlt = isCosmic ? "COSMIC" : "Mad Scientists";
   const navBg = isCosmic ? "bg-[#050a16]/95 backdrop-blur-sm" : "bg-bg";
   const borderClass = isCosmic ? "border-cosmic" : "border-green";
-  const linkBase = isCosmic ? "text-[#cfc6ea] hover:text-[#9fe5ff]" : "text-[#D2DFD4] hover:text-green";
-  const highlightClass = isCosmic ? "text-[#f3ecff] font-bold" : "text-green font-bold";
-  const mobileBurger = isCosmic ? "bg-[#9fe5ff]" : "bg-green";
+  const linkBase = isCosmic ? "text-cosmic-text-muted hover:text-cosmic-cyan-light" : "text-text hover:text-green";
+  const highlightClass = isCosmic ? "text-cosmic-text font-bold" : "text-green font-bold";
+  const mobileBurger = isCosmic ? "bg-cosmic-cyan-light" : "bg-green";
   const mobileMenuBg = isCosmic ? "bg-[#060a16]" : "bg-bg";
   const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
 
@@ -184,8 +184,8 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
                 link.highlight
                   ? highlightClass
                   : isCosmic
-                    ? "text-[#d5cfee] hover:text-[#9fe5ff]"
-                    : "text-[#D2DFD4]"
+                    ? "text-cosmic-text-muted hover:text-cosmic-cyan-light"
+                    : "text-text"
               }`}
               onClick={() => setMobileOpen(false)}
             >

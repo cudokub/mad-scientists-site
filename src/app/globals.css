@@ -10,6 +10,17 @@
   --color-cosmic-dark: #6B2FB8;
   --color-body: #C2C2C2;
   --color-link: #0cdefa;
+  --color-text: #D2DFD4;
+  --color-text-muted: #A0A0A0;
+  --color-text-dark: #141414;
+  --color-cosmic-text: #f4ecff;
+  --color-cosmic-text-muted: #c9c5d8;
+  --color-cosmic-text-dim: #b4afc0;
+  --color-cosmic-text-dimmer: #8a84a0;
+  --color-cosmic-bg: #080612;
+  --color-cosmic-bg-light: #0a0c1d;
+  --color-cosmic-cyan: #7ed3ff;
+  --color-cosmic-cyan-light: #9fe5ff;
   --font-display: "Pixelify Sans", monospace;
   --font-mono: "Reddit Mono", monospace;
 }

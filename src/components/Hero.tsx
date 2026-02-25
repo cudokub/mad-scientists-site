@@ -10,13 +10,13 @@ export default function Hero() {
           <div className="flex flex-col gap-4 p-6 md:p-8 flex-1 justify-center items-center md:items-start">
             {/* Headline */}
             <h1 className="font-display uppercase tracking-[-1.5px] text-center md:text-left">
-              <span className="block text-[#D2DFD4] text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
+              <span className="block text-text text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
                 EVERYTHING
               </span>
-              <span className="block text-[#D2DFD4] text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
+              <span className="block text-text text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
                 IS AN
               </span>
-              <span className="block text-[#D2DFD4] text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
+              <span className="block text-text text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
                 EXPERIMENT
               </span>
             </h1>

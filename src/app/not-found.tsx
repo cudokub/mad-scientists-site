@@ -12,10 +12,10 @@ export default function NotFound() {
           <h1 className="font-display text-6xl md:text-8xl font-bold text-green">
             404
           </h1>
-          <p className="font-display text-xl md:text-2xl text-[#D2DFD4] tracking-wider text-center">
+          <p className="font-display text-xl md:text-2xl text-text tracking-wider text-center">
             EXPERIMENT NOT FOUND
           </p>
-          <p className="font-mono text-[#C2C2C2] text-base md:text-lg text-center max-w-md">
+          <p className="font-mono text-body text-base md:text-lg text-center max-w-md">
             This page doesn&apos;t exist in our lab. It may have been moved or
             dissolved in an experiment gone wrong.
           </p>

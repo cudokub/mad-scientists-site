@@ -10,7 +10,7 @@ export default function ScienceClubsPage() {
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-wider">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-text uppercase tracking-wider">
             SCIENCE CLUBS
           </h1>
         </div>
@@ -37,7 +37,7 @@ export default function ScienceClubsPage() {
               <h3 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
                 OVERVIEW
               </h3>
-              <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed">
+              <p className="font-mono text-body text-base md:text-lg leading-relaxed">
                 Mad Scientists, Have you ever dreamed of joining a science club?
                 (don&apos;t answer that) We&apos;d like you to create your own
                 clubs based on Mad Scientists traits. Like mice trait, how about
@@ -50,7 +50,7 @@ export default function ScienceClubsPage() {
               <h3 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
                 Why create a club?
               </h3>
-              <ul className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed list-disc pl-6 space-y-2">
+              <ul className="font-mono text-body text-base md:text-lg leading-relaxed list-disc pl-6 space-y-2">
                 <li>Special discord role, and gated chat room</li>
                 <li>Look cool amongst your peers</li>
                 <li>Grants 👀</li>
@@ -63,7 +63,7 @@ export default function ScienceClubsPage() {
               <h3 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
                 Protocol to create a club
               </h3>
-              <ul className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed list-disc pl-6 space-y-2">
+              <ul className="font-mono text-body text-base md:text-lg leading-relaxed list-disc pl-6 space-y-2">
                 <li>Find 10 Mad Scientists frens to start a club.</li>
                 <li>
                   Pick an MS trait for your club (or combination of traits),
@@ -71,7 +71,7 @@ export default function ScienceClubsPage() {
                   to share with us.
                 </li>
               </ul>
-              <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed mt-4">
+              <p className="font-mono text-body text-base md:text-lg leading-relaxed mt-4">
                 The more creative you get, i.e starting an X for your club,
                 doing mad experiments, etc... the more likely you are to receive
                 a grant for your club.

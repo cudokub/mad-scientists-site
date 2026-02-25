@@ -55,7 +55,7 @@ export default function Footer({ theme = "default" }: FooterProps) {
   const isCosmic = theme === "cosmic";
   const borderClass = isCosmic ? "border-cosmic" : "border-green";
   const linkClass = isCosmic
-    ? "text-[#cfc6ea] hover:text-[#9fe5ff]"
+    ? "text-cosmic-text-muted hover:text-cosmic-cyan-light"
     : "text-green hover:text-green-light";
   const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
 

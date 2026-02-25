@@ -22,11 +22,19 @@ Official website for Mad Scientists NFT collection on Osmosis blockchain. Rebuil
 | `green-muted` | `#5cd83d` | Subtle green accents |
 | `green-dark` | `#197006` | Dark green |
 | `green-light` | `#88e54a` | Hover states |
+| `text` | `#D2DFD4` | Headline / nav text (light gray-green) |
+| `text-muted` | `#A0A0A0` | Labels / captions (gray — WCAG AA compliant on `bg`) |
+| `text-dark` | `#141414` | Dark text on primary buttons |
 | `cosmic` | `#9B59F0` | Cosmic purple — COSMIC page borders, accents |
 | `cosmic-dark` | `#6B2FB8` | Dark cosmic purple |
-| — | `#D2DFD4` | Headline / nav text (light gray-green) |
-| — | `#A0A0A0` | Labels / captions (gray — WCAG AA compliant on `bg`) |
-| — | `#141414` | Dark text on primary buttons |
+| `cosmic-text` | `#f4ecff` | Cosmic headline text |
+| `cosmic-text-muted` | `#c9c5d8` | Cosmic secondary text |
+| `cosmic-text-dim` | `#b4afc0` | Cosmic tertiary text |
+| `cosmic-text-dimmer` | `#8a84a0` | Cosmic quaternary text |
+| `cosmic-bg` | `#080612` | Cosmic dark background |
+| `cosmic-bg-light` | `#0a0c1d` | Cosmic lighter background |
+| `cosmic-cyan` | `#7ed3ff` | Cosmic cyan accent |
+| `cosmic-cyan-light` | `#9fe5ff` | Cosmic cyan hover / light accent |
 
 ### Typography
 - **Headings / buttons / labels:** `font-display` (Pixelify Sans) — always uppercase, `font-bold`, `tracking-wider` or `tracking-[0.05em]`
@@ -52,7 +60,7 @@ Elements use `data-layer="section-element"` attributes for designer-developer co
 - **General rule:** On mobile, center everything for a cleaner, app-like feel.
 
 ## Components
-- **`Button`** — 4 variants (`primary`/`secondary`/`ghost`/`cosmic-primary`), 3 sizes (`sm`/`md`/`lg`). Supports `theme="cosmic"` for cosmic-themed styles. Auto-detects external links. `className="flex-1"` for side-by-side pairs.
+- **`Button`** — 4 variants (`primary`/`secondary`/`ghost`/`cosmic-primary`), 3 sizes (`sm`/`md`/`lg`). Supports `theme="cosmic"` for cosmic-themed styles. `href` is optional — when provided, renders as `<Link>` or `<a>` (auto-detects external links); when omitted, renders as `<button>` with `onClick` handler. Also supports `disabled` and `type` props. `className="flex-1"` for side-by-side pairs.
 - **`NavBar`** — Grid-cell layout with `border-l` dividers. Do NOT use Button here.
 - **`Footer`** — 5-col link grid + social icons. Uses inline `<a>` tags, not Button.
 - **`Hero`** — Two-column hero (text left, GIF right). Homepage only.

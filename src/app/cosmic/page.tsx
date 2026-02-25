@@ -110,7 +110,7 @@ function GalleryCard({
     <button
       data-layer="collection-card"
       onClick={onClick}
-      className="group cursor-pointer text-center md:text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic"
+      className="group cursor-pointer text-center md:text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
     >
       <div data-layer="collection-card-image" className="relative overflow-hidden border border-cosmic bg-[#090b17] transition duration-300 group-hover:border-cosmic/70 group-hover:shadow-[0_10px_30px_rgba(155,89,240,0.2)]">
         <Image
@@ -125,10 +125,10 @@ function GalleryCard({
           1/1
         </span>
       </div>
-      <p data-layer="collection-card-name" className="mt-2 font-display text-sm uppercase tracking-wider text-[#f3edff]">
+      <p data-layer="collection-card-name" className="mt-2 font-display text-sm uppercase tracking-wider text-cosmic-text">
         {scientist.name}
       </p>
-      <p data-layer="collection-card-tagline" className="mt-0.5 font-mono text-xs leading-relaxed text-[#b5b2c8]">
+      <p data-layer="collection-card-tagline" className="mt-0.5 font-mono text-xs leading-relaxed text-cosmic-text-muted">
         {scientist.tagline}
       </p>
     </button>
@@ -164,7 +164,7 @@ export default function CosmicPage() {
   }, []);
 
   return (
-    <main id="main-content" className="min-h-screen scroll-smooth overflow-x-clip bg-[#04070f] text-[#e7e4ef]">
+    <main id="main-content" className="min-h-screen scroll-smooth overflow-x-clip bg-[#04070f] text-cosmic-text">
       <NavBar theme="cosmic" />
 
       <section data-layer="page-wrapper" className="relative mx-auto max-w-[1440px] border-x border-cosmic">
@@ -206,12 +206,12 @@ export default function CosmicPage() {
             </div>
 
             <div data-layer="hero-mobile-content" className="border-t border-cosmic p-8 text-center">
-              <h1 data-layer="hero-mobile-heading" className="font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff]">
-                <ClearFive className="text-[#7ed3ff]" /> Legends.
+              <h1 data-layer="hero-mobile-heading" className="font-display text-3xl uppercase leading-[0.9] tracking-wide text-cosmic-text">
+                <ClearFive className="text-cosmic-cyan" /> Legends.
                 <br />
                 One Universe.
               </h1>
-              <p data-layer="hero-mobile-body" className="mt-3 font-mono text-[13px] leading-relaxed text-[#c9c5d8]">
+              <p data-layer="hero-mobile-body" className="mt-3 font-mono text-[13px] leading-relaxed text-cosmic-text-muted">
                 The Cosmos sent a signal. Five answered.
                 <br />
                 Each 1/1 hand-crafted.
@@ -252,12 +252,12 @@ export default function CosmicPage() {
                     className="h-auto w-[160px] lg:w-[190px]"
                   />
                 </div>
-                <h1 className="font-display text-5xl uppercase leading-[0.9] tracking-wide text-[#f3ecff] lg:text-6xl">
-                  <ClearFive className="text-[#7ed3ff]" /> Legends.
+                <h1 className="font-display text-5xl uppercase leading-[0.9] tracking-wide text-cosmic-text lg:text-6xl">
+                  <ClearFive className="text-cosmic-cyan" /> Legends.
                   <br />
                   One Universe.
                 </h1>
-                <p className="max-w-2xl font-mono text-sm leading-relaxed text-[#c9c5d8] lg:text-base">
+                <p className="max-w-2xl font-mono text-sm leading-relaxed text-cosmic-text-muted lg:text-base">
                   The Cosmos sent a signal. Five answered.
                   <br />
                   Each 1/1 hand-crafted.
@@ -309,10 +309,10 @@ export default function CosmicPage() {
             <p data-layer="collection-label" className="text-center font-display text-xs uppercase tracking-[0.22em] text-cosmic/70 md:text-left">
               The Five
             </p>
-            <h2 data-layer="collection-heading" className="mt-3 text-center font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-left md:text-4xl">
+            <h2 data-layer="collection-heading" className="mt-3 text-center font-display text-3xl uppercase tracking-wide text-cosmic-text md:text-left md:text-4xl">
               Who Answered the Call
             </h2>
-            <p data-layer="collection-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-left md:text-base">
+            <p data-layer="collection-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
               Each one walked through the portal for their unique truth.
             </p>
 
@@ -338,13 +338,13 @@ export default function CosmicPage() {
 
         <section data-layer="auction" id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-6xl">
-            <p data-layer="auction-label" className="text-center font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff] md:text-left">
+            <p data-layer="auction-label" className="text-center font-display text-xs uppercase tracking-[0.22em] text-cosmic-cyan md:text-left">
               Your Move
             </p>
-            <h2 data-layer="auction-heading" className="mt-3 text-center font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-left md:text-4xl">
+            <h2 data-layer="auction-heading" className="mt-3 text-center font-display text-3xl uppercase tracking-wide text-cosmic-text md:text-left md:text-4xl">
               Send Your Scientists. Claim the Five.
             </h2>
-            <p data-layer="auction-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-left md:text-base">
+            <p data-layer="auction-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
               The Cosmos called them. Now bid yours to bring one home.
               Highest stack wins. Those that didn&apos;t win the auction get refunded.
             </p>
@@ -355,17 +355,17 @@ export default function CosmicPage() {
                   key={item.step}
                   className="flex border border-cosmic bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] overflow-hidden"
                 >
-                  <div className="w-[120px] shrink-0 border-r border-cosmic/20 bg-[#0a0c1d] md:w-[150px]">
+                  <div className="w-[120px] shrink-0 border-r border-cosmic/20 bg-cosmic-bg-light md:w-[150px]">
                     <AuctionProcessSvg panel={i + 1} />
                   </div>
                   <div className="flex-1 p-4 md:p-5">
                     <p className="font-display text-3xl leading-none text-cosmic md:text-4xl">
                       {item.step}
                     </p>
-                    <h3 className="mt-3 font-display text-sm uppercase tracking-[0.08em] text-[#f0e8ff] md:text-base">
+                    <h3 className="mt-3 font-display text-sm uppercase tracking-[0.08em] text-cosmic-text md:text-base">
                       {item.title}
                     </h3>
-                    <p className="mt-2 font-mono text-xs leading-relaxed text-[#aaa4bf] md:text-sm">
+                    <p className="mt-2 font-mono text-xs leading-relaxed text-cosmic-text-dim md:text-sm">
                       {item.desc}
                     </p>
                   </div>
@@ -373,9 +373,9 @@ export default function CosmicPage() {
               ))}
             </div>
 
-            <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-[#090c1a] md:flex-row">
+            <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-cosmic-bg md:flex-row">
                 <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
-                  <p data-layer="auction-cta-text" className="text-center font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-left md:text-base">
+                  <p data-layer="auction-cta-text" className="text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
                     Bid your Scientists. Claim a Cosmic.
                   </p>
                   <Button
@@ -392,7 +392,7 @@ export default function CosmicPage() {
                   data-layer="auction-stargaze"
                   className="flex items-center gap-3 border-t border-cosmic/40 px-6 py-4 md:w-[200px] md:shrink-0 md:flex-col md:items-center md:justify-center md:gap-2 md:border-l md:border-t-0 md:px-8 md:py-6 md:text-center"
                 >
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#8a84a0] md:order-first">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-cosmic-text-dimmer md:order-first">
                     Powered by
                   </p>
                   <Image
@@ -409,20 +409,20 @@ export default function CosmicPage() {
                     height={24}
                     className="shrink-0 md:hidden"
                   />
-                  <p className="font-display text-sm font-bold uppercase tracking-[0.08em] text-[#e8e0ff]">
+                  <p className="font-display text-sm font-bold uppercase tracking-[0.08em] text-cosmic-text">
                     Stargaze
                   </p>
-                  <p className="hidden font-mono text-[10px] text-[#b5b2c8] md:block">
+                  <p className="hidden font-mono text-[10px] text-cosmic-text-muted md:block">
                     Auction Partner
                   </p>
                 </div>
             </div>
 
             <div data-layer="auction-lanes-wrapper" className="mt-12 md:mt-16">
-              <h3 data-layer="auction-lanes-heading" className="font-display text-xl uppercase tracking-wide text-[#f1eaff] md:text-2xl">
-                <ClearFive className="text-[#f1eaff]" /> Parallel Auctions
+              <h3 data-layer="auction-lanes-heading" className="font-display text-xl uppercase tracking-wide text-cosmic-text md:text-2xl">
+                <ClearFive className="text-cosmic-text" /> Parallel Auctions
               </h3>
-              <p data-layer="auction-lanes-body" className="mt-2 font-mono text-xs text-[#a8a3bd] md:text-sm">
+              <p data-layer="auction-lanes-body" className="mt-2 font-mono text-xs text-cosmic-text-dim md:text-sm">
                 All 5 run at once. Pick your lane. Watch the bids stack up.
               </p>
               <div data-layer="auction-lanes" className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
@@ -455,11 +455,11 @@ export default function CosmicPage() {
                           />
                         </div>
                         <div className="min-w-0">
-                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-[#8a84a0]">
-                            <span className="inline-flex h-1.5 w-1.5 shrink-0 bg-[#8a84a0]" />
+                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-cosmic-text-dimmer">
+                            <span className="inline-flex h-1.5 w-1.5 shrink-0 bg-cosmic-text-dimmer" />
                             {auction.lane}
                           </p>
-                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-[#b5b2c8] md:text-sm">
+                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-cosmic-text-muted md:text-sm">
                             {scientist.name}
                           </h4>
                         </div>
@@ -469,11 +469,11 @@ export default function CosmicPage() {
                         <div className="h-full w-0 bg-[#2a2740]" />
                       </div>
 
-                      <p className="mt-3 font-display text-[10px] uppercase tracking-[0.12em] text-[#8a84a0] md:text-xs">
+                      <p className="mt-3 font-display text-[10px] uppercase tracking-[0.12em] text-cosmic-text-dimmer md:text-xs">
                         Sealed
                       </p>
 
-                      <p className="mt-1 font-mono text-[10px] text-[#8a84a0] md:text-[11px]">
+                      <p className="mt-1 font-mono text-[10px] text-cosmic-text-dimmer md:text-[11px]">
                         Auction opens soon
                       </p>
                     </article>
@@ -488,7 +488,7 @@ export default function CosmicPage() {
       {showTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center border border-cosmic bg-[#09081a]/90 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic backdrop-blur-sm"
+          className="fixed bottom-6 right-6 z-50 flex min-w-[44px] min-h-[44px] items-center justify-center border border-cosmic bg-cosmic-bg/90 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic backdrop-blur-sm"
           aria-label="Back to top"
         >
           &uarr;

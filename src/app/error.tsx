@@ -1,5 +1,7 @@
 "use client";
 
+import Button from "@/components/Button";
+
 export default function Error({
   reset,
 }: {
@@ -12,18 +14,15 @@ export default function Error({
         <h1 className="font-display text-4xl md:text-5xl font-bold text-green">
           ERROR
         </h1>
-        <p className="font-display text-lg md:text-xl text-[#D2DFD4] tracking-wider text-center">
+        <p className="font-display text-lg md:text-xl text-text tracking-wider text-center">
           SOMETHING WENT WRONG
         </p>
-        <p className="font-mono text-[#C2C2C2] text-base text-center">
+        <p className="font-mono text-body text-base text-center">
           An unexpected error occurred. Our scientists are investigating.
         </p>
-        <button
-          onClick={reset}
-          className="flex items-center justify-center font-display font-bold tracking-[0.05em] text-center transition-all bg-green text-[#141414] hover:brightness-110 px-6 py-4 text-base md:text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
-        >
+        <Button onClick={reset} variant="primary" size="lg">
           TRY AGAIN
-        </button>
+        </Button>
       </div>
     </main>
   );

@@ -6,7 +6,7 @@ export default function BlockchainSection() {
       <div className="flex flex-col md:flex-row">
         {/* Col 1: Blockchain / Osmosis */}
         <div className="flex-1 border border-green p-6 md:p-8 flex flex-col items-center gap-3">
-          <span className="font-display text-[#A0A0A0] text-sm tracking-wider">
+          <span className="font-display text-text-muted text-sm tracking-wider">
             BLOCKCHAIN
           </span>
           <div className="flex items-center gap-3">
@@ -19,7 +19,7 @@ export default function BlockchainSection() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className="font-display text-[#D2DFD4] text-2xl md:text-3xl font-bold capitalize">
+            <span className="font-display text-text text-2xl md:text-3xl font-bold capitalize">
               Osmosis
             </span>
           </div>
@@ -27,7 +27,7 @@ export default function BlockchainSection() {
 
         {/* Col 2: Trade $LAB — 3 circular icons only */}
         <div className="flex-1 border border-green p-6 md:p-8 flex flex-col items-center gap-3">
-          <span className="font-display text-[#A0A0A0] text-sm tracking-wider">
+          <span className="font-display text-text-muted text-sm tracking-wider">
             TRADE $LAB
           </span>
           <div className="flex gap-3 mt-1">
@@ -81,7 +81,7 @@ export default function BlockchainSection() {
 
         {/* Col 3: Reveal MAD Scientists */}
         <div className="flex-1 border border-green p-6 md:p-8 flex flex-col items-center gap-3">
-          <span className="font-display text-[#A0A0A0] text-sm tracking-wider">
+          <span className="font-display text-text-muted text-sm tracking-wider">
             REVEAL MAD SCIENTISTS
           </span>
           <a
@@ -99,7 +99,7 @@ export default function BlockchainSection() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className="font-display text-[#D2DFD4] text-2xl md:text-3xl font-bold capitalize">
+            <span className="font-display text-text text-2xl md:text-3xl font-bold capitalize">
               Gateway
             </span>
           </a>

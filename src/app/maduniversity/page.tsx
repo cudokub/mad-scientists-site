@@ -37,7 +37,7 @@ export default function MadUniversityPage() {
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-wider">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-text uppercase tracking-wider">
             MAD UNIVERSITY
           </h1>
         </div>
@@ -64,7 +64,7 @@ export default function MadUniversityPage() {
               <h2 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
                 OVERVIEW
               </h2>
-              <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed">
+              <p className="font-mono text-body text-base md:text-lg leading-relaxed">
                 Mad University encourages you to create content using the{" "}
                 <strong>
                   <em>Research and Reward</em>
@@ -79,7 +79,7 @@ export default function MadUniversityPage() {
               <h2 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
                 EACH X POST MUST CONTAIN
               </h2>
-              <div className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed space-y-2 pl-2">
+              <div className="font-mono text-body text-base md:text-lg leading-relaxed space-y-2 pl-2">
                 <p>1. Tagging @madscientists_x</p>
                 <p>2. At least 100 characters</p>
                 <p>
@@ -88,14 +88,14 @@ export default function MadUniversityPage() {
                     href="https://drive.google.com/drive/folders/1hnSMNvvWFUX8V4p5p79ItUjjjE3B6LaW"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#0cdefa] hover:text-green-light transition-colors"
+                    className="text-link hover:text-green-light transition-colors"
                   >
                     Brand Assets
                   </a>
                   )
                 </p>
               </div>
-              <p className="font-mono text-[#C2C2C2] text-sm md:text-base leading-relaxed mt-4">
+              <p className="font-mono text-body text-sm md:text-base leading-relaxed mt-4">
                 <strong>
                   Note: the @ must be within the first 300 characters to be
                   captured by the bot
@@ -116,7 +116,7 @@ export default function MadUniversityPage() {
 
             {/* Scoring rules in bordered box */}
             <div className="border border-green p-4 md:p-6">
-              <ul className="font-mono text-[#C2C2C2] text-sm md:text-base leading-relaxed list-disc pl-5 space-y-4">
+              <ul className="font-mono text-body text-sm md:text-base leading-relaxed list-disc pl-5 space-y-4">
                 <li>
                   3 points per post with a maximum of 1 posts per day
                 </li>
@@ -124,7 +124,7 @@ export default function MadUniversityPage() {
                   5 bonus points per post when you have signup* Mad Scientists
                   PFP on X
                   <br />
-                  <em className="text-xs md:text-sm text-[#A0A0A0]">
+                  <em className="text-xs md:text-sm text-text-muted">
                     * You will lose the bonus if you change your PFP. If you
                     change back to a Mad Scientist PFP you must signup again to
                     get the bonus
@@ -147,10 +147,10 @@ export default function MadUniversityPage() {
 
             {/* Points header row */}
             <div className="flex items-center justify-between border border-green px-4 py-3">
-              <span className="font-mono text-base md:text-lg font-bold text-[#D2DFD4]">
+              <span className="font-mono text-base md:text-lg font-bold text-text">
                 Possible
               </span>
-              <span className="font-mono text-base md:text-lg font-bold text-[#D2DFD4]">
+              <span className="font-mono text-base md:text-lg font-bold text-text">
                 5474 points in a year
               </span>
             </div>
@@ -170,7 +170,7 @@ export default function MadUniversityPage() {
                     </span>
                     <span className="text-xl">{role.emoji}</span>
                   </span>
-                  <span className="font-mono text-[#C2C2C2] text-sm md:text-base">
+                  <span className="font-mono text-body text-sm md:text-base">
                     {role.points}
                   </span>
                 </div>
@@ -203,7 +203,7 @@ export default function MadUniversityPage() {
             <h4 className="font-display text-xl md:text-2xl font-bold text-green tracking-wider mb-3">
               /signup
             </h4>
-            <ul className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed list-disc pl-6 space-y-1">
+            <ul className="font-mono text-body text-base md:text-lg leading-relaxed list-disc pl-6 space-y-1">
               <li>
                 Step 1: type command{" "}
                 <code className="text-green">/signup</code> and press enter
@@ -224,12 +224,12 @@ export default function MadUniversityPage() {
             <h4 className="font-display text-xl md:text-2xl font-bold text-green tracking-wider mb-3">
               /connect-to-x
             </h4>
-            <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed mb-2">
+            <p className="font-mono text-body text-base md:text-lg leading-relaxed mb-2">
               Optional tool to link your X account to post your MU Badge. Type
               command <code className="text-green">/connect-to-x</code> and
               press enter, this will give you the below prompt:
             </p>
-            <ul className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed list-disc pl-6 space-y-1">
+            <ul className="font-mono text-body text-base md:text-lg leading-relaxed list-disc pl-6 space-y-1">
               <li>
                 Visit the URL provided below logged in with your X Account, and
                 authorize this bot.
@@ -247,11 +247,11 @@ export default function MadUniversityPage() {
             <h4 className="font-display text-xl md:text-2xl font-bold text-green tracking-wider mb-3">
               /profile
             </h4>
-            <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed mb-2">
+            <p className="font-mono text-body text-base md:text-lg leading-relaxed mb-2">
               Type command <code className="text-green">/profile</code> and
               press enter; this will show:
             </p>
-            <ul className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed list-disc pl-6 space-y-1">
+            <ul className="font-mono text-body text-base md:text-lg leading-relaxed list-disc pl-6 space-y-1">
               <li>Daily Stats button — daily posts left and reset timer</li>
               <li>MU Badge button — show badge</li>
               <li>Leaderboard button — shows top 20 for the month</li>
@@ -264,7 +264,7 @@ export default function MadUniversityPage() {
             <h4 className="font-display text-xl md:text-2xl font-bold text-green tracking-wider mb-3">
               /dropout
             </h4>
-            <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed">
+            <p className="font-mono text-body text-base md:text-lg leading-relaxed">
               Type command <code className="text-green">/dropout</code> and
               press enter to leave the Mad University program.
             </p>
