@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Button from "./Button";
 
 export default function Hero() {
@@ -53,7 +52,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Panel — Hero Video (MP4 with GIF fallback) */}
+        {/* Right Panel — Hero Video (WebM → MP4 fallback, WebP poster) */}
         <div className="flex-[2] border border-green overflow-hidden bg-green-dark">
           <video
             autoPlay
@@ -62,20 +61,10 @@ export default function Hero() {
             playsInline
             preload="auto"
             className="w-full h-full object-cover"
-            poster="/images/hero.gif"
+            poster="/images/hero-poster.webp"
           >
             <source src="/images/hero.mp4" type="video/mp4" />
-            {/* Fallback for browsers that don't support video */}
-            <Image
-              src="/images/hero.gif"
-              alt="Mad Scientists NFT Collection"
-              width={850}
-              height={480}
-              className="w-full h-full object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 66vw"
-              unoptimized
-            />
+            <source src="/images/hero.webm" type="video/webm" />
           </video>
         </div>
       </div>

@@ -1,10 +1,5 @@
 import Image from "next/image";
-import { Silkscreen } from "next/font/google";
-
-const silkscreen = Silkscreen({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import { silkscreen } from "@/lib/fonts";
 
 interface TickerItem {
   text: string;
@@ -70,6 +65,7 @@ function TickerSet({ item, count, cosmic }: { item: TickerItem; count: number; c
               alt=""
               width={36}
               height={36}
+              sizes="36px"
               className={cosmic ? "h-full w-auto object-contain" : "w-full h-full object-cover"}
             />
           </div>

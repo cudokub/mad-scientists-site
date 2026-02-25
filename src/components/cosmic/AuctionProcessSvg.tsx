@@ -54,7 +54,6 @@ export default function AuctionProcessSvg({ panel }: { panel?: number } = {}) {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} className="h-auto w-full">
       <defs>
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap');
           .title { font-family: 'Pixelify Sans', sans-serif; fill: #ffffff; font-size: 22px; font-weight: 700; text-anchor: middle; letter-spacing: 1.5px; }
           .panel-frame { stroke: #2A2A3A; stroke-width: 2; fill: #111018; }
         `}</style>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Silkscreen } from "next/font/google";
+import { silkscreen } from "@/lib/fonts";
 import NavBar from "@/components/NavBar";
 import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
@@ -91,10 +91,6 @@ const parallelAuctionStatus = [
 ];
 
 
-const silkscreen = Silkscreen({
-  subsets: ["latin"],
-  weight: ["400"],
-});
 
 const HERO_IMAGE_SRC = "/images/cosmic-hero-2026-v4.png";
 const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
@@ -149,13 +145,24 @@ export default function CosmicPage() {
   const [selected, setSelected] = useState<Scientist | null>(null);
   const [showTop, setShowTop] = useState(false);
 
+  // Preload adjacent fullbody images when a scientist is selected
   useEffect(() => {
     if (!selected) return;
-    scientists.forEach((s) => {
+    const idx = scientists.findIndex((s) => s.id === selected.id);
+    const toPreload = [
+      scientists[idx],
+      scientists[(idx - 1 + scientists.length) % scientists.length],
+      scientists[(idx + 1) % scientists.length],
+    ];
+    const imgs = toPreload.map((s) => {
       const img = new window.Image();
       img.src = s.fullSrc;
+      return img;
     });
-  }, [selected !== null]);
+    return () => {
+      imgs.forEach((img) => { img.src = ""; });
+    };
+  }, [selected]);
 
   useEffect(() => {
     const handleScroll = () => setShowTop(window.scrollY > 600);
@@ -290,7 +297,7 @@ export default function CosmicPage() {
                 width={1376}
                 height={768}
                 priority
-                sizes="66vw"
+                sizes="(max-width: 1440px) 66vw, 960px"
                 className="h-full w-full object-cover"
               />
             </div>

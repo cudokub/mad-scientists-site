@@ -1,4 +1,3 @@
-import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
@@ -44,7 +43,7 @@ export default function MadUniversityPage() {
 
         {/* Overview Card — GIF + Text */}
         <div className="flex flex-col md:flex-row">
-          {/* Video Panel */}
+          {/* Video Panel (WebM → MP4 fallback, WebP poster) */}
           <div className="md:flex-1 border border-green overflow-hidden bg-green-dark">
             <video
               autoPlay
@@ -53,19 +52,10 @@ export default function MadUniversityPage() {
               playsInline
               preload="auto"
               className="w-full h-full object-cover"
-              poster="/images/maduni-hero.gif"
+              poster="/images/maduni-hero-poster.webp"
             >
+              <source src="/images/maduni-hero.webm" type="video/webm" />
               <source src="/images/maduni-hero.mp4" type="video/mp4" />
-              <Image
-                src="/images/maduni-hero.gif"
-                alt="Mad University"
-                width={720}
-                height={720}
-                className="w-full h-full object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-                unoptimized
-              />
             </video>
           </div>
 
@@ -189,27 +179,19 @@ export default function MadUniversityPage() {
             </div>
           </div>
 
-          {/* Right — Discord Video */}
+          {/* Right — Discord Video (WebM → MP4 fallback, WebP poster) */}
           <div className="md:w-[45%] border border-green overflow-hidden bg-green-dark">
             <video
               autoPlay
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className="w-full h-full object-cover"
-              poster="/images/maduni-discord.gif"
+              poster="/images/maduni-discord-poster.webp"
             >
+              <source src="/images/maduni-discord.webm" type="video/webm" />
               <source src="/images/maduni-discord.mp4" type="video/mp4" />
-              <Image
-                src="/images/maduni-discord.gif"
-                alt="Discord Commands"
-                width={735}
-                height={735}
-                className="w-full h-full object-cover"
-                sizes="(max-width: 768px) 100vw, 45vw"
-                unoptimized
-              />
             </video>
           </div>
         </div>

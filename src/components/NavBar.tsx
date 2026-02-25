@@ -38,23 +38,21 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
   const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
 
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = mobileOpen ? "hidden" : previousOverflow;
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
   }, [mobileOpen]);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setMobileOpen(false);
-      }
+    const mql = window.matchMedia("(min-width: 768px)");
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setMobileOpen(false);
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
   }, []);
 
   // Focus trap + Escape to close mobile menu

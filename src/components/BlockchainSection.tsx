@@ -73,6 +73,7 @@ export default function BlockchainSection() {
                 alt="SwapFast"
                 width={48}
                 height={48}
+                sizes="48px"
                 className="w-full h-full object-cover"
               />
             </a>

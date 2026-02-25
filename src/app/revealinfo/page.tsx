@@ -52,7 +52,7 @@ export default function RevealInfoPage() {
 
         {/* Two-column: GIF left, content right */}
         <div className="flex flex-col md:flex-row">
-          {/* Left — Hero Video */}
+          {/* Left — Hero Video (WebM → MP4 fallback, WebP poster) */}
           <div className="md:w-[45%] border border-green overflow-hidden bg-green-dark">
             <video
               autoPlay
@@ -61,19 +61,10 @@ export default function RevealInfoPage() {
               playsInline
               preload="auto"
               className="w-full h-full object-cover"
-              poster="/images/revealinfo-hero.gif"
+              poster="/images/revealinfo-hero-poster.webp"
             >
               <source src="/images/revealinfo-hero.mp4" type="video/mp4" />
-              <Image
-                src="/images/revealinfo-hero.gif"
-                alt="Mad Scientists Reveal"
-                width={1500}
-                height={1500}
-                className="w-full h-full object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 45vw"
-                unoptimized
-              />
+              <source src="/images/revealinfo-hero.webm" type="video/webm" />
             </video>
           </div>
 
@@ -251,27 +242,19 @@ export default function RevealInfoPage() {
             </div>
           </div>
 
-          {/* Right — Bottom Video */}
+          {/* Right — Bottom Video (WebM → MP4 fallback, WebP poster) */}
           <div className="md:w-[45%] border border-green overflow-hidden bg-green-dark">
             <video
               autoPlay
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className="w-full h-full object-cover"
-              poster="/images/revealinfo-bottom.gif"
+              poster="/images/revealinfo-bottom-poster.webp"
             >
+              <source src="/images/revealinfo-bottom.webm" type="video/webm" />
               <source src="/images/revealinfo-bottom.mp4" type="video/mp4" />
-              <Image
-                src="/images/revealinfo-bottom.gif"
-                alt="Mad Scientists"
-                width={1500}
-                height={1500}
-                className="w-full h-full object-cover"
-                sizes="(max-width: 768px) 100vw, 45vw"
-                unoptimized
-              />
             </video>
           </div>
         </div>
