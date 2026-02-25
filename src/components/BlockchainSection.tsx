@@ -36,6 +36,7 @@ export default function BlockchainSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors"
+              aria-label="Trade $LAB on Osmosis"
             >
               <Image
                 src="/images/nft-3.jpg"
@@ -50,6 +51,7 @@ export default function BlockchainSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors"
+              aria-label="View $LAB chart on CoinHall"
             >
               <Image
                 src="/images/nft-4.jpg"
@@ -64,6 +66,7 @@ export default function BlockchainSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors"
+              aria-label="Trade $LAB on SwapFast"
             >
               <Image
                 src="/images/logo-large.png"

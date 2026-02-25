@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,6 +24,8 @@ interface NavBarProps {
 
 export default function NavBar({ theme = "default" }: NavBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
   const isCosmic = theme === "cosmic";
   const logoSrc = isCosmic ? "/images/cosmic-symbol.png" : "/images/ms-symbol.png";
   const logoAlt = isCosmic ? "COSMIC" : "Mad Scientists";
@@ -55,8 +56,47 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Focus trap + Escape to close mobile menu
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        hamburgerRef.current?.focus();
+        return;
+      }
+
+      if (e.key === "Tab") {
+        const menu = mobileMenuRef.current;
+        if (!menu) return;
+
+        const focusableEls = [
+          hamburgerRef.current,
+          ...Array.from(menu.querySelectorAll<HTMLElement>("a, button")),
+        ].filter(Boolean) as HTMLElement[];
+
+        if (focusableEls.length === 0) return;
+
+        const first = focusableEls[0];
+        const last = focusableEls[focusableEls.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
+
   return (
-    <nav className={`sticky top-0 z-50 ${navBg}`}>
+    <nav className={`sticky top-0 z-50 ${navBg}`} aria-label="Main navigation">
       {/* Desktop Nav — grid cell style with dividers */}
       <div className={`hidden md:flex items-stretch border max-w-[1440px] mx-auto ${borderClass}`}>
         {/* Logo cell — wider, ~1/3 of the bar */}
@@ -104,9 +144,11 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
         </Link>
 
         <button
+          ref={hamburgerRef}
           onClick={() => setMobileOpen(!mobileOpen)}
           className="flex flex-col gap-[5px] p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
         >
           <span
             className={`w-6 h-[3px] rounded-sm transition-transform ${mobileBurger} ${
@@ -128,14 +170,14 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className={`md:hidden border-x border-b ${borderClass} ${mobileMenuBg}`}>
+        <div ref={mobileMenuRef} className={`md:hidden border-x border-b ${borderClass} ${mobileMenuBg}`}>
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className={`block py-4 px-6 font-display text-base tracking-wider border-b text-center ${
+              className={`block py-4 px-6 font-display text-base tracking-wider border-b text-center focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-green ${
                 isCosmic ? "border-cosmic" : "border-green/30"
               } ${
                 link.highlight

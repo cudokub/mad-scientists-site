@@ -121,7 +121,7 @@ function GalleryCard({
           sizes="(max-width: 639px) 84vw, (max-width: 767px) 62vw, (max-width: 1023px) 46vw, (max-width: 1279px) 36vw, 20vw"
           className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <span data-layer="collection-card-badge" className="absolute left-3 top-3 z-10 border border-cosmic bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-[10px] md:tracking-[0.2em]">
+        <span data-layer="collection-card-badge" className="absolute left-3 top-3 z-10 border border-cosmic bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-xs md:tracking-[0.2em]">
           1/1
         </span>
       </div>
@@ -392,7 +392,7 @@ export default function CosmicPage() {
                   data-layer="auction-stargaze"
                   className="flex items-center gap-3 border-t border-cosmic/40 px-6 py-4 md:w-[200px] md:shrink-0 md:flex-col md:items-center md:justify-center md:gap-2 md:border-l md:border-t-0 md:px-8 md:py-6 md:text-center"
                 >
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#6b6580] md:order-first">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#8a84a0] md:order-first">
                     Powered by
                   </p>
                   <Image
@@ -455,8 +455,8 @@ export default function CosmicPage() {
                           />
                         </div>
                         <div className="min-w-0">
-                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-[#6b6580]">
-                            <span className="inline-flex h-1.5 w-1.5 shrink-0 bg-[#6b6580]" />
+                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-[#8a84a0]">
+                            <span className="inline-flex h-1.5 w-1.5 shrink-0 bg-[#8a84a0]" />
                             {auction.lane}
                           </p>
                           <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-[#9e99b0] md:text-sm">
@@ -469,11 +469,11 @@ export default function CosmicPage() {
                         <div className="h-full w-0 bg-[#2a2740]" />
                       </div>
 
-                      <p className="mt-3 font-display text-[10px] uppercase tracking-[0.12em] text-[#6b6580] md:text-xs">
+                      <p className="mt-3 font-display text-[10px] uppercase tracking-[0.12em] text-[#8a84a0] md:text-xs">
                         Sealed
                       </p>
 
-                      <p className="mt-1 font-mono text-[10px] text-[#4a4660] md:text-[11px]">
+                      <p className="mt-1 font-mono text-[10px] text-[#8a84a0] md:text-[11px]">
                         Auction opens soon
                       </p>
                     </article>

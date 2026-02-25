@@ -98,14 +98,14 @@ function ScientistModalContent({
             <div className="flex items-center justify-between border-t border-cosmic pt-4">
               <button
                 onClick={onPrev}
-                className="flex h-10 w-10 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
                 aria-label="Previous scientist"
               >
                 &larr;
               </button>
               <button
                 onClick={onNext}
-                className="flex h-10 w-10 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
                 aria-label="Next scientist"
               >
                 &rarr;
@@ -146,14 +146,14 @@ export default function ScientistModal({
         <DialogContent onClick={onClose}>
           <button
             onClick={(e) => { e.stopPropagation(); onPrev(); }}
-            className="absolute left-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+            className="absolute left-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
             aria-label="Previous scientist"
           >
             &larr;
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); onNext(); }}
-            className="absolute right-2 top-1/2 z-[110] flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+            className="absolute right-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
             aria-label="Next scientist"
           >
             &rarr;

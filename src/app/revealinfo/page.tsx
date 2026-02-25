@@ -70,10 +70,10 @@ export default function RevealInfoPage() {
           {/* Right — How to Reveal + Trade + Reveal */}
           <div className="flex-1 border border-green p-6 md:p-8 flex flex-col gap-6 items-center md:items-start">
             {/* How to Reveal heading in bordered box */}
-            <h3 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-[-1.5px] border border-green px-4 py-2 text-center md:text-left">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-[-1.5px] border border-green px-4 py-2 text-center md:text-left">
               How To Reveal{" "}
               <span className="text-[#00FF26]">Mad Scientists?</span>
-            </h3>
+            </h2>
 
             <p className="font-display text-xl md:text-2xl text-[#909991] text-center md:text-left">
               Use <span className="text-green font-bold">10</span>{" "}
@@ -100,7 +100,7 @@ export default function RevealInfoPage() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 border border-green px-4 py-2 hover:bg-[rgba(85,212,53,0.12)] transition-colors"
+                    className="flex items-center gap-2 border border-green px-4 py-2 min-h-[44px] hover:bg-[rgba(85,212,53,0.12)] transition-colors"
                   >
                     <Image
                       src={link.icon}
