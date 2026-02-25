@@ -81,11 +81,11 @@ function ScientistModalContent({
           </div>
 
           <div className="flex flex-col gap-5 p-5">
-            <DrawerTitle className="font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
+            <DrawerTitle className="text-center font-display text-3xl uppercase tracking-wide text-[#f4ecff]">
               {scientist.name}
             </DrawerTitle>
 
-            <DrawerDescription className="font-mono text-base leading-relaxed text-[#d8d4e2]">
+            <DrawerDescription className="text-center font-mono text-base leading-relaxed text-[#d8d4e2]">
               {scientist.tagline}
             </DrawerDescription>
 

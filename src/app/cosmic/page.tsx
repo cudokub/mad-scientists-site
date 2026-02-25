@@ -110,7 +110,7 @@ function GalleryCard({
     <button
       data-layer="collection-card"
       onClick={onClick}
-      className="group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic"
+      className="group cursor-pointer text-center md:text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic"
     >
       <div data-layer="collection-card-image" className="relative overflow-hidden border border-cosmic bg-[#090b17] transition duration-300 group-hover:border-cosmic/70 group-hover:shadow-[0_10px_30px_rgba(155,89,240,0.2)]">
         <Image
@@ -205,7 +205,7 @@ export default function CosmicPage() {
               />
             </div>
 
-            <div data-layer="hero-mobile-content" className="border-t border-cosmic p-8">
+            <div data-layer="hero-mobile-content" className="border-t border-cosmic p-8 text-center">
               <h1 data-layer="hero-mobile-heading" className="font-display text-3xl uppercase leading-[0.9] tracking-wide text-[#f3ecff]">
                 <ClearFive className="text-[#7ed3ff]" /> Legends.
                 <br />
@@ -216,7 +216,7 @@ export default function CosmicPage() {
                 <br />
                 Each 1/1 hand-crafted.
               </p>
-              <div data-layer="hero-mobile-buttons" className="mt-4 flex flex-col gap-3">
+              <div data-layer="hero-mobile-buttons" className="mt-4 flex flex-col items-center gap-3">
                 <Button
                   href="#collection"
                   variant="cosmic-primary"
@@ -306,13 +306,13 @@ export default function CosmicPage() {
           className="relative border-b border-cosmic px-6 py-12 md:px-12 md:py-16"
         >
           <div className="mx-auto max-w-6xl">
-            <p data-layer="collection-label" className="font-display text-xs uppercase tracking-[0.22em] text-cosmic/70">
+            <p data-layer="collection-label" className="text-center font-display text-xs uppercase tracking-[0.22em] text-cosmic/70 md:text-left">
               The Five
             </p>
-            <h2 data-layer="collection-heading" className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
+            <h2 data-layer="collection-heading" className="mt-3 text-center font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-left md:text-4xl">
               Who Answered the Call
             </h2>
-            <p data-layer="collection-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
+            <p data-layer="collection-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-left md:text-base">
               Each one walked through the portal for their unique truth.
             </p>
 
@@ -338,13 +338,13 @@ export default function CosmicPage() {
 
         <section data-layer="auction" id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-6xl">
-            <p data-layer="auction-label" className="font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff]">
+            <p data-layer="auction-label" className="text-center font-display text-xs uppercase tracking-[0.22em] text-[#7ed3ff] md:text-left">
               Your Move
             </p>
-            <h2 data-layer="auction-heading" className="mt-3 font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-4xl">
+            <h2 data-layer="auction-heading" className="mt-3 text-center font-display text-3xl uppercase tracking-wide text-[#f3ecff] md:text-left md:text-4xl">
               Send Your Scientists. Claim the Five.
             </h2>
-            <p data-layer="auction-body" className="mt-4 max-w-3xl font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-base">
+            <p data-layer="auction-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-[#bdb8cc] md:text-left md:text-base">
               The Cosmos called them. Now bid yours to bring one home.
               Highest stack wins. Those that didn&apos;t win the auction get refunded.
             </p>
@@ -375,7 +375,7 @@ export default function CosmicPage() {
 
             <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-[#090c1a] md:flex-row">
                 <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
-                  <p data-layer="auction-cta-text" className="font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-base">
+                  <p data-layer="auction-cta-text" className="text-center font-mono text-sm leading-relaxed text-[#c4bfd3] md:text-left md:text-base">
                     Bid your Scientists. Claim a Cosmic.
                   </p>
                   <Button
