@@ -52,18 +52,29 @@ export default function RevealInfoPage() {
 
         {/* Two-column: GIF left, content right */}
         <div className="flex flex-col md:flex-row">
-          {/* Left — Hero GIF */}
-          <div className="md:w-[45%] border border-green overflow-hidden">
-            <Image
-              src="/images/revealinfo-hero.gif"
-              alt="Mad Scientists Reveal"
-              width={1500}
-              height={1500}
+          {/* Left — Hero Video */}
+          <div className="md:w-[45%] border border-green overflow-hidden bg-green-dark">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 45vw"
-              unoptimized
-            />
+              poster="/images/revealinfo-hero.gif"
+            >
+              <source src="/images/revealinfo-hero.mp4" type="video/mp4" />
+              <Image
+                src="/images/revealinfo-hero.gif"
+                alt="Mad Scientists Reveal"
+                width={1500}
+                height={1500}
+                className="w-full h-full object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 45vw"
+                unoptimized
+              />
+            </video>
           </div>
 
           {/* Right — How to Reveal + Trade + Reveal */}
@@ -240,17 +251,28 @@ export default function RevealInfoPage() {
             </div>
           </div>
 
-          {/* Right — Bottom GIF */}
-          <div className="md:w-[45%] border border-green overflow-hidden">
-            <Image
-              src="/images/revealinfo-bottom.gif"
-              alt="Mad Scientists"
-              width={1500}
-              height={1500}
+          {/* Right — Bottom Video */}
+          <div className="md:w-[45%] border border-green overflow-hidden bg-green-dark">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-              sizes="(max-width: 768px) 100vw, 45vw"
-              unoptimized
-            />
+              poster="/images/revealinfo-bottom.gif"
+            >
+              <source src="/images/revealinfo-bottom.mp4" type="video/mp4" />
+              <Image
+                src="/images/revealinfo-bottom.gif"
+                alt="Mad Scientists"
+                width={1500}
+                height={1500}
+                className="w-full h-full object-cover"
+                sizes="(max-width: 768px) 100vw, 45vw"
+                unoptimized
+              />
+            </video>
           </div>
         </div>
       </section>

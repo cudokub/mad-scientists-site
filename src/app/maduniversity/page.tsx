@@ -44,18 +44,29 @@ export default function MadUniversityPage() {
 
         {/* Overview Card — GIF + Text */}
         <div className="flex flex-col md:flex-row">
-          {/* GIF Panel */}
-          <div className="md:flex-1 border border-green overflow-hidden">
-            <Image
-              src="/images/maduni-hero.gif"
-              alt="Mad University"
-              width={720}
-              height={720}
+          {/* Video Panel */}
+          <div className="md:flex-1 border border-green overflow-hidden bg-green-dark">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-              unoptimized
-            />
+              poster="/images/maduni-hero.gif"
+            >
+              <source src="/images/maduni-hero.mp4" type="video/mp4" />
+              <Image
+                src="/images/maduni-hero.gif"
+                alt="Mad University"
+                width={720}
+                height={720}
+                className="w-full h-full object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                unoptimized
+              />
+            </video>
           </div>
 
           {/* Text Panel */}
@@ -178,17 +189,28 @@ export default function MadUniversityPage() {
             </div>
           </div>
 
-          {/* Right — Discord GIF */}
-          <div className="md:w-[45%] border border-green overflow-hidden">
-            <Image
-              src="/images/maduni-discord.gif"
-              alt="Discord Commands"
-              width={735}
-              height={735}
+          {/* Right — Discord Video */}
+          <div className="md:w-[45%] border border-green overflow-hidden bg-green-dark">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-              sizes="(max-width: 768px) 100vw, 45vw"
-              unoptimized
-            />
+              poster="/images/maduni-discord.gif"
+            >
+              <source src="/images/maduni-discord.mp4" type="video/mp4" />
+              <Image
+                src="/images/maduni-discord.gif"
+                alt="Discord Commands"
+                width={735}
+                height={735}
+                className="w-full h-full object-cover"
+                sizes="(max-width: 768px) 100vw, 45vw"
+                unoptimized
+              />
+            </video>
           </div>
         </div>
 
