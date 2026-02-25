@@ -86,7 +86,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${classes} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+      className={`${classes} ${disabled ? "opacity-50 cursor-not-allowed hover:brightness-100" : ""}`}
     >
       {children}
     </button>

@@ -53,18 +53,30 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Panel — Hero GIF */}
-        <div className="flex-[2] border border-green overflow-hidden">
-          <Image
-            src="/images/hero.gif"
-            alt="Mad Scientists NFT Collection"
-            width={850}
-            height={480}
+        {/* Right Panel — Hero Video (MP4 with GIF fallback) */}
+        <div className="flex-[2] border border-green overflow-hidden bg-green-dark">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
             className="w-full h-full object-cover"
-            priority
-            sizes="(max-width: 768px) 100vw, 66vw"
-            unoptimized
-          />
+            poster="/images/hero.gif"
+          >
+            <source src="/images/hero.mp4" type="video/mp4" />
+            {/* Fallback for browsers that don't support video */}
+            <Image
+              src="/images/hero.gif"
+              alt="Mad Scientists NFT Collection"
+              width={850}
+              height={480}
+              className="w-full h-full object-cover"
+              priority
+              sizes="(max-width: 768px) 100vw, 66vw"
+              unoptimized
+            />
+          </video>
         </div>
       </div>
     </section>

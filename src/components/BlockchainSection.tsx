@@ -10,7 +10,7 @@ export default function BlockchainSection() {
             BLOCKCHAIN
           </span>
           <div className="flex items-center gap-3">
-            <div className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden shrink-0">
+            <div className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden shrink-0 bg-green-dark">
               <Image
                 src="/images/nft-3.jpg"
                 alt="Osmosis"
@@ -35,7 +35,7 @@ export default function BlockchainSection() {
               href="https://app.osmosis.zone/?from=OSMO&to=LAB"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors"
+              className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors bg-green-dark"
               aria-label="Trade $LAB on Osmosis"
             >
               <Image
@@ -50,7 +50,7 @@ export default function BlockchainSection() {
               href="https://coinhall.org/osmosis/osmo12zk0xmacanpz9huy8huth2wee98smf9kktg4lltu9zrk3x9w58aq7k64cz"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors"
+              className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors bg-green-dark"
               aria-label="View $LAB chart on CoinHall"
             >
               <Image
@@ -65,7 +65,7 @@ export default function BlockchainSection() {
               href="https://swapfast.app/?destinationAsset=factory/osmo17fel472lgzs87ekt9dvk0zqyh5gl80sqp4sk4n/LAB&destinationChainId=osmosis-1"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors"
+              className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors bg-green-dark"
               aria-label="Trade $LAB on SwapFast"
             >
               <Image
@@ -90,7 +90,7 @@ export default function BlockchainSection() {
             rel="noopener noreferrer"
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <div className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden shrink-0">
+            <div className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden shrink-0 bg-green-dark">
               <Image
                 src="/images/nft-1.jpg"
                 alt="Gateway"
