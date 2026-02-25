@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const navLinks = [
   { label: "REVEAL INFO", href: "/revealinfo" },
-  { label: "UNIVERSITY", href: "/maduniversity" },
+  { label: "MAD UNIVERSITY", href: "/maduniversity" },
   { label: "MAD APP", href: "https://app.madscientists.io", external: true },
   {
     label: "REVEAL MAD",

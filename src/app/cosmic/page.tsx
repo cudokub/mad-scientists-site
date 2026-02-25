@@ -121,7 +121,7 @@ function GalleryCard({
           sizes="(max-width: 639px) 84vw, (max-width: 767px) 62vw, (max-width: 1023px) 46vw, (max-width: 1279px) 36vw, 20vw"
           className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <span data-layer="collection-card-badge" className="absolute left-3 top-3 z-10 border border-cosmic bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-xs md:tracking-[0.2em]">
+        <span data-layer="collection-card-badge" className="absolute left-3 top-3 z-10 border border-cosmic bg-[#070819]/80 px-2 py-1 font-display text-xs uppercase tracking-[0.14em] text-cosmic/75 md:text-xs md:tracking-[0.2em]" aria-label="One of one edition">
           1/1
         </span>
       </div>
@@ -346,7 +346,7 @@ export default function CosmicPage() {
             </h2>
             <p data-layer="auction-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
               The Cosmos called them. Now bid yours to bring one home.
-              Highest stack wins. Those that didn&apos;t win the auction get refunded.
+              Highest stack wins. Didn&apos;t win? Your Scientists come back.
             </p>
 
             <div data-layer="auction-steps" className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
@@ -474,7 +474,7 @@ export default function CosmicPage() {
                       </p>
 
                       <p className="mt-1 font-mono text-[10px] text-cosmic-text-dimmer md:text-[11px]">
-                        Auction opens soon
+                        Opens soon
                       </p>
                     </article>
                   );

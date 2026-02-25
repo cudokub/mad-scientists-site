@@ -22,8 +22,8 @@ const tradeLinks = [
 
 const stats = [
   { value: "100,000", label: "$LAB SUPPLY" },
-  { value: "10,000", label: "NFTs SUPPLY" },
-  { value: "10 $LAB", label: "TO MINT" },
+  { value: "10,000", label: "NFT SUPPLY" },
+  { value: "10 $LAB", label: "TO REVEAL" },
 ];
 
 const tokenomics = [
@@ -93,9 +93,9 @@ export default function RevealInfoPage() {
             </p>
 
             <p className="font-mono text-body text-base md:text-lg leading-relaxed text-center md:text-left">
-              Use 10 $LAB tokens to reveal 1 Mad Scientist NFT. You will then be
-              able to trade your NFTs on the marketplace. You can also choose to
-              hold onto your $LAB tokens as unrevealed NFTs and trade it.
+              Use 10 $LAB tokens to reveal 1 Mad Scientist NFT. Once revealed,
+              you can trade your NFTs on the marketplace. Or hold your $LAB
+              tokens and trade them as-is.
             </p>
 
             {/* Trade $LAB */}

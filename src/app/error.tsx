@@ -18,7 +18,7 @@ export default function Error({
           SOMETHING WENT WRONG
         </p>
         <p className="font-mono text-body text-base text-center">
-          An unexpected error occurred. Our scientists are investigating.
+          An unexpected reaction in the lab. Our scientists are investigating.
         </p>
         <Button onClick={reset} variant="primary" size="lg">
           TRY AGAIN

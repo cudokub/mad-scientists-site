@@ -98,16 +98,18 @@ function ScientistModalContent({
             <div className="flex items-center justify-between border-t border-cosmic pt-4">
               <button
                 onClick={onPrev}
-                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-cosmic-bg/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+                className="flex h-11 items-center gap-1.5 px-3 border border-cosmic bg-cosmic-bg/70 font-display text-sm text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
                 aria-label="Previous scientist"
               >
                 &larr;
+                <span className="uppercase tracking-wider text-xs">Prev</span>
               </button>
               <button
                 onClick={onNext}
-                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-cosmic-bg/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+                className="flex h-11 items-center gap-1.5 px-3 border border-cosmic bg-cosmic-bg/70 font-display text-sm text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
                 aria-label="Next scientist"
               >
+                <span className="uppercase tracking-wider text-xs">Next</span>
                 &rarr;
               </button>
             </div>

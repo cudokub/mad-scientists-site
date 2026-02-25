@@ -129,11 +129,11 @@ export default function MadUniversityPage() {
             <div className="border border-green p-4 md:p-6">
               <ul className="font-mono text-body text-sm md:text-base leading-relaxed list-disc pl-5 space-y-4">
                 <li>
-                  3 points per post with a maximum of 1 posts per day
+                  3 points per post, max 1 post per day
                 </li>
                 <li>
-                  5 bonus points per post when you have signup* Mad Scientists
-                  PFP on X
+                  5 bonus points per post when your X profile uses a Mad
+                  Scientists PFP*
                   <br />
                   <em className="text-xs md:text-sm text-text-muted">
                     * You will lose the bonus if you change your PFP. If you

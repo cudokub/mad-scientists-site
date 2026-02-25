@@ -95,7 +95,7 @@ export default function Ticker({ variant = "gateway" }: TickerProps) {
   const borderClass = cosmic ? "border-cosmic" : "border-green";
 
   return (
-    <div className={`border ${borderClass} max-w-[1440px] mx-auto`}>
+    <div className={`border ${borderClass} max-w-[1440px] mx-auto`} role="marquee" aria-label="Scrolling announcement">
       <div
         className="overflow-hidden py-3"
         style={{

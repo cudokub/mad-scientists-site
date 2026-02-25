@@ -40,7 +40,7 @@ function ChainCard({
         {description}
       </p>
       <Button href={downloadUrl} size="lg">
-        DOWNLOAD
+        DOWNLOAD CSV
       </Button>
     </div>
   );
@@ -58,7 +58,7 @@ export default function SnapshotPage() {
             HOLDERS SNAPSHOT
           </h1>
           <p className="font-mono text-text-muted text-base md:text-lg mt-3 leading-relaxed">
-            The snapshot is taken everyday at 2am CET
+            Snapshot taken daily at 2:00 AM CET
           </p>
         </div>
 
