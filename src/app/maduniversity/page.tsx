@@ -37,7 +37,7 @@ export default function MadUniversityPage() {
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-wider">
             MAD UNIVERSITY
           </h1>
         </div>
@@ -61,9 +61,9 @@ export default function MadUniversityPage() {
           {/* Text Panel */}
           <div className="md:flex-1 border border-green p-6 md:p-8 flex flex-col gap-8">
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
                 OVERVIEW
-              </h3>
+              </h2>
               <p className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed">
                 Mad University encourages you to create content using the{" "}
                 <strong>
@@ -76,9 +76,9 @@ export default function MadUniversityPage() {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-green tracking-wider mb-4 text-center md:text-left">
                 EACH X POST MUST CONTAIN
-              </h3>
+              </h2>
               <div className="font-mono text-[#C2C2C2] text-base md:text-lg leading-relaxed space-y-2 pl-2">
                 <p>1. Tagging @madscientists_x</p>
                 <p>2. At least 100 characters</p>
@@ -88,7 +88,7 @@ export default function MadUniversityPage() {
                     href="https://drive.google.com/drive/folders/1hnSMNvvWFUX8V4p5p79ItUjjjE3B6LaW"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#0cdefa] hover:text-[#067572] transition-colors"
+                    className="text-[#0cdefa] hover:text-green-light transition-colors"
                   >
                     Brand Assets
                   </a>

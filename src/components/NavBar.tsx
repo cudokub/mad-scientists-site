@@ -35,6 +35,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
   const highlightClass = isCosmic ? "text-[#f3ecff] font-bold" : "text-green font-bold";
   const mobileBurger = isCosmic ? "bg-[#9fe5ff]" : "bg-green";
   const mobileMenuBg = isCosmic ? "bg-[#060a16]" : "bg-bg";
+  const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -120,7 +121,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
             href={link.href}
             target={link.external ? "_blank" : undefined}
             rel={link.external ? "noopener noreferrer" : undefined}
-            className={`flex-1 flex items-center justify-center px-4 py-4 border-l font-display text-base tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-green ${borderClass} ${
+            className={`flex-1 flex items-center justify-center px-4 py-4 border-l font-display text-base tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] ${focusOutline} ${borderClass} ${
               link.highlight
                 ? highlightClass
                 : linkBase
@@ -146,7 +147,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
         <button
           ref={hamburgerRef}
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-[5px] p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
+          className={`flex flex-col gap-[5px] p-3 focus-visible:outline-2 focus-visible:outline-offset-2 ${focusOutline}`}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
         >
@@ -177,7 +178,7 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className={`block py-4 px-6 font-display text-base tracking-wider border-b text-center focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-green ${
+              className={`block py-4 px-6 font-display text-base tracking-wider border-b text-center focus-visible:outline-2 focus-visible:outline-offset-[-2px] ${focusOutline} ${
                 isCosmic ? "border-cosmic" : "border-green/30"
               } ${
                 link.highlight

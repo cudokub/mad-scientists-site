@@ -10,7 +10,7 @@ export default function ScienceClubsPage() {
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-wider">
             SCIENCE CLUBS
           </h1>
         </div>

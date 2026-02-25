@@ -110,9 +110,9 @@ function GalleryCard({
     <button
       data-layer="collection-card"
       onClick={onClick}
-      className="group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7ed3ff]"
+      className="group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic"
     >
-      <div data-layer="collection-card-image" className="relative overflow-hidden border border-cosmic bg-[#090b17] transition duration-300 group-hover:border-[#7ed3ff]/70 group-hover:shadow-[0_10px_30px_rgba(35,158,255,0.2)]">
+      <div data-layer="collection-card-image" className="relative overflow-hidden border border-cosmic bg-[#090b17] transition duration-300 group-hover:border-cosmic/70 group-hover:shadow-[0_10px_30px_rgba(155,89,240,0.2)]">
         <Image
           src={scientist.src}
           alt={scientist.name}
@@ -128,7 +128,7 @@ function GalleryCard({
       <p data-layer="collection-card-name" className="mt-2 font-display text-sm uppercase tracking-wider text-[#f3edff]">
         {scientist.name}
       </p>
-      <p data-layer="collection-card-tagline" className="mt-0.5 font-mono text-xs leading-relaxed text-[#9e99b0]">
+      <p data-layer="collection-card-tagline" className="mt-0.5 font-mono text-xs leading-relaxed text-[#b5b2c8]">
         {scientist.tagline}
       </p>
     </button>
@@ -412,13 +412,13 @@ export default function CosmicPage() {
                   <p className="font-display text-sm font-bold uppercase tracking-[0.08em] text-[#e8e0ff]">
                     Stargaze
                   </p>
-                  <p className="hidden font-mono text-[10px] text-[#9e99b0] md:block">
+                  <p className="hidden font-mono text-[10px] text-[#b5b2c8] md:block">
                     Auction Partner
                   </p>
                 </div>
             </div>
 
-            <div data-layer="auction-lanes-wrapper" className="mt-8">
+            <div data-layer="auction-lanes-wrapper" className="mt-12 md:mt-16">
               <h3 data-layer="auction-lanes-heading" className="font-display text-xl uppercase tracking-wide text-[#f1eaff] md:text-2xl">
                 <ClearFive className="text-[#f1eaff]" /> Parallel Auctions
               </h3>
@@ -459,7 +459,7 @@ export default function CosmicPage() {
                             <span className="inline-flex h-1.5 w-1.5 shrink-0 bg-[#8a84a0]" />
                             {auction.lane}
                           </p>
-                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-[#9e99b0] md:text-sm">
+                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-[#b5b2c8] md:text-sm">
                             {scientist.name}
                           </h4>
                         </div>

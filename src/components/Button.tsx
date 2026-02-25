@@ -47,8 +47,9 @@ export default function Button({
   className = "",
 }: ButtonProps) {
   const external = href.startsWith("http");
+  const focusOutline = theme === "cosmic" ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
   const base =
-    "flex items-center justify-center font-display font-bold tracking-[0.05em] text-center transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green";
+    `flex items-center justify-center font-display font-bold tracking-[0.05em] text-center transition-all focus-visible:outline-2 focus-visible:outline-offset-2 ${focusOutline}`;
 
   const classes = `${base} ${variantStyles[theme][variant]} ${sizeStyles[size]} ${className}`;
 

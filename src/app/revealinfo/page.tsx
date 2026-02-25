@@ -1,7 +1,6 @@
 import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import Button from "@/components/Button";
 
 const tradeLinks = [
   {
@@ -46,7 +45,7 @@ export default function RevealInfoPage() {
       <section className="max-w-[1440px] mx-auto">
         {/* Heading */}
         <div className="border border-green p-6 md:p-8 text-center md:text-left">
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-[-1.5px]">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#D2DFD4] uppercase tracking-wider">
             REVEAL INFO
           </h1>
         </div>
@@ -70,7 +69,7 @@ export default function RevealInfoPage() {
           {/* Right — How to Reveal + Trade + Reveal */}
           <div className="flex-1 border border-green p-6 md:p-8 flex flex-col gap-6 items-center md:items-start">
             {/* How to Reveal heading in bordered box */}
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-[-1.5px] border border-green px-4 py-2 text-center md:text-left">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-wider text-center md:text-left">
               How To Reveal{" "}
               <span className="text-[#00FF26]">Mad Scientists?</span>
             </h2>
@@ -90,9 +89,9 @@ export default function RevealInfoPage() {
 
             {/* Trade $LAB */}
             <div className="w-full">
-              <h4 className="font-display text-lg md:text-xl font-bold text-[#D2DFD4] tracking-wider mb-3 text-center md:text-left">
+              <h3 className="font-display text-lg md:text-xl font-bold text-[#D2DFD4] tracking-wider mb-3 text-center md:text-left">
                 TRADE <span className="text-[#00FF26]">$LAB</span>
-              </h4>
+              </h3>
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
                 {tradeLinks.map((link) => (
                   <a
@@ -100,7 +99,7 @@ export default function RevealInfoPage() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 border border-green px-4 py-2 min-h-[44px] hover:bg-[rgba(85,212,53,0.12)] transition-colors"
+                    className="flex items-center gap-2 border border-green px-4 py-2 min-h-[44px] hover:bg-[rgba(85,212,53,0.12)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
                   >
                     <Image
                       src={link.icon}
@@ -119,22 +118,22 @@ export default function RevealInfoPage() {
 
             {/* Reveal MAD */}
             <div className="w-full">
-              <h4 className="font-display text-lg md:text-xl font-bold text-[#D2DFD4] tracking-wider mb-3 text-center md:text-left">
+              <h3 className="font-display text-lg md:text-xl font-bold text-[#D2DFD4] tracking-wider mb-3 text-center md:text-left">
                 REVEAL <span className="text-[#00FF26]">MAD</span>
-              </h4>
+              </h3>
               <div className="flex justify-center md:justify-start">
                 <a
                   href="https://mygateway.io/minting/mad-scientists"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-green px-4 py-2 hover:bg-[rgba(85,212,53,0.12)] transition-colors"
+                  className="inline-flex items-center gap-2 border border-green px-4 py-2 min-h-[44px] hover:bg-[rgba(85,212,53,0.12)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
                 >
                   <Image
                     src="/images/gateway-logo.jpg"
                     alt="Gateway"
                     width={24}
                     height={24}
-                    className="w-6 h-6 rounded-full object-cover"
+                    className="w-6 h-6 object-cover"
                   />
                   <span className="font-display text-sm font-bold text-green tracking-wider">
                     Gateway
@@ -167,7 +166,7 @@ export default function RevealInfoPage() {
           {/* Left — Story + Tokenomics */}
           <div className="flex-1 border border-green p-6 md:p-8 flex flex-col gap-6">
             {/* Story heading */}
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-[-1.5px] text-center md:text-left">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-wider text-center md:text-left">
               The Story of{" "}
               <span className="text-[#00FF26]">$LAB</span> Tokens
             </h2>
@@ -191,7 +190,7 @@ export default function RevealInfoPage() {
                     href="https://app.streamswap.io/stream/OSMO/8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#0cdefa] hover:text-[#067572] transition-colors"
+                    className="text-[#0cdefa] hover:text-green-light transition-colors"
                   >
                     Streamswap
                   </a>
@@ -209,7 +208,7 @@ export default function RevealInfoPage() {
             </div>
 
             {/* Tokenomics */}
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-[-1.5px] text-center md:text-left">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-[#D2DFD4] tracking-wider text-center md:text-left">
               <span className="text-[#00FF26]">$LAB</span> Tokenomics
             </h2>
 

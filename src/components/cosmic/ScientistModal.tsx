@@ -98,14 +98,14 @@ function ScientistModalContent({
             <div className="flex items-center justify-between border-t border-cosmic pt-4">
               <button
                 onClick={onPrev}
-                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
                 aria-label="Previous scientist"
               >
                 &larr;
               </button>
               <button
                 onClick={onNext}
-                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+                className="flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/70 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
                 aria-label="Next scientist"
               >
                 &rarr;
@@ -146,14 +146,14 @@ export default function ScientistModal({
         <DialogContent onClick={onClose}>
           <button
             onClick={(e) => { e.stopPropagation(); onPrev(); }}
-            className="absolute left-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+            className="absolute left-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
             aria-label="Previous scientist"
           >
             &larr;
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); onNext(); }}
-            className="absolute right-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic"
+            className="absolute right-2 top-1/2 z-[110] flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-lg text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
             aria-label="Next scientist"
           >
             &rarr;
@@ -161,7 +161,7 @@ export default function ScientistModal({
           <div className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden border border-cosmic bg-[#080612]/95 shadow-lg animate-[dialogIn_300ms_cubic-bezier(0.16,1,0.3,1)]" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={onClose}
-              className="absolute right-3 top-3 z-[110] flex h-8 w-8 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-sm text-cosmic/70 transition-colors hover:text-cosmic"
+              className="absolute right-3 top-3 z-[110] flex h-11 w-11 items-center justify-center border border-cosmic bg-[#09081a]/80 font-display text-sm text-cosmic/70 transition-colors hover:text-cosmic focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
               aria-label="Close modal"
             >
               &times;

@@ -57,6 +57,7 @@ export default function Footer({ theme = "default" }: FooterProps) {
   const linkClass = isCosmic
     ? "text-[#cfc6ea] hover:text-[#9fe5ff]"
     : "text-green hover:text-green-light";
+  const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
 
   return (
     <footer className="max-w-[1440px] mx-auto">
@@ -70,7 +71,7 @@ export default function Footer({ theme = "default" }: FooterProps) {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className={`font-display text-sm tracking-wider transition-colors py-2 text-center md:text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green ${linkClass}`}
+              className={`font-display text-sm tracking-wider transition-colors py-2 text-center md:text-left focus-visible:outline-2 focus-visible:outline-offset-2 ${focusOutline} ${linkClass}`}
             >
               {link.label}
             </a>
@@ -84,7 +85,7 @@ export default function Footer({ theme = "default" }: FooterProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Follow us on X (Twitter)"
-            className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
+            className={`flex items-center justify-center min-w-[44px] min-h-[44px] hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 ${focusOutline}`}
           >
             <Image
               src="/images/twitter-icon.png"
@@ -99,7 +100,7 @@ export default function Footer({ theme = "default" }: FooterProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Join our Discord"
-            className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
+            className={`flex items-center justify-center min-w-[44px] min-h-[44px] hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 ${focusOutline}`}
           >
             <Image
               src="/images/discord-icon.png"
