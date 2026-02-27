@@ -92,8 +92,7 @@ const parallelAuctionStatus = [
 
 
 
-const HERO_IMAGE_SRC = "/images/cosmic-hero-2026-v4.png";
-const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
+const HERO_VIDEO_POSTER = "/images/cosmic-hero-poster.webp";
 
 function GalleryCard({
   scientist,
@@ -201,15 +200,19 @@ export default function CosmicPage() {
 
           {/* Mobile: Stacked hero */}
           <div data-layer="hero-container" className="overflow-hidden border border-cosmic bg-[#050a16] shadow-[0_24px_60px_rgba(0,0,0,0.45)] md:hidden">
-            <div data-layer="hero-image" className="relative aspect-[16/9]">
-              <Image
-                src={HERO_IMAGE_SRC}
-                alt={HERO_IMAGE_ALT}
-                fill
-                priority
-                sizes="100vw"
+            <div data-layer="hero-video" className="relative aspect-[16/9]">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
                 className="h-full w-full object-cover"
-              />
+                poster={HERO_VIDEO_POSTER}
+              >
+                <source src="/images/cosmic-hero.mp4" type="video/mp4" />
+                <source src="/images/cosmic-hero.webm" type="video/webm" />
+              </video>
             </div>
 
             <div data-layer="hero-mobile-content" className="border-t border-cosmic p-8 text-center">
@@ -291,15 +294,18 @@ export default function CosmicPage() {
             </div>
 
             <div data-layer="hero-desktop-right" className="flex-[2] border border-cosmic overflow-hidden">
-              <Image
-                src={HERO_IMAGE_SRC}
-                alt={HERO_IMAGE_ALT}
-                width={1376}
-                height={768}
-                priority
-                sizes="(max-width: 1440px) 66vw, 960px"
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
                 className="h-full w-full object-cover"
-              />
+                poster={HERO_VIDEO_POSTER}
+              >
+                <source src="/images/cosmic-hero.mp4" type="video/mp4" />
+                <source src="/images/cosmic-hero.webm" type="video/webm" />
+              </video>
             </div>
           </div>
 
