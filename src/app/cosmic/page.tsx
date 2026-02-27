@@ -3,61 +3,22 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import { silkscreen } from "@/lib/fonts";
 import NavBar from "@/components/NavBar";
 import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
-import type { Scientist } from "@/components/cosmic/ScientistModal";
 import AuctionProcessSvg from "@/components/cosmic/AuctionProcessSvg";
+import { AUCTION_SCIENTISTS } from "@/lib/auction/constants";
+import type { AuctionScientist } from "@/lib/auction/types";
 
 const ScientistModal = dynamic(
   () => import("@/components/cosmic/ScientistModal"),
   { ssr: false },
 );
 
-const scientists: Scientist[] = [
-  {
-    id: 1,
-    name: "The Architect",
-    src: "/images/cosmic-1-halfbody-v3.png",
-    fullSrc: "/images/cosmic-1-fullbody-v2.png",
-    tagline: "Built the machine. Became the machine.",
-    lore: "When the signal came, The Architect didn\u2019t hesitate. A broken system is just a blueprint waiting to be rewritten. Every wire, every circuit, every solution traces back to him. He walked through the portal because no one else could rebuild what was falling apart.",
-  },
-  {
-    id: 2,
-    name: "The Warlord",
-    src: "/images/cosmic-2-halfbody-v2.png",
-    fullSrc: "/images/cosmic-2-fullbody.png",
-    tagline: "Didn\u2019t come to explore. Came to conquer.",
-    lore: "The Warlord doesn\u2019t answer calls. He answers threats. When the signal hit, he saw what the others wouldn\u2019t admit. The Cosmos doesn\u2019t need a rescue team. It needs a weapon. The crimson crystal isn\u2019t decoration. It\u2019s the reason he was chosen.",
-  },
-  {
-    id: 3,
-    name: "The Oracle",
-    src: "/images/cosmic-3-halfbody-v2.png",
-    fullSrc: "/images/cosmic-3-fullbody.png",
-    tagline: "Sees everything. Says nothing.",
-    lore: "The Oracle saw the signal before it arrived. His mind broke through the dome a long time ago. Floating, exposed, receiving transmissions from places that don\u2019t have names yet. He walked through the portal in silence. He already knows how this ends.",
-  },
-  {
-    id: 4,
-    name: "The Antiquarian",
-    src: "/images/cosmic-4-halfbody-v2.png",
-    fullSrc: "/images/cosmic-4-fullbody.png",
-    tagline: "Carried the old world into the new one.",
-    lore: "While the others prepared for what\u2019s ahead, The Antiquarian packed what came before. Ancient tools, forgotten maps, knowledge that predates the lab itself. He walked through the portal because this isn\u2019t the first time the Cosmos has called. He knows how it went last time.",
-  },
-  {
-    id: 5,
-    name: "The Dreamer",
-    src: "/images/cosmic-5-halfbody-v2.png",
-    fullSrc: "/images/cosmic-5-fullbody-v2.png",
-    tagline: "Closed eyes. Open universe.",
-    lore: "The Dreamer never built a ship or drew a weapon. She just closed her eyes and was already there. The rainbow trail isn\u2019t exhaust. It\u2019s the residue of imagination meeting reality. She\u2019s the only one who didn\u2019t need the portal. She walked through it anyway. For them.",
-  },
-];
+const scientists = AUCTION_SCIENTISTS;
 
 const auctionSteps = [
   {
@@ -99,7 +60,7 @@ function GalleryCard({
   scientist,
   onClick,
 }: {
-  scientist: Scientist;
+  scientist: AuctionScientist;
   onClick: () => void;
 }) {
   return (
@@ -142,7 +103,7 @@ function ClearFive({ className = "" }: { className?: string }) {
 }
 
 export default function CosmicPage() {
-  const [selected, setSelected] = useState<Scientist | null>(null);
+  const [selected, setSelected] = useState<AuctionScientist | null>(null);
   const [showTop, setShowTop] = useState(false);
 
   // Preload adjacent fullbody images when a scientist is selected
@@ -386,7 +347,7 @@ export default function CosmicPage() {
                     Bid your Scientists. Claim a Cosmic.
                   </p>
                   <Button
-                    href="#"
+                    href="/cosmic/auction"
                     variant="cosmic-primary"
                     size="lg"
                     theme="cosmic"
@@ -440,9 +401,10 @@ export default function CosmicPage() {
                   if (!scientist) return null;
 
                   return (
-                    <article
+                    <Link
                       key={auction.id}
-                      className={`relative overflow-hidden border border-cosmic/40 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-3 md:p-4${
+                      href={`/cosmic/auction/${scientist.slug}`}
+                      className={`group relative block overflow-hidden border border-cosmic/40 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-3 transition-colors hover:border-cosmic/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic md:p-4${
                         i === 4
                           ? " col-span-2 mx-auto w-[calc(50%-6px)] md:col-span-1 md:w-full"
                           : ""
@@ -483,7 +445,7 @@ export default function CosmicPage() {
                       <p className="mt-1 font-mono text-[10px] text-cosmic-text-dimmer md:text-[11px]">
                         Opens soon
                       </p>
-                    </article>
+                    </Link>
                   );
                 })}
               </div>

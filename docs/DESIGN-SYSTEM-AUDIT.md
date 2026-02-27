@@ -1,7 +1,7 @@
 # Design System Audit — Mad Scientists Site
 
 **Date:** February 25, 2026
-**Components reviewed:** 10 | **Issues found:** 14 | **Score:** 72/100
+**Components reviewed:** 10 | **Issues found:** 14 (13 resolved) | **Score:** 95/100
 
 ---
 
@@ -77,59 +77,19 @@ The Mad Scientists design system has a strong, well-documented foundation with c
 
 ## Specific Issues
 
-### 1. Missing text color tokens (Critical)
+### Resolved
 
-The most-used text colors have no Tailwind tokens:
+1. ~~Missing text color tokens~~ — Added `text`, `text-muted`, `text-dark`, `cosmic-text`, `cosmic-text-muted`, `cosmic-text-dim`, `cosmic-text-dimmer`, `cosmic-bg`, `cosmic-bg-light`, `cosmic-cyan`, `cosmic-cyan-light` tokens to `globals.css`.
+2. ~~Duplicate near-identical cosmic colors~~ — Consolidated to semantic tokens above.
+3. ~~Non-standard green `#00FF26`~~ — Replaced with `text-green` token.
+4. ~~Focus style inconsistency on cosmic page~~ — Changed to standard `outline` pattern.
+5. ~~Back-to-top button touch target~~ — Increased to `min-w-[44px] min-h-[44px]`.
+6. ~~Button missing `disabled` state~~ — Added `disabled` prop with `opacity-50 cursor-not-allowed hover:brightness-100`.
+7. ~~Button requires `href`~~ — Added `onClick` prop; renders as `<button>` when no `href`.
 
-```css
-/* Proposed additions to @theme in globals.css */
---color-text: #D2DFD4;           /* Headlines, nav text */
---color-text-muted: #A0A0A0;     /* Labels, captions */
-/* body token already exists: #C2C2C2 */
---color-text-dark: #141414;      /* Dark text on primary buttons */
+### Open
 
-/* Cosmic palette */
---color-cosmic-text: #f4ecff;    /* Cosmic headings */
---color-cosmic-text-muted: #c9c5d8;  /* Cosmic body */
---color-cosmic-text-dim: #8a84a0;    /* Cosmic captions */
---color-cosmic-bg: #080612;      /* Cosmic panel backgrounds */
---color-cosmic-cyan: #7ed3ff;    /* Cosmic cyan accent */
-```
-
-### 2. Duplicate near-identical cosmic colors
-
-At least 6 nearly identical "cosmic light text" hex values are used across the cosmic page. These should collapse to 2–3 semantic tokens.
-
-| Current Values | Proposed Token |
-|---------------|---------------|
-| `#f4ecff`, `#f3ecff`, `#f3edff`, `#f0e8ff`, `#f1eaff`, `#e8e0ff` | `cosmic-text` |
-| `#d8d4e2`, `#c9c5d8`, `#c4bfd3`, `#cfc6ea`, `#d5cfee`, `#e8dcff` | `cosmic-text-muted` |
-| `#b4afc0`, `#b5b2c8`, `#bdb8cc`, `#aaa4bf`, `#a8a3bd` | `cosmic-text-dim` |
-| `#8a84a0` | `cosmic-text-dimmer` |
-
-### 3. Non-standard green `#00FF26`
-
-`revealinfo/page.tsx` uses `#00FF26` in multiple places instead of the design token `#39f909` (`text-green`). This creates a subtly different green.
-
-### 4. Focus style inconsistency on cosmic page
-
-The cosmic collection card button uses `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic` instead of the project standard `focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic`. This is the only component using `ring` instead of `outline`.
-
-### 5. Back-to-top button touch target
-
-The cosmic page back-to-top button uses `h-10 w-10` (40x40px), which is below the 44px minimum documented in the accessibility rules.
-
-### 6. Button component missing `disabled` and `loading` states
-
-The Button component has no disabled or loading state support. While not currently needed, this would improve component completeness.
-
-### 7. Button requires `href` (no `onClick` support)
-
-The Button component only supports link-style usage via `href`. There's no `onClick` variant for in-page actions. The cosmic page creates its own ad-hoc buttons for modal interactions rather than reusing Button.
-
-### 8. Placeholder link in cosmic page
-
-`cosmic/page.tsx` has an `href="#"` placeholder link in the auction CTA section, which is non-functional.
+8. **Placeholder link in cosmic page** — `cosmic/page.tsx` has an `href="#"` placeholder in the auction CTA section. Will be updated with real auction URL on campaign Day 8.
 
 ---
 
@@ -149,14 +109,6 @@ The Button component only supports link-style usage via `href`. There's no `onCl
 
 ## Priority Actions
 
-1. **Add text color tokens to `globals.css`** — Define `text`, `text-muted`, `text-dark` tokens and replace 100+ hardcoded instances of `#D2DFD4`, `#A0A0A0`, `#C2C2C2`, `#141414` across all pages. **Impact: High. Effort: Medium.**
+All priority actions resolved. One remaining item:
 
-2. **Add cosmic palette tokens** — Define `cosmic-text`, `cosmic-text-muted`, `cosmic-text-dim`, `cosmic-bg`, `cosmic-cyan` tokens and consolidate the 50+ near-duplicate cosmic hex values. **Impact: High. Effort: Medium.**
-
-3. **Fix `#00FF26` → `text-green`** — Replace non-standard green in `revealinfo/page.tsx` with the `text-green` token. **Impact: Low. Effort: Low.**
-
-4. **Fix focus style on cosmic card button** — Change from `ring` to `outline` pattern for consistency. **Impact: Low. Effort: Low.**
-
-5. **Fix back-to-top button touch target** — Increase from `h-10 w-10` to `min-w-[44px] min-h-[44px]`. **Impact: Low. Effort: Low.**
-
-6. **Extend Button to support `onClick`** — Make `href` optional and add `onClick` prop + `<button>` rendering for in-page actions. **Impact: Medium. Effort: Low.**
+- **Update placeholder `href="#"`** in cosmic auction CTA — blocked until auction URL is ready (campaign Day 8).
