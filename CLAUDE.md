@@ -161,6 +161,7 @@ Always use `target="_blank" rel="noopener noreferrer"` for external links. Butto
 ## Reference Docs
 - `docs/ASSETS.md` — Full image/favicon inventory
 - `docs/COSMIC-CAMPAIGN.md` — COSMIC 10-day launch plan, asset checklist, tweet copy drafts, campaign strategy, success metrics
+- `docs/AUCTION-CONTRACT-HANDOFF.md` — Smart contract developer handoff: api.ts swap guide, data shapes, wallet integration
 - `docs/DESIGN-SYSTEM-AUDIT.md` — Design system audit (score: 95/100, 1 open item)
 - `docs/HOMEPAGE-HANDOFF.md` — Homepage component specs and layout reference
 
