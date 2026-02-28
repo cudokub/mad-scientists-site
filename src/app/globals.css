@@ -31,6 +31,15 @@ body {
   font-family: "Reddit Mono", monospace;
 }
 
+/* Restore pointer cursor on interactive elements (Tailwind v4 preflight sets cursor: default) */
+button,
+[role="button"],
+a,
+select,
+summary {
+  cursor: pointer;
+}
+
 /* Ticker animation */
 @keyframes ticker-scroll {
   0% {

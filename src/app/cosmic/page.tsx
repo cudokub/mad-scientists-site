@@ -403,7 +403,7 @@ export default function CosmicPage() {
                   return (
                     <Link
                       key={auction.id}
-                      href={`/cosmic/auction/${scientist.slug}`}
+                      href="/cosmic/auction"
                       className={`group relative block overflow-hidden border border-cosmic/40 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-3 transition-colors hover:border-cosmic/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic md:p-4${
                         i === 4
                           ? " col-span-2 mx-auto w-[calc(50%-6px)] md:col-span-1 md:w-full"

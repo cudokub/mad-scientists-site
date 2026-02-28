@@ -1,16 +1,21 @@
-import Link from "next/link";
 import Image from "next/image";
 import type { Auction } from "@/lib/auction/types";
 import AuctionStatusBadge from "./AuctionStatusBadge";
 import CountdownTimer from "./CountdownTimer";
 
-export default function AuctionCard({ auction }: { auction: Auction }) {
+export default function AuctionCard({
+  auction,
+  onClick,
+}: {
+  auction: Auction;
+  onClick: () => void;
+}) {
   const { scientist } = auction;
 
   return (
-    <Link
-      href={`/cosmic/auction/${scientist.slug}`}
-      className="group block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+    <button
+      onClick={onClick}
+      className="group block w-full text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
     >
       <article className="border border-cosmic bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] transition duration-300 group-hover:border-cosmic/70 group-hover:shadow-[0_10px_30px_rgba(155,89,240,0.2)]">
         <div className="relative overflow-hidden">
@@ -60,6 +65,6 @@ export default function AuctionCard({ auction }: { auction: Auction }) {
           </div>
         </div>
       </article>
-    </Link>
+    </button>
   );
 }

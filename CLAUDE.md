@@ -71,10 +71,13 @@ Elements use `data-layer="section-element"` attributes for designer-developer co
 - **`useMediaQuery`** (`src/lib/hooks/useMediaQuery.ts`) — SSR-safe media query hook. Used to switch between Dialog and Drawer.
 - **`ScientistModal`** (`src/components/cosmic/ScientistModal.tsx`) — Extracted cosmic gallery modal. Dynamically imported (`ssr: false`) to avoid bundling on initial page load.
 - **`AuctionProcessSvg`** (`src/components/cosmic/AuctionProcessSvg.tsx`) — Inline SVG auction infographic (4 square 1:1 panels). Pixel art style: square dot grid, sharp corners, blocky arrowheads. Square-cropped halfbody PFPs. Supports `panel` prop (1–4) for viewBox cropping to render a single panel. Rendered inline so SVG `<image>` tags can load external assets.
-- **`CountdownTimer`** (`src/components/cosmic/auction/CountdownTimer.tsx`) — Countdown display with `size="sm"` (cards) and `size="lg"` (detail page). Warning red when < 5 min. Uses `useCountdown` hook.
+- **`CountdownTimer`** (`src/components/cosmic/auction/CountdownTimer.tsx`) — Countdown display with `size="sm"` (cards) and `size="lg"` (detail modal). Warning red when < 5 min. Uses `useCountdown` hook.
 - **`AuctionStatusBadge`** (`src/components/cosmic/auction/AuctionStatusBadge.tsx`) — Status pill: LIVE (pulsing dot), ENDING SOON, UPCOMING, ENDED.
-- **`AuctionCard`** (`src/components/cosmic/auction/AuctionCard.tsx`) — Clickable `<Link>` card for auction overview. Shows scientist image, timer, highest bid, bid count.
-- **`BidPlacementFlow`** (`src/components/cosmic/auction/BidPlacementFlow.tsx`) — Multi-step bid modal (connect → select NFTs → confirm → result). Uses Dialog/Drawer responsive pattern. Dynamically imported (`ssr: false`).
+- **`AuctionCard`** (`src/components/cosmic/auction/AuctionCard.tsx`) — Clickable `<button>` card for auction overview. Shows scientist image, timer, highest bid, bid count. Opens `AuctionDetailModal`.
+- **`AuctionDetailModal`** (`src/components/cosmic/auction/AuctionDetailModal.tsx`) — Unified auction detail + bid flow modal. Step state machine: detail → connect → select → confirm → result. Follows ScientistModal Dialog/Drawer pattern. Image stays visible in left column (desktop) for all steps. Prev/next navigation on detail step. Dynamically imported (`ssr: false`).
+- **`ActivityFeed`** (`src/components/cosmic/auction/ActivityFeed.tsx`) — Live feed of recent bids across all 5 auctions, sorted newest-first (latest 10). Derives from `auctions` prop.
+- **`UserBidsDashboard`** (`src/components/cosmic/auction/UserBidsDashboard.tsx`) — User's bid positions across all 5 lanes. Shows NFT count + Leading/Outbid status. Connect wallet banner when disconnected. Clicking a slot opens auction modal.
+- **`AuctionRules`** (`src/components/cosmic/auction/AuctionRules.tsx`) — Static 4-step how-it-works grid + anti-sniping and escrow notes.
 - **`useCountdown`** (`src/lib/hooks/useCountdown.ts`) — Returns `{ days, hours, minutes, seconds, isExpired, isEndingSoon }` from a target `endTime`. Drift-free (recalculates from `Date.now()` each tick).
 
 ## Performance Practices
@@ -83,7 +86,7 @@ Elements use `data-layer="section-element"` attributes for designer-developer co
 - **Images in flex containers:** Use `width`/`height` props (not `fill`) to keep images in document flow. `fill` makes the image absolutely positioned, causing flex containers to collapse height. Pattern: `<Image width={W} height={H} className="w-full h-full object-cover" />`.
 - **Animated GIFs:** Keep `unoptimized` (Next.js strips animation otherwise). Still add `priority` and `sizes`.
 - **Ticker:** `will-change: transform` in `globals.css` for GPU-accelerated animation.
-- **Modal code splitting:** Interaction-only components (ScientistModal) use `next/dynamic` with `ssr: false`.
+- **Modal code splitting:** Interaction-only components (ScientistModal, AuctionDetailModal) use `next/dynamic` with `ssr: false`.
 
 ## SEO
 - **Sitemap:** `src/app/sitemap.ts` — auto-generates `/sitemap.xml` for all public pages (excludes `/cosmic`).
@@ -107,7 +110,7 @@ Elements use `data-layer="section-element"` attributes for designer-developer co
 - `src/app/error.tsx` — global error boundary with retry button.
 
 ## Pages
-`/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted), `/cosmic/auction` (unlisted), `/cosmic/auction/[slug]` (unlisted)
+`/` (homepage), `/revealinfo`, `/maduniversity`, `/scienceclubs`, `/snapshot`, `/cosmic` (unlisted), `/cosmic/auction` (unlisted)
 
 ### COSMIC Page (`/cosmic`)
 Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection. Uses cosmic purple (`border-cosmic`) instead of green for borders and accents. Currently **unlisted** — no nav/footer links (commented out, ready to uncomment), accessible only via direct URL. `"use client"` page with interactive state (modal, back-to-top button). `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled).
@@ -125,13 +128,12 @@ Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection.
 
 **Launch planning:** See `docs/COSMIC-CAMPAIGN.md` for the 10-day content plan, asset checklist, and site change tracker.
 
-### COSMIC Auction Pages (`/cosmic/auction`, `/cosmic/auction/[slug]`)
+### COSMIC Auction Page (`/cosmic/auction`)
 Auction UI for the 5 COSMIC 1/1 NFT auctions. Built with mock data layer — swap `src/lib/auction/api.ts` to wire up real CosmWasm contract. Currently unlisted (under `/cosmic` robots block).
 
-- **Overview** (`/cosmic/auction`) — 5-card grid showing all auctions. Each card: scientist image, countdown timer, highest bid, total bids. Polls every 15s. Links back to `/cosmic`.
-- **Detail** (`/cosmic/auction/[slug]`) — Two-column layout (fullbody image left, auction info right). Countdown timer, highest bid panel, user bid status, bid history table, prev/next scientist navigation. Bid placement via multi-step Dialog/Drawer modal (`BidPlacementFlow`).
+- **Overview** (`/cosmic/auction`) — 5-card grid showing all auctions. Each card: scientist image, countdown timer, highest bid, total bids. Polls every 15s. Clicking a card opens `AuctionDetailModal`. Below the grid: Your Bids Dashboard (connect prompt or bid positions), Live Activity Feed (recent bids across all auctions), Quick Rules (4-step how-it-works + notes).
+- **Detail modal** — Opens on the overview page (no separate routes). Side-by-side layout (fullbody image left, info/bid panel right). Step state machine within the same panel: detail view → connect wallet → select NFTs → confirm → result. Prev/next arrows cycle through scientists. Follows ScientistModal Dialog/Drawer responsive pattern.
 - **Data layer** (`src/lib/auction/`) — `types.ts`, `constants.ts`, `mock-data.ts`, `api.ts`. Mock mode gated by `NEXT_PUBLIC_AUCTION_MOCK` env var (defaults to mock).
-- **Slugs:** `the-architect`, `the-warlord`, `the-oracle`, `the-antiquarian`, `the-dreamer`
 
 ### Key Layout Patterns
 ```tsx

@@ -4,7 +4,6 @@ import {
   getMockUserState,
   getMockConnectedUserState,
 } from "./mock-data";
-import { SLUG_TO_SCIENTIST } from "./constants";
 
 const IS_MOCK = process.env.NEXT_PUBLIC_AUCTION_MOCK !== "false";
 
@@ -16,18 +15,6 @@ export async function fetchAuctions(): Promise<Auction[]> {
   if (IS_MOCK) {
     await delay(300);
     return getMockAuctions();
-  }
-  // TODO: CosmJS contract query
-  throw new Error("Contract integration not implemented");
-}
-
-export async function fetchAuction(slug: string): Promise<Auction | null> {
-  if (IS_MOCK) {
-    await delay(200);
-    const scientist = SLUG_TO_SCIENTIST[slug];
-    if (!scientist) return null;
-    const auctions = getMockAuctions();
-    return auctions.find((a) => a.scientist.slug === slug) ?? null;
   }
   // TODO: CosmJS contract query
   throw new Error("Contract integration not implemented");

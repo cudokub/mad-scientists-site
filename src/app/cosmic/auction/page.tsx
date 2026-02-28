@@ -1,19 +1,35 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import AuctionCard from "@/components/cosmic/auction/AuctionCard";
-import type { Auction } from "@/lib/auction/types";
-import { fetchAuctions } from "@/lib/auction/api";
+import ActivityFeed from "@/components/cosmic/auction/ActivityFeed";
+import UserBidsDashboard from "@/components/cosmic/auction/UserBidsDashboard";
+import AuctionRules from "@/components/cosmic/auction/AuctionRules";
+import type { Auction, UserAuctionState } from "@/lib/auction/types";
+import { fetchAuctions, fetchUserState } from "@/lib/auction/api";
+
+const AuctionDetailModal = dynamic(
+  () => import("@/components/cosmic/auction/AuctionDetailModal"),
+  { ssr: false },
+);
 
 const POLL_INTERVAL = 15_000;
 
 export default function AuctionOverviewPage() {
   const [auctions, setAuctions] = useState<Auction[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [userState, setUserState] = useState<UserAuctionState>({
+    connected: false,
+    address: null,
+    ownedNfts: [],
+    currentBids: {},
+  });
 
   const load = useCallback(async () => {
     const data = await fetchAuctions();
@@ -27,8 +43,22 @@ export default function AuctionOverviewPage() {
     return () => clearInterval(id);
   }, [load]);
 
+  const handleConnect = async () => {
+    const state = await fetchUserState(true);
+    setUserState(state);
+  };
+
+  const handleDisconnect = async () => {
+    const state = await fetchUserState(false);
+    setUserState(state);
+  };
+
+  const handleBidComplete = () => {
+    load();
+  };
+
   return (
-    <main id="main-content" className="min-h-screen bg-[#04070f] text-cosmic-text">
+    <main id="main-content" className="min-h-screen scroll-smooth bg-[#04070f] text-cosmic-text">
       <NavBar theme="cosmic" />
 
       <section className="mx-auto max-w-[1440px] border-x border-cosmic">
@@ -53,7 +83,12 @@ export default function AuctionOverviewPage() {
               </p>
             </div>
             <div className="shrink-0">
-              <Button href="/cosmic#auction" variant="ghost" theme="cosmic" size="sm">
+              <Button
+                variant="ghost"
+                theme="cosmic"
+                size="sm"
+                onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
+              >
                 How It Works
               </Button>
             </div>
@@ -77,14 +112,54 @@ export default function AuctionOverviewPage() {
                     : ""
                 }
               >
-                <AuctionCard auction={auction} />
+                <AuctionCard
+                  auction={auction}
+                  onClick={() => setSelectedSlug(auction.scientist.slug)}
+                />
               </div>
             ))}
           </div>
         )}
+
+        {/* Your Bids Dashboard — only when connected */}
+        {!loading && (
+          <div className="border-b border-cosmic p-6 md:p-8">
+            <UserBidsDashboard
+              auctions={auctions}
+              userState={userState}
+              onSelectAuction={setSelectedSlug}
+              onConnect={handleConnect}
+            />
+          </div>
+        )}
+
+        {/* Live Activity Feed */}
+        {!loading && (
+          <div className="border-b border-cosmic p-6 md:p-8">
+            <ActivityFeed auctions={auctions} />
+          </div>
+        )}
+
+        {/* Quick Rules */}
+        <div id="how-it-works" className="border-b border-cosmic p-6 md:p-8 scroll-mt-4">
+          <AuctionRules />
+        </div>
       </section>
 
       <Footer theme="cosmic" />
+
+      {selectedSlug && (
+        <AuctionDetailModal
+          auctions={auctions}
+          selectedSlug={selectedSlug}
+          userState={userState}
+          onClose={() => setSelectedSlug(null)}
+          onNavigate={setSelectedSlug}
+          onConnect={handleConnect}
+          onDisconnect={handleDisconnect}
+          onBidComplete={handleBidComplete}
+        />
+      )}
     </main>
   );
 }
