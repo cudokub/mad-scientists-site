@@ -3,7 +3,7 @@
 > 5 hand-crafted 1/1 Mad Scientists. Auctioned by bidding Mad Scientists 10k collection NFTs.
 > 10-day Twitter/X campaign: Tease → Reveal → Auction.
 > **Dashboard (local):** `~/imggen/COSMIC-TEASER-V1/campaign-dashboard.html` — working copy with playable videos
-> **Dashboard (team):** `madscientists.io/campaign/campaign-dashboard.html` — shareable, delete post-campaign
+> **Dashboard (team):** `madscientists.io/campaign/` — shareable, delete post-campaign
 
 ---
 
@@ -60,31 +60,31 @@ Mysterious during tease (Days 1–4), confident and direct during reveal (Days 5
 | Day | Post | Asset | Status |
 |-----|------|-------|--------|
 | 1 | Teaser Video Drop — 30s video, header swap, pin tweet | `videos/shot03_magmar_profile.mp4` | done |
-| 2 | Silhouette Drop — 5 scientists walking through | `stills/shot08b_silhouette_walk_v2.png` | asset ready |
-| 3 | Magmar Close-Up — "He's been waiting" | `stills/shot09_magmar_face.png` | asset ready |
-| 4 | Portal Zoom + "Tomorrow" — 5 lights approaching | `stills/shot05_portal_lights.png` | asset ready |
+| 2 | Silhouette Drop — 5 scientists walking through | `stills/shot08b_silhouette_walk_v2.webp` | asset ready |
+| 3 | Magmar Close-Up — "He's been waiting" | `stills/shot09_magmar_face.webp` | asset ready |
+| 4 | Portal Zoom + "Tomorrow" — 5 lights approaching | `stills/shot05_portal_lights.webp` | asset ready |
 
 ### Phase 2: Reveal (Days 5–7)
 
 | Day | Post | Asset | Status |
 |-----|------|-------|--------|
 | 5 | Dancing Comedy Reveal — 40s video, 16 shots, thread | `COSMIC-REVEAL-V1/` (exported from Final Cut Pro) | done |
-| 6 | Identity Cards — All 5 scientists + `/cosmic` goes live, carousel | Needs: 5 identity card graphics | asset ready |
-| 7 | Auction Tease — "Which One Do You Want?" poll, engagement | Needs: poll graphic with all 5 scientists | asset ready |
+| 6 | Meet the COSMIC 5 — Hero Shot + `/cosmic` goes live | `stills/day6_cosmic_hero.webp` | asset ready |
+| 7 | "Which One's Your Favorite?" — 6 Panel Grid, engagement | `stills/day7_6panel_grid.webp` | asset ready |
 
 ### Phase 3: Auction (Days 8–10)
 
 | Day | Post | Asset | Status |
 |-----|------|-------|--------|
-| 8 | Auction Mechanic — "Trade Many For One", 3-step infographic | Needs: visual step-by-step infographic | todo |
-| 9 | Auction Opens — "IT'S LIVE", live bid thread, leaderboard | Needs: "IT'S LIVE" bold graphic | todo |
-| 10 | Final Call + Winners Reveal — AM countdown, PM winners | Needs: countdown graphic + winner cards | todo |
+| 8 | Sell the Desire — "5 Legends." image + mechanic thread | `stills/day8_5legends_auction.webp` | asset ready |
+| 9 | AUCTION LIVE NOW — FOMO energy, live bid thread | `stills/day9_auction_live.webp` | asset ready |
+| 10 | Three Beats: Last Call / Winners / Full Circle — AM countdown, PM winners, closing | `stills/day10_lastcall.webp`, `day10_winner_all5.webp`, `day10_closing.webp` + individual winners | asset ready |
 
 ### Dependencies
 - ~~Lineup poster must be finalized before Day 5~~ — Done (`cosmic-hero-2026-v4.png`)
 - ~~Teaser video must be ready for Day 1~~ — Done (`cosmic-teaser-v1_v2.mlt`, exported)
 - ~~Reveal video must be ready for Day 5~~ — Done (`COSMIC-REVEAL-V1/`, exported from Final Cut Pro)
-- Auction mechanic infographic must be ready before Day 8
+- ~~Auction mechanic infographic must be ready before Day 8~~ — Done (`day8_5legends_auction.webp`)
 - Auction smart contract must be deployed and tested before Day 9
 - NavBar/Footer COSMIC links uncommenting happens on Day 6
 - Auction button href + per-scientist status text updated on Day 9
@@ -93,27 +93,22 @@ Mysterious during tease (Days 1–4), confident and direct during reveal (Days 5
 
 ## Assets
 
-**Progress: 7/10 assets done — 3 remaining**
+**Progress: 10/10 assets done**
 
-### Done (7)
+### Done (10)
 
 | Asset | Type | File |
 |-------|------|------|
 | Teaser video (30s) | Video | `videos/shot03_magmar_profile.mp4` |
-| Silhouette walk (5 scientists) | Image | `stills/shot08b_silhouette_walk_v2.png` |
-| Magmar close-up | Image | `stills/shot09_magmar_face.png` |
-| Portal with 5 lights | Image | `stills/shot05_portal_lights.png` |
+| Silhouette walk (5 scientists) | Image | `stills/shot08b_silhouette_walk_v2.webp` |
+| Magmar close-up | Image | `stills/shot09_magmar_face.webp` |
+| Portal with 5 lights | Image | `stills/shot05_portal_lights.webp` |
 | Reveal video (40s, 16 shots) | Video | `COSMIC-REVEAL-V1/` (Final Cut Pro export) |
-| 5 COSMIC NFTs showcase | Image | `stills/day6_nfts.png` |
-| Disco dance poses (all 5) | Image | `stills/day7_disco_dancepose.png` |
-
-### Still Needed (3)
-
-| Asset | For | Priority |
-|-------|-----|----------|
-| Auction mechanic infographic (3-step visual) | Day 8 | Must-have |
-| "IT'S LIVE" bold graphic | Day 9 | Nice-to-have |
-| Winner cards ("CLAIMED BY @user") | Day 10 | Nice-to-have |
+| COSMIC 5 hero shot | Image | `stills/day6_cosmic_hero.webp` |
+| 6-panel grid (5 dancing + Magmar) | Image | `stills/day7_6panel_grid.webp` |
+| "5 Legends" auction desire | Image | `stills/day8_5legends_auction.webp` |
+| "Auction Live Now" FOMO | Image | `stills/day9_auction_live.webp` |
+| Day 10 suite (last call, winners, closing) | Images | `stills/day10_lastcall.webp`, `day10_winner_{all5,1-5}.webp`, `day10_last_{12,8,4,3,2}.webp`, `day10_closing.webp` |
 
 ---
 
@@ -255,7 +250,7 @@ Everything is an Experiment. This was ours.
 - [x] Hero swapped to portal lineup
 - [x] OG/Twitter meta tags
 - [x] Stargaze partner block
-- [x] 7/10 campaign assets done
+- [x] 10/10 campaign assets done
 - [ ] Auction smart contract deployed and tested on testnet
 - [ ] Final tweet copy polish
 
@@ -263,8 +258,7 @@ Everything is an Experiment. This was ours.
 
 ## Next Steps
 
-1. **Create remaining 3 assets** — auction infographic (must-have), IT'S LIVE graphic, winner cards
-2. **Finalize tweet copy** — drafts above need final polish
+1. **Finalize tweet copy** — drafts above need final polish
 3. **Deploy and test auction smart contract** on testnet
 4. **Pick a start date** — work backward from when contract will be ready
 5. **Prepare Discord announcements** for Days 1, 5, and 9
@@ -309,9 +303,9 @@ Everything is an Experiment. This was ours.
 - **Scientists:** The Architect, The Warlord, The Oracle, The Antiquarian, The Dreamer
 - **Auction mechanic:** Bid Mad Scientists 10k NFTs → highest stack wins → non-winners refunded → on-chain
 - **Brand voice:** Punchy, dark humor, pixel-art lab aesthetic. Cosmic purple theme.
-- **Campaign assets:** 7/10 done (2 videos, 5 stills). 3 remaining for auction phase.
+- **Campaign assets:** 10/10 done (2 videos, 8 stills/suites).
 - **Dashboard (local):** `~/imggen/COSMIC-TEASER-V1/campaign-dashboard.html`
-- **Dashboard (team):** `madscientists.io/campaign/campaign-dashboard.html` (temporary — `public/campaign/`, delete post-campaign)
+- **Dashboard (team):** `madscientists.io/campaign/` (temporary — `public/campaign/`, delete post-campaign)
 - **Related docs:** `docs/ASSETS.md` (image inventory)
 
 ---
