@@ -272,13 +272,13 @@ Everything is an Experiment. This was ours.
 - **Auction mechanic:** 5 separate auctions, one per scientist. Bid by transferring Mad Scientists 10k NFTs. Highest bidder wins. Losers returned. No minimum bid. On-chain smart contract.
 - **Page strategy:** `/cosmic` is currently unlisted. Goes live on Day 6 reveal.
 - **Silhouettes:** Only 3 of 5 scientists teased — avoids repetition.
-- **Auction visual:** Inline SVG infographic (`AuctionProcessSvg` component) replaced GIF placeholder. 4-panel layout with circular character PFPs (halfbody-v2 images via SVG `<image>` + `clipPath`). Oracle as the "selected" scientist across all panels. Source SVG at `public/images/cosmic-auction-process.svg`.
+- **Auction visual:** Inline SVG infographic (`AuctionProcessSvg` component) replaced GIF placeholder. 4-panel layout with circular character PFPs (halfbody-v4 WebP images via SVG `<image>` + `clipPath`). Oracle as the "selected" scientist across all panels. Source SVG at `public/images/cosmic-auction-process.svg`.
 - **Hero:** Portal lineup art (`cosmic-hero-2026-v4.png`, 1376x768) with all 5 scientists. All stale hero alternates deleted.
 - **Collection section:** Moved "Beyond the Lab" text into collection section. Removed standalone about section.
 - **Gallery modal:** Responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next at bottom. Keyboard arrow keys supported. Uses `useMediaQuery` hook to switch.
 - **Gallery cards:** Name and tagline displayed permanently below the image. Hover effect is border glow + subtle image zoom only (no translate-y lift, no slide-up overlay).
 - **Gallery layout:** Replaced carousel with responsive CSS grid (2-col mobile, 3-col tablet, 5-col desktop). No JS scroll logic. 5th card centered on mobile via `col-span-2`.
-- **Image variants:** Gallery cards use `halfbody-v2` crops. Modal uses `fullbody` images via `fullSrc` field. Old variants deleted — only active variants remain.
+- **Image variants:** Gallery cards use `halfbody-v4` WebP crops. Modal uses `fullbody-v3` WebP images via `fullSrc` field. Old variants deleted — only active variants remain.
 - **Page UX:** `scroll-smooth` on main element for anchor link smooth scrolling. Back-to-top button appears after scrolling 600px (fixed bottom-right, cosmic styled arrow).
 - **Auction headline:** Changed from "Sacrifice Scientists to Win Scientists" to "Send Your Scientists. Claim the Five." — narrative-driven, ties into mission story.
 - **Body copy:** Trimmed significantly across hero, collection, auction steps, and bottom CTA. Shorter, punchier copy throughout.

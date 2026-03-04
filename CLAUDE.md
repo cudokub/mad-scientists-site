@@ -119,12 +119,12 @@ Special edition showcase for the 5-piece COSMIC / Mad Scientists 1/1 collection.
 - **Ticker (top)** — cosmic-top variant ("THE COSMOS CALLED")
 - **Hero** — Mobile: logo panel + stacked image/content card. Desktop: two-panel layout (image flex-[2] right, text flex-1 left via `flex-row-reverse`). Hero image uses `width`/`height` (not `fill`) to stay in document flow — avoids flex container height collapse.
 - **Ticker (bottom)** — cosmic-bottom variant ("THE COSMOS CALLED")
-- **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards show scientist name and tagline permanently below the image. Hover: border glow + subtle image zoom (no translate-y lift, no slide-up overlay). Cards are clickable, open detail modal. Uses halfbody-v2 images for cards.
+- **Collection** — intro text + responsive grid (2-col mobile, 3-col tablet, 5-col desktop). Cards show scientist name and tagline permanently below the image. Hover: border glow + subtle image zoom (no translate-y lift, no slide-up overlay). Cards are clickable, open detail modal. Uses halfbody-v4 WebP images for cards.
 - **Auction** — "Send Your Scientists. Claim the Five." headline. Order: 4-step how-it-works (horizontal cards: SVG panel left, text right, 2-col grid), CTA box with branded Stargaze badge (side-by-side on desktop, `border-l` divider), 5 parallel auction lanes.
 
 **Scientist detail modal** — responsive Dialog/Drawer pattern (matches app.madscientists.io). Desktop (≥640px): Radix Dialog centered overlay, side-by-side layout (full-body art left, info 360px right), prev/next arrows on overlay sides. Mobile (<640px): Vaul Drawer bottom sheet with drag handle, swipe-to-close, stacked layout, prev/next buttons at bottom. Both: keyboard arrow keys for prev/next, Escape to close, shows name, tagline, lore paragraph.
 
-**Data model:** Each scientist has `id`, `name`, `slug`, `lane`, `src`, `fullSrc`, `tagline`, `lore`. Defined in `src/lib/auction/constants.ts` (single source of truth, shared by cosmic page and auction pages). `src` uses `cosmic-N-halfbody-v2.png` (gallery cards), `fullSrc` uses `cosmic-N-fullbody.png` (modal).
+**Data model:** Each scientist has `id`, `name`, `slug`, `lane`, `src`, `fullSrc`, `tagline`, `lore`. Defined in `src/lib/auction/constants.ts` (single source of truth, shared by cosmic page and auction pages). `src` uses `cosmic-N-halfbody-v4.webp` (gallery cards), `fullSrc` uses `cosmic-N-fullbody-v3.webp` (modal).
 
 **Launch planning:** See `docs/COSMIC-CAMPAIGN.md` for the 10-day content plan, asset checklist, and site change tracker.
 

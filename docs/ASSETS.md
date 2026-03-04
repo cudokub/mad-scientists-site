@@ -70,15 +70,15 @@ Multi-format setup for all devices. Generated from `public/images/ms-symbol.png`
 | `cosmic-logo.png` | COSMIC logo text in hero (480px wide, ~90KB — resized from 2406x740 source) |
 | `cosmic-symbol.png` | Cosmic potion bottle icon, NavBar logo for cosmic theme (200x200, ~62KB — resized from 1524x1626 source) |
 | `cosmic-hero-2026-v4.png` | Portal lineup art — all 5 scientists, 1376x768 (hero banner) |
-| `cosmic-1-halfbody-v3.png` | The Architect — halfbody crop (gallery cards + auction SVG PFP) |
-| `cosmic-2-halfbody-v2.png` | The Warlord — halfbody crop (gallery cards + auction SVG PFP) |
-| `cosmic-3-halfbody-v2.png` | The Oracle — halfbody crop (gallery cards + auction SVG PFP) |
-| `cosmic-4-halfbody-v2.png` | The Antiquarian — halfbody crop (gallery cards + auction SVG PFP) |
-| `cosmic-5-halfbody-v2.png` | The Dreamer — halfbody crop (gallery cards + auction SVG PFP) |
-| `cosmic-1-fullbody-v2.png` | The Architect — full body (detail modal + auction detail modal) |
-| `cosmic-2-fullbody.png` | The Warlord — full body (detail modal + auction detail modal) |
-| `cosmic-3-fullbody.png` | The Oracle — full body (detail modal + auction detail modal) |
-| `cosmic-4-fullbody.png` | The Antiquarian — full body (detail modal + auction detail modal) |
-| `cosmic-5-fullbody-v2.png` | The Dreamer — full body (detail modal + auction detail modal) |
-| `cosmic-auction-process.svg` | Auction process infographic — 4-panel SVG (Pick Lane → Stack Bid → Highest Wins → Losers Refunded). Rendered inline via `AuctionProcessSvg` component, uses halfbody-v2 PNGs as circular PFPs. |
+| `cosmic-1-halfbody-v4.webp` | The Architect — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-2-halfbody-v4.webp` | The Warlord — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-3-halfbody-v4.webp` | The Oracle — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-4-halfbody-v4.webp` | The Antiquarian — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-5-halfbody-v4.webp` | The Dreamer — halfbody crop (gallery cards + auction SVG PFP) |
+| `cosmic-1-fullbody-v3.webp` | The Architect — full body (detail modal + auction detail modal) |
+| `cosmic-2-fullbody-v3.webp` | The Warlord — full body (detail modal + auction detail modal) |
+| `cosmic-3-fullbody-v3.webp` | The Oracle — full body (detail modal + auction detail modal) |
+| `cosmic-4-fullbody-v3.webp` | The Antiquarian — full body (detail modal + auction detail modal) |
+| `cosmic-5-fullbody-v3.webp` | The Dreamer — full body (detail modal + auction detail modal) |
+| `cosmic-auction-process.svg` | Auction process infographic — 4-panel SVG (Pick Lane → Stack Bid → Highest Wins → Losers Refunded). Rendered inline via `AuctionProcessSvg` component, uses halfbody-v4 WebPs as circular PFPs. |
 | `cosmos-icon.png` | Pixel art Cosmos logo (200x200, ~28KB — resized from 2048x2048 source). Used in cosmic tickers. |

@@ -1,9 +1,9 @@
 const scientistImages = [
-  "/images/cosmic-1-halfbody-v3.png",
-  "/images/cosmic-2-halfbody-v2.png",
-  "/images/cosmic-3-halfbody-v2.png",
-  "/images/cosmic-4-halfbody-v2.png",
-  "/images/cosmic-5-halfbody-v2.png",
+  "/images/cosmic-1-halfbody-v4.webp",
+  "/images/cosmic-2-halfbody-v4.webp",
+  "/images/cosmic-3-halfbody-v4.webp",
+  "/images/cosmic-4-halfbody-v4.webp",
+  "/images/cosmic-5-halfbody-v4.webp",
 ];
 
 const oracleImg = scientistImages[2];
