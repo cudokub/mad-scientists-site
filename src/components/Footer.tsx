@@ -40,7 +40,7 @@ const footerLinks: FooterLink[] = [
     href: "https://drive.google.com/drive/folders/1hnSMNvvWFUX8V4p5p79ItUjjjE3B6LaW",
     external: true,
   },
-  { label: "Mad University", href: "https://mu.madscientists.io", external: true },
+  { label: "Mad University", href: "https://mad.trendytech.dev", external: true },
   { label: "Science Clubs", href: "/scienceclubs" },
   { label: "Snapshot", href: "/snapshot" },
   // TODO: Uncomment on COSMIC launch day (Day 5)
