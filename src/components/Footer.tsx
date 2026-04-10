@@ -9,7 +9,7 @@ interface FooterLink {
 const footerLinks: FooterLink[] = [
   { label: "Home", href: "/" },
   { label: "Reveal Info", href: "/revealinfo" },
-  { label: "Bridge", href: "https://app.arkprotocol.io/profile", external: true },
+  { label: "Bridge", href: "https://stargaze.zone/m/cosmos1dhc08f4n6ulzqtncrsue0uk2g5fr2wxp7qc56vcfcdsy3jqzhdts4a0yuf", external: true },
   {
     label: "Reveal MAD",
     href: "https://mygateway.io/minting/mad-scientists",
@@ -17,7 +17,7 @@ const footerLinks: FooterLink[] = [
   },
   {
     label: "Marketplace",
-    href: "https://www.stargaze.zone/m/stars1v8avajk64z7pppeu45ce6vv8wuxmwacdff484lqvv0vnka0cwgdqdk64sf/tokens",
+    href: "https://stargaze.zone/m/cosmos1dhc08f4n6ulzqtncrsue0uk2g5fr2wxp7qc56vcfcdsy3jqzhdts4a0yuf",
     external: true,
   },
   {

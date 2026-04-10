@@ -38,7 +38,7 @@ export default function Hero() {
                   TRADE $LAB
                 </Button>
                 <Button
-                  href="https://www.stargaze.zone/m/stars1v8avajk64z7pppeu45ce6vv8wuxmwacdff484lqvv0vnka0cwgdqdk64sf/tokens"
+                  href="https://stargaze.zone/m/cosmos1dhc08f4n6ulzqtncrsue0uk2g5fr2wxp7qc56vcfcdsy3jqzhdts4a0yuf"
                   className="flex-1"
                 >
                   MARKETPLACE
