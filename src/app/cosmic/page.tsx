@@ -22,18 +22,18 @@ const scientists = AUCTION_SCIENTISTS;
 const auctionSteps = [
   {
     step: "01",
-    title: "Pick Your Target",
+    title: "Pick Your Scientist",
     desc: "Each COSMIC 1/1 has its own auction.",
   },
   {
     step: "02",
-    title: "Stack Your Bid",
-    desc: "Stack Mad Scientists from the 10k. No minimum.",
+    title: "Place Your Bid",
+    desc: "Bid Mad Scientists NFTs from the main collection.",
   },
   {
     step: "03",
-    title: "Top Bid Wins",
-    desc: "Highest stack wins. One winner per scientist.",
+    title: "Highest Bidder Wins",
+    desc: "Highest bidder wins. One winner per Scientist.",
   },
   {
     step: "04",
