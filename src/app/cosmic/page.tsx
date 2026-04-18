@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import Link from "next/link";
 import { silkscreen } from "@/lib/fonts";
 import NavBar from "@/components/NavBar";
 import Ticker from "@/components/Ticker";
@@ -42,16 +41,6 @@ const auctionSteps = [
     desc: "Didn\u2019t win? Your Scientists come back.",
   },
 ];
-
-const parallelAuctionStatus = [
-  { id: 1, lane: "Lane Alpha" },
-  { id: 2, lane: "Lane Beta" },
-  { id: 3, lane: "Lane Gamma" },
-  { id: 4, lane: "Lane Delta" },
-  { id: 5, lane: "Lane Omega" },
-];
-
-
 
 const HERO_IMAGE_SRC = "/images/cosmic-hero-2026-v4.png";
 const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
@@ -175,7 +164,7 @@ export default function CosmicPage() {
 
             <div data-layer="hero-mobile-content" className="border-t border-cosmic p-8 text-center">
               <h1 data-layer="hero-mobile-heading" className="font-display text-3xl uppercase leading-[0.9] tracking-wide text-cosmic-text">
-                <ClearFive className="text-cosmic-cyan" /> Legends.
+                <ClearFive className="text-cosmic-cyan" /> Cosmics.
                 <br />
                 One Universe.
               </h1>
@@ -201,7 +190,7 @@ export default function CosmicPage() {
                   theme="cosmic"
                   className="w-full"
                 >
-                  Enter the Auction
+                  How It Works
                 </Button>
               </div>
             </div>
@@ -221,7 +210,7 @@ export default function CosmicPage() {
                   />
                 </div>
                 <h1 className="font-display text-5xl uppercase leading-[0.9] tracking-wide text-cosmic-text lg:text-6xl">
-                  <ClearFive className="text-cosmic-cyan" /> Legends.
+                  <ClearFive className="text-cosmic-cyan" /> Cosmics.
                   <br />
                   One Universe.
                 </h1>
@@ -245,7 +234,7 @@ export default function CosmicPage() {
                     size="lg"
                     theme="cosmic"
                   >
-                    Enter the Auction
+                    How It Works
                   </Button>
                 </div>
               </div>
@@ -341,115 +330,62 @@ export default function CosmicPage() {
               ))}
             </div>
 
+            <div
+              data-layer="auction-outbid-note"
+              className="mt-4 flex items-start gap-3 border border-cosmic/40 bg-[rgba(13,10,30,0.55)] px-4 py-3 md:px-5 md:py-4"
+            >
+              <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 bg-cosmic" aria-hidden />
+              <p className="font-mono text-xs leading-relaxed text-cosmic-text-muted md:text-sm">
+                <span className="font-display uppercase tracking-[0.14em] text-cosmic">Outbid?</span>
+                {" "}Withdraw your Scientists and bid on another. The top bidder stays locked in.
+              </p>
+            </div>
+
             <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-cosmic-bg md:flex-row">
                 <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
                   <p data-layer="auction-cta-text" className="text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
                     Bid your Scientists. Claim a Cosmic.
                   </p>
                   <Button
-                    href="/cosmic/auction"
                     variant="cosmic-primary"
                     size="lg"
                     theme="cosmic"
+                    disabled
                     className="w-full md:w-fit"
                   >
-                    Place Your Bid
+                    Opens Soon
                   </Button>
                 </div>
                 <div
-                  data-layer="auction-stargaze"
+                  data-layer="auction-partner"
                   className="flex items-center gap-3 border-t border-cosmic/40 px-6 py-4 md:w-[200px] md:shrink-0 md:flex-col md:items-center md:justify-center md:gap-2 md:border-l md:border-t-0 md:px-8 md:py-6 md:text-center"
                 >
                   <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-cosmic-text-dimmer md:order-first">
                     Powered by
                   </p>
                   <Image
-                    src="/images/stargaze-chain.svg"
-                    alt="Stargaze"
+                    src="/images/trendy-logo.webp"
+                    alt="Trendy"
                     width={40}
                     height={40}
-                    className="hidden shrink-0 md:block"
+                    className="hidden shrink-0 border border-cosmic/60 md:block"
                   />
                   <Image
-                    src="/images/stargaze-chain.svg"
-                    alt="Stargaze"
+                    src="/images/trendy-logo.webp"
+                    alt="Trendy"
                     width={24}
                     height={24}
-                    className="shrink-0 md:hidden"
+                    className="shrink-0 border border-cosmic/60 md:hidden"
                   />
                   <p className="font-display text-sm font-bold uppercase tracking-[0.08em] text-cosmic-text">
-                    Stargaze
+                    Trendy
                   </p>
                   <p className="hidden font-mono text-[10px] text-cosmic-text-muted md:block">
-                    Auction Partner
+                    Mad Dev
                   </p>
                 </div>
             </div>
 
-            <div data-layer="auction-lanes-wrapper" className="mt-12 md:mt-16">
-              <h3 data-layer="auction-lanes-heading" className="font-display text-xl uppercase tracking-wide text-cosmic-text md:text-2xl">
-                <ClearFive className="text-cosmic-text" /> Parallel Auctions
-              </h3>
-              <p data-layer="auction-lanes-body" className="mt-2 font-mono text-xs text-cosmic-text-dim md:text-sm">
-                All 5 run at once. Pick your lane. Watch the bids stack up.
-              </p>
-              <div data-layer="auction-lanes" className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
-                {parallelAuctionStatus.map((auction, i) => {
-                  const scientist = scientists.find(
-                    (item) => item.id === auction.id,
-                  );
-                  if (!scientist) return null;
-
-                  return (
-                    <Link
-                      key={auction.id}
-                      href="/cosmic/auction"
-                      className={`group relative block overflow-hidden border border-cosmic/40 bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] p-3 transition-colors hover:border-cosmic/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic md:p-4${
-                        i === 4
-                          ? " col-span-2 mx-auto w-[calc(50%-6px)] md:col-span-1 md:w-full"
-                          : ""
-                      }`}
-                    >
-                      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-[#2a2740]" />
-
-                      <div className="flex items-center gap-2.5">
-                        <div className="relative h-9 w-9 shrink-0 overflow-hidden border border-cosmic grayscale-[40%] opacity-70">
-                          <Image
-                            src={scientist.src}
-                            alt={scientist.name}
-                            width={72}
-                            height={72}
-                            sizes="36px"
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="flex items-center gap-1.5 font-display text-[10px] uppercase tracking-[0.16em] text-cosmic-text-dimmer">
-                            <span className="inline-flex h-1.5 w-1.5 shrink-0 bg-cosmic-text-dimmer" />
-                            {auction.lane}
-                          </p>
-                          <h4 className="mt-0.5 truncate font-display text-xs uppercase tracking-[0.06em] text-cosmic-text-muted md:text-sm">
-                            {scientist.name}
-                          </h4>
-                        </div>
-                      </div>
-
-                      <div className="mt-3 h-1 w-full overflow-hidden bg-[#131931]">
-                        <div className="h-full w-0 bg-[#2a2740]" />
-                      </div>
-
-                      <p className="mt-3 font-display text-[10px] uppercase tracking-[0.12em] text-cosmic-text-dimmer md:text-xs">
-                        Sealed
-                      </p>
-
-                      <p className="mt-1 font-mono text-[10px] text-cosmic-text-dimmer md:text-[11px]">
-                        Opens soon
-                      </p>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
           </div>
         </section>
       </section>

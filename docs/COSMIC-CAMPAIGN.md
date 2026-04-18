@@ -206,14 +206,18 @@ Everything is an Experiment. This was ours.
 - [x] Hero swapped to portal lineup art (`cosmic-hero-2026-v4.png`, 1376x768)
 - [x] Auction placeholder replaced with `cosmic-auction-process.svg` inline component (`AuctionProcessSvg`)
 - [x] OG/Twitter meta tags for `/cosmic` (`src/app/cosmic/layout.tsx`)
-- [x] Stargaze partner block in auction CTA panel
+- [x] Trendy partner block in auction CTA panel (`trendy-logo.webp`, 14.8KB)
+- [x] Hero heading: "5 Legends" → "5 Cosmics"
+- [x] Hero CTA: "Enter the Auction" → "How It Works"
+- [x] Outbid/withdraw note added below 4-step grid
+- [x] Auction CTA disabled pre-launch: button shows "Opens Soon" (not clickable)
+- [x] "5 Parallel Auctions" lane grid removed from `/cosmic` page
 
 ### Campaign-day site changes
 | Day | Site change |
 |-----|------------|
 | 6 | Uncomment NavBar + Footer COSMIC links → `/cosmic` goes live |
-| 8 | Update auction button `href` + text |
-| 9 | Update per-scientist auction status text (replace "Auction opens soon") |
+| 9 | Enable auction CTA: replace disabled "Opens Soon" button with live "Place Your Bid" link to `/cosmic/auction` |
 
 ---
 
@@ -294,6 +298,12 @@ Everything is an Experiment. This was ours.
 - **Inline CSS removed:** Keyframe animations moved from inline `<style>` tag to `globals.css`.
 - **Page metadata:** Added `src/app/cosmic/layout.tsx` with title, description, OG image, Twitter card.
 - **Stargaze partner block:** Co-branded block in auction CTA panel — Stargaze logo, "Official auction partner" label, links to stargaze.zone.
+- **Partner block rebrand (pre-reveal):** Swapped Stargaze → Trendy, "Auction Partner" → "Mad Dev". Logo is `trendy-logo.webp` (14.8KB, optimized from 400x400 JPEG). Reflects that Trendy is the dev shop building the auction contract.
+- **Hero heading update (pre-reveal):** "5 Legends. One Universe." → "5 Cosmics. One Universe." Tighter tie to the collection name.
+- **Hero secondary CTA (pre-reveal):** "Enter the Auction" → "How It Works". Auction isn't live yet; the button anchors to the 4-step mechanic.
+- **Outbid/withdraw note:** Short callout below the 4-step grid explaining users can withdraw their bid and re-bid on another scientist if they're outbid (top bidder stays locked in). Styled as a bordered note with cosmic accent dot.
+- **Pre-launch bid CTA state:** "Place Your Bid" disabled until auction day, copy changed to "Opens Soon". Gets re-enabled on Day 9 per campaign schedule.
+- **Parallel auctions lane grid removed:** Deleted the 5-lane "Parallel Auctions" section from `/cosmic`. The collection grid above already shows all 5 scientists; live auction state lives on `/cosmic/auction`.
 
 ---
 
