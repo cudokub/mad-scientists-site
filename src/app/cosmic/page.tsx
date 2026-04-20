@@ -33,7 +33,7 @@ const auctionSteps = [
   {
     step: "03",
     title: "Highest Bidder Wins",
-    desc: "Highest bidder wins. One winner per Scientist.",
+    desc: "Highest bidder wins. One winner per Cosmic Scientist.",
   },
   {
     step: "04",
@@ -302,8 +302,8 @@ export default function CosmicPage() {
               Send Your Scientists. Claim the Five.
             </h2>
             <p data-layer="auction-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
-              The Cosmos called them. Now bid yours to bring one home.
-              Highest stack wins. Didn&apos;t win? Your Scientists come back.
+              The Cosmos called them. Now bid on yours to bring one home.
+              Highest bidder wins. Didn&apos;t win? Your Scientists come back.
             </p>
 
             <div data-layer="auction-steps" className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
@@ -344,7 +344,7 @@ export default function CosmicPage() {
             <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-cosmic-bg md:flex-row">
                 <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
                   <p data-layer="auction-cta-text" className="text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
-                    Bid your Scientists. Claim a Cosmic.
+                    Bid your Scientists. Win a Cosmic.
                   </p>
                   <Button
                     variant="cosmic-primary"
