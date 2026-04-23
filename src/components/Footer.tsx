@@ -43,8 +43,7 @@ const footerLinks: FooterLink[] = [
   { label: "Mad University", href: "https://mad.trendytech.dev", external: true },
   { label: "Science Clubs", href: "/scienceclubs" },
   { label: "Snapshot", href: "/snapshot" },
-  // TODO: Uncomment on COSMIC launch day (Day 5)
-  // { label: "COSMIC", href: "/cosmic" },
+  { label: "COSMIC", href: "/cosmic" },
 ];
 
 interface FooterProps {

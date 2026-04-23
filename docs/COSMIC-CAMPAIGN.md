@@ -219,6 +219,14 @@ Everything is an Experiment. This was ours.
 | 6 | Uncomment NavBar + Footer COSMIC links → `/cosmic` goes live |
 | 9 | Enable auction CTA: replace disabled "Opens Soon" button with live "Place Your Bid" link to `/cosmic/auction` |
 
+### Post-campaign restoration (homepage)
+When the campaign ends, revert these homepage changes in `src/app/page.tsx`:
+- Remove `<CosmicBanner />` (or the whole import)
+- Uncomment `<Ticker variant="gateway" />` and remove the cosmic-top `<Link>` wrapper + ticker above `<Hero />`
+- Uncomment `<Ticker variant="stargaze" />` and remove the cosmic-bottom `<Link>` wrapper + ticker below `<Hero />`
+- Remove the `COSMIC` entry from `navLinks` in `src/components/NavBar.tsx` (optional — can stay as permanent nav)
+- Remove the `COSMIC` entry from `footerLinks` in `src/components/Footer.tsx` (optional — same as above)
+
 ---
 
 ## Success Metrics
