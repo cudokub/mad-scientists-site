@@ -175,22 +175,22 @@ export default function CosmicPage() {
               </p>
               <div data-layer="hero-mobile-buttons" className="mt-4 flex flex-col items-center gap-3">
                 <Button
-                  href="#collection"
+                  href="https://cosmic.trendytech.dev/cosmic/auction"
                   variant="cosmic-primary"
                   size="lg"
                   theme="cosmic"
                   className="w-full"
                 >
-                  See the Five
+                  Bid Now
                 </Button>
                 <Button
-                  href="#auction"
+                  href="#collection"
                   variant="ghost"
                   size="lg"
                   theme="cosmic"
                   className="w-full"
                 >
-                  How It Works
+                  See the Five
                 </Button>
               </div>
             </div>
@@ -221,20 +221,20 @@ export default function CosmicPage() {
                 </p>
                 <div className="flex flex-col gap-3 mt-2 w-full">
                   <Button
-                    href="#collection"
+                    href="https://cosmic.trendytech.dev/cosmic/auction"
                     variant="cosmic-primary"
                     size="lg"
                     theme="cosmic"
                   >
-                    See the Five
+                    Bid Now
                   </Button>
                   <Button
-                    href="#auction"
+                    href="#collection"
                     variant="ghost"
                     size="lg"
                     theme="cosmic"
                   >
-                    How It Works
+                    See the Five
                   </Button>
                 </div>
               </div>
@@ -347,13 +347,13 @@ export default function CosmicPage() {
                     Bid your Scientists. Win a Cosmic.
                   </p>
                   <Button
+                    href="https://cosmic.trendytech.dev/cosmic/auction"
                     variant="cosmic-primary"
                     size="lg"
                     theme="cosmic"
-                    disabled
                     className="w-full md:w-fit"
                   >
-                    Opens Soon
+                    Bid Now
                   </Button>
                 </div>
                 <div
