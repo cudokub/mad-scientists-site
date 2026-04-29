@@ -8,7 +8,6 @@ import NavBar from "@/components/NavBar";
 import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
-import AuctionProcessSvg from "@/components/cosmic/AuctionProcessSvg";
 import { AUCTION_SCIENTISTS } from "@/lib/auction/constants";
 import type { AuctionScientist } from "@/lib/auction/types";
 
@@ -19,31 +18,11 @@ const ScientistModal = dynamic(
 
 const scientists = AUCTION_SCIENTISTS;
 
-const auctionSteps = [
-  {
-    step: "01",
-    title: "Pick Your Scientist",
-    desc: "Each COSMIC 1/1 has its own auction.",
-  },
-  {
-    step: "02",
-    title: "Place Your Bid",
-    desc: "Bid Mad Scientists NFTs from the main collection.",
-  },
-  {
-    step: "03",
-    title: "Highest Bidder Wins",
-    desc: "Highest bidder wins. One winner per Cosmic Scientist.",
-  },
-  {
-    step: "04",
-    title: "Non-Winners Refunded",
-    desc: "Didn\u2019t win? Your Scientists come back.",
-  },
-];
-
 const HERO_IMAGE_SRC = "/images/cosmic-hero-2026-v4.png";
 const HERO_IMAGE_ALT = "Mad Scientists cosmic lab lineup";
+
+const COSMIC_MARKETPLACE_URL =
+  "https://stargaze.zone/m/cosmos1szgwggzmxsda8na7pm0t74ypngv8qqzj0dqerazm2xe8432vymmqzyahh9";
 
 function GalleryCard({
   scientist,
@@ -175,13 +154,13 @@ export default function CosmicPage() {
               </p>
               <div data-layer="hero-mobile-buttons" className="mt-4 flex flex-col items-center gap-3">
                 <Button
-                  href="https://cosmic.trendytech.dev/cosmic/auction"
+                  href={COSMIC_MARKETPLACE_URL}
                   variant="cosmic-primary"
                   size="lg"
                   theme="cosmic"
                   className="w-full"
                 >
-                  Bid Now
+                  Buy on Stargaze
                 </Button>
                 <Button
                   href="#collection"
@@ -221,12 +200,12 @@ export default function CosmicPage() {
                 </p>
                 <div className="flex flex-col gap-3 mt-2 w-full">
                   <Button
-                    href="https://cosmic.trendytech.dev/cosmic/auction"
+                    href={COSMIC_MARKETPLACE_URL}
                     variant="cosmic-primary"
                     size="lg"
                     theme="cosmic"
                   >
-                    Bid Now
+                    Buy on Stargaze
                   </Button>
                   <Button
                     href="#collection"
@@ -293,99 +272,50 @@ export default function CosmicPage() {
           </div>
         </section>
 
-        <section data-layer="auction" id="auction" className="relative px-6 py-12 md:px-12 md:py-16">
-          <div className="mx-auto max-w-6xl">
-            <p data-layer="auction-label" className="text-center font-display text-xs uppercase tracking-[0.22em] text-cosmic-cyan md:text-left">
-              Your Move
-            </p>
-            <h2 data-layer="auction-heading" className="mt-3 text-center font-display text-3xl uppercase tracking-wide text-cosmic-text md:text-left md:text-4xl">
-              Send Your Scientists. Claim the Five.
-            </h2>
-            <p data-layer="auction-body" className="mt-4 max-w-3xl text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
-              The Cosmos called them. Now bid on yours to bring one home.
-              Highest bidder wins. Didn&apos;t win? Your Scientists come back.
+        <section data-layer="credits" className="relative px-6 py-12 md:px-12 md:py-16">
+          <div className="mx-auto max-w-3xl border border-cosmic bg-cosmic-bg p-6 md:p-8">
+            <p
+              data-layer="credits-label"
+              className="text-center font-display text-xs uppercase tracking-[0.22em] text-cosmic/70"
+            >
+              Credits
             </p>
 
-            <div data-layer="auction-steps" className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
-              {auctionSteps.map((item, i) => (
-                <article
-                  key={item.step}
-                  className="flex border border-cosmic bg-[linear-gradient(145deg,rgba(13,10,30,0.92),rgba(5,9,22,0.9))] overflow-hidden"
-                >
-                  <div className="w-[120px] shrink-0 border-r border-cosmic/20 bg-cosmic-bg-light md:w-[150px]">
-                    <AuctionProcessSvg panel={i + 1} />
-                  </div>
-                  <div className="flex-1 p-4 md:p-5">
-                    <p className="font-display text-3xl leading-none text-cosmic md:text-4xl">
-                      {item.step}
-                    </p>
-                    <h3 className="mt-3 font-display text-sm uppercase tracking-[0.08em] text-cosmic-text md:text-base">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 font-mono text-xs leading-relaxed text-cosmic-text-dim md:text-sm">
-                      {item.desc}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <p
+              data-layer="credits-body"
+              className="mt-4 text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-base"
+            >
+              The 5 Cosmics were released as 1/1 auctions in April 2026. They
+              live on{" "}
+              <a
+                href={COSMIC_MARKETPLACE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cosmic-cyan-light underline transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic"
+              >
+                Stargaze
+              </a>
+              .
+            </p>
 
             <div
-              data-layer="auction-outbid-note"
-              className="mt-4 flex items-start gap-3 border border-cosmic/40 bg-[rgba(13,10,30,0.55)] px-4 py-3 md:px-5 md:py-4"
+              data-layer="credits-trendy"
+              className="mt-6 flex items-center justify-center gap-3 border-t border-cosmic/40 pt-6 md:gap-4"
             >
-              <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 bg-cosmic" aria-hidden />
-              <p className="font-mono text-xs leading-relaxed text-cosmic-text-muted md:text-sm">
-                <span className="font-display uppercase tracking-[0.14em] text-cosmic">Outbid?</span>
-                {" "}Withdraw your Scientists and bid on another. The top bidder stays locked in.
-              </p>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-cosmic-text-dimmer md:text-xs">
+                Built with
+              </span>
+              <Image
+                src="/images/trendy-logo.webp"
+                alt="Trendy"
+                width={28}
+                height={28}
+                className="shrink-0 border border-cosmic/60"
+              />
+              <span className="font-display text-sm font-bold uppercase tracking-[0.08em] text-cosmic-text">
+                Trendy
+              </span>
             </div>
-
-            <div data-layer="auction-cta" className="mt-8 flex flex-col border border-cosmic bg-cosmic-bg md:flex-row">
-                <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
-                  <p data-layer="auction-cta-text" className="text-center font-mono text-sm leading-relaxed text-cosmic-text-muted md:text-left md:text-base">
-                    Bid your Scientists. Win a Cosmic.
-                  </p>
-                  <Button
-                    href="https://cosmic.trendytech.dev/cosmic/auction"
-                    variant="cosmic-primary"
-                    size="lg"
-                    theme="cosmic"
-                    className="w-full md:w-fit"
-                  >
-                    Bid Now
-                  </Button>
-                </div>
-                <div
-                  data-layer="auction-partner"
-                  className="flex items-center gap-3 border-t border-cosmic/40 px-6 py-4 md:w-[200px] md:shrink-0 md:flex-col md:items-center md:justify-center md:gap-2 md:border-l md:border-t-0 md:px-8 md:py-6 md:text-center"
-                >
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-cosmic-text-dimmer md:order-first">
-                    Powered by
-                  </p>
-                  <Image
-                    src="/images/trendy-logo.webp"
-                    alt="Trendy"
-                    width={40}
-                    height={40}
-                    className="hidden shrink-0 border border-cosmic/60 md:block"
-                  />
-                  <Image
-                    src="/images/trendy-logo.webp"
-                    alt="Trendy"
-                    width={24}
-                    height={24}
-                    className="shrink-0 border border-cosmic/60 md:hidden"
-                  />
-                  <p className="font-display text-sm font-bold uppercase tracking-[0.08em] text-cosmic-text">
-                    Trendy
-                  </p>
-                  <p className="hidden font-mono text-[10px] text-cosmic-text-muted md:block">
-                    Mad Dev
-                  </p>
-                </div>
-            </div>
-
           </div>
         </section>
       </section>
