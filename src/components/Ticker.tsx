@@ -9,6 +9,8 @@ interface TickerItem {
 
 interface TickerProps {
   variant?: "gateway" | "stargaze" | "cosmic-top" | "cosmic-bottom";
+  href?: string;
+  ariaLabel?: string;
 }
 
 const gatewayItem: TickerItem = {
@@ -85,27 +87,50 @@ const items: Record<string, TickerItem> = {
   "cosmic-bottom": cosmicBottomItem,
 };
 
-export default function Ticker({ variant = "gateway" }: TickerProps) {
+export default function Ticker({ variant = "gateway", href, ariaLabel }: TickerProps) {
   const item = items[variant];
   const cosmic = isCosmic(variant);
   const borderClass = cosmic ? "border-cosmic" : "border-green";
+  const focusOutline = cosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
+
+  const inner = (
+    <div className="overflow-hidden py-3"
+      style={{
+        maskImage:
+          "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%)",
+      }}
+    >
+      <div className="flex ticker-animate items-center whitespace-nowrap w-max">
+        <TickerSet item={item} count={8} cosmic={cosmic} />
+        <TickerSet item={item} count={8} cosmic={cosmic} />
+      </div>
+    </div>
+  );
+
+  const baseClasses = `border ${borderClass} max-w-[1440px] mx-auto`;
+
+  if (href) {
+    const external = href.startsWith("http");
+    const linkClasses = `${baseClasses} block transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-[-2px] ${focusOutline}`;
+
+    return (
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className={linkClasses}
+        aria-label={ariaLabel ?? "Scrolling announcement"}
+      >
+        {inner}
+      </a>
+    );
+  }
 
   return (
-    <div className={`border ${borderClass} max-w-[1440px] mx-auto`} role="region" aria-label="Scrolling announcement">
-      <div
-        className="overflow-hidden py-3"
-        style={{
-          maskImage:
-            "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%)",
-        }}
-      >
-        <div className="flex ticker-animate items-center whitespace-nowrap w-max">
-          <TickerSet item={item} count={8} cosmic={cosmic} />
-          <TickerSet item={item} count={8} cosmic={cosmic} />
-        </div>
-      </div>
+    <div className={baseClasses} role="region" aria-label={ariaLabel ?? "Scrolling announcement"}>
+      {inner}
     </div>
   );
 }

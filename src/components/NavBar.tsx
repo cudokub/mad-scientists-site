@@ -14,7 +14,6 @@ const navLinks = [
     external: true,
     highlight: true,
   },
-  { label: "COSMIC", href: "/cosmic", cosmic: true },
 ];
 
 interface NavBarProps {
@@ -119,11 +118,9 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
             target={link.external ? "_blank" : undefined}
             rel={link.external ? "noopener noreferrer" : undefined}
             className={`flex-1 flex items-center justify-center px-4 py-4 border-l font-display text-base tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] ${focusOutline} ${borderClass} ${
-              link.cosmic
-                ? (isCosmic ? "text-cosmic-cyan-light font-bold hover:text-white" : "text-cosmic font-bold hover:text-cosmic-cyan-light")
-                : link.highlight
-                  ? highlightClass
-                  : linkBase
+              link.highlight
+                ? highlightClass
+                : linkBase
             }`}
           >
             {link.label}
@@ -180,13 +177,11 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
               className={`block py-4 px-6 font-display text-base tracking-wider border-b text-center focus-visible:outline-2 focus-visible:outline-offset-[-2px] ${focusOutline} ${
                 isCosmic ? "border-cosmic" : "border-green/30"
               } ${
-                link.cosmic
-                  ? (isCosmic ? "text-cosmic-cyan-light font-bold" : "text-cosmic font-bold")
-                  : link.highlight
-                    ? highlightClass
-                    : isCosmic
-                      ? "text-cosmic-text-muted hover:text-cosmic-cyan-light"
-                      : "text-text"
+                link.highlight
+                  ? highlightClass
+                  : isCosmic
+                    ? "text-cosmic-text-muted hover:text-cosmic-cyan-light"
+                    : "text-text"
               }`}
               onClick={() => setMobileOpen(false)}
             >
