@@ -27,7 +27,7 @@ const footerLinks: FooterLink[] = [
   },
   {
     label: "$LAB Chart",
-    href: "https://coinhall.org/osmosis/osmo12zk0xmacanpz9huy8huth2wee98smf9kktg4lltu9zrk3x9w58aq7k64cz",
+    href: "https://dexscreener.com/osmosis/1642-factory_osmo17fel472lgzs87ekt9dvk0zqyh5gl80sqp4sk4n_lab-uosmo",
     external: true,
   },
   {
