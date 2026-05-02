@@ -32,7 +32,7 @@ export default function Hero() {
 
               <div className="flex flex-row gap-3">
                 <Button
-                  href="https://coinhall.org/osmosis/osmo12zk0xmacanpz9huy8huth2wee98smf9kktg4lltu9zrk3x9w58aq7k64cz"
+                  href="https://app.osmosis.zone/?from=uosmo&to=factory/osmo17fel472lgzs87ekt9dvk0zqyh5gl80sqp4sk4n/LAB&utm_source=osmosis_landing_page&utm_campaign=swap&sellOpen=false&buyOpen=false"
                   className="flex-1"
                 >
                   TRADE $LAB

@@ -47,33 +47,17 @@ export default function BlockchainSection() {
               />
             </a>
             <a
-              href="https://coinhall.org/osmosis/osmo12zk0xmacanpz9huy8huth2wee98smf9kktg4lltu9zrk3x9w58aq7k64cz"
+              href="https://dexscreener.com/osmosis/1642-factory_osmo17fel472lgzs87ekt9dvk0zqyh5gl80sqp4sk4n_lab-uosmo"
               target="_blank"
               rel="noopener noreferrer"
               className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors bg-green-dark"
-              aria-label="View $LAB chart on CoinHall"
+              aria-label="View $LAB chart on DexScreener"
             >
               <Image
-                src="/images/nft-4.jpg"
-                alt="CoinHall"
+                src="/images/dexscreener.webp"
+                alt="DexScreener"
                 width={48}
                 height={48}
-                className="w-full h-full object-cover"
-              />
-            </a>
-            <a
-              href="https://swapfast.app/?destinationAsset=factory/osmo17fel472lgzs87ekt9dvk0zqyh5gl80sqp4sk4n/LAB&destinationChainId=osmosis-1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-[48px] h-[48px] rounded-full border-2 border-green overflow-hidden hover:border-green-light transition-colors bg-green-dark"
-              aria-label="Trade $LAB on SwapFast"
-            >
-              <Image
-                src="/images/logo-large.png"
-                alt="SwapFast"
-                width={48}
-                height={48}
-                sizes="48px"
                 className="w-full h-full object-cover"
               />
             </a>
