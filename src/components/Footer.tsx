@@ -47,16 +47,19 @@ const footerLinks: FooterLink[] = [
 ];
 
 interface FooterProps {
-  theme?: "default" | "cosmic";
+  theme?: "default" | "cosmic" | "hackathon";
 }
 
 export default function Footer({ theme = "default" }: FooterProps) {
   const isCosmic = theme === "cosmic";
-  const borderClass = isCosmic ? "border-cosmic" : "border-green";
+  const isHackathon = theme === "hackathon";
+  const borderClass = isCosmic ? "border-cosmic" : isHackathon ? "border-hackathon" : "border-green";
   const linkClass = isCosmic
     ? "text-cosmic-text-muted hover:text-cosmic-cyan-light"
-    : "text-green hover:text-green-light";
-  const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
+    : isHackathon
+      ? "text-hackathon-text-muted hover:text-hackathon-cyan"
+      : "text-green hover:text-green-light";
+  const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : isHackathon ? "focus-visible:outline-hackathon" : "focus-visible:outline-green";
 
   return (
     <footer className="max-w-[1440px] mx-auto">
