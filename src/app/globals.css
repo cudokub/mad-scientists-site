@@ -21,6 +21,13 @@
   --color-cosmic-bg-light: #0a0c1d;
   --color-cosmic-cyan: #7ed3ff;
   --color-cosmic-cyan-light: #9fe5ff;
+  --color-hackathon: #0b68ff;
+  --color-hackathon-cyan: #76e9ff;
+  --color-hackathon-bg: #02050d;
+  --color-hackathon-bg-light: #04101d;
+  --color-hackathon-text: #d8e6ff;
+  --color-hackathon-text-muted: #b9c7de;
+  --color-hackathon-text-dim: #98a6bd;
   --font-display: "Pixelify Sans", monospace;
   --font-mono: "Reddit Mono", monospace;
 }

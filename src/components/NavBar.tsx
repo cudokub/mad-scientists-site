@@ -17,7 +17,7 @@ const navLinks = [
 ];
 
 interface NavBarProps {
-  theme?: "default" | "cosmic";
+  theme?: "default" | "cosmic" | "hackathon";
 }
 
 export default function NavBar({ theme = "default" }: NavBarProps) {
@@ -25,15 +25,16 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const isCosmic = theme === "cosmic";
+  const isHackathon = theme === "hackathon";
   const logoSrc = isCosmic ? "/images/cosmic-symbol.png" : "/images/ms-symbol.png";
   const logoAlt = isCosmic ? "COSMIC" : "Mad Scientists";
-  const navBg = isCosmic ? "bg-[#050a16]/95 backdrop-blur-sm" : "bg-bg";
-  const borderClass = isCosmic ? "border-cosmic" : "border-green";
-  const linkBase = isCosmic ? "text-cosmic-text-muted hover:text-cosmic-cyan-light" : "text-text hover:text-green";
-  const highlightClass = isCosmic ? "text-cosmic-text font-bold" : "text-green font-bold";
-  const mobileBurger = isCosmic ? "bg-cosmic-cyan-light" : "bg-green";
-  const mobileMenuBg = isCosmic ? "bg-[#060a16]" : "bg-bg";
-  const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : "focus-visible:outline-green";
+  const navBg = isCosmic ? "bg-[#050a16]/95 backdrop-blur-sm" : isHackathon ? "bg-hackathon-bg" : "bg-bg";
+  const borderClass = isCosmic ? "border-cosmic" : isHackathon ? "border-hackathon" : "border-green";
+  const linkBase = isCosmic ? "text-cosmic-text-muted hover:text-cosmic-cyan-light" : isHackathon ? "text-hackathon-text-muted hover:text-hackathon-cyan" : "text-text hover:text-green";
+  const highlightClass = isCosmic ? "text-cosmic-text font-bold" : isHackathon ? "text-hackathon-cyan font-bold" : "text-green font-bold";
+  const mobileBurger = isCosmic ? "bg-cosmic-cyan-light" : isHackathon ? "bg-hackathon-cyan" : "bg-green";
+  const mobileMenuBg = isCosmic ? "bg-[#060a16]" : isHackathon ? "bg-hackathon-bg" : "bg-bg";
+  const focusOutline = isCosmic ? "focus-visible:outline-cosmic" : isHackathon ? "focus-visible:outline-hackathon" : "focus-visible:outline-green";
 
   useEffect(() => {
     if (mobileOpen) {
@@ -104,8 +105,8 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
           <Image
             src={logoSrc}
             alt={logoAlt}
-            width={isCosmic ? 46 : 40}
-            height={isCosmic ? 50 : 49}
+            width={isCosmic ? 47 : 43}
+            height={isCosmic ? 56 : 53}
             className={isCosmic ? "w-[40px] h-auto" : "w-[36px] h-auto"}
           />
         </Link>
@@ -134,8 +135,8 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
           <Image
             src={logoSrc}
             alt={logoAlt}
-            width={isCosmic ? 38 : 32}
-            height={isCosmic ? 41 : 39}
+            width={isCosmic ? 47 : 43}
+            height={isCosmic ? 56 : 53}
             className={isCosmic ? "w-[34px] h-auto" : "w-[32px] h-auto"}
           />
         </Link>
@@ -175,13 +176,15 @@ export default function NavBar({ theme = "default" }: NavBarProps) {
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
               className={`block py-4 px-6 font-display text-base tracking-wider border-b text-center focus-visible:outline-2 focus-visible:outline-offset-[-2px] ${focusOutline} ${
-                isCosmic ? "border-cosmic" : "border-green/30"
+                isCosmic ? "border-cosmic" : isHackathon ? "border-hackathon/40" : "border-green/30"
               } ${
                 link.highlight
                   ? highlightClass
                   : isCosmic
                     ? "text-cosmic-text-muted hover:text-cosmic-cyan-light"
-                    : "text-text"
+                    : isHackathon
+                      ? "text-hackathon-text-muted hover:text-hackathon-cyan"
+                      : "text-text"
               }`}
               onClick={() => setMobileOpen(false)}
             >
