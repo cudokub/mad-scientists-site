@@ -11,6 +11,9 @@ const eventLinks = {
   resources: DISCORD,
 };
 
+// TODO: swap to the team's specific Discord submissions / ticket channel link
+const SUBMIT_URL = DISCORD;
+
 const prizes = [
   {
     place: "1st",
@@ -37,15 +40,6 @@ const prizes = [
     reward: "MS NFT",
     bonus: "Mad Scientists collection prize",
   },
-];
-
-const tracks = [
-  "Gacha loops",
-  "Loot tables",
-  "Bonding curves",
-  "Reflexive rewards",
-  "Coordination games",
-  "Risk simulations",
 ];
 
 const timeline = [
@@ -86,11 +80,19 @@ const timeline = [
   },
 ];
 
-const submissionChecklist = [
-  { label: "Discord entry", body: "One event-channel post linking everything." },
-  { label: "GitHub repo", body: "Source, setup notes, easiest path to run it." },
-  { label: "Demo proof", body: "Live link, video, or screenshots of the mechanic." },
-  { label: "Project notes", body: "The loop, risk/reward, AI role, Cosmos touchpoint." },
+const submissionGuide = [
+  { label: "Project Name", body: "What are you calling it?" },
+  { label: "One-Line Description", body: "What it does, in a single sentence." },
+  {
+    label: "GitHub Repo",
+    body: "Public link to your code, with a README and setup instructions.",
+  },
+  {
+    label: "Live Demo or Website",
+    body: "A working link — or a short demo video if it isn't deployable.",
+  },
+  { label: "Cosmos Hub Connection", body: "A sentence or two on how it ties to the Hub." },
+  { label: "Team", body: "Names and handles (Discord, X, or GitHub) of everyone who built it." },
 ];
 
 const judgingCriteria = [
@@ -105,7 +107,7 @@ const judges = [
   {
     name: "Robo",
     handle: "@RoboMcGobo",
-    role: "Growth | Cosmos Labs",
+    role: "Ecosystem Lead | Cosmos Labs",
     image: "/images/hackathon/judge-robo-pfp.png",
   },
   {
@@ -273,34 +275,18 @@ export default function HackathonPage() {
       <EventTicker />
 
       <section className="mx-auto max-w-[1440px]" data-layer="hackathon-mission">
-        <div className="grid grid-cols-1 border-x border-b border-hackathon md:grid-cols-2">
-          <div className="border-b border-hackathon bg-black p-6 md:border-b-0 md:border-r md:p-8">
-            <h2 className="font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
-              The Mission
-            </h2>
-            <p className="mt-4 font-mono text-base leading-relaxed text-hackathon-text-muted md:text-lg">
-              Make a small system with visible rules and interesting choices. The best entries
-              should let players understand the stakes, take action, and watch outcomes emerge.
-            </p>
-            <p className="mt-4 font-mono text-base leading-relaxed text-hackathon-text-muted md:text-lg">
-              Use AI as a co-builder, agent, mechanic, narrator, analyzer, or simulation layer.
-            </p>
-          </div>
-
-          <div className="bg-hackathon-bg-light">
-            <div className="grid grid-cols-1 sm:grid-cols-2">
-              {tracks.map((track, index) => (
-                <div
-                  key={track}
-                  className={`border-b border-hackathon p-5 ${index % 2 === 0 ? "sm:border-r" : ""}`}
-                >
-                  <p className="font-display text-lg font-bold uppercase tracking-wider text-hackathon-cyan">
-                    {track}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="border-x border-b border-hackathon bg-hackathon-bg-light p-6 md:p-8">
+          <h2 className="font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
+            The Mission
+          </h2>
+          <p className="mt-5 max-w-4xl font-mono text-lg leading-relaxed text-hackathon-text md:text-xl">
+            Build gacha-inspired games, loot mechanics, bonding-curve experiments, reflexive
+            incentive games, social coordination games, risk/reward simulations, and other mad
+            science that explores how people interact with incentives on the Cosmos Hub.
+          </p>
+          <p className="mt-4 max-w-4xl font-mono text-base leading-relaxed text-hackathon-text-muted md:text-lg">
+            Use AI as a co-builder, agent, mechanic, narrator, analyzer, or simulation layer.
+          </p>
         </div>
       </section>
 
@@ -406,17 +392,17 @@ export default function HackathonPage() {
               Submission &amp; Scoring
             </h2>
             <p className="mt-3 font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-              Package the build so the core experiment is obvious — then we score it on five
-              signals.
+              Build it, then submit through Discord. Here&apos;s everything we&apos;ll ask for — and
+              the five signals we score on.
             </p>
-            <p className="mt-3 font-mono text-xs leading-relaxed text-hackathon-text-dim">
-              Full submission guide drops in Discord before the build phase.
-            </p>
+            <div className="mt-6 max-w-xs">
+              <HackathonLink href={SUBMIT_URL}>Submit In Discord</HackathonLink>
+            </div>
           </div>
 
           <div className="flex flex-col bg-hackathon-bg-light">
             <div className="grid grid-cols-1 sm:grid-cols-2">
-              {submissionChecklist.map((item, index) => (
+              {submissionGuide.map((item, index) => (
                 <article
                   key={item.label}
                   className={`flex gap-4 border-b border-hackathon p-5 ${
@@ -526,7 +512,7 @@ export default function HackathonPage() {
                       />
                     </div>
                     <div className="min-w-0">
-                      <p className="font-display text-base font-bold uppercase tracking-wider text-white">
+                      <p className="font-mono text-base font-bold uppercase tracking-wider text-white">
                         {partner.name}
                       </p>
                       <p className="font-mono text-xs text-hackathon-cyan">{partner.type}</p>
