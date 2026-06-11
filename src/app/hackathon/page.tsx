@@ -2,13 +2,14 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 
-// Real hubs — resources, registration, and updates all live in Discord / X for now.
+// Real hubs — resources, submissions, and updates live in Cosmos docs / Discord / X for now.
 const DISCORD = "https://discord.gg/q7zgmdKtKW";
 const TWITTER = "https://twitter.com/madscientists_x";
+const RESOURCES_URL = "https://docs.cosmos.network/hub/latest";
 
 const eventLinks = {
-  register: DISCORD,
-  resources: DISCORD,
+  resources: RESOURCES_URL,
+  updates: TWITTER,
 };
 
 // TODO: swap to the team's specific Discord submissions / ticket channel link
@@ -48,11 +49,11 @@ const timeline = [
     time: "17:00 UTC",
     phase: "Register",
     title: "Pre-Hackathon",
-    body: "Registration opens and resources drop.",
+    body: "Resources drop.",
   },
   {
     shortDate: "Jun 15",
-    time: "17:00 UTC",
+    time: "16:00 UTC",
     phase: "Kickoff",
     title: "Kickoff X Spaces",
     body: "The lab opens live on X Spaces.",
@@ -262,9 +263,9 @@ export default function HackathonPage() {
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <HackathonLink href={eventLinks.register}>Register In Discord</HackathonLink>
-                <HackathonLink href={eventLinks.resources} variant="secondary">
-                  Resources
+                <HackathonLink href={eventLinks.resources}>Resources</HackathonLink>
+                <HackathonLink href={eventLinks.updates} variant="secondary">
+                  Follow On X
                 </HackathonLink>
               </div>
             </div>
@@ -531,10 +532,10 @@ export default function HackathonPage() {
             Join the Lab
           </h2>
           <p className="mx-auto mt-3 max-w-xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-            Registration opens June 11 in Discord. Follow on X for kickoff and recap Spaces.
+            Get your resources and Follow on X for kickoff and recap Spaces.
           </p>
           <div className="mx-auto mt-6 grid max-w-md grid-cols-1 gap-3 sm:grid-cols-2">
-            <HackathonLink href={DISCORD}>Register In Discord</HackathonLink>
+            <HackathonLink href={RESOURCES_URL}>Resources</HackathonLink>
             <HackathonLink href={TWITTER} variant="secondary">
               Follow On X
             </HackathonLink>
