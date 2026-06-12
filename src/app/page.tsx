@@ -4,6 +4,7 @@ import BlockchainSection from "@/components/BlockchainSection";
 import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
 import CosmicShowcase from "@/components/CosmicShowcase";
+import HackathonAnnouncement from "@/components/HackathonAnnouncement";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         href="https://mygateway.io/minting/mad-scientists"
         ariaLabel="Reveal Mad Scientists on Gateway"
       />
+      <HackathonAnnouncement />
       <Hero />
       <Ticker
         variant="stargaze"
