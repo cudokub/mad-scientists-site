@@ -1,0 +1,12 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#02050d"/>
+  <rect x="40" y="40" width="1120" height="820" fill="#04101d" stroke="#0b68ff" stroke-width="4"/>
+  <path d="M40 185H1160M40 715H1160M205 40V860M995 40V860" stroke="#0b68ff" stroke-opacity=".55" stroke-width="3"/>
+  <rect x="285" y="245" width="630" height="370" fill="#02050d" stroke="#76e9ff" stroke-width="4"/>
+  <rect x="350" y="300" width="150" height="150" fill="#76e9ff" fill-opacity=".28"/>
+  <rect x="525" y="300" width="150" height="150" fill="#0b68ff" fill-opacity=".38"/>
+  <rect x="700" y="300" width="150" height="150" fill="#76e9ff" fill-opacity=".28"/>
+  <path d="M425 505H775L600 570L425 505Z" fill="#0b68ff" fill-opacity=".5" stroke="#76e9ff" stroke-width="4"/>
+  <text x="250" y="138" fill="#76e9ff" font-family="monospace" font-size="44" font-weight="700">MEOC-005</text>
+  <text x="250" y="765" fill="#d8e6ff" font-family="monospace" font-size="28" font-weight="700">ECONOMY RECORD / LOOT TABLE PENDING</text>
+</svg>

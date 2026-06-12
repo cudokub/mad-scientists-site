@@ -76,6 +76,113 @@ summary {
   box-shadow: 0 0 24px rgba(155, 89, 240, 0.4);
 }
 
+/* Ensure hackathon theme utilities resolve consistently in dev and production. */
+@layer utilities {
+  .border-hackathon {
+    border-color: #0b68ff;
+  }
+
+  .border-hackathon\/30 {
+    border-color: rgba(11, 104, 255, 0.3);
+  }
+
+  .border-hackathon\/40 {
+    border-color: rgba(11, 104, 255, 0.4);
+  }
+
+  .border-hackathon\/50 {
+    border-color: rgba(11, 104, 255, 0.5);
+  }
+
+  .border-hackathon\/60 {
+    border-color: rgba(11, 104, 255, 0.6);
+  }
+
+  .bg-hackathon {
+    background-color: #0b68ff;
+  }
+
+  .bg-hackathon-bg {
+    background-color: #02050d;
+  }
+
+  .bg-hackathon-bg-light {
+    background-color: #04101d;
+  }
+
+  .bg-hackathon-bg\/90 {
+    background-color: rgba(2, 5, 13, 0.9);
+  }
+
+  .bg-hackathon-cyan {
+    background-color: #76e9ff;
+  }
+
+  .bg-hackathon\/20 {
+    background-color: rgba(11, 104, 255, 0.2);
+  }
+
+  .bg-hackathon\/40 {
+    background-color: rgba(11, 104, 255, 0.4);
+  }
+
+  .bg-hackathon\/60 {
+    background-color: rgba(11, 104, 255, 0.6);
+  }
+
+  .text-hackathon {
+    color: #0b68ff;
+  }
+
+  .text-hackathon-cyan {
+    color: #76e9ff;
+  }
+
+  .text-hackathon-text {
+    color: #d8e6ff;
+  }
+
+  .text-hackathon-text-muted {
+    color: #b9c7de;
+  }
+
+  .text-hackathon-text-dim {
+    color: #98a6bd;
+  }
+
+  .placeholder\:text-hackathon-text-dim::placeholder {
+    color: #98a6bd;
+  }
+
+  .hover\:border-hackathon:hover {
+    border-color: #0b68ff;
+  }
+
+  .hover\:bg-hackathon:hover {
+    background-color: #0b68ff;
+  }
+
+  .hover\:bg-hackathon\/20:hover {
+    background-color: rgba(11, 104, 255, 0.2);
+  }
+
+  .hover\:text-hackathon:hover {
+    color: #0b68ff;
+  }
+
+  .hover\:text-hackathon-cyan:hover {
+    color: #76e9ff;
+  }
+
+  .focus\:border-hackathon:focus {
+    border-color: #0b68ff;
+  }
+
+  .focus-visible\:outline-hackathon:focus-visible {
+    outline-color: #0b68ff;
+  }
+}
+
 /* Modal / dialog animations */
 @keyframes fadeIn {
   from { opacity: 0; }
