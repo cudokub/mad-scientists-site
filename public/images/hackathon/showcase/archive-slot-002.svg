@@ -1,0 +1,12 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#02050d"/>
+  <rect x="40" y="40" width="1120" height="820" fill="#04101d" stroke="#0b68ff" stroke-width="4"/>
+  <path d="M40 210H1160M40 690H1160M250 40V860M950 40V860" stroke="#0b68ff" stroke-opacity=".55" stroke-width="3"/>
+  <rect x="305" y="245" width="590" height="330" fill="#02050d" stroke="#76e9ff" stroke-width="4"/>
+  <path d="M360 410H840" stroke="#76e9ff" stroke-width="10"/>
+  <rect x="350" y="325" width="130" height="130" fill="#0b68ff" fill-opacity=".34"/>
+  <rect x="535" y="285" width="130" height="130" fill="#76e9ff" fill-opacity=".42"/>
+  <rect x="720" y="325" width="130" height="130" fill="#0b68ff" fill-opacity=".34"/>
+  <text x="250" y="150" fill="#76e9ff" font-family="monospace" font-size="44" font-weight="700">MEOC-002</text>
+  <text x="250" y="745" fill="#d8e6ff" font-family="monospace" font-size="28" font-weight="700">COORDINATION RECORD / AWAITING TEAM</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#02050d"/>
+  <rect x="40" y="40" width="1120" height="820" fill="#04101d" stroke="#0b68ff" stroke-width="4"/>
+  <path d="M40 190H1160M40 710H1160M190 40V860M1010 40V860" stroke="#0b68ff" stroke-opacity=".55" stroke-width="3"/>
+  <rect x="275" y="245" width="650" height="360" fill="#02050d" stroke="#76e9ff" stroke-width="4"/>
+  <path d="M330 530L440 405L540 470L640 320L770 405L870 285" stroke="#76e9ff" stroke-width="12"/>
+  <rect x="330" y="330" width="80" height="200" fill="#0b68ff" fill-opacity=".28"/>
+  <rect x="470" y="430" width="80" height="100" fill="#0b68ff" fill-opacity=".28"/>
+  <rect x="610" y="360" width="80" height="170" fill="#0b68ff" fill-opacity=".28"/>
+  <rect x="750" y="290" width="80" height="240" fill="#0b68ff" fill-opacity=".28"/>
+  <text x="250" y="132" fill="#76e9ff" font-family="monospace" font-size="44" font-weight="700">MEOC-003</text>
+  <text x="250" y="760" fill="#d8e6ff" font-family="monospace" font-size="28" font-weight="700">SIMULATION RECORD / DATA PENDING</text>
+</svg>
