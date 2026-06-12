@@ -121,7 +121,7 @@ const judges = [
 
 const partners = [
   {
-    name: "Cosmos Lab",
+    name: "Cosmos Labs",
     type: "Sponsor",
     image: "/images/hackathon/cosmos-lab-logo.png",
     width: 400,
@@ -454,7 +454,7 @@ export default function HackathonPage() {
               Judges &amp; Sponsors
             </h2>
             <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-              Two Cosmos Lab judges reviewing entries, backed by the sponsors supporting the sprint.
+              Two Cosmos Labs judges reviewing entries, backed by the sponsors supporting the sprint.
             </p>
           </div>
 
