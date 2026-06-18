@@ -14,6 +14,7 @@ const eventLinks = {
 
 // TODO: swap to the team's specific Discord submissions / ticket channel link
 const SUBMIT_URL = DISCORD;
+const SHOW_SHOWCASE_CTA = false;
 
 const prizes = [
   {
@@ -447,34 +448,36 @@ export default function HackathonPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px]" data-layer="hackathon-showcase-cta">
-        <div className="grid grid-cols-1 border-x border-b border-hackathon bg-black lg:grid-cols-[minmax(0,1fr)_360px]">
-          <div className="border-b border-hackathon p-6 md:p-8 lg:border-b-0 lg:border-r">
-            <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
-              Public Archive
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
-              Showcase Gallery
-            </h2>
-            <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-              Every accepted experiment gets a catalog record with screenshots, team notes,
-              demo links, Cosmos context, AI usage, and award badges once judging wraps.
-            </p>
-          </div>
-
-          <div className="flex flex-col justify-center gap-4 bg-hackathon-bg-light p-6 md:p-8">
-            <div className="border border-hackathon/40 bg-hackathon-bg p-4">
-              <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
-                Archive Mode
+      {SHOW_SHOWCASE_CTA ? (
+        <section className="mx-auto max-w-[1440px]" data-layer="hackathon-showcase-cta">
+          <div className="grid grid-cols-1 border-x border-b border-hackathon bg-black lg:grid-cols-[minmax(0,1fr)_360px]">
+            <div className="border-b border-hackathon p-6 md:p-8 lg:border-b-0 lg:border-r">
+              <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
+                Public Archive
               </p>
-              <p className="mt-2 font-mono text-sm leading-relaxed text-hackathon-text-muted">
-                Unlisted public page. Shareable by URL, kept out of the main nav.
+              <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
+                Showcase Gallery
+              </h2>
+              <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
+                Every accepted experiment gets a catalog record with screenshots, team notes,
+                demo links, Cosmos context, AI usage, and award badges once judging wraps.
               </p>
             </div>
-            <HackathonLink href="/hackathon/showcase">View Showcase</HackathonLink>
+
+            <div className="flex flex-col justify-center gap-4 bg-hackathon-bg-light p-6 md:p-8">
+              <div className="border border-hackathon/40 bg-hackathon-bg p-4">
+                <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+                  Archive Mode
+                </p>
+                <p className="mt-2 font-mono text-sm leading-relaxed text-hackathon-text-muted">
+                  Unlisted public page. Shareable by URL, kept out of the main nav.
+                </p>
+              </div>
+              <HackathonLink href="/hackathon/showcase">View Showcase</HackathonLink>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-[1440px]" data-layer="hackathon-people">
         <div className="border-x border-b border-hackathon bg-hackathon-bg-light">
