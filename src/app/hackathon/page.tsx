@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
+import { showcaseEntries } from "@/lib/hackathon/showcase";
 
 // Real hubs — resources, submissions, and updates live in Cosmos docs / Discord / X for now.
 const DISCORD = "https://discord.gg/q7zgmdKtKW";
@@ -14,7 +15,9 @@ const eventLinks = {
 
 // TODO: swap to the team's specific Discord submissions / ticket channel link
 const SUBMIT_URL = DISCORD;
-const SHOW_SHOWCASE_CTA = true;
+const SHOWCASE_URL = "/hackathon/showcase";
+const showcaseEntryCount = showcaseEntries.length;
+const showcaseAwardCount = showcaseEntries.filter((entry) => entry.award).length;
 
 const prizes = [
   {
@@ -209,6 +212,53 @@ function EventTicker() {
   );
 }
 
+function ShowcaseCtaSection() {
+  const awardStatus = showcaseAwardCount > 0 ? `${showcaseAwardCount} awarded` : "Pending";
+
+  return (
+    <section className="mx-auto max-w-[1440px]" data-layer="hackathon-showcase-cta">
+      <div className="grid grid-cols-1 border-x border-b border-hackathon bg-black lg:grid-cols-[minmax(0,1fr)_420px]">
+        <div className="border-b border-hackathon p-6 md:p-8 lg:border-b-0 lg:border-r">
+          <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
+            Public Archive
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
+            Showcase Gallery
+          </h2>
+          <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
+            Submissions are archived now. Browse every experiment before winners are announced;
+            awards and finalist badges will be added after judging.
+          </p>
+        </div>
+
+        <div className="flex flex-col bg-hackathon-bg-light">
+          <div className="grid grid-cols-2 border-b border-hackathon">
+            <div className="border-r border-hackathon bg-hackathon-bg p-5">
+              <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+                Records
+              </p>
+              <p className="mt-2 font-mono text-3xl font-bold text-white">{showcaseEntryCount}</p>
+            </div>
+            <div className="bg-hackathon-bg p-5">
+              <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+                Awards
+              </p>
+              <p className="mt-2 font-mono text-xl font-bold uppercase text-white">{awardStatus}</p>
+            </div>
+          </div>
+
+          <div className="flex flex-1 flex-col justify-center gap-4 p-6 md:p-8">
+            <p className="font-mono text-sm leading-relaxed text-hackathon-text-muted">
+              Unlisted public page. Shareable by URL, kept out of the main nav.
+            </p>
+            <HackathonLink href={SHOWCASE_URL}>Browse {showcaseEntryCount} Entries</HackathonLink>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /**
  * Background elevation system (keep consistent across sections):
  * - bg-black ............... headers/media: section title panels, hero art, ticker, logo chips
@@ -264,7 +314,7 @@ export default function HackathonPage() {
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <HackathonLink href={eventLinks.resources}>Resources</HackathonLink>
+                <HackathonLink href={SHOWCASE_URL}>View Showcase</HackathonLink>
                 <HackathonLink href={eventLinks.updates} variant="secondary">
                   Follow On X
                 </HackathonLink>
@@ -275,6 +325,8 @@ export default function HackathonPage() {
       </section>
 
       <EventTicker />
+
+      <ShowcaseCtaSection />
 
       <section className="mx-auto max-w-[1440px]" data-layer="hackathon-mission">
         <div className="border-x border-b border-hackathon bg-hackathon-bg-light p-6 md:p-8">
@@ -447,37 +499,6 @@ export default function HackathonPage() {
           </div>
         </div>
       </section>
-
-      {SHOW_SHOWCASE_CTA ? (
-        <section className="mx-auto max-w-[1440px]" data-layer="hackathon-showcase-cta">
-          <div className="grid grid-cols-1 border-x border-b border-hackathon bg-black lg:grid-cols-[minmax(0,1fr)_360px]">
-            <div className="border-b border-hackathon p-6 md:p-8 lg:border-b-0 lg:border-r">
-              <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
-                Public Archive
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
-                Showcase Gallery
-              </h2>
-              <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-                Every submitted experiment gets a catalog record with screenshots, team notes,
-                demo links, Cosmos context, AI usage, and award badges once judging wraps.
-              </p>
-            </div>
-
-            <div className="flex flex-col justify-center gap-4 bg-hackathon-bg-light p-6 md:p-8">
-              <div className="border border-hackathon/40 bg-hackathon-bg p-4">
-                <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
-                  Archive Mode
-                </p>
-                <p className="mt-2 font-mono text-sm leading-relaxed text-hackathon-text-muted">
-                  Unlisted public page. Shareable by URL, kept out of the main nav.
-                </p>
-              </div>
-              <HackathonLink href="/hackathon/showcase">View Showcase</HackathonLink>
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       <section className="mx-auto max-w-[1440px]" data-layer="hackathon-people">
         <div className="border-x border-b border-hackathon bg-hackathon-bg-light">
