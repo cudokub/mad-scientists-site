@@ -14,7 +14,7 @@ const eventLinks = {
 
 // TODO: swap to the team's specific Discord submissions / ticket channel link
 const SUBMIT_URL = DISCORD;
-const SHOW_SHOWCASE_CTA = false;
+const SHOW_SHOWCASE_CTA = true;
 
 const prizes = [
   {
@@ -459,7 +459,7 @@ export default function HackathonPage() {
                 Showcase Gallery
               </h2>
               <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-                Every accepted experiment gets a catalog record with screenshots, team notes,
+                Every submitted experiment gets a catalog record with screenshots, team notes,
                 demo links, Cosmos context, AI usage, and award badges once judging wraps.
               </p>
             </div>
