@@ -235,6 +235,7 @@ export const showcaseEntries: HackathonShowcaseEntry[] = [
       "Relic Reactor is a crafting and behavioral-economics game around a shared Fragmented Hub Core. Players forage, brew, craft, and decide whether to extract value now or protect long-term reactor stability, with an AI lab intelligence profiling play style at the end.",
     thumbnail: "/images/hackathon/showcase/relic-reactor.png",
     mediaAlt: "Screenshot of the Relic Reactor crafting interface",
+    repoUrl: "https://github.com/lu2v98/relic-reactor/tree/main",
     projectType: "Game",
     cosmosArea: "Game Economy",
     aiUse: "AI Intelligence",
@@ -326,8 +327,9 @@ export const showcaseEntries: HackathonShowcaseEntry[] = [
       "A smart-contract-first platform for continuous tokens backed by liquid-staking bonding curves.",
     description:
       "Allotropy is a smart-contract-first platform for launching continuous tokens backed by capital-efficient liquid-staking bonding curves. The submission focuses on SDK staking and x/liquid mechanics that let bonded funds surface as liquid staking token shares.",
-    thumbnail: "/images/hackathon/showcase/no-screenshot.svg",
-    mediaAlt: "Archive media placeholder for Allotropy because no screenshot was included",
+    thumbnail: "/images/hackathon/showcase/allotropy-blueprint.svg",
+    mediaAlt:
+      "Blueprint-style Allotropy protocol diagram showing ATOM, bonding curves, liquid staking, and continuous tokens",
     repoUrl: "https://github.com/kromsten/Allotropy",
     projectType: "DeFi Protocol",
     cosmosArea: "Liquid Staking",

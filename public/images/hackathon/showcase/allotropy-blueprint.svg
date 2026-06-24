@@ -1,0 +1,83 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="small-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" stroke="#0b68ff" stroke-opacity=".22" stroke-width="1"/>
+    </pattern>
+    <pattern id="large-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M120 0H0V120" stroke="#76e9ff" stroke-opacity=".12" stroke-width="2"/>
+    </pattern>
+    <marker id="arrow-cyan" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M0 0L16 8L0 16V10H7V6H0V0Z" fill="#76e9ff"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0 0L16 8L0 16V10H7V6H0V0Z" fill="#0b68ff"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="900" fill="#02050d"/>
+  <rect width="1200" height="900" fill="url(#small-grid)"/>
+  <rect width="1200" height="900" fill="url(#large-grid)"/>
+
+  <rect x="36" y="36" width="1128" height="828" fill="#04101d" stroke="#0b68ff" stroke-width="4"/>
+  <rect x="62" y="62" width="1076" height="776" stroke="#76e9ff" stroke-opacity=".38" stroke-width="2"/>
+  <path d="M62 184H1138M62 704H1138M218 62V838M982 62V838" stroke="#0b68ff" stroke-opacity=".55" stroke-width="3"/>
+
+  <text x="92" y="128" fill="#76e9ff" font-family="monospace" font-size="34" font-weight="700">MEOC-015 / CODE-FIRST SUBMISSION</text>
+  <text x="90" y="206" fill="#ffffff" font-family="monospace" font-size="86" font-weight="700">ALLOTROPY</text>
+  <text x="94" y="252" fill="#d8e6ff" font-family="monospace" font-size="25" font-weight="700">LIQUID-STAKING BONDING CURVE PROTOCOL</text>
+
+  <g>
+    <rect x="92" y="306" width="176" height="112" fill="#02050d" stroke="#76e9ff" stroke-width="3"/>
+    <text x="122" y="352" fill="#76e9ff" font-family="monospace" font-size="22" font-weight="700">ATOM</text>
+    <text x="122" y="386" fill="#d8e6ff" font-family="monospace" font-size="19" font-weight="700">CAPITAL IN</text>
+
+    <rect x="336" y="306" width="190" height="112" fill="#02050d" stroke="#76e9ff" stroke-width="3"/>
+    <text x="366" y="352" fill="#76e9ff" font-family="monospace" font-size="22" font-weight="700">BONDING</text>
+    <text x="366" y="386" fill="#d8e6ff" font-family="monospace" font-size="19" font-weight="700">CURVE</text>
+
+    <rect x="594" y="306" width="190" height="112" fill="#02050d" stroke="#76e9ff" stroke-width="3"/>
+    <text x="624" y="352" fill="#76e9ff" font-family="monospace" font-size="22" font-weight="700">LIQUID</text>
+    <text x="624" y="386" fill="#d8e6ff" font-family="monospace" font-size="19" font-weight="700">STAKING</text>
+
+    <rect x="852" y="306" width="190" height="112" fill="#02050d" stroke="#76e9ff" stroke-width="3"/>
+    <text x="882" y="352" fill="#76e9ff" font-family="monospace" font-size="22" font-weight="700">TOKEN</text>
+    <text x="882" y="386" fill="#d8e6ff" font-family="monospace" font-size="19" font-weight="700">MINT</text>
+
+    <path d="M286 362H314" stroke="#76e9ff" stroke-width="5" marker-end="url(#arrow-cyan)"/>
+    <path d="M544 362H572" stroke="#76e9ff" stroke-width="5" marker-end="url(#arrow-cyan)"/>
+    <path d="M802 362H830" stroke="#76e9ff" stroke-width="5" marker-end="url(#arrow-cyan)"/>
+  </g>
+
+  <g>
+    <rect x="92" y="468" width="490" height="188" fill="#02050d" stroke="#0b68ff" stroke-width="3"/>
+    <rect x="92" y="468" width="490" height="42" fill="#0b68ff" fill-opacity=".28"/>
+    <text x="118" y="497" fill="#76e9ff" font-family="monospace" font-size="20" font-weight="700">CONTRACT NOTES</text>
+    <text x="122" y="550" fill="#d8e6ff" font-family="monospace" font-size="21">stake(capital)</text>
+    <text x="122" y="586" fill="#d8e6ff" font-family="monospace" font-size="21">mint(continuous_token)</text>
+    <text x="122" y="622" fill="#d8e6ff" font-family="monospace" font-size="21">route(x/liquid shares)</text>
+  </g>
+
+  <g>
+    <rect x="630" y="468" width="478" height="188" fill="#02050d" stroke="#0b68ff" stroke-width="3"/>
+    <path d="M680 616C732 606 770 579 808 532C850 480 899 493 932 541C966 590 1002 602 1060 504" stroke="#76e9ff" stroke-width="7" stroke-linecap="square"/>
+    <path d="M676 626H1070M676 626V500" stroke="#d8e6ff" stroke-opacity=".45" stroke-width="3"/>
+    <circle cx="808" cy="532" r="10" fill="#76e9ff"/>
+    <circle cx="932" cy="541" r="10" fill="#76e9ff"/>
+    <circle cx="1060" cy="504" r="10" fill="#76e9ff"/>
+    <text x="672" y="496" fill="#76e9ff" font-family="monospace" font-size="20" font-weight="700">CURVE SIGNAL</text>
+    <text x="702" y="650" fill="#d8e6ff" font-family="monospace" font-size="17">SUPPLY</text>
+    <text x="1012" y="650" fill="#d8e6ff" font-family="monospace" font-size="17">PRICE</text>
+  </g>
+
+  <g>
+    <rect x="92" y="736" width="178" height="48" fill="#02050d" stroke="#76e9ff" stroke-width="2"/>
+    <text x="118" y="768" fill="#76e9ff" font-family="monospace" font-size="18" font-weight="700">x/liquid</text>
+    <rect x="292" y="736" width="118" height="48" fill="#02050d" stroke="#76e9ff" stroke-width="2"/>
+    <text x="326" y="768" fill="#76e9ff" font-family="monospace" font-size="18" font-weight="700">LST</text>
+    <rect x="432" y="736" width="242" height="48" fill="#02050d" stroke="#76e9ff" stroke-width="2"/>
+    <text x="462" y="768" fill="#76e9ff" font-family="monospace" font-size="18" font-weight="700">BONDING CURVE</text>
+    <rect x="696" y="736" width="248" height="48" fill="#02050d" stroke="#76e9ff" stroke-width="2"/>
+    <text x="726" y="768" fill="#76e9ff" font-family="monospace" font-size="18" font-weight="700">SMART CONTRACT</text>
+    <path d="M970 760H1088" stroke="#0b68ff" stroke-width="5" marker-end="url(#arrow-blue)"/>
+  </g>
+</svg>
