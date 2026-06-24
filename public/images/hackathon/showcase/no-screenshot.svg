@@ -1,0 +1,10 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#02050d"/>
+  <rect x="40" y="40" width="1120" height="820" fill="#04101d" stroke="#0b68ff" stroke-width="4"/>
+  <path d="M40 200H1160M40 700H1160M220 40V860M980 40V860" stroke="#0b68ff" stroke-opacity=".55" stroke-width="3"/>
+  <rect x="290" y="250" width="620" height="360" fill="#02050d" stroke="#76e9ff" stroke-width="4"/>
+  <path d="M360 520L520 380L650 500L730 430L850 560" stroke="#76e9ff" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
+  <circle cx="790" cy="345" r="42" fill="#0b68ff" fill-opacity=".3" stroke="#76e9ff" stroke-width="4"/>
+  <text x="250" y="145" fill="#76e9ff" font-family="monospace" font-size="44" font-weight="700">ARCHIVE MEDIA</text>
+  <text x="300" y="710" fill="#d8e6ff" font-family="monospace" font-size="32" font-weight="700">SCREENSHOT NOT INCLUDED</text>
+</svg>

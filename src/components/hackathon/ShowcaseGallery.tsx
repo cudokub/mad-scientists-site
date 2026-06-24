@@ -114,7 +114,9 @@ function EntryCard({
   entry: HackathonShowcaseEntry;
   onOpen: () => void;
 }) {
-  const linkCount = [entry.demoUrl, entry.repoUrl, entry.videoUrl].filter(Boolean).length;
+  const linkCount =
+    [entry.demoUrl, entry.repoUrl, entry.videoUrl].filter(Boolean).length +
+    (entry.extraLinks?.length ?? 0);
 
   return (
     <button
@@ -135,7 +137,7 @@ function EntryCard({
           alt={entry.mediaAlt}
           fill
           sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          className="object-contain transition-transform duration-300 group-hover:scale-[1.03]"
         />
       </div>
 
@@ -224,6 +226,9 @@ function EntryLinks({ entry }: { entry: HackathonShowcaseEntry }) {
     entry.demoUrl ? ["View Demo", entry.demoUrl, "primary" as const] : null,
     entry.repoUrl ? ["GitHub", entry.repoUrl, "secondary" as const] : null,
     entry.videoUrl ? ["Demo Video", entry.videoUrl, "secondary" as const] : null,
+    ...(entry.extraLinks?.map(
+      (link) => [link.label, link.href, "secondary" as const] as const,
+    ) ?? []),
   ].filter(Boolean) as Array<[string, string, "primary" | "secondary"]>;
 
   if (links.length === 0) {
@@ -240,7 +245,7 @@ function EntryLinks({ entry }: { entry: HackathonShowcaseEntry }) {
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
       {links.map(([label, href, variant]) => (
-        <LinkButton key={label} href={href} variant={variant}>
+        <LinkButton key={`${label}-${href}`} href={href} variant={variant}>
           {label}
         </LinkButton>
       ))}
@@ -366,8 +371,9 @@ function ShowcaseModal({
                     alt={entry.mediaAlt}
                     fill
                     sizes="60vw"
-                    className="object-cover"
+                    className="object-contain"
                     priority
+                    unoptimized
                   />
                 </div>
               </div>
@@ -380,6 +386,9 @@ function ShowcaseModal({
                   <DialogTitle className="mt-2 font-display text-3xl font-bold uppercase leading-tight tracking-wider text-white">
                     {entry.projectName}
                   </DialogTitle>
+                  <p className="mt-2 font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
+                    Team / {entry.teamName}
+                  </p>
                   <DialogDescription className="mt-3 font-mono text-base leading-relaxed text-hackathon-text-muted">
                     {entry.summary}
                   </DialogDescription>
@@ -395,7 +404,10 @@ function ShowcaseModal({
 
   return (
     <Drawer open onOpenChange={(open) => { if (!open) onClose(); }}>
-      <DrawerContent className="border-hackathon bg-hackathon-bg-light" handleClassName="bg-hackathon/60">
+      <DrawerContent
+        className="h-[85vh] border-hackathon bg-hackathon-bg-light"
+        handleClassName="bg-hackathon/60"
+      >
         <div className="flex-1 overflow-y-auto">
           <div className="border-b border-hackathon bg-black">
             <Image
@@ -404,8 +416,9 @@ function ShowcaseModal({
               width={1200}
               height={900}
               sizes="100vw"
-              className="h-auto w-full object-cover"
+              className="h-auto w-full object-contain"
               priority
+              unoptimized
             />
           </div>
 
@@ -417,6 +430,9 @@ function ShowcaseModal({
               <DrawerTitle className="mt-2 text-center font-display text-3xl font-bold uppercase leading-tight tracking-wider text-white">
                 {entry.projectName}
               </DrawerTitle>
+              <p className="mt-2 text-center font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
+                Team / {entry.teamName}
+              </p>
               <DrawerDescription className="mt-3 text-center font-mono text-base leading-relaxed text-hackathon-text-muted">
                 {entry.summary}
               </DrawerDescription>
