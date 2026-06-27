@@ -31,6 +31,22 @@ const initialFilters: FilterState = {
   aiUse: "all",
 };
 
+const winnerRevealGroups = [
+  {
+    label: "Post 01",
+    title: "5th / 4th / 3rd",
+    description: "First announcement graphic",
+    entryIds: ["carl", "mad-lab", "cosmos-arcade"],
+  },
+  {
+    label: "Post 02",
+    title: "2nd / 1st",
+    description: "Final announcement pending",
+    entryIds: [],
+    isLocked: true,
+  },
+];
+
 function uniqueValues(entries: HackathonShowcaseEntry[], key: keyof HackathonShowcaseEntry) {
   return Array.from(new Set(entries.map((entry) => entry[key]).filter(Boolean) as string[])).sort();
 }
@@ -104,6 +120,134 @@ function AwardBadge({ award }: { award?: HackathonShowcaseEntry["award"] }) {
     <span className="border border-hackathon bg-hackathon px-2 py-1 font-display text-[11px] font-bold uppercase tracking-wider text-white">
       {award}
     </span>
+  );
+}
+
+function WinnerRevealCard({
+  entry,
+  onOpen,
+}: {
+  entry: HackathonShowcaseEntry;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group flex min-h-[260px] flex-col border border-hackathon/60 bg-hackathon-bg-light text-left transition-colors hover:border-hackathon focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hackathon"
+    >
+      <div className="flex items-center justify-between gap-3 border-b border-hackathon/50 bg-black px-4 py-3">
+        <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
+          {entry.award} Place
+        </p>
+        <p className="font-mono text-xs font-bold uppercase tracking-wider text-hackathon-text-dim">
+          {entry.catalogNumber}
+        </p>
+      </div>
+
+      <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-hackathon/50 bg-black">
+        <Image
+          src={entry.thumbnail}
+          alt={entry.mediaAlt}
+          fill
+          sizes="(min-width: 1024px) 25vw, 100vw"
+          className="object-cover opacity-85 transition-transform duration-300 group-hover:scale-[1.03]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
+      </div>
+
+      <div className="flex flex-1 flex-col p-4">
+        <h4 className="break-words font-display text-xl font-bold uppercase leading-tight tracking-wider text-white">
+          {entry.projectName}
+        </h4>
+        <p className="mt-2 font-mono text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+          Team / {entry.teamName}
+        </p>
+        <p className="mt-3 line-clamp-3 font-mono text-sm leading-relaxed text-hackathon-text-muted">
+          {entry.summary}
+        </p>
+      </div>
+    </button>
+  );
+}
+
+function WinnerRevealSection({
+  entries,
+  onOpen,
+}: {
+  entries: HackathonShowcaseEntry[];
+  onOpen: (id: string) => void;
+}) {
+  const groups = winnerRevealGroups.map((group) => ({
+    ...group,
+    entries: group.entryIds
+      .map((id) => entries.find((entry) => entry.id === id))
+      .filter(Boolean) as HackathonShowcaseEntry[],
+  }));
+
+  const hasWinners = groups.some((group) => group.entries.length > 0);
+  if (!hasWinners) return null;
+
+  return (
+    <div className="border-b border-hackathon bg-black" data-layer="hackathon-showcase-winners">
+      <div className="grid grid-cols-1 border-b border-hackathon lg:grid-cols-[360px_minmax(0,1fr)]">
+        <div className="border-b border-hackathon p-6 lg:border-b-0 lg:border-r lg:p-8">
+          <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
+            Results Published
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
+            Winner Reveal
+          </h2>
+          <p className="mt-3 font-mono text-sm leading-relaxed text-hackathon-text-muted">
+            Today&apos;s public drop reveals 5th through 3rd. The remaining placements stay sealed
+            until the final announcement.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 bg-hackathon-bg-light">
+          {groups.map((group, index) => (
+            <article
+              key={group.label}
+              className={`border-hackathon ${index === 0 ? "border-b" : ""}`}
+            >
+              <div className="border-b border-hackathon bg-black p-5">
+                <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+                  {group.label} / {group.description}
+                </p>
+                <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-wider text-white">
+                  {group.title}
+                </h3>
+              </div>
+              <div
+                className={`grid grid-cols-1 gap-px bg-hackathon/40 p-px ${
+                  group.entries.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"
+                }`}
+              >
+                {group.entries.length > 0 ? (
+                  group.entries.map((entry) => (
+                    <WinnerRevealCard
+                      key={entry.id}
+                      entry={entry}
+                      onOpen={() => onOpen(entry.id)}
+                    />
+                  ))
+                ) : (
+                  <div className="border border-hackathon/60 bg-hackathon-bg-light p-6 md:col-span-3">
+                    <p className="font-display text-2xl font-bold uppercase tracking-wider text-white">
+                      Announcement Locked
+                    </p>
+                    <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-hackathon-text-muted">
+                      2nd and 1st place will appear here after the second winner graphic goes live.
+                      The full archive remains visible below without revealing those placements.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -541,6 +685,8 @@ export default function ShowcaseGallery({ entries }: { entries: HackathonShowcas
   return (
     <section className="mx-auto max-w-[1440px]" data-layer="hackathon-showcase-gallery">
       <div className="border-x border-b border-hackathon bg-hackathon-bg-light">
+        <WinnerRevealSection entries={entries} onOpen={setSelectedId} />
+
         <div className="grid grid-cols-1 border-b border-hackathon bg-black lg:grid-cols-[360px_minmax(0,1fr)]">
           <div className="border-b border-hackathon p-6 lg:border-b-0 lg:border-r lg:p-8">
             <h2 className="font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
