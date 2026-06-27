@@ -34,8 +34,8 @@ const initialFilters: FilterState = {
 const winnerRevealGroups = [
   {
     eyebrow: "Winners Announced",
-    title: "5th, 4th, and 3rd Place",
-    entryIds: ["carl", "mad-lab", "cosmos-arcade"],
+    title: "3rd, 4th, and 5th Place",
+    entryIds: ["cosmos-arcade", "mad-lab", "carl"],
   },
   {
     eyebrow: "Next Results",
@@ -204,8 +204,8 @@ function WinnerRevealSection({
             Winners Announced
           </h2>
           <p className="mt-3 font-mono text-sm leading-relaxed text-hackathon-text-muted">
-            The first results are live: 5th through 3rd place are marked below. The top two will be
-            added here once the final reveal is public.
+            The first results are live: 3rd, 4th, and 5th place are marked below. The top two will
+            be added here once the final reveal is public.
           </p>
         </div>
 

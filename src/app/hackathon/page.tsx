@@ -226,7 +226,7 @@ function ShowcaseCtaSection() {
             Showcase Gallery
           </h2>
           <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-            The first results are live now. Browse 5th through 3rd place, then revisit when the
+            The first results are live now. Browse 3rd, 4th, and 5th place, then revisit when the
             top two placements are added after the final reveal.
           </p>
         </div>
