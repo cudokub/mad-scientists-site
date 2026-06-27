@@ -33,15 +33,13 @@ const initialFilters: FilterState = {
 
 const winnerRevealGroups = [
   {
-    label: "Post 01",
-    title: "5th / 4th / 3rd",
-    description: "First announcement graphic",
+    eyebrow: "Winners Announced",
+    title: "5th, 4th, and 3rd Place",
     entryIds: ["carl", "mad-lab", "cosmos-arcade"],
   },
   {
-    label: "Post 02",
-    title: "2nd / 1st",
-    description: "Final announcement pending",
+    eyebrow: "Next Results",
+    title: "Top Two Reveal Coming Soon",
     entryIds: [],
     isLocked: true,
   },
@@ -55,6 +53,13 @@ function externalLinkProps(href: string) {
   return href.startsWith("http")
     ? { target: "_blank", rel: "noopener noreferrer" }
     : {};
+}
+
+function formatAwardLabel(award?: HackathonShowcaseEntry["award"]) {
+  if (!award) return "Recorded Entry";
+  if (award === "finalist") return "Finalist";
+  if (award === "honorable") return "Honorable Mention";
+  return `${award} Place`;
 }
 
 function FilterChip({
@@ -118,7 +123,7 @@ function AwardBadge({ award }: { award?: HackathonShowcaseEntry["award"] }) {
 
   return (
     <span className="border border-hackathon bg-hackathon px-2 py-1 font-display text-[11px] font-bold uppercase tracking-wider text-white">
-      {award}
+      {formatAwardLabel(award)}
     </span>
   );
 }
@@ -138,7 +143,7 @@ function WinnerRevealCard({
     >
       <div className="flex items-center justify-between gap-3 border-b border-hackathon/50 bg-black px-4 py-3">
         <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
-          {entry.award} Place
+          {formatAwardLabel(entry.award)}
         </p>
         <p className="font-mono text-xs font-bold uppercase tracking-wider text-hackathon-text-dim">
           {entry.catalogNumber}
@@ -193,26 +198,26 @@ function WinnerRevealSection({
       <div className="grid grid-cols-1 border-b border-hackathon lg:grid-cols-[360px_minmax(0,1fr)]">
         <div className="border-b border-hackathon p-6 lg:border-b-0 lg:border-r lg:p-8">
           <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
-            Results Published
+            Results Board
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
-            Winner Reveal
+            Winners Announced
           </h2>
           <p className="mt-3 font-mono text-sm leading-relaxed text-hackathon-text-muted">
-            Today&apos;s public drop reveals 5th through 3rd. The remaining placements stay sealed
-            until the final announcement.
+            The first results are live: 5th through 3rd place are marked below. The top two will be
+            added here once the final reveal is public.
           </p>
         </div>
 
         <div className="grid grid-cols-1 bg-hackathon-bg-light">
           {groups.map((group, index) => (
             <article
-              key={group.label}
+              key={group.title}
               className={`border-hackathon ${index === 0 ? "border-b" : ""}`}
             >
               <div className="border-b border-hackathon bg-black p-5">
                 <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
-                  {group.label} / {group.description}
+                  {group.eyebrow}
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-wider text-white">
                   {group.title}
@@ -234,11 +239,11 @@ function WinnerRevealSection({
                 ) : (
                   <div className="border border-hackathon/60 bg-hackathon-bg-light p-6 md:col-span-3">
                     <p className="font-display text-2xl font-bold uppercase tracking-wider text-white">
-                      Announcement Locked
+                      Top Two Coming Soon
                     </p>
                     <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-hackathon-text-muted">
-                      2nd and 1st place will appear here after the second winner graphic goes live.
-                      The full archive remains visible below without revealing those placements.
+                      1st and 2nd place will appear here after the final reveal. Until then, every
+                      submitted project remains available in the archive below.
                     </p>
                   </div>
                 )}
@@ -343,7 +348,7 @@ function EntryFacts({ entry }: { entry: HackathonShowcaseEntry }) {
     ["Project Type", entry.projectType],
     ["Cosmos Area", entry.cosmosArea],
     ["AI Use", entry.aiUse],
-    ["Award", entry.award ?? "Not assigned"],
+    ["Result", formatAwardLabel(entry.award)],
   ];
 
   return (
@@ -733,13 +738,13 @@ export default function ShowcaseGallery({ entries }: { entries: HackathonShowcas
                     active={filters.award === "awarded"}
                     onClick={() => updateFilter("award", "awarded")}
                   >
-                    Awarded
+                    Announced
                   </FilterChip>
                   <FilterChip
                     active={filters.award === "unawarded"}
                     onClick={() => updateFilter("award", "unawarded")}
                   >
-                    Unawarded
+                    Archive Entries
                   </FilterChip>
                 </div>
               </div>
