@@ -220,14 +220,14 @@ function ShowcaseCtaSection() {
       <div className="grid grid-cols-1 border-x border-b border-hackathon bg-black lg:grid-cols-[minmax(0,1fr)_420px]">
         <div className="border-b border-hackathon p-6 md:p-8 lg:border-b-0 lg:border-r">
           <p className="font-display text-sm font-bold uppercase tracking-wider text-hackathon-cyan">
-            Public Archive
+            Project Gallery
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
             Showcase Gallery
           </h2>
           <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-            The first winner drop is live now. Browse 5th through 3rd place, with the final
-            placements added after the second announcement.
+            The first results are live now. Browse 3rd, 4th, and 5th place, then revisit when the
+            top two placements are added after the final reveal.
           </p>
         </div>
 
@@ -249,7 +249,8 @@ function ShowcaseCtaSection() {
 
           <div className="flex flex-1 flex-col justify-center gap-4 p-6 md:p-8">
             <p className="font-mono text-sm leading-relaxed text-hackathon-text-muted">
-              Unlisted public page. Shareable by URL, kept out of the main nav.
+              Every submission stays in the gallery with demos, repositories, team names, and
+              Cosmos notes.
             </p>
             <HackathonLink href={SHOWCASE_URL}>Browse {showcaseEntryCount} Entries</HackathonLink>
           </div>
