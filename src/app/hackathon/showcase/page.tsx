@@ -8,19 +8,19 @@ import { showcaseEntries } from "@/lib/hackathon/showcase";
 export const metadata: Metadata = {
   title: "Mad Easy on Cosmos Showcase Archive | Mad Scientists",
   description:
-    "Browse the Mad Easy on Cosmos hackathon showcase archive: submitted experiments, demos, teams, Cosmos Hub connections, and AI usage notes.",
+    "Browse the Mad Easy on Cosmos hackathon winner reveal, submitted experiments, demos, teams, Cosmos Hub connections, and AI usage notes.",
   openGraph: {
     type: "website",
     title: "Mad Easy on Cosmos Showcase Archive | Mad Scientists",
     description:
-      "A public archive gallery for Mad Easy on Cosmos hackathon submissions and experiments.",
+      "A public archive gallery for the Mad Easy on Cosmos hackathon winner reveal, submissions, and experiments.",
     images: ["/images/hackathon/announcement-clean.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mad Easy on Cosmos Showcase Archive | Mad Scientists",
     description:
-      "Browse the archive gallery for Mad Easy on Cosmos hackathon submissions.",
+      "Browse the first winner reveal and archive gallery for Mad Easy on Cosmos hackathon submissions.",
     images: ["/images/hackathon/announcement-clean.png"],
   },
   alternates: {
@@ -46,8 +46,8 @@ export default function HackathonShowcasePage() {
               Showcase Archive
             </h1>
             <p className="mt-4 max-w-3xl font-mono text-base leading-relaxed text-hackathon-text-muted md:text-lg">
-              A catalog wall for every submitted experiment: playable builds, inspectable
-              prototypes, team notes, demo links, and Cosmos Hub signals.
+              The results wall for the Mad Easy on Cosmos hackathon: first winners, playable
+              builds, inspectable prototypes, team notes, demo links, and Cosmos Hub signals.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link

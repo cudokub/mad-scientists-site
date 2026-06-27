@@ -1,4 +1,4 @@
-export type HackathonAward = "1st" | "2nd" | "3rd" | "finalist" | "honorable";
+export type HackathonAward = "1st" | "2nd" | "3rd" | "4th" | "5th" | "finalist" | "honorable";
 
 export type HackathonShowcaseLink = {
   label: string;
@@ -92,6 +92,7 @@ export const showcaseEntries: HackathonShowcaseEntry[] = [
     cosmosArea: "ATOM Incentives",
     aiUse: "Not specified",
     tags: ["Racing", "PFPs", "Betting", "Commit Reveal"],
+    award: "5th",
   },
   {
     id: "mad-lab",
@@ -111,6 +112,7 @@ export const showcaseEntries: HackathonShowcaseEntry[] = [
     cosmosArea: "CosmWasm",
     aiUse: "Generative Art",
     tags: ["Gacha", "Cosmos Hub Mainnet", "drand", "cw721"],
+    award: "4th",
   },
   {
     id: "mind-the-mind",
@@ -258,6 +260,7 @@ export const showcaseEntries: HackathonShowcaseEntry[] = [
     cosmosArea: "Escrow",
     aiUse: "Not specified",
     tags: ["Arcade", "CosmWasm", "Escrow", "ATOM Bets"],
+    award: "3rd",
   },
   {
     id: "petri",

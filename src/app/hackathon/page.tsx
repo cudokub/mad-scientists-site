@@ -226,8 +226,8 @@ function ShowcaseCtaSection() {
             Showcase Gallery
           </h2>
           <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-            Submissions are archived now. Browse every experiment before winners are announced;
-            awards and finalist badges will be added after judging.
+            The first winner drop is live now. Browse 5th through 3rd place, with the final
+            placements added after the second announcement.
           </p>
         </div>
 
