@@ -213,7 +213,7 @@ function EventTicker() {
 }
 
 function ShowcaseCtaSection() {
-  const awardStatus = showcaseAwardCount > 0 ? `${showcaseAwardCount} awarded` : "Pending";
+  const awardStatus = showcaseAwardCount > 0 ? `${showcaseAwardCount} winners` : "Pending";
 
   return (
     <section className="mx-auto max-w-[1440px]" data-layer="hackathon-showcase-cta">
@@ -226,8 +226,8 @@ function ShowcaseCtaSection() {
             Showcase Gallery
           </h2>
           <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-hackathon-text-muted md:text-base">
-            The first results are live now. Browse 3rd, 4th, and 5th place, then revisit when the
-            top two placements are added after the final reveal.
+            Final results are live now. Browse the full winner board, then dig into every submitted
+            project from the Mad Easy on Cosmos archive.
           </p>
         </div>
 
@@ -241,7 +241,7 @@ function ShowcaseCtaSection() {
             </div>
             <div className="bg-hackathon-bg p-5">
               <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
-                Awards
+                Winners
               </p>
               <p className="mt-2 font-mono text-xl font-bold uppercase text-white">{awardStatus}</p>
             </div>

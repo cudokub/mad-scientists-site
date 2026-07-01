@@ -68,6 +68,7 @@ export const showcaseEntries: HackathonShowcaseEntry[] = [
     cosmosArea: "Governance",
     aiUse: "Not specified",
     tags: ["Governance", "Prediction Market", "ATOM Burn", "GitHub Pages"],
+    award: "1st",
   },
   {
     id: "carl",
@@ -225,6 +226,7 @@ export const showcaseEntries: HackathonShowcaseEntry[] = [
     cosmosArea: "IBC",
     aiUse: "Build Assistance",
     tags: ["IBC", "Arcade", "Telegram", "Daily Prizes"],
+    award: "2nd",
   },
   {
     id: "relic-reactor",
