@@ -31,19 +31,8 @@ const initialFilters: FilterState = {
   aiUse: "all",
 };
 
-const winnerRevealGroups = [
-  {
-    eyebrow: "Winners Announced",
-    title: "3rd, 4th, and 5th Place",
-    entryIds: ["cosmos-arcade", "mad-lab", "carl"],
-  },
-  {
-    eyebrow: "Next Results",
-    title: "Top Two Reveal Coming Soon",
-    entryIds: [],
-    isLocked: true,
-  },
-];
+const topWinnerIds = ["mad-votes", "ibc-02-packet-get-over-here"];
+const placedWinnerIds = ["cosmos-arcade", "mad-lab", "carl"];
 
 function uniqueValues(entries: HackathonShowcaseEntry[], key: keyof HackathonShowcaseEntry) {
   return Array.from(new Set(entries.map((entry) => entry[key]).filter(Boolean) as string[])).sort();
@@ -128,6 +117,66 @@ function AwardBadge({ award }: { award?: HackathonShowcaseEntry["award"] }) {
   );
 }
 
+function WinnerSpotlightCard({
+  entry,
+  isChampion = false,
+  onOpen,
+}: {
+  entry: HackathonShowcaseEntry;
+  isChampion?: boolean;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className={`group flex min-h-[320px] flex-col border text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hackathon ${
+        isChampion
+          ? "border-hackathon bg-black hover:bg-hackathon-bg"
+          : "border-hackathon/60 bg-hackathon-bg-light hover:border-hackathon"
+      }`}
+    >
+      <div className="flex items-center justify-between gap-3 border-b border-hackathon/50 bg-black px-4 py-3">
+        <p className={`font-display font-bold uppercase tracking-wider text-hackathon-cyan ${
+          isChampion ? "text-base md:text-lg" : "text-sm"
+        }`}>
+          {formatAwardLabel(entry.award)}
+        </p>
+        <p className="font-mono text-xs font-bold uppercase tracking-wider text-hackathon-text-dim">
+          {entry.catalogNumber}
+        </p>
+      </div>
+
+      <div className={`relative w-full overflow-hidden border-b border-hackathon/50 bg-black ${
+        isChampion ? "aspect-[16/8]" : "aspect-[16/9]"
+      }`}>
+        <Image
+          src={entry.thumbnail}
+          alt={entry.mediaAlt}
+          fill
+          sizes={isChampion ? "(min-width: 1024px) 45vw, 100vw" : "(min-width: 1024px) 30vw, 100vw"}
+          className="object-cover opacity-90 transition-transform duration-300 group-hover:scale-[1.03]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
+      </div>
+
+      <div className={`flex flex-1 flex-col ${isChampion ? "p-5 md:p-6" : "p-4"}`}>
+        <h4 className={`break-words font-display font-bold uppercase leading-tight tracking-wider text-white ${
+          isChampion ? "text-3xl md:text-4xl" : "text-xl"
+        }`}>
+          {entry.projectName}
+        </h4>
+        <p className="mt-2 font-mono text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+          Team / {entry.teamName}
+        </p>
+        <p className="mt-3 line-clamp-3 font-mono text-sm leading-relaxed text-hackathon-text-muted">
+          {entry.summary}
+        </p>
+      </div>
+    </button>
+  );
+}
+
 function WinnerRevealCard({
   entry,
   onOpen,
@@ -183,14 +232,14 @@ function WinnerRevealSection({
   entries: HackathonShowcaseEntry[];
   onOpen: (id: string) => void;
 }) {
-  const groups = winnerRevealGroups.map((group) => ({
-    ...group,
-    entries: group.entryIds
-      .map((id) => entries.find((entry) => entry.id === id))
-      .filter(Boolean) as HackathonShowcaseEntry[],
-  }));
+  const topWinners = topWinnerIds
+    .map((id) => entries.find((entry) => entry.id === id))
+    .filter(Boolean) as HackathonShowcaseEntry[];
+  const placedWinners = placedWinnerIds
+    .map((id) => entries.find((entry) => entry.id === id))
+    .filter(Boolean) as HackathonShowcaseEntry[];
 
-  const hasWinners = groups.some((group) => group.entries.length > 0);
+  const hasWinners = topWinners.length > 0 || placedWinners.length > 0;
   if (!hasWinners) return null;
 
   return (
@@ -204,52 +253,52 @@ function WinnerRevealSection({
             Winners Announced
           </h2>
           <p className="mt-3 font-mono text-sm leading-relaxed text-hackathon-text-muted">
-            The first results are live: 3rd, 4th, and 5th place are marked below. The top two will
-            be added here once the final reveal is public.
+            Final results are live. The top two projects lead the board, followed by the remaining
+            announced winners and the full submission archive.
           </p>
         </div>
 
         <div className="grid grid-cols-1 bg-hackathon-bg-light">
-          {groups.map((group, index) => (
-            <article
-              key={group.title}
-              className={`border-hackathon ${index === 0 ? "border-b" : ""}`}
-            >
-              <div className="border-b border-hackathon bg-black p-5">
-                <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
-                  {group.eyebrow}
-                </p>
-                <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-wider text-white">
-                  {group.title}
-                </h3>
-              </div>
-              <div
-                className={`grid grid-cols-1 gap-px bg-hackathon/40 p-px ${
-                  group.entries.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"
-                }`}
-              >
-                {group.entries.length > 0 ? (
-                  group.entries.map((entry) => (
-                    <WinnerRevealCard
-                      key={entry.id}
-                      entry={entry}
-                      onOpen={() => onOpen(entry.id)}
-                    />
-                  ))
-                ) : (
-                  <div className="border border-hackathon/60 bg-hackathon-bg-light p-6 md:col-span-3">
-                    <p className="font-display text-2xl font-bold uppercase tracking-wider text-white">
-                      Top Two Coming Soon
-                    </p>
-                    <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-hackathon-text-muted">
-                      1st and 2nd place will appear here after the final reveal. Until then, every
-                      submitted project remains available in the archive below.
-                    </p>
-                  </div>
-                )}
-              </div>
-            </article>
-          ))}
+          <article className="border-b border-hackathon">
+            <div className="border-b border-hackathon bg-black p-5">
+              <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+                Final Reveal
+              </p>
+              <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-wider text-white">
+                1st and 2nd Place
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 gap-px bg-hackathon/40 p-px lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)]">
+              {topWinners.map((entry, index) => (
+                <WinnerSpotlightCard
+                  key={entry.id}
+                  entry={entry}
+                  isChampion={index === 0}
+                  onOpen={() => onOpen(entry.id)}
+                />
+              ))}
+            </div>
+          </article>
+
+          <article>
+            <div className="border-b border-hackathon bg-black p-5">
+              <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
+                Winners Announced
+              </p>
+              <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-wider text-white">
+                3rd, 4th, and 5th Place
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 gap-px bg-hackathon/40 p-px md:grid-cols-3">
+              {placedWinners.map((entry) => (
+                <WinnerRevealCard
+                  key={entry.id}
+                  entry={entry}
+                  onOpen={() => onOpen(entry.id)}
+                />
+              ))}
+            </div>
+          </article>
         </div>
       </div>
     </div>

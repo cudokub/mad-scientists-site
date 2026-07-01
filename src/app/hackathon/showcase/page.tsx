@@ -46,9 +46,9 @@ export default function HackathonShowcasePage() {
               Showcase Archive
             </h1>
             <p className="mt-4 max-w-3xl font-mono text-base leading-relaxed text-hackathon-text-muted md:text-lg">
-              Browse every submitted experiment from the Mad Easy on Cosmos hackathon. Announced
-              winners are marked as results go live, while the full project catalog stays open for
-              demos, repositories, team notes, and Cosmos Hub signals.
+              Browse every submitted experiment from the Mad Easy on Cosmos hackathon. The final
+              winners are marked at the top of the board, while the full project catalog stays open
+              for demos, repositories, team notes, and Cosmos Hub signals.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -89,10 +89,10 @@ export default function HackathonShowcasePage() {
             </div>
             <div className="p-5">
               <p className="font-display text-xs font-bold uppercase tracking-wider text-hackathon-cyan">
-                Next
+                Results
               </p>
               <p className="mt-2 font-mono text-sm font-bold uppercase leading-tight text-white">
-                Top Two Soon
+                Complete
               </p>
             </div>
           </div>
