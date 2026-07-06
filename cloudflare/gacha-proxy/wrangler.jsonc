@@ -1,0 +1,13 @@
+{
+  // Reverse proxy: serves the gacha game (origin: gacha.trendytech.dev)
+  // under the branded domain gacha.madscientists.io.
+  "name": "gacha-proxy",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-06-01",
+  "routes": [
+    {
+      "pattern": "gacha.madscientists.io",
+      "custom_domain": true
+    }
+  ]
+}
