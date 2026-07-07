@@ -1,0 +1,13 @@
+{
+  // Reverse proxy: serves the MAD University dashboard (origin: mad.trendytech.dev)
+  // under the branded domain university.madscientists.io.
+  "name": "university-proxy",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-06-01",
+  "routes": [
+    {
+      "pattern": "university.madscientists.io",
+      "custom_domain": true
+    }
+  ]
+}
