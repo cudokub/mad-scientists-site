@@ -43,6 +43,7 @@ const footerLinks: FooterLink[] = [
   { label: "Mad University", href: "https://mad.trendytech.dev", external: true },
   { label: "Science Clubs", href: "/scienceclubs" },
   { label: "Snapshot", href: "/snapshot" },
+  { label: "Hackathon", href: "/hackathon" },
   { label: "COSMIC", href: "/cosmic" },
 ];
 
